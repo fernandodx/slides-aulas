@@ -1,0 +1,70 @@
+{
+  "id": 10,
+  "title": "Aula 10 — HTML5 Semântico",
+  "subtitle": "Modelo Web Cliente/Servidor, estrutura do documento HTML5, tags semânticas e acessibilidade.",
+  "module": "Módulo 4 — HTML e CSS",
+  "tag": "Prática",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "A Arquitetura Web: Cliente x Servidor",
+      "subtitle": "Como os navegadores interpretam documentos HTML.",
+      "content": {
+        "badge": "Aula 10",
+        "description": "Quando um usuário digita uma URL, o navegador (Cliente) faz uma requisição HTTP/HTTPS ao servidor web, que responde com código HTML, CSS, JS e assets.",
+        "keyPoints": [
+          "HTML (HyperText Markup Language): A estrutura e significado do conteúdo",
+          "DOM (Document Object Model): A árvore de nós que o navegador renderiza",
+          "Semântica: Usar as tags corretas para o significado correto"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "theory",
+      "title": "Tags Semânticas vs <div> Genéricas",
+      "subtitle": "Por que estruturar o HTML semânticamente impacta SEO e Acessibilidade.",
+      "content": {
+        "sections": [
+          {
+            "heading": "<header> e <nav>",
+            "text": "Cabeçalho da página/seção e barra de links de navegação principal."
+          },
+          {
+            "heading": "<main>, <article> e <section>",
+            "text": "Conteúdo principal, artigo independente e agrupamentos temáticos de código."
+          },
+          {
+            "heading": "<aside> e <footer>",
+            "text": "Conteúdo lateral complementar e rodapé com direitos autorais e links."
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "type": "code",
+      "title": "Exemplo de Estrutura HTML5 Semântica",
+      "subtitle": "Código limpo seguindo os padrões W3C.",
+      "content": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Meu Primeiro Site Semântico</title>\n</head>\n<body>\n  <header>\n    <h1>Desenvolvimento de Interfaces</h1>\n    <nav>\n      <ul>\n        <li><a href=\"#inicio\">Início</a></li>\n        <li><a href=\"#aulas\">Aulas</a></li>\n      </ul>\n    </nav>\n  </header>\n\n  <main>\n    <article>\n      <h2>Aula 10: HTML5 Semântico</h2>\n      <p>Aprendendo a estruturar a web de forma acessível.</p>\n    </article>\n  </main>\n\n  <footer>\n    <p>&copy; 2026 Universidade - Todos os direitos reservados.</p>\n  </footer>\n</body>\n</html>",
+        "explanation": "Note o uso de <header>, <nav>, <main>, <article> e <footer> em vez de apenas <div>."
+      }
+    },
+    {
+      "id": 4,
+      "type": "practice",
+      "title": "Atividade Prática: Estrutura HTML do Projeto",
+      "subtitle": "Criar a página inicial em HTML limpo.",
+      "content": {
+        "items": [
+          { "title": "Passo 1", "detail": "Crie o arquivo index.html na raiz do seu repositório local." },
+          { "title": "Passo 2", "detail": "Adicione as metatags essenciais de charset e viewport para dispositivos móveis." },
+          { "title": "Passo 3", "detail": "Monte a estrutura semântica da sua Landing Page com base no wireframe do Figma." }
+        ]
+      }
+    }
+  ]
+}

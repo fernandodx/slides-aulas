@@ -1,0 +1,59 @@
+{
+  "id": 16,
+  "title": "Aula 16 — Manipulação do DOM",
+  "subtitle": "Interagindo com a árvore HTML via JavaScript: Seleção de elementos, manipulação de eventos e modificação de estilos.",
+  "module": "Módulo 6 — JavaScript",
+  "tag": "Prática",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "O que é o DOM (Document Object Model)?",
+      "subtitle": "A ponte entre o código HTML e a lógica JavaScript.",
+      "content": {
+        "badge": "Aula 16",
+        "description": "O DOM é uma representação em árvore de objetos do documento HTML renderizado na memória do navegador. O JavaScript usa a API do DOM para alterar elementos em tempo real sem recarregar a página.",
+        "keyPoints": [
+          "Seleção: document.querySelector('.minha-classe') ou document.getElementById('meu-id')",
+          "Eventos: addEventListener('click', minhaFuncao)",
+          "Manipulação: elemento.textContent, elemento.innerHTML, elemento.classList.toggle('active')"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "code",
+      "title": "Exemplo Prático: Capturando Eventos de Clique",
+      "subtitle": "Alterando classes CSS e conteúdo dinamicamente.",
+      "content": {
+        "language": "javascript",
+        "code": "// 1. Selecionando elementos do DOM\nconst btnCurtir = document.querySelector('#btn-curtir');\nconst contadorText = document.querySelector('#curtidas-count');\n\nlet totalCurtidas = 0;\n\n// 2. Registrando um ouvinte de eventos (Event Listener)\nbtnCurtir.addEventListener('click', () => {\n  totalCurtidas += 1;\n  contadorText.textContent = `${totalCurtidas} curtidas`;\n  \n  // Alterna uma classe CSS\n  btnCurtir.classList.toggle('active');\n});",
+        "explanation": "classList.toggle adiciona a classe se ela não existir, ou remove se já existir no elemento!"
+      }
+    },
+    {
+      "id": 3,
+      "type": "code",
+      "title": "Criando e Inserindo Elementos Dinamicamente",
+      "subtitle": "Uso de document.createElement e appendChild.",
+      "content": {
+        "language": "javascript",
+        "code": "const listaAulas = document.querySelector('#lista-aulas');\n\nfunction adicionarNovaAula(titulo, tag) {\n  // Cria o elemento <li>\n  const li = document.createElement('li');\n  li.className = 'list-group-item d-flex justify-content-between align-items-center';\n  \n  // Preenche o conteúdo\n  li.innerHTML = `\n    <span>${titulo}</span>\n    <span class=\"badge bg-success\">${tag}</span>\n  `;\n  \n  // Anexa à lista no DOM\n  listaAulas.appendChild(li);\n}",
+        "explanation": "createElement e appendChild permitem construir interfaces reativas sem bibliotecas externas."
+      }
+    },
+    {
+      "id": 4,
+      "type": "practice",
+      "title": "Atividade Prática: Manipulação em Tempo Real",
+      "subtitle": "Criar um alternador de tema Claro/Escuro.",
+      "content": {
+        "items": [
+          { "title": "Passo 1", "detail": "Crie um botão com id='toggle-theme' no topo da página." },
+          { "title": "Passo 2", "detail": "No JS, escute o evento 'click' deste botão." },
+          { "title": "Passo 3", "detail": "Alterne o atributo data-theme='dark' na tag <body> usando document.body.setAttribute." }
+        ]
+      }
+    }
+  ]
+}

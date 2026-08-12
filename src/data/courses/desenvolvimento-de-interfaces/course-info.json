@@ -1,0 +1,126 @@
+{
+  "id": "desenvolvimento-de-interfaces",
+  "title": "Desenvolvimento de Interfaces",
+  "subtitle": "Um guia completo de ponta a ponta: do Design Thinking, passando pelo Figma, até a codificação final em HTML, CSS e JavaScript.",
+  "code": "UI-UX-2026",
+  "workloadHours": 80,
+  "totalLessons": 20,
+  "category": "Design & Engenharia Web",
+  "badge": "Design & Web Development",
+  "assessment": {
+    "methodology": "Aprendizagem baseada em projetos práticos com acompanhamento contínuo e entregas parciais.",
+    "deliverables": [
+      {
+        "name": "Entrega 1 - Design System + Protótipo",
+        "aula": 9,
+        "weight": "30%",
+        "description": "Criação do Design System no Figma com componentes, variantes, tokens e protótipo navegável de alta fidelidade."
+      },
+      {
+        "name": "Entrega 2 - Aplicação To Do",
+        "aula": 17,
+        "weight": "30%",
+        "description": "Aplicação web responsiva com HTML, CSS/Bootstrap e JavaScript consumindo e manipulando o DOM."
+      },
+      {
+        "name": "Entrega Final - Apresentação de Projeto Completo",
+        "aula": 20,
+        "weight": "40%",
+        "description": "Projeto web publicado (Deploy) com protótipo Figma, código no GitHub, responsividade e apresentação individual."
+      }
+    ]
+  },
+  "tools": [
+    { "name": "Figma", "icon": "palette", "desc": "Design System e Prototipagem" },
+    { "name": "Git & GitHub", "icon": "code", "desc": "Controle de versão e trabalho em equipe" },
+    { "name": "HTML5 & CSS3", "icon": "html", "desc": "Estrutura e estilização da web" },
+    { "name": "Bootstrap 5", "icon": "view_quilt", "desc": "Framework CSS responsivo" },
+    { "name": "JavaScript ES6+", "icon": "javascript", "desc": "Lógica e manipulação dinâmica do DOM" },
+    { "name": "Vercel / Netlify", "icon": "cloud_upload", "desc": "Deploy e hospedagem contínua" }
+  ],
+  "modules": [
+    {
+      "id": 1,
+      "number": "01",
+      "title": "Introdução e Ferramentas",
+      "description": "Apresentação da disciplina, workflow de desenvolvimento e controle de versão com Git e GitHub.",
+      "color": "var(--md-color-module-1)",
+      "lessons": [
+        { "id": 1, "title": "Aula 1 — Apresentação da Disciplina", "tag": "Teoria", "duration": "4h", "description": "Metodologia, sistema de avaliação, ferramentas e projeto final." },
+        { "id": 2, "title": "Aula 2 — GitHub e Controle de Versão", "tag": "Prática", "duration": "4h", "description": "Git, GitHub, commits, branches, pull requests e primeiro repositório." }
+      ]
+    },
+    {
+      "id": 2,
+      "number": "02",
+      "title": "UI/UX e Design de Produtos",
+      "description": "Fundamentos de User Experience, Design Thinking, Jornada do Usuário, Wireframes e Acessibilidade.",
+      "color": "var(--md-color-module-2)",
+      "lessons": [
+        { "id": 3, "title": "Aula 3 — Introdução à UI e UX", "tag": "Prática", "duration": "4h", "description": "O que é UI/UX, papel do designer vs dev, exemplos e onboarding no Figma." },
+        { "id": 4, "title": "Aula 4 — Descobrindo o Problema", "tag": "Atividade", "duration": "4h", "description": "Design Thinking, Double Diamond, Personas e Mapa da Jornada." },
+        { "id": 5, "title": "Aula 5 — Arquitetura da Info e Wireframes", "tag": "Prática", "duration": "4h", "description": "User Flow, Task Flow, Sitemaps e wireframes de baixa, média e alta fidelidade." },
+        { "id": 6, "title": "Aula 6 — Design Visual e Acessibilidade", "tag": "Atividade", "duration": "4h", "description": "Princípios CRAP, cores, tipografia, acessibilidade (WCAG) e Heurísticas de Nielsen." }
+      ]
+    },
+    {
+      "id": 3,
+      "number": "03",
+      "title": "Design System e Figma",
+      "description": "Construção de bibliotecas de componentes, variantes, auto layout e protótipos funcionais.",
+      "color": "var(--md-color-module-3)",
+      "lessons": [
+        { "id": 7, "title": "Aula 7 — Design System", "tag": "Prática", "duration": "4h", "description": "Conceitos de Design System, Style Guide, UI Kit e componentes no Figma." },
+        { "id": 8, "title": "Aula 8 — Construindo o Design System", "tag": "Prática", "duration": "4h", "description": "Criação prática de paletas, tipografia, grid, ícones e espaçamentos." },
+        { "id": 9, "title": "Aula 9 — Protótipo Interativo", "tag": "Entrega 1", "duration": "4h", "description": "Componentes, Variantes, Auto Layout e Entrega do Projeto 1." }
+      ]
+    },
+    {
+      "id": 4,
+      "number": "04",
+      "title": "HTML e CSS",
+      "description": "Codificação estrutural da web semântica e estilização moderna com Flexbox, Grid e Variáveis CSS.",
+      "color": "var(--md-color-module-4)",
+      "lessons": [
+        { "id": 10, "title": "Aula 10 — HTML5 Semântico", "tag": "Prática", "duration": "4h", "description": "Cliente/Servidor, tags semânticas, acessibilidade e estrutura de página." },
+        { "id": 11, "title": "Aula 11 — CSS I", "tag": "Prática", "duration": "4h", "description": "Seletores, cascata, especificidade, Box Model e estilizador de elementos." },
+        { "id": 12, "title": "Aula 12 — CSS II", "tag": "Prática", "duration": "4h", "description": "Display, Flexbox, Grid, unidades relativas (rem, vh) e variáveis CSS." }
+      ]
+    },
+    {
+      "id": 5,
+      "number": "05",
+      "title": "Bootstrap",
+      "description": "Uso de frameworks CSS responsivos e componentes pré-construídos para agilidade de desenvolvimento.",
+      "color": "var(--md-color-module-5)",
+      "lessons": [
+        { "id": 13, "title": "Aula 13 — Bootstrap Fundamentos", "tag": "Prática", "duration": "4h", "description": "CDN, Mobile-first, Breakpoints, Grid System, Navbar, Cards e Formulários." },
+        { "id": 14, "title": "Aula 14 — Bootstrap Avançado", "tag": "Prática", "duration": "4h", "description": "Modais, alertas, badges, utilitários flex/display e construção de Landing Page." }
+      ]
+    },
+    {
+      "id": 6,
+      "number": "06",
+      "title": "JavaScript",
+      "description": "Lógica de programação para web, manipulação de eventos e construção de aplicação interativa.",
+      "color": "var(--md-color-module-6)",
+      "lessons": [
+        { "id": 15, "title": "Aula 15 — Introdução ao JavaScript", "tag": "Prática", "duration": "4h", "description": "Sintaxe, variáveis, operadores, condicionais, loops e funções arrow." },
+        { "id": 16, "title": "Aula 16 — Manipulação do DOM", "tag": "Prática", "duration": "4h", "description": "querySelector, addEventListener, alteração dinâmica de HTML e CSS via JS." },
+        { "id": 17, "title": "Aula 17 — Projeto To Do App", "tag": "Entrega 2", "duration": "4h", "description": "Construção e entrega do projeto completo To Do com armazenamento local." }
+      ]
+    },
+    {
+      "id": 7,
+      "number": "07",
+      "title": "Projeto Final",
+      "description": "Publicação online, mentoria de código, acessibilidade, responsividade e bancas de apresentação.",
+      "color": "var(--md-color-module-7)",
+      "lessons": [
+        { "id": 18, "title": "Aula 18 — Deploy e Publicação", "tag": "Prática", "duration": "4h", "description": "Publicação online no GitHub Pages, Netlify, Vercel ou Firebase Hosting." },
+        { "id": 19, "title": "Aula 19 — Desenvolvimento & Mentoria", "tag": "Mentoria", "duration": "4h", "description": "Correções, revisão de UI/UX, melhorias de acessibilidade e código." },
+        { "id": 20, "title": "Aula 20 — Apresentação Final", "tag": "Entrega Final", "duration": "4h", "description": "Apresentação individual do projeto completo e avaliação da banca." }
+      ]
+    }
+  ]
+}

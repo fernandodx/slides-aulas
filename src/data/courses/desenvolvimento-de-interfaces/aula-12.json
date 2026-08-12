@@ -1,0 +1,59 @@
+{
+  "id": 12,
+  "title": "Aula 12 — CSS II",
+  "subtitle": "Layouts modernos com Flexbox, CSS Grid, unidades relativas e variáveis nativas do CSS.",
+  "module": "Módulo 4 — HTML e CSS",
+  "tag": "Prática",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "Display Flexbox vs CSS Grid",
+      "subtitle": "Qual sistema de layout escolher para cada situação?",
+      "content": {
+        "badge": "Aula 12",
+        "description": "Flexbox foi projetado para layouts unidimensionais (linhas OU colunas). CSS Grid foi projetado para layouts bidimensionais (linhas E colunas simultaneamente).",
+        "keyPoints": [
+          "Flexbox: Ideal para navegações, alinhamento de ícones e listas flexíveis",
+          "CSS Grid: Ideal para grids de produtos, galerias e a estrutura geral da página",
+          "Unidades Relativas: Use rem para fontes e % / vh / vw para dimensões de telas"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "code",
+      "title": "Flexbox em Ação",
+      "subtitle": "Alinhando elementos facilmente no eixo principal e cruzado.",
+      "content": {
+        "language": "css",
+        "code": ".nav-bar {\n  display: flex;\n  justify-content: space-between; /* Eixo Principal (Horizontal) */\n  align-items: center;            /* Eixo Cruzado (Vertical) */\n  gap: 16px;\n  padding: 1rem 2rem;\n}\n\n.card-container {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 24px;\n}",
+        "explanation": "justify-content controla o alinhamento no eixo principal, enquanto align-items controla o eixo cruzado."
+      }
+    },
+    {
+      "id": 3,
+      "type": "code",
+      "title": "CSS Grid & Variáveis Nativas (Custom Properties)",
+      "subtitle": "Construindo layouts responsivos com zero media queries.",
+      "content": {
+        "language": "css",
+        "code": "/* Definindo Variáveis no :root */\n:root {\n  --primary-color: #6750A4;\n  --bg-surface: #FEF7FF;\n  --gap-size: 1.5rem;\n}\n\n/* Grid Responsivo Automático */\n.grid-gallery {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));\n  gap: var(--gap-size);\n}\n\n.card {\n  background-color: var(--bg-surface);\n  border: 1px solid var(--primary-color);\n  padding: var(--gap-size);\n}",
+        "explanation": "repeat(auto-fit, minmax(280px, 1fr)) cria colunas responsivas que se ajustam automaticamente sem quebrar o layout!"
+      }
+    },
+    {
+      "id": 4,
+      "type": "practice",
+      "title": "Atividade Prática: Construção Completa do Layout",
+      "subtitle": "Transformar o HTML da Aula 10 em um site moderno e responsivo.",
+      "content": {
+        "items": [
+          { "title": "Passo 1", "detail": "Configure as variáveis de cor e espaçamento no :root do seu arquivo CSS." },
+          { "title": "Passo 2", "detail": "Utilize Flexbox no cabeçalho (<header>) para alinhar a logo e o menu." },
+          { "title": "Passo 3", "detail": "Crie um CSS Grid responsivo na área principal (<main>) para exibir os cards das aulas." }
+        ]
+      }
+    }
+  ]
+}

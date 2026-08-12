@@ -1,0 +1,80 @@
+{
+  "id": 7,
+  "title": "Aula 7 — Design System",
+  "subtitle": "Conceitos de Design System, Style Guide, UI Kit, Component Library e ecossistemas da indústria.",
+  "module": "Módulo 3 — Design System e Figma",
+  "tag": "Prática",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "O que é um Design System?",
+      "subtitle": "A fonte única da verdade para designers e desenvolvedores.",
+      "content": {
+        "badge": "Aula 07",
+        "description": "Um Design System é um conjunto completo de padrões, componentes reutilizáveis, tokens visuais e diretrizes de código que orientam a construção de produtos em escala.",
+        "keyPoints": [
+          "Fonte Única da Verdade: Alinhamento perfeito entre produto, design e código",
+          "Escalabilidade: Permite que dezenas de devs construam interfaces idênticas",
+          "Eficiência: Evita retrabalho e reinvenção de componentes existentes"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "theory",
+      "title": "Diferenças: Style Guide vs UI Kit vs DS",
+      "subtitle": "Esclarecendo a hierarquia e maturidade das soluções visuais.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Style Guide (Guia de Estilo)",
+            "text": "Documento estático contendo diretrizes de marca, logo, paleta de cores e fontes."
+          },
+          {
+            "heading": "UI Kit",
+            "text": "Coleção de arquivos visuais (no Figma/Sketch) com botões, cards e inputs desenhados."
+          },
+          {
+            "heading": "Design System",
+            "text": "Ecossistema vivo que combina UI Kit + Componentes em Código (React/Vue) + Documentação + Governance."
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "type": "theory",
+      "title": "Exemplos do Mercado",
+      "subtitle": "Grandes referências globais de Design Systems de sucesso.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Material Design (Google)",
+            "text": "Padrão aberto focado em profundidade, tokens dinâmicos (Material You) e acessibilidade universal."
+          },
+          {
+            "heading": "Human Interface Guidelines (Apple)",
+            "text": "Focado em clareza, fluidez, gestos e elegância visual no ecossistema iOS/macOS."
+          },
+          {
+            "heading": "Fluent Design System (Microsoft)",
+            "text": "Design tridimensional com efeitos de luz, acrílico e profundidade no Windows/Office."
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "type": "practice",
+      "title": "Início do Design System no Figma",
+      "subtitle": "Preparando o arquivo master de componentes.",
+      "content": {
+        "items": [
+          { "title": "Passo 1", "detail": "Crie um novo arquivo no Figma intitulado 'Design System - [Nome do Projeto]'." },
+          { "title": "Passo 2", "detail": "Crie 3 páginas no arquivo: 01. Tokens, 02. Componentes e 03. Telas/Protótipo." }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": 8,
+  "title": "Aula 8 — Construindo o Design System",
+  "subtitle": "Criação prática de Design Tokens: Cores, Tipografia, Espaçamentos, Grid Layout e Biblioteca de Ícones.",
+  "module": "Módulo 3 — Design System e Figma",
+  "tag": "Prática",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "O que são Design Tokens?",
+      "subtitle": "As variáveis fundamentais que conectam o Figma ao código CSS.",
+      "content": {
+        "badge": "Aula 08",
+        "description": "Design Tokens são nomes abstratos atribuídos a valores numéricos ou hexadecimais (ex: 'color-primary' = #6750A4, 'spacing-md' = 16px).",
+        "keyPoints": [
+          "Cores: Cores primárias, neutras, estados (hover, active, disabled)",
+          "Tipografia: Font-family, font-size, line-height, font-weight",
+          "Espaçamento (Grid de 8px): 4px, 8px, 16px, 24px, 32px, 48px",
+          "Elevação: Sombras e bordas arredondadas"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "theory",
+      "title": "A Regra do Grid de 8px (8pt Grid System)",
+      "subtitle": "Por que múltiplos de 8 tornam seu layout matematicamente perfeito.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Por que 8px?",
+            "text": "A maioria das resoluções de telas modernas (Desktop e Mobile) é divisível por 8. Utilizar incrementos de 8px elimina decimais e desalinhamentos."
+          },
+          {
+            "heading": "Escala Numérica Recomendada",
+            "text": "space-1 (4px), space-2 (8px), space-3 (12px), space-4 (16px), space-5 (24px), space-6 (32px), space-7 (48px), space-8 (64px)."
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "type": "practice",
+      "title": "Criando Variables e Styles no Figma",
+      "subtitle": "Configuração prática dos tokens de cor e tipografia.",
+      "content": {
+        "items": [
+          { "title": "Passo 1", "detail": "Abra o painel 'Local Variables' no Figma e crie a coleção 'Color Tokens'." },
+          { "title": "Passo 2", "detail": "Crie as variáveis de cor para modo Claro (Light) e Escuro (Dark)." },
+          { "title": "Passo 3", "detail": "Defina os Text Styles no Figma (Display, Headline, Title, Body, Label)." }
+        ]
+      }
+    }
+  ]
+}

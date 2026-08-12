@@ -1,0 +1,66 @@
+{
+  "id": 20,
+  "title": "Aula 20 — Apresentação Final do Projeto",
+  "subtitle": "Banca de avaliação final, pitch individual, apresentação do protótipo e exibição do site publicado.",
+  "module": "Módulo 7 — Projeto Final",
+  "tag": "Entrega Final",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "Grande Apresentação Final (Pitch Day)",
+      "subtitle": "A celebração do seu portfólio completo de Desenvolvimento de Interfaces.",
+      "content": {
+        "badge": "Aula 20 — Entrega Final",
+        "description": "Chegamos ao encerramento da disciplina! Hoje cada aluno apresentará seu projeto completo para a turma e banca avaliadora.",
+        "keyPoints": [
+          "Duração por Aluno: 5 minutos de demonstração ao vivo + 2 minutos de perguntas",
+          "Demonstração do Protótipo Figma vs Site Real Publicado",
+          "Exibição do Código no GitHub e Arquitetura da Solução"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "theory",
+      "title": "Critérios Oficiais da Banca Avaliadora",
+      "subtitle": "Composição da nota final (40% da nota do semestre).",
+      "content": {
+        "sections": [
+          {
+            "heading": "1. UI/UX & Design System (25%)",
+            "text": "Consistência de cores, tipografia, hierarquia visual e fidelity com o Figma."
+          },
+          {
+            "heading": "2. Qualidade do Código & JS (25%)",
+            "text": "HTML semântico, CSS responsivo, manipulação do DOM e organização do código."
+          },
+          {
+            "heading": "3. Versão Mobile & Acessibilidade (25%)",
+            "text": "Adaptação perfeita a dispositivos móveis e suporte a critérios WCAG."
+          },
+          {
+            "heading": "4. Versionamento & Deploy (25%)",
+            "text": "Histórico de commits no GitHub e publicação online sem erros."
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "type": "practice",
+      "title": "Parabéns pela Conclusão da Disciplina!",
+      "subtitle": "Você dominou do Design ao Código na prática.",
+      "content": {
+        "items": [
+          { "title": "Portfólio de Peso", "detail": "Você agora possui 3 projetos reais publicados no seu GitHub para apresentar em entrevistas de emprego." },
+          { "title": "Próximos Passos", "detail": "Continue evoluindo seus conhecimentos com frameworks como Vue.js, React e TypeScript." }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Obrigado pela dedicação durante todo o curso de Desenvolvimento de Interfaces!"
+        }
+      }
+    }
+  ]
+}

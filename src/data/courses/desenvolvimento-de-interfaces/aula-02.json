@@ -1,0 +1,75 @@
+{
+  "id": 2,
+  "title": "Aula 2 — GitHub e Controle de Versão",
+  "subtitle": "Conceitos fundamentais de Git, versionamento de código, commits, branches e Pull Requests.",
+  "module": "Módulo 1 — Introdução e Ferramentas",
+  "tag": "Prática",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "O que é Git e GitHub?",
+      "subtitle": "A pedra angular da colaboração no desenvolvimento de software.",
+      "content": {
+        "badge": "Aula 02",
+        "description": "Git é um sistema de controle de versão distribuído (DVCS). O GitHub é a plataforma em nuvem que hospeda repositórios Git, facilitando code review e integração.",
+        "keyPoints": [
+          "Git = Ferramenta local de controle de histórico de alterações",
+          "GitHub = Plataforma social/nuvem para hospedar seus repositórios",
+          "Histórico Imutável: Acompanhe quem mudou o quê, quando e por quê"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "theory",
+      "title": "Fluxo de Trabalho Git (Git Workflow)",
+      "subtitle": "Os três estados do Git: Working Directory, Staging Area e Repository.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Working Directory",
+            "text": "Onde os arquivos estão sendo alterados no seu computador."
+          },
+          {
+            "heading": "Staging Area (Index)",
+            "text": "Zona de preparação. Onde você seleciona as alterações prontas com 'git add'."
+          },
+          {
+            "heading": "Repository (Local & Remote)",
+            "text": "Onde os commits salvos permanecem registrados permanentemente no histórico."
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "type": "code",
+      "title": "Comandos Fundamentais do Git",
+      "subtitle": "Passo a passo para iniciar e registrar alterações.",
+      "content": {
+        "language": "bash",
+        "code": "# 1. Inicializar o repositório\ngit init\n\n# 2. Configurar nome e e-mail\ngit config --global user.name \"Seu Nome\"\ngit config --global user.email \"seu.email@exemplo.com\"\n\n# 3. Adicionar arquivos ao Staging Area\ngit add .\n\n# 4. Criar um commit descritivo\ngit commit -m \"feat: adiciona estrutura inicial da landing page\"\n\n# 5. Conectar com o remoto e enviar alterações\ngit remote add origin https://github.com/usuario/repositorio.git\ngit branch -M main\ngit push -u origin main",
+        "explanation": "Certifique-se de escrever mensagens de commit claras utilizando mensagens semânticas (ex: feat, fix, docs, style)."
+      }
+    },
+    {
+      "id": 4,
+      "type": "practice",
+      "title": "Atividade Prática: Primeiro Repositório",
+      "subtitle": "Criar conta, configurar Git e publicar o primeiro commit no GitHub.",
+      "content": {
+        "items": [
+          { "title": "Passo 1", "detail": "Crie sua conta no GitHub (github.com) se ainda não possuir." },
+          { "title": "Passo 2", "detail": "Crie um repositório público chamado 'slides-aulas-dev'." },
+          { "title": "Passo 3", "detail": "Crie um arquivo README.md local com o título e objetivo da disciplina." },
+          { "title": "Passo 4", "detail": "Execute 'git add', 'git commit' e 'git push' para publicar seu trabalho." }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "A URL deste repositório será utilizada durante todo o semestre para envio de trabalhos."
+        }
+      }
+    }
+  ]
+}

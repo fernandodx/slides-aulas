@@ -1,0 +1,65 @@
+{
+  "id": 15,
+  "title": "Aula 15 — Introdução ao JavaScript",
+  "subtitle": "Fundamentos da linguagem de programação da web: sintaxe, variáveis, operadores, condicionais e funções.",
+  "module": "Módulo 6 — JavaScript",
+  "tag": "Prática",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "O que é JavaScript?",
+      "subtitle": "A linguagem responsável pelo comportamento e dinamismo na web.",
+      "content": {
+        "badge": "Aula 15",
+        "description": "Se o HTML é o esqueleto e o CSS é a pele/roupa, o JavaScript é o cérebro da aplicação web. Ele permite responder a cliques do usuário, processar dados e se comunicar com servidores.",
+        "keyPoints": [
+          "Linguagem Interpretada: Executa nativamente em todos os navegadores modernos",
+          "Tipagem Dinâmica: Variáveis podem assumir diferentes tipos de dados em tempo de execução",
+          "Multi-paradigma: Suporta programação orientada a objetos e funcional"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "theory",
+      "title": "Variáveis, Tipos e Operadores em ES6+",
+      "subtitle": "Declaração moderna com const e let.",
+      "content": {
+        "sections": [
+          {
+            "heading": "const vs let (Evite var)",
+            "text": "• const: Para valores imutáveis que não serão reatribuídos\n• let: Para variáveis de escopo de bloco que sofrerão alteração"
+          },
+          {
+            "heading": "Tipos Primitivos",
+            "text": "String, Number, Boolean, Null, Undefined e Symbol."
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "type": "code",
+      "title": "Exemplo de Sintaxe, Condicionais e Arrow Functions",
+      "subtitle": "Sintaxe moderna ES6+ de funções.",
+      "content": {
+        "language": "javascript",
+        "code": "// Declaração de Variáveis\nconst curso = \"Desenvolvimento de Interfaces\";\nlet aulaAtual = 15;\nconst totalAulas = 20;\n\n// Arrow Function com Parâmetros e Retorno Implícito\nconst calcularProgresso = (atual, total) => ((atual / total) * 100).toFixed(0);\n\nconst porcentagem = calcularProgresso(aulaAtual, totalAulas);\nconsole.log(`Progresso do aluno: ${porcentagem}%`);\n\n// Estrutura Condicional\nif (porcentagem >= 75) {\n  console.log(\"Parabéns! Você está na reta final do curso.\");\n} else {\n  console.log(\"Continue praticando para concluir as entregas.\");\n}",
+        "explanation": "Arrow functions (() => {}) têm uma sintaxe mais enxuta e não rebindam o contexto do 'this'."
+      }
+    },
+    {
+      "id": 4,
+      "type": "practice",
+      "title": "Atividade Prática: Exercícios de Lógica",
+      "subtitle": "Praticar algoritmos simples no Console do Navegador.",
+      "content": {
+        "items": [
+          { "title": "Exercício 1", "detail": "Crie uma função que receba 3 notas de entregas e retorne a média ponderada." },
+          { "title": "Exercício 2", "detail": "Crie um loop (for/while) que percorra um array de aulas e filtre apenas as aulas do Módulo 6." }
+        ]
+      }
+    }
+  ]
+}

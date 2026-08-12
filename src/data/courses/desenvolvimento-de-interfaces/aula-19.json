@@ -1,0 +1,58 @@
+{
+  "id": 19,
+  "title": "Aula 19 — Desenvolvimento & Mentoria",
+  "subtitle": "Mentoria individualizada, correções de bugs, polimento de interface, responsividade e acessibilidade.",
+  "module": "Módulo 7 — Projeto Final",
+  "tag": "Mentoria",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "Sessão de Mentoria & Code Review",
+      "subtitle": "Refinando os detalhes finais antes da grande apresentação.",
+      "content": {
+        "badge": "Aula 19 — Mentoria",
+        "description": "Nesta aula dedicada de mentoria, o professor revisará individualmente cada projeto para identificar oportunidades de refinamento estético e de código.",
+        "keyPoints": [
+          "Checklist de UI/UX: Coerência com os tokens do Design System",
+          "Checklist de Código: Ausência de erros no console do navegador",
+          "Checklist de Responsividade: Teste em celulares (390px), tablets (768px) e monitores (1440px)"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "theory",
+      "title": "Checklist Final de Acessibilidade & Qualidade",
+      "subtitle": "Garantindo notas máximas na avaliação final.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Imagens com alt=\"...\"",
+            "text": "Todas as imagens informativas possuem texto alternativo preenchido."
+          },
+          {
+            "heading": "Navegação por Teclado (Focus ring)",
+            "text": "Todos os elementos interativos exibem indicador visual ao navegar com a tecla Tab."
+          },
+          {
+            "heading": "Validação de HTML/CSS (W3C)",
+            "text": "Zero erros de sintaxe ou tags abertas no código fonte."
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "type": "practice",
+      "title": "Trabalho em Prática Orientada",
+      "subtitle": "Ajustes finais no repositório do projeto.",
+      "content": {
+        "items": [
+          { "title": "Ação 1", "detail": "Corrija pequenos desalinhamentos visuais identificados no feedback da mentoria." },
+          { "title": "Ação 2", "detail": "Prepare os slides do seu Pitch de Apresentação (3 a 5 minutos)." }
+        ]
+      }
+    }
+  ]
+}

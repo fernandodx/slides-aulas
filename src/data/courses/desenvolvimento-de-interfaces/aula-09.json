@@ -1,0 +1,59 @@
+{
+  "id": 9,
+  "title": "Aula 9 — Protótipo Interativo (Entrega 1)",
+  "subtitle": "Componentes, Variantes, Auto Layout, animações no Figma e apresentação da Entrega 1.",
+  "module": "Módulo 3 — Design System e Figma",
+  "tag": "Entrega 1",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "Auto Layout & Componentes no Figma",
+      "subtitle": "Criando elementos flexíveis que se comportam exatamente como o Flexbox do CSS.",
+      "content": {
+        "badge": "Aula 09 — Entrega 1",
+        "description": "Auto Layout é o recurso mais poderoso do Figma para estruturar componentes dinâmicos que se adaptam automaticamente ao tamanho do conteúdo.",
+        "keyPoints": [
+          "Auto Layout (Shift + A): Padding, Margens e Gap responsivos",
+          "Componentes (Ctrl+Alt+K): Elementos reutilizáveis mestre",
+          "Variantes: Agrupamento de estados do botão (Default, Hover, Active, Disabled)"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "theory",
+      "title": "Prototipagem Interativa & Animações",
+      "subtitle": "Dando vida às telas estáticas.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Conexões entre Telas",
+            "text": "Modo Prototype: Arraste nós de conexão de botões para telas de destino."
+          },
+          {
+            "heading": "Transições e Smart Animate",
+            "text": "Utilize 'Smart Animate' com easing 'Ease Out' (300ms) para transições suaves de abas, modais e botões."
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "type": "practice",
+      "title": "Instruções da Entrega 1 (Design System + Protótipo)",
+      "subtitle": "Avaliação oficial valendo 30% da nota do semestre.",
+      "content": {
+        "items": [
+          { "title": "Requisito 1", "detail": "Link público do Figma contendo a página do Design System com Tokens e Componentes com Variantes." },
+          { "title": "Requisito 2", "detail": "Protótipo funcional navegável com pelo menos 4 telas encadeadas." },
+          { "title": "Requisito 3", "detail": "Versão Desktop (1440px) e Versão Mobile (390px)." }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Envie o link do protótipo no formulário oficial da disciplina até o final desta aula."
+        }
+      }
+    }
+  ]
+}

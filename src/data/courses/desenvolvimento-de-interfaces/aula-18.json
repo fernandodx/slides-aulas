@@ -1,0 +1,62 @@
+{
+  "id": 18,
+  "title": "Aula 18 — Deploy e Publicação",
+  "subtitle": "O que é Deploy, plataformas de hospedagem (GitHub Pages, Netlify, Vercel, Firebase App Hosting) e domínios.",
+  "module": "Módulo 7 — Projeto Final",
+  "tag": "Prática",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "O que é Deploy?",
+      "subtitle": "Levando seu projeto do ambiente local para a nuvem acessível no mundo todo.",
+      "content": {
+        "badge": "Aula 18",
+        "description": "Deploy é o processo de implantar uma aplicação em um servidor conectado à internet, tornando-a disponível publicamente através de uma URL amigável.",
+        "keyPoints": [
+          "Hospedagem Estática vs Servidor: HTML, CSS e JS funcionam em CDN global sem custo",
+          "Deploy Contínuo (CI/CD): Cada 'git push' atualiza o site automaticamente",
+          "SSL / HTTPS: Certificados de segurança gratuitos inclusos nas plataformas modernas"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "theory",
+      "title": "Comparativo de Plataformas Gratuítas para Alunos",
+      "subtitle": "Escolhendo onde publicar seu projeto final.",
+      "content": {
+        "sections": [
+          {
+            "heading": "GitHub Pages",
+            "text": "Solução direta e integrada ao repositório. Ativada em pouquíssimos cliques na aba Settings > Pages."
+          },
+          {
+            "heading": "Vercel & Netlify",
+            "text": "Plataformas profissionais de alta performance com suporte a domínios customizados, preview de Pull Requests e HTTPS."
+          },
+          {
+            "heading": "Firebase App Hosting / Hosting",
+            "text": "Excelente integração para quem usa Firebase Auth, Firestore e Remote Config."
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "type": "practice",
+      "title": "Passo a Passo: Deploy no GitHub Pages ou Vercel",
+      "subtitle": "Publicando a aplicação online em menos de 5 minutos.",
+      "content": {
+        "items": [
+          { "title": "Opção A (GitHub Pages)", "detail": "Acesse seu repositório no GitHub → Settings → Pages → Selecione a branch 'main' e pasta '/root' → Save." },
+          { "title": "Opção B (Vercel)", "detail": "Acesse vercel.com → Import Git Repository → Selecione seu projeto → Deploy." }
+        ],
+        "links": [
+          { "label": "Vercel Dashboard", "url": "https://vercel.com/" },
+          { "label": "Documentação GitHub Pages", "url": "https://pages.github.com/" }
+        ]
+      }
+    }
+  ]
+}

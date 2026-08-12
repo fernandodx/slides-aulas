@@ -1,0 +1,52 @@
+{
+  "id": 17,
+  "title": "Aula 17 — Projeto To Do (Entrega 2)",
+  "subtitle": "Aplicação prática unindo UI/UX, Design System, HTML, CSS, Bootstrap, JavaScript e localStorage.",
+  "module": "Módulo 6 — JavaScript",
+  "tag": "Entrega 2",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "Projeto Prático: To Do List Web App",
+      "subtitle": "Construindo uma aplicação web interativa completa.",
+      "content": {
+        "badge": "Aula 17 — Entrega 2",
+        "description": "Nesta entrega, você aplicará todos os conhecimentos adquiridos de HTML semântico, estilização com Bootstrap/CSS, manipulação do DOM e persistência local de dados com localStorage.",
+        "keyPoints": [
+          "CRUD Completo: Adicionar (Create), Listar (Read), Marcar como concluída (Update) e Excluir (Delete)",
+          "Persistência: Salvar tarefas no localStorage do navegador",
+          "Filtros de Lista: Todas, Pendentes e Concluídas"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "code",
+      "title": "Persistência com LocalStorage no Browser",
+      "subtitle": "Como salvar e recuperar JSON de tarefas.",
+      "content": {
+        "language": "javascript",
+        "code": "const STORAGE_KEY = 'minhas_tarefas_v1';\n\n// Salvar array de tarefas\nfunction salvarTarefas(tarefas) {\n  localStorage.setItem(STORAGE_KEY, JSON.stringify(tarefas));\n}\n\n// Carregar tarefas salvas\nfunction carregarTarefas() {\n  const salvas = localStorage.getItem(STORAGE_KEY);\n  return salvas ? JSON.parse(salvas) : [];\n}",
+        "explanation": "JSON.stringify converte o array em String para salvar no localStorage, e JSON.parse restaura o objeto original."
+      }
+    },
+    {
+      "id": 3,
+      "type": "practice",
+      "title": "Instruções da Entrega 2 (Aplicação To Do)",
+      "subtitle": "Avaliação oficial valendo 30% da nota do semestre.",
+      "content": {
+        "items": [
+          { "title": "Requisito 1", "detail": "Interface responsiva construída com HTML5 e CSS/Bootstrap alinhada ao protótipo." },
+          { "title": "Requisito 2", "detail": "Funcionalidade de adicionar, concluir e deletar tarefas via JS." },
+          { "title": "Requisito 3", "detail": "Persistência das tarefas ativas no localStorage." }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Submeta o link do repositório GitHub com os commits referentes ao Projeto To Do."
+        }
+      }
+    }
+  ]
+}

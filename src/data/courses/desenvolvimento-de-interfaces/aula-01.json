@@ -1,0 +1,82 @@
+{
+  "id": 1,
+  "title": "Aula 1 — Apresentação da Disciplina",
+  "subtitle": "Introdução ao curso, metodologia, sistema de avaliação e ecossistema de desenvolvimento de interfaces.",
+  "module": "Módulo 1 — Introdução e Ferramentas",
+  "tag": "Teoria",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "Bem-vindos a Desenvolvimento de Interfaces!",
+      "subtitle": "Um guia completo de ponta a ponta: do Design Thinking ao código funcional em produção.",
+      "content": {
+        "badge": "Aula 01",
+        "description": "Esta disciplina conecta a visão criativa de UI/UX à engenharia de software frontend. Ao longo de 20 aulas, você aprenderá a planejar, prototipar e construir sistemas web modernos.",
+        "keyPoints": [
+          "Visão Holística: UX Research, Design System, HTML, CSS, Frameworks e JS",
+          "Abordagem Prática: Construção contínua de um portfólio real",
+          "Padrões de Mercado: Figma, Git/GitHub, Clean Code e Acessibilidade (WCAG)"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "theory",
+      "title": "Metodologia de Ensino & Aprendizagem",
+      "subtitle": "Como as aulas estão estruturadas para maximizar seu aprendizado.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Modelo PBL (Project-Based Learning)",
+            "text": "Cada módulo aborda um pilar fundamental e resulta em entregáveis práticos que se acumulam no seu projeto final de disciplina."
+          },
+          {
+            "heading": "Divisão da Aula (4 Horas)",
+            "text": "1h de fundamentos teóricos e boas práticas + 2.5h de laboratório prático orientado + 0.5h de feedback e alinhamento."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Dica: Todo o código e protótipos construídos em aula ficarão disponíveis publicamente no seu GitHub e Figma."
+        }
+      }
+    },
+    {
+      "id": 3,
+      "type": "theory",
+      "title": "Sistema de Avaliação & Cronograma",
+      "subtitle": "Critérios transparentes de acompanhamento e entregas obrigatórias.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Entregas Principais (100% da Nota)",
+            "text": "• Entrega 1 (Aula 9 - 30%): Design System + Protótipo Figma\n• Entrega 2 (Aula 17 - 30%): Aplicação Web To Do (JS/DOM)\n• Entrega Final (Aula 20 - 40%): Projeto Web Completo + Deploy + Apresentação"
+          },
+          {
+            "heading": "Frequência e Qualidade",
+            "text": "Presença mínima de 75% e versionamento regular dos exercícios no GitHub durante o semestre."
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "type": "practice",
+      "title": "Ferramentas que Utilizaremos",
+      "subtitle": "Stack essencial do profissional de interfaces moderno.",
+      "content": {
+        "items": [
+          { "title": "Figma", "detail": "Criação de Personas, Wireframes, Design System e Protótipos Interativos." },
+          { "title": "VS Code", "detail": "Editor de código principal com extensões de produtividade e linter." },
+          { "title": "Git & GitHub", "detail": "Controle de versão, portfólio de projetos e hospedagem via GitHub Pages." },
+          { "title": "Navegadores & DevTools", "detail": "Inspeção de elementos, CSS Grid/Flexbox debugger e console JS." }
+        ],
+        "links": [
+          { "label": "Download VS Code", "url": "https://code.visualstudio.com/" },
+          { "label": "Criar conta no Figma", "url": "https://www.figma.com/" }
+        ]
+      }
+    }
+  ]
+}

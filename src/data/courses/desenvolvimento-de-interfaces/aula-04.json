@@ -1,0 +1,74 @@
+{
+  "id": 4,
+  "title": "Aula 4 — Descobrindo o Problema",
+  "subtitle": "Metodologia Design Thinking, modelo Double Diamond, Personas e Jornada do Usuário.",
+  "module": "Módulo 2 — UI/UX e Design de Produtos",
+  "tag": "Atividade",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "Design Thinking e o Double Diamond",
+      "subtitle": "Como explorar problemas complexos antes de saltar para soluções de código.",
+      "content": {
+        "badge": "Aula 04",
+        "description": "O modelo de Duplo Diamante divide o processo em 4 fases: Descobrir (Divergir), Definir (Convergir), Desenvolver (Divergir) e Entregar (Convergir).",
+        "keyPoints": [
+          "Descobrir: Pesquisa empírica e empatia com o usuário",
+          "Definir: Sintetizar aprendizados e delimitar o problema real",
+          "Desenvolver: Prototipar hipóteses de interface",
+          "Entregar: Validar e lançar em produção"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "theory",
+      "title": "O que é uma Persona?",
+      "subtitle": "Representação arquetípica baseada em dados do usuário final.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Elementos da Persona",
+            "text": "• Nome, Foto, Idade e Profissão fictícios\n• Dores (Pains) e Necessidades diárias\n• Objetivos com a plataforma e comportamentos de consumo web"
+          },
+          {
+            "heading": "Importância para o Dev",
+            "text": "Evita o viés do 'eu sou o usuário'. O código deve atender às necessidades reais da persona definida."
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "type": "theory",
+      "title": "Mapa da Jornada do Usuário",
+      "subtitle": "Visualizando a experiência completa passo a passo.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Etapas Típicas da Jornada",
+            "text": "Descoberta → Cadastro → Primeiro Uso → Solução da Dor → Retorno / Fidelização"
+          },
+          {
+            "heading": "Análise de Emoções",
+            "text": "Mapeamento dos pontos de fricção (onde o usuário fica frustrado) e oportunidades de melhoria."
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "type": "practice",
+      "title": "Atividade: Construir a Persona do Projeto",
+      "subtitle": "Exercício prático em grupo para criar a persona principal da disciplina.",
+      "content": {
+        "items": [
+          { "title": "Passo 1", "detail": "Escolha o segmento do seu projeto (e-commerce, educação, finanças, produtividade)." },
+          { "title": "Passo 2", "detail": "No Figma, crie um card com Foto, Nome, Bio, 3 Dores Principais e 3 Objetivos." },
+          { "title": "Passo 3", "detail": "Defina qual o principal problema que a sua interface vai resolver para ela." }
+        ]
+      }
+    }
+  ]
+}

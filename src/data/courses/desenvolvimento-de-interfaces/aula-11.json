@@ -1,0 +1,66 @@
+{
+  "id": 11,
+  "title": "Aula 11 — CSS I",
+  "subtitle": "Seletores CSS, efeito de cascata, especificidade de regras e o modelo de caixa (Box Model).",
+  "module": "Módulo 4 — HTML e CSS",
+  "tag": "Prática",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "O que é CSS e como ele funciona?",
+      "subtitle": "Cascading Style Sheets: Estilizando a estrutura HTML.",
+      "content": {
+        "badge": "Aula 11",
+        "description": "CSS é a linguagem usada para descrever a apresentação de um documento escrito em HTML. Ele controla cores, layouts, fontes e adaptações de tela.",
+        "keyPoints": [
+          "Sintaxe: Seletor { propriedade: valor; }",
+          "Cascata: A ordem das regras e a origem dos arquivos alteram a prioridade de renderização",
+          "Manutenibilidade: Manter o CSS organizado usando classes semânticas"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "theory",
+      "title": "O Box Model (Modelo de Caixa)",
+      "subtitle": "O coração do layout no CSS.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Anatomia do Box Model",
+            "text": "1. Content: Onde o texto ou imagem fica visível\n2. Padding: Espaço interno entre o conteúdo e a borda\n3. Border: A linha de contorno em volta da caixa\n4. Margin: Espaço externo que afasta este elemento dos vizinhos"
+          },
+          {
+            "heading": "box-sizing: border-box;",
+            "text": "Regra fundamental! Garante que 'width' e 'height' incluam o padding e a border sem inflar a dimensão total do elemento."
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "type": "code",
+      "title": "Especificidade e Seletores CSS",
+      "subtitle": "Calculando a prioridade dos seletores.",
+      "content": {
+        "language": "css",
+        "code": "/* Reset Global e Box Sizing */\n* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\n/* Seletor por Tag (Especificidade: 0,0,1) */\np {\n  color: #333333;\n}\n\n/* Seletor por Classe (Especificidade: 0,1,0) */\n.card-title {\n  color: #6750A4;\n  font-size: 1.25rem;\n}\n\n/* Seletor por ID (Especificidade: 1,0,0) */\n#main-banner {\n  background-color: #F3EDF7;\n  padding: 24px;\n  border-radius: 16px;\n}",
+        "explanation": "Lembre-se: Evite usar IDs para estilização visual. Prefira classes reutilizáveis!"
+      }
+    },
+    {
+      "id": 4,
+      "type": "practice",
+      "title": "Atividade Prática: Estilizar os Cards do Projeto",
+      "subtitle": "Aplicar o Box Model e criar o arquivo style.css.",
+      "content": {
+        "items": [
+          { "title": "Passo 1", "detail": "Crie o arquivo style.css e vincule ao HTML via tag <link rel=\"stylesheet\">." },
+          { "title": "Passo 2", "detail": "Aplique o reset com 'box-sizing: border-box' em todos os elementos." },
+          { "title": "Passo 3", "detail": "Estilize os botões e cards de aula utilizando paddings, margins e border-radius." }
+        ]
+      }
+    }
+  ]
+}

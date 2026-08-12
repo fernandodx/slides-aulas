@@ -1,0 +1,66 @@
+{
+  "id": 3,
+  "title": "Aula 3 — Introdução à UI e UX",
+  "subtitle": "Conceitos de User Interface (UI), User Experience (UX), processo digital e onboarding no Figma.",
+  "module": "Módulo 2 — UI/UX e Design de Produtos",
+  "tag": "Prática",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "O que é UI vs UX?",
+      "subtitle": "Entendendo a diferença crucial entre a experiência sentida e a interface percebida.",
+      "content": {
+        "badge": "Aula 03",
+        "description": "UX (User Experience) trata de como o usuário se sente ao utilizar o produto, sua eficiência e satisfação. UI (User Interface) é a camada visual com a qual o usuário interage diretamente.",
+        "keyPoints": [
+          "UX = Pesquisa, Arquitetura, Usabilidade, Testes e Fluxo",
+          "UI = Cores, Tipografia, Layout, Ícones e Componentes Visuais",
+          "Conexão Dev & Designer: O desenvolvedor transforma UI/UX em código funcional."
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "theory",
+      "title": "O Processo de Desenvolvimento Digital",
+      "subtitle": "Da necessidade de negócio à entrega ao usuário final.",
+      "content": {
+        "sections": [
+          {
+            "heading": "1. Imersão & Pesquisa",
+            "text": "Entender as dores dos usuários e os objetivos do produto."
+          },
+          {
+            "heading": "2. Definição & Ideação",
+            "text": "Mapear requisitos, criar wireframes e definir a arquitetura da informação."
+          },
+          {
+            "heading": "3. Prototipagem & Validação",
+            "text": "Criar protótipos navegáveis e realizar testes de usabilidade."
+          },
+          {
+            "heading": "4. Handoff & Desenvolvimento",
+            "text": "Transferir tokens e assets do Figma para o código HTML/CSS/JS."
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "type": "practice",
+      "title": "Conhecendo o Figma",
+      "subtitle": "Primeiros passos no editor de design colaborativo padrão da indústria.",
+      "content": {
+        "items": [
+          { "title": "Frames & Canvas", "detail": "Criação de telas para Mobile (iPhone/Android) e Desktop." },
+          { "title": "Ferramentas de Desenho", "detail": "Retângulos, elipses, texto e manipulação de vetores." },
+          { "title": "Alinhamento & Distribuição", "detail": "Uso de ferramentas de alinhamento preciso no painel direito." }
+        ],
+        "links": [
+          { "label": "Documentação Oficial do Figma", "url": "https://help.figma.com/" }
+        ]
+      }
+    }
+  ]
+}

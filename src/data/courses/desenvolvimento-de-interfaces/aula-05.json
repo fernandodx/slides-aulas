@@ -1,0 +1,81 @@
+{
+  "id": 5,
+  "title": "Aula 5 — Arquitetura da Info e Wireframes",
+  "subtitle": "Organização de conteúdo, navegação, User Flow, Task Flow, Sitemap e tipos de wireframe.",
+  "module": "Módulo 2 — UI/UX e Design de Produtos",
+  "tag": "Prática",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "Arquitetura da Informação (AI)",
+      "subtitle": "A arte de estruturar e organizar o conteúdo para facilitar a navegabilidade.",
+      "content": {
+        "badge": "Aula 05",
+        "description": "Uma boa Arquitetura da Informação garante que os usuários encontrem o que procuram intuitivamente, reduzindo a carga cognitiva.",
+        "keyPoints": [
+          "Organização: Categorização clara de menus e seções",
+          "Hierarquia: Informações mais importantes em destaque visual",
+          "Navegação: Breadcrumbs, menus persistentes e botões de retorno"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "theory",
+      "title": "User Flow vs Task Flow vs Sitemap",
+      "subtitle": "Mapeando a estrutura das telas antes de desenhar os componentes.",
+      "content": {
+        "sections": [
+          {
+            "heading": "User Flow",
+            "text": "Diagrama de passos que o usuário realiza para concluir uma meta no sistema (ex: de Visitante até Comprador)."
+          },
+          {
+            "heading": "Task Flow",
+            "text": "Fluxo sequencial simples de uma tarefa específica (ex: redefinir senha)."
+          },
+          {
+            "heading": "Sitemap",
+            "text": "Árvore hierárquica que mapeia todas as páginas e subpáginas do site."
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "type": "theory",
+      "title": "Níveis de Fidelidade de Wireframes",
+      "subtitle": "Quando usar papel, escala de cinza ou componentes reais.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Baixa Fidelidade (Low-Fi)",
+            "text": "Rabiscos no papel (Sketches). Foco em testar ideias rapidamente sem se preocupar com estética."
+          },
+          {
+            "heading": "Média Fidelidade (Mid-Fi)",
+            "text": "Estrutura digital em escala de cinza no Figma. Foco na hierarquia, botões, containers e textos de exemplo."
+          },
+          {
+            "heading": "Alta Fidelidade (Hi-Fi)",
+            "text": "Layout final com cores, tipografia definida, imagens e assets prontos para codificação."
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "type": "practice",
+      "title": "Atividade Prática: Desenhar Wireframes Mid-Fi",
+      "subtitle": "Criar as telas principais do seu projeto no Figma.",
+      "content": {
+        "items": [
+          { "title": "Passo 1", "detail": "Monte o User Flow básico no Figma (Home → Detalhes → Ação Principal)." },
+          { "title": "Passo 2", "detail": "Crie o wireframe de média fidelidade para a versão Desktop (1440px)." },
+          { "title": "Passo 3", "detail": "Crie o wireframe de média fidelidade equivalente para a versão Mobile (390px)." }
+        ]
+      }
+    }
+  ]
+}

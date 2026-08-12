@@ -1,0 +1,66 @@
+{
+  "id": 14,
+  "title": "Aula 14 — Bootstrap Avançado",
+  "subtitle": "Componentes complexos (Modais, Alertas, Accordion), decisões de arquitetura e criação de Landing Page completa.",
+  "module": "Módulo 5 — Bootstrap",
+  "tag": "Prática",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "Componentes Interativos do Bootstrap",
+      "subtitle": "Adicionando dinamismo com o pacote JavaScript do Bootstrap.",
+      "content": {
+        "badge": "Aula 14",
+        "description": "Além de estilos CSS, o Bootstrap inclui plugins de JavaScript (com data-attributes) para acionar Modais, Toasts, Accordions e Carrosséis de fotos sem escrever JS customizado.",
+        "keyPoints": [
+          "Modais: Janelas sobrepostas para confirmações ou visualização detalhada",
+          "Accordion: Sanfonas expansíveis perfeitas para seções de FAQ",
+          "Alerts & Badges: Feedback visual imediato e categorização de conteúdo"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "theory",
+      "title": "Decisão de Arquitetura: Bootstrap vs CSS Próprio",
+      "subtitle": "Quando utilizar um framework e quando escrever CSS do zero?",
+      "content": {
+        "sections": [
+          {
+            "heading": "Quando usar Bootstrap?",
+            "text": "• Projetos com prazos curtos ou MVPs\n• Painéis administrativos e Dashboards\n• Sistemas corporativos onde o padrão é mais importante que o design exclusivo"
+          },
+          {
+            "heading": "Quando usar CSS Próprio?",
+            "text": "• Produtos digitais com Design System altamente customizado no Figma\n• Sites que exigem um visual 100% único (ex: marcas de luxo, games)\n• Quando o tamanho final do bundle de estilos é crítico"
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "type": "code",
+      "title": "Exemplo de Modal e Accordion Bootstrap",
+      "subtitle": "Estrutura nativa com atributos data-bs-*.",
+      "content": {
+        "language": "html",
+        "code": "<!-- Botão que abre o Modal -->\n<button type=\"button\" class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#modalDetalhes\">\n  Ver Detalhes da Aula\n</button>\n\n<!-- Estrutura do Modal -->\n<div class=\"modal fade\" id=\"modalDetalhes\" tabindex=\"-1\">\n  <div class=\"modal-dialog modal-dialog-centered\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\">Ementa do Módulo 5</h5>\n        <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\"></button>\n      </div>\n      <div class=\"modal-body\">\n        <p>Aprenda a customizar temas e componentes avançados do Bootstrap 5.</p>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Fechar</button>\n      </div>\n    </div>\n  </div>\n</div>",
+        "explanation": "Certifique-se de incluir a tag <script src=\"bootstrap.bundle.min.js\"></script> antes de fechar o </body> para habilitar os modais."
+      }
+    },
+    {
+      "id": 4,
+      "type": "practice",
+      "title": "Atividade Prática: Construir uma Landing Page",
+      "subtitle": "Juntando todos os módulos do Bootstrap em uma página completa.",
+      "content": {
+        "items": [
+          { "title": "Passo 1", "detail": "Crie uma seção Hero com título grande, subtítulo e botão de Call to Action (CTA)." },
+          { "title": "Passo 2", "detail": "Adicione uma tabela de preços ou galeria de cursos usando Cards." },
+          { "title": "Passo 3", "detail": "Adicione um componente Accordion para a seção de Perguntas Frequentes (FAQ)." }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "id": 6,
+  "title": "Aula 6 — Design Visual e Acessibilidade",
+  "subtitle": "Princípios visuais (CRAP), tipografia, paleta de cores, acessibilidade (WCAG) e as 10 Heurísticas de Nielsen.",
+  "module": "Módulo 2 — UI/UX e Design de Produtos",
+  "tag": "Atividade",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "Princípios Fundamentais de Design (CRAP)",
+      "subtitle": "Os 4 pilares universais para tornar qualquer interface atraente e legível.",
+      "content": {
+        "badge": "Aula 06",
+        "description": "Robin Williams definiu no livro 'The Non-Designer's Design Book' os 4 princípios fundamentais conhecidos pela sigla CRAP.",
+        "keyPoints": [
+          "Contraste: Elementos diferentes devem parecer marcadamente diferentes",
+          "Repetição: Reutilização de estilos, botões e tipografia para consistência",
+          "Alinhamento: Nada deve ser colocado na tela de forma aleatória",
+          "Proximidade: Itens relacionados devem ser agrupados visualmente"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "theory",
+      "title": "Acessibilidade Digital (WCAG)",
+      "subtitle": "Construindo interfaces inclusivas para todas as pessoas.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Razão de Contraste (Contrast Ratio)",
+            "text": "O texto normal deve ter contraste mínimo de 4.5:1 com o fundo (nível AA da WCAG)."
+          },
+          {
+            "heading": "Daltonismo & Percepção de Cor",
+            "text": "Nunca use a cor isoladamente para transmitir significado (ex: erro não deve ser indicado apenas pelo vermelho, inclua ícones ou texto)."
+          },
+          {
+            "heading": "Touch Targets Mínimos",
+            "text": "Botões em dispositivos móveis devem ter área clicável mínima de 44x44px ou 48x48px."
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "type": "theory",
+      "title": "As 10 Heurísticas de Usabilidade de Nielsen",
+      "subtitle": "Diretrizes essenciais formuladas por Jakob Nielsen para avaliação de usabilidade.",
+      "content": {
+        "sections": [
+          {
+            "heading": "1. Visibilidade do status do sistema",
+            "text": "Manter o usuário informado sobre o que está acontecendo (ex: spinners de carregamento)."
+          },
+          {
+            "heading": "2. Correspondência entre o sistema e o mundo real",
+            "text": "Utilizar linguagem e conceitos familiares ao público-alvo."
+          },
+          {
+            "heading": "3. Controle e liberdade do usuário",
+            "text": "Oferecer saídas de emergência claras (ex: botão de desfazer / cancelar)."
+          },
+          {
+            "heading": "4. Consistência e Padrões",
+            "text": "Manter o mesmo padrão em todo o sistema (Leis de Hick e Fitts)."
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "type": "practice",
+      "title": "Atividade: Escolher Tipografia e Paleta de Cores",
+      "subtitle": "Definição oficial dos tokens visuais no Figma.",
+      "content": {
+        "items": [
+          { "title": "Passo 1", "detail": "Selecione uma fonte principal para Títulos (ex: Inter, Montserrat, Outfit) e uma para Corpo (ex: Roboto, Open Sans)." },
+          { "title": "Passo 2", "detail": "Defina 5 cores primárias: Primary, Secondary, Background, Surface e Error." },
+          { "title": "Passo 3", "detail": "Valide o contraste das cores no plugin 'Stark' ou 'Contrast Checker' do Figma." }
+        ]
+      }
+    }
+  ]
+}

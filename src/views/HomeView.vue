@@ -26,8 +26,10 @@
           Carregando cursos...
         </div>
 
-        <div v-else-if="course" class="courses-grid">
+        <div v-else-if="availableCourses.length > 0" class="courses-grid">
           <M3Card
+            v-for="course in availableCourses"
+            :key="course.id"
             variant="elevated"
             class="course-card"
             clickable
@@ -37,15 +39,8 @@
               <M3Chip variant="assist" icon="label">{{
                 course.category
               }}</M3Chip>
-              <M3Chip
-                :variant="isCourseUnlocked ? 'success' : 'danger'"
-                :icon="isCourseUnlocked ? 'check_circle' : 'lock'"
-              >
-                {{
-                  isCourseUnlocked
-                    ? "Habilitado via Remote Config"
-                    : "Bloqueado"
-                }}
+              <M3Chip variant="success" icon="check_circle">
+                Curso Disponível
               </M3Chip>
             </div>
 
@@ -85,31 +80,45 @@
             </div>
           </M3Card>
         </div>
+        
+        <div v-else class="empty-state">
+          <M3Card variant="surface" class="empty-state-card">
+            <span class="material-icons-round empty-icon">school</span>
+            <h3 class="m3-headline-small">Nenhum curso disponível</h3>
+            <p class="m3-body-large">No momento, não existem cursos habilitados na plataforma.</p>
+          </M3Card>
+        </div>
       </section>
     </main>
   </div>
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import M3Navbar from "@/components/layout/M3Navbar.vue";
 import M3Card from "@/components/ui/M3Card.vue";
 import M3Chip from "@/components/ui/M3Chip.vue";
 import M3Button from "@/components/ui/M3Button.vue";
-import { useCourseViewModel } from "@/viewmodels/useCourseViewModel";
+import { courseRepository } from "@/services/course.repository";
+import { remoteConfigService } from "@/services/remote-config.service";
 
 const router = useRouter();
-const { course, loading, isCourseUnlocked, loadCourse } = useCourseViewModel(
-  "desenvolvimento-de-interfaces"
-);
+const availableCourses = ref([]);
+const loading = ref(true);
 
 const goToCourse = (courseId) => {
   router.push({ name: "course-detail", params: { courseId } });
 };
 
 onMounted(() => {
-  loadCourse();
+  loading.value = true;
+  // Carrega todos os cursos registrados e checa se estão habilitados no Remote Config
+  const allCourses = courseRepository.getAllCourses();
+  availableCourses.value = allCourses.filter((course) => 
+    remoteConfigService.isCourseEnabled(course.id)
+  );
+  loading.value = false;
 });
 </script>
 
@@ -210,5 +219,30 @@ onMounted(() => {
 .course-card__footer {
   display: flex;
   justify-content: flex-end;
+}
+
+.empty-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.empty-state-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+  padding: 40px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.empty-icon {
+  font-size: 64px;
+  color: var(--md-sys-color-on-surface-variant);
+  opacity: 0.5;
 }
 </style>

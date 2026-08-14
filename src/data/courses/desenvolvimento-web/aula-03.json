@@ -1,0 +1,922 @@
+{
+  "id": 3,
+  "title": "Aula 3 — HTML e CSS",
+  "subtitle": "Módulo 2 - Revisão de Front-End",
+  "module": "Módulo 2 - Revisão de Front-End",
+  "tag": "Prática",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "HTML, CSS e Bootstrap",
+      "subtitle": "Revisando fundamentos e dando os primeiros passos com um framework CSS",
+      "content": {
+          "badge": "Aula",
+          "description": "Vamos revisar os fundamentos de HTML e CSS e, em seguida, utilizar Bootstrap para construir interfaces de forma mais rápida e responsiva.",
+          "keyPoints": [
+            "Revisão de HTML e semântica",
+            "Revisão de CSS e layout",
+            "Responsividade",
+            "Introdução ao Bootstrap",
+            "Prática guiada: criando uma página de cursos"
+          ]
+        }
+      },
+      {
+        "id": 2,
+        "type": "practice",
+        "title": "O que vamos aprender?",
+        "subtitle": "Objetivos da aula",
+        "content": {
+          "items": [
+            {
+              "title": "Estruturar",
+              "detail": "Criar páginas utilizando HTML semântico.",
+              "icon": "account_tree"
+            },
+            {
+              "title": "Estilizar",
+              "detail": "Utilizar CSS para controlar aparência e layout.",
+              "icon": "brush"
+            },
+            {
+              "title": "Responsividade",
+              "detail": "Adaptar interfaces para diferentes tamanhos de tela.",
+              "icon": "devices"
+            },
+            {
+              "title": "Bootstrap",
+              "detail": "Utilizar classes e componentes prontos para acelerar o desenvolvimento.",
+              "icon": "widgets"
+            },
+            {
+              "title": "Construir",
+              "detail": "Aplicar os conceitos em uma página prática.",
+              "icon": "engineering"
+            }
+          ]
+        }
+      },
+      {
+        "id": 3,
+        "type": "intro",
+        "title": "HTML",
+        "subtitle": "A estrutura e o significado da página",
+        "content": {
+          "badge": "Revisão",
+          "description": "HTML é uma linguagem de marcação utilizada para estruturar e dar significado ao conteúdo de uma página Web.",
+          "keyPoints": [
+            "Estrutura o conteúdo",
+            "Define elementos e sua semântica",
+            "Organiza títulos, textos, links, imagens e formulários",
+            "É a base sobre a qual CSS e JavaScript trabalham"
+          ]
+        }
+      },
+      {
+        "id": 4,
+        "type": "code",
+        "title": "Estrutura básica do HTML",
+        "subtitle": "O ponto de partida de uma página Web",
+        "content": {
+          "language": "html",
+          "code": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Minha página</title>\n</head>\n<body>\n    <h1>Olá, Web!</h1>\n</body>\n</html>"
+        }
+      },
+      {
+        "id": 5,
+        "type": "theory",
+        "title": "HTML semântico",
+        "subtitle": "Mais do que organizar: comunicar significado",
+        "content": {
+          "sections": [
+            {
+              "heading": "Semântica",
+              "text": "Um elemento semântico comunica qual é o papel daquele conteúdo na página."
+            },
+            {
+              "heading": "Exemplos",
+              "text": "header, nav, main, section, article, aside e footer ajudam a representar a estrutura do documento."
+            },
+            {
+              "heading": "Benefícios",
+              "text": "Melhora organização, manutenção, acessibilidade e interpretação do conteúdo."
+            }
+          ],
+          "callout": {
+            "type": "important",
+            "text": "Use div quando você realmente precisa de um contêiner sem significado semântico."
+          }
+        }
+      },
+      {
+        "id": 6,
+        "type": "practice",
+        "title": "Principais elementos semânticos",
+        "subtitle": "Conheça o papel de cada região da página",
+        "content": {
+          "items": [
+            {
+              "title": "header",
+              "detail": "Cabeçalho de uma página ou seção.",
+              "icon": "vertical_align_top"
+            },
+            {
+              "title": "nav",
+              "detail": "Agrupa links de navegação.",
+              "icon": "menu"
+            },
+            {
+              "title": "main",
+              "detail": "Representa o conteúdo principal da página.",
+              "icon": "article"
+            },
+            {
+              "title": "section",
+              "detail": "Agrupa conteúdo relacionado dentro de uma seção.",
+              "icon": "view_agenda"
+            },
+            {
+              "title": "footer",
+              "detail": "Representa o rodapé de uma página ou seção.",
+              "icon": "vertical_align_bottom"
+            }
+          ]
+        }
+      },
+      {
+        "id": 7,
+        "type": "theory",
+        "title": "HTML × CSS",
+        "subtitle": "Estrutura e apresentação possuem responsabilidades diferentes",
+        "content": {
+          "sections": [
+            {
+              "heading": "HTML",
+              "text": "Define a estrutura, o conteúdo e o significado dos elementos."
+            },
+            {
+              "heading": "CSS",
+              "text": "Define apresentação, aparência, posicionamento, espaçamento e comportamento visual."
+            }
+          ],
+          "callout": {
+            "type": "tip",
+            "text": "Pense em HTML como a estrutura da casa e CSS como sua decoração e organização visual."
+          }
+        }
+      },
+      {
+        "id": 8,
+        "type": "intro",
+        "title": "CSS",
+        "subtitle": "Transformando estrutura em interface",
+        "content": {
+          "badge": "Revisão",
+          "description": "CSS permite controlar como os elementos HTML serão apresentados ao usuário.",
+          "keyPoints": [
+            "Seletores",
+            "Propriedades e valores",
+            "Box Model",
+            "Flexbox",
+            "Responsividade"
+          ]
+        }
+      },
+      {
+        "id": 9,
+        "type": "code",
+        "title": "Regra CSS",
+        "subtitle": "A estrutura básica de uma declaração",
+        "content": {
+          "language": "css",
+          "code": "seletor {\n    propriedade: valor;\n}\n\nh1 {\n    color: blue;\n    font-size: 32px;\n}"
+        }
+      },
+      {
+        "id": 10,
+        "type": "practice",
+        "title": "Seletores CSS",
+        "subtitle": "Como escolher os elementos que serão estilizados",
+        "content": {
+          "items": [
+            {
+              "title": "Elemento",
+              "detail": "Seleciona elementos pelo nome, como p, h1 ou button.",
+              "icon": "code"
+            },
+            {
+              "title": "Classe",
+              "detail": "Seleciona elementos que possuem uma determinada classe.",
+              "icon": "label"
+            },
+            {
+              "title": "ID",
+              "detail": "Seleciona um elemento identificado por um determinado ID.",
+              "icon": "fingerprint"
+            },
+            {
+              "title": "Descendente",
+              "detail": "Permite selecionar elementos dentro de outros elementos.",
+              "icon": "account_tree"
+            }
+          ],
+          "callout": {
+            "type": "warning",
+            "text": "Classes são normalmente a melhor escolha para estilos reutilizáveis."
+          }
+        }
+      },
+      {
+        "id": 11,
+        "type": "theory",
+        "title": "Box Model",
+        "subtitle": "Todo elemento HTML pode ser entendido como uma caixa",
+        "content": {
+          "sections": [
+            {
+              "heading": "Content",
+              "text": "Área onde está o conteúdo do elemento."
+            },
+            {
+              "heading": "Padding",
+              "text": "Espaço interno entre o conteúdo e a borda."
+            },
+            {
+              "heading": "Border e Margin",
+              "text": "Border delimita a caixa; margin cria espaço externo entre elementos."
+            }
+          ],
+          "callout": {
+            "type": "important",
+            "text": "Entender Box Model é fundamental para compreender espaçamento e tamanho dos elementos."
+          }
+        }
+      },
+      {
+        "id": 12,
+        "type": "code",
+        "title": "Box Model na prática",
+        "subtitle": "Padding, border e margin",
+        "content": {
+          "language": "css",
+          "code": ".card {\n    width: 300px;\n    padding: 20px;\n    border: 1px solid black;\n    margin: 20px;\n}"
+        }
+      },
+      {
+        "id": 13,
+        "type": "intro",
+        "title": "Flexbox",
+        "subtitle": "Organizando elementos em uma dimensão",
+        "content": {
+          "badge": "CSS Layout",
+          "description": "Flexbox facilita a organização, o alinhamento e a distribuição dos elementos dentro de um contêiner.",
+          "keyPoints": [
+            "display: flex",
+            "justify-content",
+            "align-items",
+            "flex-direction",
+            "Distribuição e alinhamento"
+          ]
+        }
+      },
+      {
+        "id": 14,
+        "type": "code",
+        "title": "Flexbox na prática",
+        "subtitle": "Alinhando elementos",
+        "content": {
+          "language": "css",
+          "code": ".container {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n\n.item {\n    padding: 20px;\n}"
+        }
+      },
+      {
+        "id": 15,
+        "type": "theory",
+        "title": "Responsividade",
+        "subtitle": "Uma interface precisa funcionar em diferentes telas",
+        "content": {
+          "sections": [
+            {
+              "heading": "Problema",
+              "text": "Uma interface criada apenas pensando em uma resolução pode apresentar problemas em celulares, tablets ou monitores maiores."
+            },
+            {
+              "heading": "Solução",
+              "text": "Utilizar layouts flexíveis, unidades relativas e regras específicas para diferentes tamanhos de tela."
+            },
+            {
+              "heading": "Media Queries",
+              "text": "Permitem aplicar estilos diferentes de acordo com características da tela."
+            }
+          ],
+          "callout": {
+            "type": "important",
+            "text": "Responsividade é uma característica da interface, não um recurso exclusivo do Bootstrap."
+          }
+        }
+      },
+      {
+        "id": 16,
+        "type": "code",
+        "title": "Media Query",
+        "subtitle": "Alterando o layout para telas menores",
+        "content": {
+          "language": "css",
+          "code": "@media (max-width: 768px) {\n    .menu {\n        flex-direction: column;\n    }\n}"
+        }
+      },
+      {
+        "id": 17,
+        "type": "intro",
+        "title": "Por que usar Bootstrap?",
+        "subtitle": "Reutilizando soluções já construídas",
+        "content": {
+          "badge": "Novo conceito",
+          "description": "Frameworks CSS fornecem componentes, classes utilitárias e sistemas de layout que reduzem o trabalho necessário para construir interfaces.",
+          "keyPoints": [
+            "Componentes prontos",
+            "Sistema de grid",
+            "Classes utilitárias",
+            "Responsividade",
+            "Padronização visual"
+          ]
+        }
+      },
+      {
+        "id": 18,
+        "type": "theory",
+        "title": "O que é Bootstrap?",
+        "subtitle": "Um framework para desenvolvimento de interfaces Web",
+        "content": {
+          "sections": [
+            {
+              "heading": "Framework CSS",
+              "text": "Bootstrap fornece estilos, componentes e utilitários reutilizáveis para construção de interfaces."
+            },
+            {
+              "heading": "Produtividade",
+              "text": "Grande parte dos estilos comuns pode ser aplicada utilizando classes prontas."
+            },
+            {
+              "heading": "Responsividade",
+              "text": "O framework oferece ferramentas para criar layouts adaptáveis a diferentes tamanhos de tela."
+            }
+          ],
+          "callout": {
+            "type": "warning",
+            "text": "Bootstrap não substitui o conhecimento de HTML e CSS."
+          }
+        }
+      },
+      {
+        "id": 19,
+        "type": "practice",
+        "title": "Bootstrap na prática",
+        "subtitle": "O que podemos reutilizar?",
+        "content": {
+          "items": [
+            {
+              "title": "Buttons",
+              "detail": "Botões com estilos e estados prontos.",
+              "icon": "smart_button"
+            },
+            {
+              "title": "Cards",
+              "detail": "Estruturas reutilizáveis para apresentar conteúdo.",
+              "icon": "view_agenda"
+            },
+            {
+              "title": "Navbar",
+              "detail": "Estruturas para navegação.",
+              "icon": "menu"
+            },
+            {
+              "title": "Grid",
+              "detail": "Sistema para organizar conteúdo em colunas.",
+              "icon": "grid_view"
+            },
+            {
+              "title": "Utilities",
+              "detail": "Classes para espaçamento, alinhamento, cores e muito mais.",
+              "icon": "tune"
+            }
+          ]
+        }
+      },
+      {
+        "id": 20,
+        "type": "intro",
+        "title": "Primeiro projeto com Bootstrap",
+        "subtitle": "Vamos construir uma página de cursos",
+        "content": {
+          "badge": "Prática guiada",
+          "description": "Durante a prática, construiremos juntos uma página responsiva chamada DevCursos.",
+          "keyPoints": [
+            "Criar o arquivo HTML",
+            "Adicionar Bootstrap",
+            "Criar uma barra de navegação",
+            "Criar uma seção principal",
+            "Criar cards de cursos",
+            "Testar a responsividade"
+          ]
+        }
+      },
+      {
+        "id": 21,
+        "type": "practice",
+        "title": "Passo 1 — Adicionar o Bootstrap",
+        "subtitle": "Utilizando o CDN",
+        "content": {
+          "items": [
+            {
+              "title": "Criar index.html",
+              "detail": "Crie o arquivo principal da aplicação.",
+              "icon": "description"
+            },
+            {
+              "title": "Adicionar viewport",
+              "detail": "Permita que a página seja corretamente interpretada em dispositivos móveis.",
+              "icon": "phone_android"
+            },
+            {
+              "title": "Adicionar Bootstrap",
+              "detail": "Inclua o arquivo CSS do Bootstrap no head.",
+              "icon": "link"
+            }
+          ],
+          "callout": {
+            "type": "tip",
+            "text": "O CDN permite utilizar o Bootstrap sem precisar baixar os arquivos do framework."
+          }
+        }
+      },
+      {
+        "id": 22,
+        "type": "code",
+        "title": "Passo 1 — Bootstrap via CDN",
+        "subtitle": "Incluindo o CSS no projeto",
+        "content": {
+          "language": "html",
+          "code": "<link\n    href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css\"\n    rel=\"stylesheet\">"
+        }
+      },
+      {
+        "id": 23,
+        "type": "practice",
+        "title": "Passo 2 — Container",
+        "subtitle": "Controlando a largura do conteúdo",
+        "content": {
+          "items": [
+            {
+              "title": "container",
+              "detail": "Cria uma área centralizada com larguras máximas responsivas.",
+              "icon": "crop_free"
+            },
+            {
+              "title": "container-fluid",
+              "detail": "Utiliza praticamente toda a largura disponível.",
+              "icon": "fullscreen"
+            }
+          ],
+          "callout": {
+            "type": "important",
+            "text": "O container é frequentemente o primeiro elemento dentro de uma seção."
+          }
+        }
+      },
+      {
+        "id": 24,
+        "type": "code",
+        "title": "Passo 2 — Container",
+        "subtitle": "Criando a área principal",
+        "content": {
+          "language": "html",
+          "code": "<div class=\"container\">\n    <h1>DevCursos</h1>\n    <p>Aprenda desenvolvimento Web.</p>\n</div>"
+        }
+      },
+      {
+        "id": 25,
+        "type": "practice",
+        "title": "Passo 3 — Classes utilitárias",
+        "subtitle": "Estilizando sem criar CSS para tudo",
+        "content": {
+          "items": [
+            {
+              "title": "text-center",
+              "detail": "Centraliza o texto.",
+              "icon": "format_align_center"
+            },
+            {
+              "title": "mt-4",
+              "detail": "Adiciona margem na parte superior.",
+              "icon": "vertical_align_top"
+            },
+            {
+              "title": "mb-4",
+              "detail": "Adiciona margem na parte inferior.",
+              "icon": "vertical_align_bottom"
+            },
+            {
+              "title": "p-3",
+              "detail": "Adiciona padding em todos os lados.",
+              "icon": "open_in_full"
+            },
+            {
+              "title": "bg-light",
+              "detail": "Aplica uma cor de fundo clara.",
+              "icon": "format_color_fill"
+            }
+          ]
+        }
+      },
+      {
+        "id": 26,
+        "type": "code",
+        "title": "Passo 3 — Utilitários",
+        "subtitle": "Aplicando classes diretamente no HTML",
+        "content": {
+          "language": "html",
+          "code": "<section class=\"py-5 bg-light\">\n    <div class=\"container text-center\">\n        <h1 class=\"display-4\">DevCursos</h1>\n        <p class=\"lead\">Aprenda Desenvolvimento Web</p>\n        <a href=\"#\" class=\"btn btn-primary mt-3\">\n            Conheça os cursos\n        </a>\n    </div>\n</section>"
+        }
+      },
+      {
+        "id": 27,
+        "type": "intro",
+        "title": "Grid System",
+        "subtitle": "Organizando a página em linhas e colunas",
+        "content": {
+          "badge": "Bootstrap Layout",
+          "description": "O sistema de grid é uma das principais ferramentas do Bootstrap para criar layouts responsivos.",
+          "keyPoints": [
+            "container define a área de conteúdo",
+            "row representa uma linha",
+            "col representa uma coluna",
+            "O grid trabalha com 12 unidades",
+            "Breakpoints permitem criar layouts responsivos"
+          ]
+        }
+      },
+      {
+        "id": 28,
+        "type": "theory",
+        "title": "Container → Row → Col",
+        "subtitle": "A estrutura básica do Grid",
+        "content": {
+          "sections": [
+            {
+              "heading": "Container",
+              "text": "Define a área onde o conteúdo será organizado."
+            },
+            {
+              "heading": "Row",
+              "text": "Representa uma linha do sistema de grid."
+            },
+            {
+              "heading": "Col",
+              "text": "Representa uma coluna dentro da linha."
+            }
+          ],
+          "callout": {
+            "type": "important",
+            "text": "Pense no grid como uma divisão de espaço: uma linha pode ser distribuída em até 12 unidades."
+          }
+        }
+      },
+      {
+        "id": 29,
+        "type": "code",
+        "title": "Grid de 12 unidades",
+        "subtitle": "Dividindo o espaço disponível",
+        "content": {
+          "language": "html",
+          "code": "<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col-6\">50%</div>\n        <div class=\"col-6\">50%</div>\n    </div>\n</div>"
+        }
+      },
+      {
+        "id": 30,
+        "type": "practice",
+        "title": "Combinando colunas",
+        "subtitle": "As colunas podem ter diferentes tamanhos",
+        "content": {
+          "items": [
+            {
+              "title": "col-12",
+              "detail": "Ocupa as 12 unidades disponíveis.",
+              "icon": "view_column"
+            },
+            {
+              "title": "col-6",
+              "detail": "Ocupa metade da linha.",
+              "icon": "view_column"
+            },
+            {
+              "title": "col-4",
+              "detail": "Ocupa um terço da linha.",
+              "icon": "view_column"
+            },
+            {
+              "title": "col-8",
+              "detail": "Ocupa dois terços da linha.",
+              "icon": "view_column"
+            }
+          ],
+          "callout": {
+            "type": "tip",
+            "text": "A soma das colunas pode ser pensada em relação às 12 unidades disponíveis."
+          }
+        }
+      },
+      {
+        "id": 31,
+        "type": "theory",
+        "title": "Grid responsivo",
+        "subtitle": "Uma estrutura para diferentes tamanhos de tela",
+        "content": {
+          "sections": [
+            {
+              "heading": "col-12",
+              "text": "Em telas pequenas, o elemento pode ocupar toda a largura."
+            },
+            {
+              "heading": "col-md-6",
+              "text": "A partir do breakpoint md, o elemento passa a ocupar metade da linha."
+            },
+            {
+              "heading": "col-lg-4",
+              "text": "A partir do breakpoint lg, o elemento passa a ocupar quatro das 12 unidades."
+            }
+          ],
+          "callout": {
+            "type": "important",
+            "text": "Uma única declaração de classes pode representar diferentes layouts conforme o tamanho da tela."
+          }
+        }
+      },
+      {
+        "id": 32,
+        "type": "code",
+        "title": "Grid responsivo na prática",
+        "subtitle": "12 → 6 → 4",
+        "content": {
+          "language": "html",
+          "code": "<div class=\"col-12 col-md-6 col-lg-4\">\n    Meu conteúdo\n</div>"
+        }
+      },
+      {
+        "id": 33,
+        "type": "intro",
+        "title": "Passo 4 — Navbar",
+        "subtitle": "Criando a navegação do DevCursos",
+        "content": {
+          "badge": "Prática guiada",
+          "description": "Vamos utilizar componentes do Bootstrap para criar a barra de navegação da aplicação.",
+          "keyPoints": [
+            "navbar",
+            "container",
+            "navbar-brand",
+            "nav-link",
+            "Cores e estilos"
+          ]
+        }
+      },
+      {
+        "id": 34,
+        "type": "code",
+        "title": "Navbar",
+        "subtitle": "Uma navegação simples com Bootstrap",
+        "content": {
+          "language": "html",
+          "code": "<nav class=\"navbar navbar-expand-lg bg-dark navbar-dark\">\n    <div class=\"container\">\n        <a class=\"navbar-brand\" href=\"#\">\n            DevCursos\n        </a>\n\n        <div class=\"navbar-nav\">\n            <a class=\"nav-link\" href=\"#\">Início</a>\n            <a class=\"nav-link\" href=\"#\">Cursos</a>\n            <a class=\"nav-link\" href=\"#\">Sobre</a>\n        </div>\n    </div>\n</nav>"
+        }
+      },
+      {
+        "id": 35,
+        "type": "intro",
+        "title": "Passo 5 — Cards",
+        "subtitle": "Apresentando os cursos",
+        "content": {
+          "badge": "Prática guiada",
+          "description": "Cards são componentes úteis para apresentar informações agrupadas de maneira visual e consistente.",
+          "keyPoints": [
+            "card",
+            "card-body",
+            "card-title",
+            "card-text",
+            "btn"
+          ]
+        }
+      },
+      {
+        "id": 36,
+        "type": "code",
+        "title": "Card de curso",
+        "subtitle": "Criando o primeiro card",
+        "content": {
+          "language": "html",
+          "code": "<div class=\"card\">\n    <div class=\"card-body\">\n        <h5 class=\"card-title\">HTML</h5>\n        <p class=\"card-text\">\n            Aprenda estrutura e semântica.\n        </p>\n        <a href=\"#\" class=\"btn btn-primary\">\n            Saiba mais\n        </a>\n    </div>\n</div>"
+        }
+      },
+      {
+        "id": 37,
+        "type": "practice",
+        "title": "Passo 6 — Organizando os cards",
+        "subtitle": "Combinando Card + Grid",
+        "content": {
+          "items": [
+            {
+              "title": "row",
+              "detail": "Cria a linha onde os cards serão distribuídos.",
+              "icon": "view_agenda"
+            },
+            {
+              "title": "col-12",
+              "detail": "Um card ocupa toda a largura em telas pequenas.",
+              "icon": "phone_android"
+            },
+            {
+              "title": "col-md-6",
+              "detail": "Dois cards podem dividir a linha em telas médias.",
+              "icon": "tablet"
+            },
+            {
+              "title": "col-lg-4",
+              "detail": "Três cards podem aparecer lado a lado em telas grandes.",
+              "icon": "desktop_windows"
+            },
+            {
+              "title": "h-100",
+              "detail": "Ajuda a manter a altura dos cards uniforme.",
+              "icon": "height"
+            }
+          ]
+        }
+      },
+      {
+        "id": 38,
+        "type": "code",
+        "title": "Cards responsivos",
+        "subtitle": "HTML + Grid + Componentes",
+        "content": {
+          "language": "html",
+          "code": "<div class=\"row\">\n    <div class=\"col-12 col-md-6 col-lg-4 mb-4\">\n        <div class=\"card h-100\">\n            <div class=\"card-body\">\n                <h5 class=\"card-title\">HTML</h5>\n                <p class=\"card-text\">\n                    Aprenda estrutura e semântica.\n                </p>\n                <a href=\"#\" class=\"btn btn-primary\">\n                    Saiba mais\n                </a>\n            </div>\n        </div>\n    </div>\n</div>"
+        }
+      },
+      {
+        "id": 39,
+        "type": "practice",
+        "title": "Desafio durante a prática",
+        "subtitle": "Agora é a vez dos alunos",
+        "content": {
+          "items": [
+            {
+              "title": "Duplicar",
+              "detail": "Crie outros cards a partir do primeiro.",
+              "icon": "content_copy"
+            },
+            {
+              "title": "Personalizar",
+              "detail": "Altere títulos, descrições e botões.",
+              "icon": "edit"
+            },
+            {
+              "title": "Organizar",
+              "detail": "Utilize o grid para distribuir os cards.",
+              "icon": "grid_view"
+            },
+            {
+              "title": "Testar",
+              "detail": "Redimensione o navegador e observe o comportamento.",
+              "icon": "devices"
+            }
+          ],
+          "callout": {
+            "type": "tip",
+            "text": "Não copie apenas o código: tente entender qual problema cada classe resolve."
+          }
+        }
+      },
+      {
+        "id": 40,
+        "type": "theory",
+        "title": "O que acabamos de construir?",
+        "subtitle": "Vários conceitos trabalhando juntos",
+        "content": {
+          "sections": [
+            {
+              "heading": "HTML",
+              "text": "Estruturamos semanticamente o conteúdo da página."
+            },
+            {
+              "heading": "CSS",
+              "text": "Utilizamos conceitos de layout, espaçamento e responsividade."
+            },
+            {
+              "heading": "Bootstrap",
+              "text": "Utilizamos componentes, utilitários e grid para acelerar a implementação."
+            }
+          ],
+          "callout": {
+            "type": "important",
+            "text": "Bootstrap não substituiu HTML e CSS: ele nos ajudou a aplicar esses conceitos mais rapidamente."
+          }
+        }
+      },
+      {
+        "id": 41,
+        "type": "practice",
+        "title": "Desafio final",
+        "subtitle": "Personalize o DevCursos",
+        "content": {
+          "items": [
+            {
+              "title": "Nome",
+              "detail": "Altere o nome e a identidade da página.",
+              "icon": "edit"
+            },
+            {
+              "title": "Cursos",
+              "detail": "Crie pelo menos quatro cursos.",
+              "icon": "school"
+            },
+            {
+              "title": "Cards",
+              "detail": "Adicione conteúdo e imagens aos cards.",
+              "icon": "view_agenda"
+            },
+            {
+              "title": "Responsividade",
+              "detail": "Garanta que a página funcione em telas menores.",
+              "icon": "devices"
+            },
+            {
+              "title": "Sobre",
+              "detail": "Crie uma seção apresentando o projeto.",
+              "icon": "info"
+            }
+          ],
+          "callout": {
+            "type": "tip",
+            "text": "Quem terminar pode experimentar outros componentes da documentação do Bootstrap."
+          }
+        }
+      },
+      {
+        "id": 42,
+        "type": "practice",
+        "title": "Checklist de aprendizagem",
+        "subtitle": "Você consegue explicar cada item?",
+        "content": {
+          "items": [
+            {
+              "title": "HTML semântico",
+              "detail": "Sei explicar por que usar elementos semânticos.",
+              "icon": "check_circle"
+            },
+            {
+              "title": "CSS",
+              "detail": "Sei utilizar seletores e propriedades básicas.",
+              "icon": "check_circle"
+            },
+            {
+              "title": "Box Model",
+              "detail": "Sei diferenciar content, padding, border e margin.",
+              "icon": "check_circle"
+            },
+            {
+              "title": "Flexbox",
+              "detail": "Sei organizar e alinhar elementos.",
+              "icon": "check_circle"
+            },
+            {
+              "title": "Bootstrap",
+              "detail": "Sei adicionar e utilizar classes básicas do framework.",
+              "icon": "check_circle"
+            },
+            {
+              "title": "Grid",
+              "detail": "Sei criar colunas responsivas.",
+              "icon": "check_circle"
+            }
+          ]
+        }
+      },
+      {
+        "id": 43,
+        "type": "intro",
+        "title": "Resumo da aula",
+        "subtitle": "Do HTML ao Bootstrap",
+        "content": {
+          "description": "Hoje conectamos os fundamentos do desenvolvimento Web com uma ferramenta utilizada para acelerar a construção de interfaces.",
+          "keyPoints": [
+            "HTML estrutura e dá significado ao conteúdo",
+            "CSS controla a apresentação e o layout",
+            "Flexbox ajuda a organizar elementos",
+            "Responsividade adapta a interface às telas",
+            "Bootstrap fornece componentes, utilitários e grid",
+            "Conhecer CSS continua sendo fundamental"
+          ]
+        }
+      }
+    ]
+}

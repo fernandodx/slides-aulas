@@ -1,65 +1,796 @@
 {
   "id": 3,
-  "title": "Aula 3 — Introdução à UI e UX",
-  "subtitle": "Conceitos de User Interface (UI), User Experience (UX), processo digital e onboarding no Figma.",
+  "title": "Aula 3 — UX & UI: Pensando além do código",
+  "subtitle": "Experiência do usuário, interfaces e desenvolvimento de produtos digitais.",
   "module": "Módulo 2 — UI/UX e Design de Produtos",
-  "tag": "Prática",
+  "tag": "Teoria",
   "slides": [
     {
       "id": 1,
       "type": "intro",
-      "title": "O que é UI vs UX?",
-      "subtitle": "Entendendo a diferença crucial entre a experiência sentida e a interface percebida.",
+      "title": "UX & UI: Pensando além do código",
+      "subtitle": "Experiência do usuário, interfaces e desenvolvimento de produtos digitais.",
       "content": {
         "badge": "Aula 03",
-        "description": "UX (User Experience) trata de como o usuário se sente ao utilizar o produto, sua eficiência e satisfação. UI (User Interface) é a camada visual com a qual o usuário interage diretamente.",
+        "description": "Uma boa interface não nasce apenas de código ou estética. Ela nasce da compreensão do usuário, do problema e da melhor forma de conduzir uma pessoa até seu objetivo.",
         "keyPoints": [
-          "UX = Pesquisa, Arquitetura, Usabilidade, Testes e Fluxo",
-          "UI = Cores, Tipografia, Layout, Ícones e Componentes Visuais",
-          "Conexão Dev & Designer: O desenvolvedor transforma UI/UX em código funcional."
-        ]
+          "O que é UX e UI",
+          "Boas e más interfaces",
+          "O processo moderno de desenvolvimento",
+          "Designer × Desenvolvedor",
+          "Primeiro contato com o Figma"
+        ],
+        "image": {
+          "url": "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1200&auto=format&fit=crop",
+          "alt": "Equipe colaborando em um projeto digital",
+          "position": "right"
+        }
       }
     },
     {
       "id": 2,
       "type": "theory",
-      "title": "O Processo de Desenvolvimento Digital",
-      "subtitle": "Da necessidade de negócio à entrega ao usuário final.",
+      "title": "Uma interface bonita é necessariamente uma boa interface?",
+      "subtitle": "Pense sobre os aplicativos mais bonitos que você já utilizou.",
       "content": {
         "sections": [
           {
-            "heading": "1. Imersão & Pesquisa",
-            "text": "Entender as dores dos usuários e os objetivos do produto."
+            "heading": "Estética ≠ Experiência",
+            "text": "Uma interface pode ser visualmente impressionante e ainda assim dificultar a realização de uma tarefa."
           },
           {
-            "heading": "2. Definição & Ideação",
-            "text": "Mapear requisitos, criar wireframes e definir a arquitetura da informação."
-          },
-          {
-            "heading": "3. Prototipagem & Validação",
-            "text": "Criar protótipos navegáveis e realizar testes de usabilidade."
-          },
-          {
-            "heading": "4. Handoff & Desenvolvimento",
-            "text": "Transferir tokens e assets do Figma para o código HTML/CSS/JS."
+            "heading": "A pergunta certa",
+            "text": "O usuário consegue entender o que fazer, realizar seu objetivo e recuperar-se facilmente quando algo dá errado?"
           }
-        ]
+        ],
+        "callout": {
+          "type": "info",
+          "text": "Reflexão: lembre de um aplicativo bonito que já tenha causado frustração durante uma tarefa."
+        },
+        "image": {
+          "url": "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1200&auto=format&fit=crop",
+          "alt": "Profissional analisando interfaces digitais",
+          "position": "right"
+        }
       }
     },
     {
       "id": 3,
       "type": "practice",
-      "title": "Conhecendo o Figma",
-      "subtitle": "Primeiros passos no editor de design colaborativo padrão da indústria.",
+      "title": "O que é uma interface?",
+      "subtitle": "O meio pelo qual uma pessoa interage com um sistema.",
       "content": {
         "items": [
-          { "title": "Frames & Canvas", "detail": "Criação de telas para Mobile (iPhone/Android) e Desktop." },
-          { "title": "Ferramentas de Desenho", "detail": "Retângulos, elipses, texto e manipulação de vetores." },
-          { "title": "Alinhamento & Distribuição", "detail": "Uso de ferramentas de alinhamento preciso no painel direito." }
-        ],
-        "links": [
-          { "label": "Documentação Oficial do Figma", "url": "https://help.figma.com/" }
+          {
+            "title": "Aplicativo Bancário",
+            "detail": "Interface para consultar saldo, realizar pagamentos e transferências.",
+            "icon": "account_balance"
+          },
+          {
+            "title": "Aplicativo de Delivery",
+            "detail": "Interface para escolher produtos, informar endereço e realizar o pagamento.",
+            "icon": "restaurant"
+          },
+          {
+            "title": "Caixa Eletrônico",
+            "detail": "Combinação de interface física e digital para realizar operações bancárias.",
+            "icon": "local_atm"
+          },
+          {
+            "title": "Smartwatch",
+            "detail": "Interface compacta baseada em toques, gestos e informações rápidas.",
+            "icon": "watch"
+          }
         ]
+      }
+    },
+    {
+      "id": 4,
+      "type": "intro",
+      "title": "UX — User Experience",
+      "subtitle": "A Experiência do Usuário",
+      "content": {
+        "badge": "User Experience",
+        "description": "UX trata da experiência completa que uma pessoa possui ao utilizar um produto ou serviço. Envolve expectativas, necessidades, tarefas, interações, resultados e percepção.",
+        "keyPoints": [
+          "Foco nas necessidades e problemas do usuário",
+          "Considera eficácia, eficiência e satisfação",
+          "Envolve toda a jornada do usuário",
+          "UX não é apenas a tela que o usuário vê"
+        ],
+        "image": {
+          "url": "https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1200&auto=format&fit=crop",
+          "alt": "Equipe discutindo experiência e produto",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "type": "theory",
+      "title": "UX vai além da tela",
+      "subtitle": "Toda a jornada faz parte da experiência.",
+      "content": {
+        "sections": [
+          {
+            "heading": "A experiência completa",
+            "text": "Problema → Necessidade → Jornada → Interface → Interação → Resultado"
+          },
+          {
+            "heading": "A tela é apenas uma parte",
+            "text": "Um aplicativo pode ser rápido e visualmente agradável, mas se o serviço falha, o pagamento não funciona ou o usuário não consegue concluir sua tarefa, a experiência como um todo é prejudicada."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "UX olha para o sistema como um todo, não apenas para a aparência de uma tela."
+        }
+      }
+    },
+    {
+      "id": 6,
+      "type": "practice",
+      "title": "Perguntas de UX",
+      "subtitle": "Perguntas essenciais para avaliar uma experiência.",
+      "content": {
+        "items": [
+          {
+            "title": "Navegação",
+            "detail": "O usuário sabe onde está e encontra facilmente o que procura?",
+            "icon": "explore"
+          },
+          {
+            "title": "Atrito",
+            "detail": "O fluxo é simples ou existem etapas desnecessárias?",
+            "icon": "route"
+          },
+          {
+            "title": "Feedback",
+            "detail": "O sistema informa claramente o resultado das ações?",
+            "icon": "feedback"
+          },
+          {
+            "title": "Erros",
+            "detail": "O usuário consegue evitar e corrigir erros?",
+            "icon": "error_outline"
+          },
+          {
+            "title": "Propósito",
+            "detail": "O produto realmente resolve o problema para o qual foi criado?",
+            "icon": "target"
+          }
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "type": "theory",
+      "title": "Exemplo prático de UX",
+      "subtitle": "Tarefa: \"Quero fazer uma transferência bancária.\"",
+      "content": {
+        "sections": [
+          {
+            "heading": "A jornada do usuário",
+            "text": "Abrir aplicativo → Autenticar → Encontrar transferência → Escolher destinatário → Informar valor → Revisar → Confirmar → Receber resultado"
+          },
+          {
+            "heading": "Onde a UX aparece?",
+            "text": "Cada etapa influencia a experiência. Um login confuso, uma busca lenta ou uma confirmação pouco clara podem aumentar o atrito e gerar insegurança."
+          }
+        ],
+        "callout": {
+          "type": "info",
+          "text": "O objetivo não é apenas permitir a transferência. É permitir que o usuário a realize com clareza, segurança e confiança."
+        }
+      }
+    },
+    {
+      "id": 8,
+      "type": "intro",
+      "title": "UI — User Interface",
+      "subtitle": "A Interface do Usuário",
+      "content": {
+        "badge": "User Interface",
+        "description": "UI é a camada visual e interativa pela qual o usuário percebe e utiliza um produto digital.",
+        "keyPoints": [
+          "Botões, menus, cards e ícones",
+          "Campos, listas e controles",
+          "Tipografia, cores, espaçamento e contraste",
+          "Estados e comportamentos visuais",
+          "Animações e microinterações"
+        ],
+        "image": {
+          "url": "https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=1200&auto=format&fit=crop",
+          "alt": "Interface digital sendo projetada",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 9,
+      "type": "theory",
+      "title": "UX × UI: A grande diferença",
+      "subtitle": "Relacionados, mas com focos diferentes.",
+      "content": {
+        "sections": [
+          {
+            "heading": "UX — Como funciona?",
+            "text": "Pesquisa, necessidades, jornadas, fluxos, arquitetura da informação, usabilidade e validação."
+          },
+          {
+            "heading": "UI — Como é apresentado?",
+            "text": "Layout, tipografia, cores, componentes, ícones, espaçamento, hierarquia visual e estados."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Analogia: UX envolve a organização e experiência de morar em uma casa. UI envolve sua aparência, acabamento e elementos visuais."
+        }
+      }
+    },
+    {
+      "id": 10,
+      "type": "theory",
+      "title": "Uma interface bonita pode ser ruim?",
+      "subtitle": "Estética não substitui usabilidade.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Bonito ≠ Necessariamente bom",
+            "text": "Uma interface pode ter excelente aparência e ainda apresentar problemas de contraste, navegação, hierarquia, acessibilidade ou compreensão."
+          },
+          {
+            "heading": "O objetivo do design",
+            "text": "A estética deve contribuir para a compreensão e utilização do produto, e não competir com sua função."
+          }
+        ],
+        "callout": {
+          "type": "warning",
+          "text": "Uma interface bonita chama atenção. Uma boa interface ajuda o usuário a alcançar seu objetivo."
+        }
+      }
+    },
+    {
+      "id": 11,
+      "type": "theory",
+      "title": "Como produtos digitais são desenvolvidos?",
+      "subtitle": "Do problema à solução.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Processo sequencial",
+            "text": "Requisitos → Design → Desenvolvimento → Entrega"
+          },
+          {
+            "heading": "Processo iterativo",
+            "text": "Problema ↔ Pesquisa ↔ UX ↔ UI ↔ Desenvolvimento ↔ Testes ↔ Feedback"
+          }
+        ],
+        "callout": {
+          "type": "info",
+          "text": "Produtos digitais modernos tendem a envolver ciclos de colaboração, validação e aprendizado contínuo."
+        }
+      }
+    },
+    {
+      "id": 12,
+      "type": "theory",
+      "title": "Não é um processo linear",
+      "subtitle": "A importância da iteração contínua.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Ciclo de iteração",
+            "text": "Ideia → Protótipo → Desenvolvimento → Teste → Feedback → Melhoria → Novo ciclo"
+          },
+          {
+            "heading": "Aprender faz parte do processo",
+            "text": "O produto evolui conforme a equipe aprende mais sobre os usuários, o negócio, a tecnologia e os resultados obtidos."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Errar cedo em um protótipo geralmente custa menos do que descobrir o problema depois de implementar toda a solução."
+        }
+      }
+    },
+    {
+      "id": 13,
+      "type": "practice",
+      "title": "Quem participa desse processo?",
+      "subtitle": "Um produto digital é construído por diferentes especialidades.",
+      "content": {
+        "items": [
+          {
+            "title": "Product Manager / PO",
+            "detail": "Ajuda a definir objetivos, prioridades e necessidades do produto.",
+            "icon": "target"
+          },
+          {
+            "title": "UX Researcher",
+            "detail": "Pesquisa usuários, comportamentos, necessidades e oportunidades.",
+            "icon": "search"
+          },
+          {
+            "title": "UX/UI ou Product Designer",
+            "detail": "Projeta experiências, fluxos, interfaces e soluções de design.",
+            "icon": "design_services"
+          },
+          {
+            "title": "Desenvolvedor",
+            "detail": "Projeta e implementa a solução de software.",
+            "icon": "code"
+          },
+          {
+            "title": "QA",
+            "detail": "Valida o comportamento e a qualidade do produto.",
+            "icon": "fact_check"
+          }
+        ],
+        "callout": {
+          "type": "info",
+          "text": "Os nomes e responsabilidades desses papéis podem variar entre empresas e equipes."
+        }
+      }
+    },
+    {
+      "id": 14,
+      "type": "practice",
+      "title": "O papel do Designer",
+      "subtitle": "Como o Design contribui para o produto?",
+      "content": {
+        "items": [
+          {
+            "title": "Pesquisa & Empatia",
+            "detail": "Busca compreender necessidades, comportamentos e problemas dos usuários.",
+            "icon": "groups"
+          },
+          {
+            "title": "Fluxos & Prototipagem",
+            "detail": "Cria jornadas, wireframes e protótipos para explorar soluções.",
+            "icon": "account_tree"
+          },
+          {
+            "title": "Interface & Sistema",
+            "detail": "Define componentes, estilos, padrões visuais e Design Systems.",
+            "icon": "design_services"
+          },
+          {
+            "title": "Validação",
+            "detail": "Testa e ajusta soluções com base em evidências e feedback.",
+            "icon": "fact_check"
+          }
+        ]
+      }
+    },
+    {
+      "id": 15,
+      "type": "practice",
+      "title": "O papel do Desenvolvedor",
+      "subtitle": "Engenharia aliada ao Design.",
+      "content": {
+        "items": [
+          {
+            "title": "Implementação",
+            "detail": "Transforma a solução em software funcional, acessível e performático.",
+            "icon": "code"
+          },
+          {
+            "title": "Decisão Técnica",
+            "detail": "Avalia possibilidades, limitações, custos e características da plataforma.",
+            "icon": "engineering"
+          },
+          {
+            "title": "Qualidade da Experiência",
+            "detail": "Considera acessibilidade, responsividade, estados, desempenho e comportamento.",
+            "icon": "devices"
+          },
+          {
+            "title": "Colaboração",
+            "detail": "Identifica problemas e participa da construção de soluções junto ao Design.",
+            "icon": "handshake"
+          }
+        ],
+        "callout": {
+          "type": "warning",
+          "text": "O desenvolvedor não é apenas quem transforma Figma em código. Ele também participa da resolução de problemas do produto."
+        }
+      }
+    },
+    {
+      "id": 16,
+      "type": "theory",
+      "title": "Designer & Desenvolvedor trabalhando juntos",
+      "subtitle": "Parceria e não competição.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Um diálogo possível",
+            "text": "Designer: \"Quero apresentar o carregamento dessa forma.\"\nDesenvolvedor: \"Temos uma limitação de performance. Podemos explorar um skeleton mais leve?\""
+          },
+          {
+            "heading": "O resultado",
+            "text": "A solução final nasce da combinação entre necessidades do usuário, objetivos do produto e possibilidades técnicas."
+          }
+        ],
+        "callout": {
+          "type": "info",
+          "text": "O objetivo não é defender cegamente o design ou o código. É construir uma solução melhor."
+        }
+      }
+    },
+    {
+      "id": 17,
+      "type": "practice",
+      "title": "O que torna uma interface boa?",
+      "subtitle": "Princípios fundamentais para uma boa experiência.",
+      "content": {
+        "items": [
+          {
+            "title": "Clareza",
+            "detail": "O usuário entende onde está e o que pode fazer?",
+            "icon": "visibility"
+          },
+          {
+            "title": "Consistência",
+            "detail": "Elementos semelhantes funcionam e aparecem de maneira semelhante.",
+            "icon": "sync"
+          },
+          {
+            "title": "Hierarquia Visual",
+            "detail": "Os elementos mais importantes recebem maior destaque.",
+            "icon": "format_size"
+          },
+          {
+            "title": "Feedback",
+            "detail": "O sistema comunica adequadamente o resultado das ações.",
+            "icon": "feedback"
+          },
+          {
+            "title": "Acessibilidade",
+            "detail": "A interface considera diferentes usuários e formas de interação.",
+            "icon": "accessibility"
+          }
+        ]
+      }
+    },
+    {
+      "id": 18,
+      "type": "theory",
+      "title": "Interface ruim: Excesso de informação",
+      "subtitle": "O que está errado nessa tela?",
+      "content": {
+        "sections": [
+          {
+            "heading": "Muitos elementos competindo",
+            "text": "Múltiplas cores, textos, banners e ações disputam a atenção do usuário."
+          },
+          {
+            "heading": "Carga cognitiva elevada",
+            "text": "Quando tudo parece importante, o usuário tem dificuldade para identificar o que realmente importa."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Pergunta para a turma: para onde seus olhos foram primeiro? E qual ação você deveria realizar?"
+        }
+      }
+    },
+    {
+      "id": 19,
+      "type": "theory",
+      "title": "Interface ruim: Falta de feedback",
+      "subtitle": "O problema do botão que parece não fazer nada.",
+      "content": {
+        "sections": [
+          {
+            "heading": "A ação",
+            "text": "[ FINALIZAR PAGAMENTO ]\n\nO usuário toca no botão e nada parece acontecer."
+          },
+          {
+            "heading": "As dúvidas",
+            "text": "\"Funcionou? A internet caiu? Já foi cobrado? Devo tocar novamente?\""
+          }
+        ],
+        "callout": {
+          "type": "warning",
+          "text": "Forneça feedback adequado e oportuno após as ações do usuário. Loading, estados de processamento, mensagens de sucesso e erros são exemplos possíveis."
+        }
+      }
+    },
+    {
+      "id": 20,
+      "type": "theory",
+      "title": "Interface ruim: Mensagens de erro",
+      "subtitle": "Como falar com pessoas em vez de máquinas.",
+      "content": {
+        "sections": [
+          {
+            "heading": "O jeito errado",
+            "text": "\"Erro 500: Database Connection Failed at line 43.\""
+          },
+          {
+            "heading": "O jeito mais útil",
+            "text": "\"Não conseguimos concluir o pagamento. Verifique sua conexão ou tente novamente em alguns instantes.\""
+          }
+        ],
+        "callout": {
+          "type": "info",
+          "text": "Uma boa mensagem de erro ajuda o usuário a entender o problema e, quando possível, indica como continuar."
+        }
+      }
+    },
+    {
+      "id": 21,
+      "type": "theory",
+      "title": "Interface boa",
+      "subtitle": "Clareza antes de decoração.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Visual organizado",
+            "text": "Espaçamento adequado, hierarquia visual clara e agrupamento lógico das informações."
+          },
+          {
+            "heading": "Ações compreensíveis",
+            "text": "O usuário consegue identificar facilmente as ações principais e entender o que acontecerá ao executá-las."
+          },
+          {
+            "heading": "Consistência e acessibilidade",
+            "text": "Componentes seguem padrões e a interface considera legibilidade, contraste e diferentes formas de interação."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Uma boa interface reduz o esforço necessário para compreender e utilizar o produto."
+        }
+      }
+    },
+    {
+      "id": 22,
+      "type": "practice",
+      "title": "Heurísticas de Nielsen",
+      "subtitle": "Alguns princípios clássicos para avaliar usabilidade.",
+      "content": {
+        "items": [
+          {
+            "title": "Visibilidade do status",
+            "detail": "O sistema informa o que está acontecendo?",
+            "icon": "visibility"
+          },
+          {
+            "title": "Linguagem do mundo real",
+            "detail": "O sistema fala de uma maneira que o usuário entende?",
+            "icon": "language"
+          },
+          {
+            "title": "Controle e liberdade",
+            "detail": "O usuário consegue cancelar, voltar ou desfazer quando necessário?",
+            "icon": "undo"
+          },
+          {
+            "title": "Prevenção de erros",
+            "detail": "O design ajuda a evitar problemas antes que aconteçam?",
+            "icon": "shield"
+          },
+          {
+            "title": "Design minimalista",
+            "detail": "Cada elemento apresentado realmente adiciona valor?",
+            "icon": "remove_circle_outline"
+          }
+        ],
+        "callout": {
+          "type": "info",
+          "text": "Esses são exemplos das 10 heurísticas de usabilidade propostas por Jakob Nielsen."
+        }
+      }
+    },
+    {
+      "id": 23,
+      "type": "practice",
+      "title": "Você consegue encontrar o problema?",
+      "subtitle": "Analise a interface antes de ouvir a resposta.",
+      "content": {
+        "items": [
+          {
+            "title": "Hierarquia",
+            "detail": "O botão de cancelar recebe mais destaque que a ação principal.",
+            "icon": "format_size"
+          },
+          {
+            "title": "Consistência",
+            "detail": "As cores e estilos dos botões não seguem o padrão do restante do sistema.",
+            "icon": "sync"
+          },
+          {
+            "title": "Acessibilidade",
+            "detail": "Textos com baixo contraste dificultam a leitura.",
+            "icon": "accessibility"
+          },
+          {
+            "title": "Fluxo",
+            "detail": "O usuário não consegue identificar claramente qual é o próximo passo.",
+            "icon": "route"
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Atividade: antes de apresentar a resposta, peça aos alunos para apontarem os problemas encontrados."
+        }
+      }
+    },
+    {
+      "id": 24,
+      "type": "intro",
+      "title": "Conhecendo o Figma",
+      "subtitle": "Uma ferramenta colaborativa para design e prototipação.",
+      "content": {
+        "badge": "Figma",
+        "description": "Figma é uma ferramenta utilizada para criar interfaces, protótipos, componentes e sistemas de design, permitindo colaboração entre profissionais de produto e tecnologia.",
+        "keyPoints": [
+          "Criar interfaces web e mobile",
+          "Montar protótipos navegáveis",
+          "Criar componentes e Design Systems",
+          "Colaborar e comentar em projetos",
+          "Inspecionar propriedades para desenvolvimento"
+        ],
+        "image": {
+          "url": "https://images.unsplash.com/photo-1558655146-9f40138edfeb?q=80&w=1200&auto=format&fit=crop",
+          "alt": "Profissional trabalhando em design de interface digital",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 25,
+      "type": "practice",
+      "title": "Anatomia do Figma",
+      "subtitle": "Conhecendo as principais áreas da ferramenta.",
+      "content": {
+        "items": [
+          {
+            "title": "Toolbar",
+            "detail": "Ferramentas para seleção, criação de frames, texto, formas e outros elementos.",
+            "icon": "construction"
+          },
+          {
+            "title": "Canvas",
+            "detail": "Área onde as interfaces, componentes e protótipos são construídos.",
+            "icon": "crop_free"
+          },
+          {
+            "title": "Layers",
+            "detail": "Estrutura hierárquica com frames, grupos e elementos do projeto.",
+            "icon": "layers"
+          },
+          {
+            "title": "Properties",
+            "detail": "Painel para configurar dimensões, cores, tipografia, espaçamentos e outros atributos.",
+            "icon": "tune"
+          },
+          {
+            "title": "Assets",
+            "detail": "Biblioteca de componentes e recursos reutilizáveis.",
+            "icon": "category"
+          }
+        ]
+      }
+    },
+    {
+      "id": 26,
+      "type": "theory",
+      "title": "O que são Frames?",
+      "subtitle": "A estrutura que representa uma tela ou área do projeto.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Definição",
+            "text": "Um Frame é uma área delimitada usada para organizar elementos e representar telas, componentes ou outras estruturas de uma interface."
+          },
+          {
+            "heading": "Exemplos",
+            "text": "Podemos criar Frames para representar uma tela de smartphone, uma página web, um componente ou uma seção de uma interface."
+          }
+        ],
+        "callout": {
+          "type": "info",
+          "text": "Pense no Frame como um contêiner visual que ajuda a estruturar o projeto."
+        }
+      }
+    },
+    {
+      "id": 27,
+      "type": "theory",
+      "title": "Layers — Camadas",
+      "subtitle": "Como organizar a estrutura da interface.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Estrutura hierárquica",
+            "text": "Home\n├── Header\n│   ├── Logo\n│   └── Profile\n├── Content\n│   └── Card\n└── Bottom Navigation"
+          },
+          {
+            "heading": "Uma analogia para desenvolvedores",
+            "text": "A hierarquia de Layers pode lembrar uma árvore de elementos, como a estrutura de componentes de uma aplicação."
+          },
+          {
+            "heading": "Importante",
+            "text": "Layers do Figma e DOM não são a mesma coisa. A comparação serve apenas para ajudar a entender a organização hierárquica."
+          }
+        ]
+      }
+    },
+    {
+      "id": 28,
+      "type": "practice",
+      "title": "Componentes",
+      "subtitle": "Crie uma vez, reutilize em vários lugares.",
+      "content": {
+        "items": [
+          {
+            "title": "Reutilização",
+            "detail": "Um componente pode ser utilizado em diferentes partes do projeto, mantendo consistência.",
+            "icon": "widgets"
+          },
+          {
+            "title": "Estados",
+            "detail": "Um mesmo componente pode possuir estados como Default, Hover, Pressed, Focus, Disabled, Loading e Error.",
+            "icon": "swap_horiz"
+          },
+          {
+            "title": "Design System",
+            "detail": "Componentes reutilizáveis ajudam a estabelecer padrões visuais e comportamentais.",
+            "icon": "account_tree"
+          },
+          {
+            "title": "No código",
+            "detail": "A ideia se relaciona diretamente com componentes reutilizáveis em Flutter, React, Vue, Android e outras tecnologias.",
+            "icon": "code"
+          }
+        ]
+      }
+    },
+    {
+      "id": 29,
+      "type": "theory",
+      "title": "Protótipos",
+      "subtitle": "Simulando a experiência antes de implementar.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Navegação visual",
+            "text": "No Figma podemos conectar elementos e telas para simular fluxos como Login → Home → Detalhes → Confirmação."
+          },
+          {
+            "heading": "Por que prototipar?",
+            "text": "Um protótipo permite explorar e validar uma ideia antes de investir tempo na implementação completa."
+          }
+        ],
+        "callout": {
+          "type": "info",
+          "text": "Validar uma ideia em um protótipo pode ser significativamente mais rápido e barato do que descobrir o problema depois de implementá-la."
+        }
+      }
+    },
+    {
+      "id": 30,
+      "type": "intro",
+      "title": "Fechamento",
+      "subtitle": "Antes do código, existe um problema.",
+      "content": {
+        "badge": "Fim da Aula 03",
+        "description": "O desenvolvimento de um produto digital conecta problema, usuário, experiência, interface, tecnologia e aprendizado contínuo.",
+        "keyPoints": [
+          "Problema → Usuário → UX → UI",
+          "Protótipo → Desenvolvimento → Teste",
+          "Feedback → Melhoria → Novo ciclo",
+          "Uma boa interface ajuda o usuário a alcançar seu objetivo"
+        ],
+        "image": {
+          "url": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1200&auto=format&fit=crop",
+          "alt": "Equipe colaborando na construção de um produto digital",
+          "position": "right"
+        }
       }
     }
   ]

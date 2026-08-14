@@ -4,12 +4,12 @@ import { remoteConfigInstance, isFirebaseConfigured } from "./firebase.config";
 class RemoteConfigService {
   constructor() {
     this.fallbackConfig = {
-      course_desenvolvimento_interfaces_enabled: true,
-      course_desenvolvimento_interfaces_config: JSON.stringify({
+      course_desenvolvimento_de_interfaces_enabled: true,
+      course_desenvolvimento_de_interfaces_config: JSON.stringify({
         enabled: true,
         bannerMessage:
           "Bem-vindo à disciplina de Desenvolvimento de Interfaces!",
-        maxLessonsUnlocked: 20,
+        disabledLessons: [],
       }),
     };
   }
@@ -65,7 +65,7 @@ class RemoteConfigService {
       } catch (e) {}
     }
 
-    return { enabled: true, maxLessonsUnlocked: 20 };
+    return { enabled: true, disabledLessons: [] };
   }
 
   isCourseEnabled(courseId) {
@@ -76,12 +76,14 @@ class RemoteConfigService {
   isLessonEnabled(courseId, lessonNumber) {
     const courseConfig = this.getCourseConfig(courseId);
     if (!courseConfig.enabled) return false;
+    
     if (
-      courseConfig.maxLessonsUnlocked &&
-      lessonNumber > courseConfig.maxLessonsUnlocked
+      Array.isArray(courseConfig.disabledLessons) &&
+      courseConfig.disabledLessons.includes(lessonNumber)
     ) {
       return false;
     }
+    
     return true;
   }
 }

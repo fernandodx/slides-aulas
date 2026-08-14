@@ -1,14 +1,15 @@
 <template>
-  <div class="slide-content-theory">
-    <!-- Intro Header Slide -->
+  <div class="slide-content-theory" :class="{ 'has-image': !!slide.content?.image, 'image-left': slide.content?.image?.position === 'left' }">
+    <div class="text-column">
+      <!-- Intro Header Slide -->
     <div v-if="slide.type === 'intro'" class="slide-content-intro">
-      <M3Chip v-if="slide.content.badge" variant="primary">{{
+      <M3Chip v-if="slide.content.badge" variant="primary" class="projector-chip">{{
         slide.content.badge
       }}</M3Chip>
-      <h2 class="m3-display-small slide-title">{{ slide.title }}</h2>
-      <p class="m3-headline-small slide-subtitle">{{ slide.subtitle }}</p>
+      <h2 class="slide-title-projector">{{ slide.title }}</h2>
+      <p class="slide-subtitle-projector">{{ slide.subtitle }}</p>
 
-      <p class="m3-body-large slide-description">
+      <p class="slide-description-projector">
         {{ slide.content.description }}
       </p>
 
@@ -20,7 +21,7 @@
           class="keypoint-card"
         >
           <span class="material-icons-round keypoint-icon">check_circle</span>
-          <span class="m3-body-medium">{{ point }}</span>
+          <span class="keypoint-text">{{ point }}</span>
         </M3Card>
       </div>
     </div>
@@ -28,8 +29,8 @@
     <!-- Regular Theory Slide -->
     <div v-else class="slide-content-body">
       <div class="slide-header">
-        <h2 class="m3-headline-large">{{ slide.title }}</h2>
-        <p class="m3-title-medium slide-subtitle">{{ slide.subtitle }}</p>
+        <h2 class="slide-title-projector">{{ slide.title }}</h2>
+        <p class="slide-subtitle-projector">{{ slide.subtitle }}</p>
       </div>
 
       <div v-if="slide.content?.sections" class="slide-sections">
@@ -39,8 +40,8 @@
           variant="surface"
           class="section-card"
         >
-          <h3 class="m3-title-large section-heading">{{ sec.heading }}</h3>
-          <p class="m3-body-medium section-text">{{ sec.text }}</p>
+          <h3 class="section-heading-projector">{{ sec.heading }}</h3>
+          <p class="section-text-projector">{{ sec.text }}</p>
         </M3Card>
       </div>
 
@@ -54,8 +55,14 @@
             slide.content.callout.type === "important" ? "warning" : "lightbulb"
           }}
         </span>
-        <span class="m3-body-medium">{{ slide.content.callout.text }}</span>
+        <span class="callout-text">{{ slide.content.callout.text }}</span>
       </div>
+    </div> <!-- fecha slide-content-body -->
+    </div> <!-- fecha text-column -->
+
+    <!-- Image Column -->
+    <div class="image-column" v-if="slide.content?.image">
+      <img :src="slide.content.image.url" :alt="slide.content.image.alt || 'Slide image'" class="slide-image" />
     </div>
   </div>
 </template>
@@ -80,6 +87,38 @@ defineProps({
   flex-direction: column;
   justify-content: center;
   gap: 24px;
+}
+
+.slide-content-theory.has-image {
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+}
+
+.slide-content-theory.has-image.image-left {
+  flex-direction: row-reverse;
+}
+
+.text-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
+
+.image-column {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-image {
+  max-width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  border-radius: var(--md-shape-corner-medium);
 }
 
 .slide-content-intro {
@@ -160,5 +199,73 @@ defineProps({
 .callout-box--important {
   background-color: var(--md-sys-color-error-container);
   color: var(--md-sys-color-on-error-container);
+}
+
+/* --- Títulos e Textos Grandes para Projetor --- */
+.slide-title-projector {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--md-sys-color-primary);
+  margin-top: 8px;
+}
+
+.slide-subtitle-projector {
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--md-sys-color-on-surface-variant);
+  margin-bottom: 8px;
+}
+
+.slide-description-projector {
+  font-size: 26px;
+  line-height: 1.6;
+  color: var(--md-sys-color-on-surface);
+  max-width: 900px;
+}
+
+.projector-chip {
+  font-size: 18px !important;
+  padding: 8px 16px !important;
+}
+
+.keypoint-text {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.keypoint-icon {
+  font-size: 32px;
+  color: var(--md-sys-color-primary);
+}
+
+.section-heading-projector {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--md-sys-color-primary);
+  margin-bottom: 8px;
+}
+
+.section-text-projector {
+  font-size: 24px;
+  line-height: 1.5;
+  color: var(--md-sys-color-on-surface);
+  white-space: pre-line;
+}
+
+.callout-text {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.callout-icon {
+  font-size: 36px;
+}
+
+.callout-box {
+  padding: 24px;
+  border-radius: var(--md-shape-corner-large);
 }
 </style>

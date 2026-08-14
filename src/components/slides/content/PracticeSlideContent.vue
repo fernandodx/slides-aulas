@@ -1,9 +1,10 @@
 <template>
-  <div class="slide-content-practice">
+  <div class="slide-content-practice" :class="{ 'has-image': !!slide.content?.image, 'image-left': slide.content?.image?.position === 'left' }">
+    <div class="text-column">
     <div class="slide-header">
-      <M3Chip variant="success" icon="build">Prática / Atividade</M3Chip>
-      <h2 class="m3-headline-large slide-title">{{ slide.title }}</h2>
-      <p class="m3-title-medium slide-subtitle">{{ slide.subtitle }}</p>
+      <M3Chip variant="success" icon="build" class="projector-chip">Prática / Atividade</M3Chip>
+      <h2 class="slide-title-projector">{{ slide.title }}</h2>
+      <p class="slide-subtitle-projector">{{ slide.subtitle }}</p>
     </div>
 
     <div v-if="slide.content?.items" class="practice-steps">
@@ -13,8 +14,13 @@
         variant="outlined"
         class="step-card"
       >
-        <div class="step-badge">{{ item.title }}</div>
-        <div class="step-detail m3-body-large">{{ item.detail }}</div>
+        <div v-if="item.icon" class="step-icon-wrapper">
+          <span class="material-icons-round step-icon">{{ item.icon }}</span>
+        </div>
+        <div class="step-text-content">
+          <div class="step-badge">{{ item.title }}</div>
+          <div class="step-detail-projector">{{ item.detail }}</div>
+        </div>
       </M3Card>
     </div>
 
@@ -42,7 +48,13 @@
       :class="['callout-box', `callout-box--${slide.content.callout.type}`]"
     >
       <span class="material-icons-round callout-icon">priority_high</span>
-      <span class="m3-body-medium">{{ slide.content.callout.text }}</span>
+      <span class="callout-text">{{ slide.content.callout.text }}</span>
+    </div>
+    </div>
+    
+    <!-- Image Column -->
+    <div class="image-column" v-if="slide.content?.image">
+      <img :src="slide.content.image.url" :alt="slide.content.image.alt || 'Slide image'" class="slide-image" />
     </div>
   </div>
 </template>
@@ -67,6 +79,37 @@ defineProps({
   width: 100%;
 }
 
+.slide-content-practice.has-image {
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+}
+
+.slide-content-practice.has-image.image-left {
+  flex-direction: row-reverse;
+}
+
+.text-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.image-column {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-image {
+  max-width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  border-radius: var(--md-shape-corner-medium);
+}
+
 .slide-title {
   color: var(--md-sys-color-primary);
   margin-top: 8px;
@@ -89,17 +132,71 @@ defineProps({
   padding: 16px 24px;
 }
 
+.callout-box--important {
+  background-color: var(--md-sys-color-error-container);
+  color: var(--md-sys-color-on-error-container);
+}
+
+/* --- Títulos e Textos Grandes para Projetor --- */
+.slide-title-projector {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--md-sys-color-primary);
+  margin-top: 8px;
+}
+
+.slide-subtitle-projector {
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--md-sys-color-on-surface-variant);
+  margin-bottom: 8px;
+}
+
+.projector-chip {
+  font-size: 18px !important;
+  padding: 8px 16px !important;
+}
+
 .step-badge {
   background-color: var(--md-sys-color-primary-container);
   color: var(--md-sys-color-on-primary-container);
   font-weight: 700;
-  font-size: 13px;
-  padding: 6px 12px;
+  font-size: 18px;
+  padding: 8px 16px;
   border-radius: var(--md-shape-corner-medium);
   white-space: nowrap;
+  display: inline-block;
+  margin-bottom: 4px;
 }
 
-.step-detail {
+.step-text-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.step-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  flex-shrink: 0;
+}
+
+.step-icon {
+  font-size: 32px;
+}
+
+.step-detail-projector {
+  font-size: 24px;
+  line-height: 1.5;
   color: var(--md-sys-color-on-surface);
 }
 
@@ -142,8 +239,13 @@ defineProps({
   border-radius: var(--md-shape-corner-medium);
 }
 
-.callout-box--important {
-  background-color: var(--md-sys-color-error-container);
-  color: var(--md-sys-color-on-error-container);
+.callout-text {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.callout-icon {
+  font-size: 36px;
 }
 </style>

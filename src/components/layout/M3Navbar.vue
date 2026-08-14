@@ -11,14 +11,7 @@
     </div>
 
     <div class="m3-navbar__actions">
-      <!-- Firebase Credentials Button -->
-      <M3Button
-        variant="tonal"
-        :icon="isConfigured ? 'cloud_done' : 'cloud_queue'"
-        @click="showFirebaseModal = true"
-      >
-        {{ isConfigured ? "Firebase Ativo" : "Conectar Firebase" }}
-      </M3Button>
+      <!-- Firebase Credentials Button (Removed) -->
 
       <!-- Theme Switcher -->
       <M3Button
@@ -28,8 +21,7 @@
       />
     </div>
 
-    <!-- Firebase Modal -->
-    <FirebaseSetupModal v-model="showFirebaseModal" />
+
   </header>
 </template>
 
@@ -37,14 +29,8 @@
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import M3Button from "@/components/ui/M3Button.vue";
-import FirebaseSetupModal from "@/components/layout/FirebaseSetupModal.vue";
-import { useFirebaseConfigViewModel } from "@/viewmodels/useFirebaseConfigViewModel";
-
 const router = useRouter();
-const showFirebaseModal = ref(false);
 const isDark = ref(false);
-
-const { isConfigured } = useFirebaseConfigViewModel();
 
 const goHome = () => {
   router.push({ name: "home" });

@@ -1,0 +1,261 @@
+{
+  "id": "desenvolvimento-web",
+  "title": "Desenvolvimento Web",
+  "subtitle": "Um guia completo: revisão sólida de Front-End, domínio de frameworks com Vue 3, consumo de APIs e deploy da aplicação.",
+  "code": "DEV-WEB-2026",
+  "workloadHours": 80,
+  "totalLessons": 20,
+  "category": "Engenharia de Software",
+  "badge": "Web Development",
+  "assessment": {
+    "methodology": "Aprendizagem baseada em projetos com acompanhamento e entregas parciais.",
+    "deliverables": [
+      {
+        "name": "Entrega - Aplicação To Do funcional ou outro projeto",
+        "aula": 5,
+        "weight": "10%",
+        "description": "Construção de uma aplicação utilizando apenas JavaScript puro."
+      },
+      {
+        "name": "Seminário  - Desenvolvimento Web",
+        "aula": 11,
+        "weight": "40%",
+        "description": "Temas: Angula, React, Padrão REST, Seguraça (Token JWT, OAuth), Evolução das páginas web"
+      },
+      {
+        "name": "Entrega Final feita atráves de Pull Request",
+        "aula": 18,
+        "weight": "50%",
+        "description": "Apresentação do projeto completo, funcional, com deploy realizado."
+      }
+    ]
+  },
+  "tools": [
+    {
+      "name": "HTML & CSS",
+      "icon": "html",
+      "desc": "Estrutura e estilização da web"
+    },
+    {
+      "name": "JavaScript",
+      "icon": "javascript",
+      "desc": "Lógica e DOM"
+    },
+    {
+      "name": "Vue.js 3",
+      "icon": "code",
+      "desc": "Framework JavaScript reativo"
+    },
+    {
+      "name": "Vue Router",
+      "icon": "route",
+      "desc": "Navegação SPA"
+    },
+    {
+      "name": "BootStrap",
+      "icon": "book",
+      "desc": "REsponsividade e layout de tela"
+    },
+    {
+      "name": "Vercel / GitHub",
+      "icon": "cloud_upload",
+      "desc": "Deploy e versão"
+    }
+  ],
+  "modules": [
+    {
+      "id": 1,
+      "number": "01",
+      "title": "Introdução",
+      "description": "Apresentação da disciplina e Git/GitHub.",
+      "color": "var(--md-color-module-1)",
+      "lessons": [
+        {
+          "id": 1,
+          "title": "Aula 1 — Apresentação da Disciplina",
+          "tag": "Teoria",
+          "duration": "4h",
+          "description": "Metodologia, avaliação e ferramentas."
+        },
+        {
+          "id": 2,
+          "title": "Aula 2 — Git e GitHub",
+          "tag": "Prática",
+          "duration": "4h",
+          "description": "Controle de versão e repositório inicial."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "number": "02",
+      "title": "Revisão de Front-End",
+      "description": "HTML, CSS e JavaScript puro.",
+      "color": "var(--md-color-module-2)",
+      "lessons": [
+        {
+          "id": 3,
+          "title": "Aula 3 — HTML e CSS",
+          "tag": "Prática",
+          "duration": "4h",
+          "description": "Box Model, Flexbox, Grid e responsividade."
+        },
+        {
+          "id": 4,
+          "title": "Aula 4 — JavaScript",
+          "tag": "Prática",
+          "duration": "4h",
+          "description": "Revisão, Arrays, Loops e manipulação do DOM."
+        },
+        {
+          "id": 5,
+          "title": "Aula 5 — Projeto TO DO",
+          "tag": "Entrega",
+          "duration": "4h",
+          "description": "CRUD Completo com Vanilla JS e Local Storage."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "number": "03",
+      "title": "Introdução ao Vue 3",
+      "description": "Fundamentos do framework, componentes e reatividade.",
+      "color": "var(--md-color-module-3)",
+      "lessons": [
+        {
+          "id": 6,
+          "title": "Aula 6 — Primeiros passos com Vue",
+          "tag": "Prática",
+          "duration": "4h",
+          "description": "O que é Vue, SPA x MPA, configuração inicial."
+        },
+        {
+          "id": 7,
+          "title": "Aula 7 — Criando um Projeto Vue",
+          "tag": "Prática",
+          "duration": "4h",
+          "description": "Estrutura do projeto, SFC, importação de componentes."
+        },
+        {
+          "id": 8,
+          "title": "Aula 8 — Reatividade e Ciclo de Vida",
+          "tag": "Prática",
+          "duration": "4h",
+          "description": "ref(), reactive(), computed(), onMounted."
+        },
+        {
+          "id": 9,
+          "title": "Aula 9 — Diretivas e Comunicação",
+          "tag": "Prática",
+          "duration": "4h",
+          "description": "v-if, v-for, v-model, Props e Emits."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "number": "04",
+      "title": "Navegação e Dados",
+      "description": "Rotas e consumo de API REST.",
+      "color": "var(--md-color-module-4)",
+      "lessons": [
+        {
+          "id": 10,
+          "title": "Aula 10 — Rotas e DB Simulado",
+          "tag": "Prática",
+          "duration": "4h",
+          "description": "Vue Router, JSON Server e Axios."
+        },
+        {
+          "id": 11,
+          "title": "Aula 11 — Seminário",
+          "tag": "Seminário",
+          "duration": "4h",
+          "description": "Apresentação dos grupos sobre temas relacionados."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "number": "05",
+      "title": "Projeto Final",
+      "description": "Construção do projeto principal da disciplina.",
+      "color": "var(--md-color-module-5)",
+      "lessons": [
+        {
+          "id": 12,
+          "title": "Aula 12 — Planejamento",
+          "tag": "Teoria",
+          "duration": "4h",
+          "description": "Tema, Protótipo e Organização."
+        },
+        {
+          "id": 13,
+          "title": "Aula 13 — Telas",
+          "tag": "Prática",
+          "duration": "4h",
+          "description": "Componentização, Layout e Navegação."
+        },
+        {
+          "id": 14,
+          "title": "Aula 14 — API",
+          "tag": "Prática",
+          "duration": "4h",
+          "description": "Integração CRUD completo e tratamento de erros."
+        },
+        {
+          "id": 15,
+          "title": "Aula 15 — Melhorias",
+          "tag": "Prática",
+          "duration": "4h",
+          "description": "Responsividade, feedback visual, Empty States."
+        },
+        {
+          "id": 16,
+          "title": "Aula 16 — Refatoração",
+          "tag": "Checkpoint",
+          "duration": "4h",
+          "description": "Boas práticas, organização de pastas e entrega parcial."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "number": "06",
+      "title": "Publicação",
+      "description": "Deploy, integração e apresentação final.",
+      "color": "var(--md-color-module-6)",
+      "lessons": [
+        {
+          "id": 17,
+          "title": "Aula 17 — Deploy",
+          "tag": "Prática",
+          "duration": "4h",
+          "description": "Build e Vercel (Front), JSON Server (Back)."
+        },
+        {
+          "id": 18,
+          "title": "Aula 18 — Integração Final",
+          "tag": "Prática",
+          "duration": "4h",
+          "description": "Testes em produção e correção de bugs."
+        },
+        {
+          "id": 19,
+          "title": "Aula 19 — Mentoria",
+          "tag": "Correções",
+          "duration": "4h",
+          "description": "Revisão do código, interface e integração."
+        },
+        {
+          "id": 20,
+          "title": "Aula 20 — Apresentação",
+          "tag": "Entrega Final",
+          "duration": "4h",
+          "description": "Apresentação do projeto concluído."
+        }
+      ]
+    }
+  ]
+}

@@ -6,7 +6,7 @@
       <p class="m3-body-large">Carregando dados da disciplina...</p>
     </div>
 
-    <div v-else-if="course" class="course-detail-container">
+    <div v-else-if="course && isCourseUnlocked" class="course-detail-container">
       <!-- Breadcrumb & Top Bar -->
       <nav class="breadcrumb">
         <router-link to="/" class="breadcrumb-link m3-label-large">
@@ -20,15 +20,8 @@
       <M3Card variant="surface" class="course-hero">
         <div class="course-hero__header">
           <M3Chip variant="primary" icon="school">{{ course.badge }}</M3Chip>
-          <M3Chip
-            :variant="isCourseUnlocked ? 'success' : 'danger'"
-            :icon="isCourseUnlocked ? 'verified' : 'lock'"
-          >
-            {{
-              isCourseUnlocked
-                ? "Curso Ativo (Remote Config)"
-                : "Curso Indisponível"
-            }}
+          <M3Chip variant="success" icon="verified">
+            Curso Ativo
           </M3Chip>
         </div>
 
@@ -53,10 +46,9 @@
           <M3Button
             variant="filled"
             icon="play_arrow"
-            :disabled="!isCourseUnlocked"
             @click="startFirstLesson"
           >
-            Iniciar Aula 1 (Apresentação)
+            Acessar Aulas
           </M3Button>
         </div>
       </M3Card>
@@ -119,12 +111,12 @@
         </h2>
 
         <div class="modules-list">
-          <M3Card
-            v-for="mod in course.modules"
-            :key="mod.id"
-            variant="surface"
-            class="module-card"
-          >
+          <template v-for="mod in course.modules" :key="mod.id">
+            <M3Card
+              v-if="mod.lessons.some(l => isLessonUnlocked(l.id))"
+              variant="surface"
+              class="module-card"
+            >
             <div class="module-card__header">
               <div
                 class="module-number"
@@ -140,49 +132,54 @@
 
             <!-- Lessons Grid inside Module -->
             <div class="lessons-grid">
-              <div
-                v-for="lesson in mod.lessons"
-                :key="lesson.id"
-                :class="[
-                  'lesson-item-card',
-                  { 'lesson-item-card--locked': !isLessonUnlocked(lesson.id) },
-                ]"
-                @click="isLessonUnlocked(lesson.id) && openLesson(lesson.id)"
-              >
-                <div class="lesson-item-card__top">
-                  <span
-                    class="m3-label-small lesson-tag"
-                    :style="{ color: mod.color }"
-                  >
-                    {{ lesson.tag }}
-                  </span>
-                  <span class="m3-label-small lesson-duration">{{
-                    lesson.duration
-                  }}</span>
-                </div>
+              <template v-for="lesson in mod.lessons" :key="lesson.id">
+                <div
+                  v-if="isLessonUnlocked(lesson.id)"
+                  class="lesson-item-card"
+                  @click="openLesson(lesson.id)"
+                >
+                  <div class="lesson-item-card__top">
+                    <span
+                      class="m3-label-small lesson-tag"
+                      :style="{ color: mod.color }"
+                    >
+                      {{ lesson.tag }}
+                    </span>
+                    <span class="m3-label-small lesson-duration">{{
+                      lesson.duration
+                    }}</span>
+                  </div>
 
-                <h4 class="m3-title-medium lesson-title">{{ lesson.title }}</h4>
-                <p class="m3-body-small lesson-desc">
-                  {{ lesson.description }}
-                </p>
+                  <h4 class="m3-title-medium lesson-title">{{ lesson.title }}</h4>
+                  <p class="m3-body-small lesson-desc">
+                    {{ lesson.description }}
+                  </p>
 
-                <div class="lesson-item-card__bottom">
-                  <M3Button
-                    variant="text"
-                    :icon="isLessonUnlocked(lesson.id) ? 'slideshow' : 'lock'"
-                    :disabled="!isLessonUnlocked(lesson.id)"
-                    @click.stop="isLessonUnlocked(lesson.id) && openLesson(lesson.id)"
-                  >
-                    {{
-                      isLessonUnlocked(lesson.id) ? "Abrir Slides" : "Bloqueado"
-                    }}
-                  </M3Button>
+                  <div class="lesson-item-card__bottom">
+                    <M3Button
+                      variant="text"
+                      icon="slideshow"
+                      @click.stop="openLesson(lesson.id)"
+                    >
+                      Abrir Slides
+                    </M3Button>
+                  </div>
                 </div>
-              </div>
+              </template>
             </div>
           </M3Card>
+          </template>
         </div>
       </section>
+    </div>
+    
+    <div v-else class="empty-state-container">
+      <M3Card variant="surface" class="empty-state-card">
+        <span class="material-icons-round empty-icon">lock</span>
+        <h3 class="m3-headline-small">Curso Indisponível</h3>
+        <p class="m3-body-large">Este curso não está disponível ou foi bloqueado na plataforma no momento.</p>
+        <M3Button variant="filled" @click="$router.push('/')">Voltar aos Cursos</M3Button>
+      </M3Card>
     </div>
   </div>
 </template>
@@ -419,15 +416,10 @@ onMounted(() => {
   transition: all var(--md-motion-duration-short) ease;
 }
 
-.lesson-item-card:hover:not(.lesson-item-card--locked) {
+.lesson-item-card:hover {
   border-color: var(--md-sys-color-primary);
   transform: translateY(-2px);
   box-shadow: var(--md-elevation-1);
-}
-
-.lesson-item-card--locked {
-  opacity: 0.5;
-  cursor: not-allowed;
 }
 
 .lesson-item-card__top {
@@ -458,5 +450,30 @@ onMounted(() => {
   display: flex;
   justify-content: flex-end;
   margin-top: 8px;
+}
+
+.empty-state-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 40px 24px;
+}
+
+.empty-state-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+  padding: 48px;
+  max-width: 500px;
+}
+
+.empty-icon {
+  font-size: 64px;
+  color: var(--md-sys-color-on-surface-variant);
+  opacity: 0.5;
 }
 </style>

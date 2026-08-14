@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "type": "intro",
+    "title": "Melhorias",
+    "subtitle": "Módulo 5 - Projeto Final",
+    "content": {
+      "badge": "Aula 15",
+      "description": "Adicione o conteúdo desta aula aqui. (Slide gerado como capa padrão)",
+      "keyPoints": [
+        "Tópico 1",
+        "Tópico 2"
+      ],
+      "image": {
+        "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
+        "alt": "Desenvolvimento Web",
+        "position": "right"
+      }
+    }
+  }
+]

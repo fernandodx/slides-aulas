@@ -1,10 +1,12 @@
 // Import course info metadata
 import desenvolvimentoInfo from "@/data/courses/desenvolvimento-de-interfaces/course-info.json";
+import devWebInfo from "@/data/courses/desenvolvimento-web/course-info.json";
 
 class CourseRepository {
   constructor() {
     this.coursesMap = {
       "desenvolvimento-de-interfaces": desenvolvimentoInfo,
+      "desenvolvimento-web": devWebInfo,
     };
 
     // Cache for loaded lesson contents

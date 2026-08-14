@@ -28,6 +28,11 @@
             v-else-if="currentSlide.type === 'code'"
             :slide="currentSlide"
           />
+
+          <ImageSlideContent
+            v-else-if="currentSlide.type === 'image' || currentSlide.type === 'infographic'"
+            :slide="currentSlide"
+          />
         </M3Card>
       </div>
     </Transition>
@@ -39,6 +44,7 @@ import M3Card from "@/components/ui/M3Card.vue";
 import TheorySlideContent from "@/components/slides/content/TheorySlideContent.vue";
 import PracticeSlideContent from "@/components/slides/content/PracticeSlideContent.vue";
 import CodeSlideContent from "@/components/slides/content/CodeSlideContent.vue";
+import ImageSlideContent from "@/components/slides/content/ImageSlideContent.vue";
 
 defineProps({
   currentSlide: {
@@ -75,7 +81,7 @@ defineProps({
 
 .slide-card-wrapper {
   width: 100%;
-  max-width: 1100px;
+  max-width: 1500px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -86,10 +92,10 @@ defineProps({
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 40px;
+  padding: 40px 60px;
   border-radius: var(--md-shape-corner-extra-large);
   overflow-y: auto;
-  box-shadow: var(--md-elevation-1);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15); /* Aumentado para maior contraste no projetor */
 }
 
 @media (max-width: 768px) {

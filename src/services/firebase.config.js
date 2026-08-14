@@ -6,24 +6,10 @@ import {
 import { getRemoteConfig, fetchAndActivate } from "firebase/remote-config";
 import { getFirestore } from "firebase/firestore";
 
-const STORAGE_KEY = "slides_aulas_firebase_config";
-
 /**
- * Retrieves the current Firebase configuration from localStorage or .env
+ * Retrieves the current Firebase configuration from .env
  */
 export function getStoredFirebaseConfig() {
-  const localSaved = localStorage.getItem(STORAGE_KEY);
-  if (localSaved) {
-    try {
-      return JSON.parse(localSaved);
-    } catch (e) {
-      console.warn(
-        "Failed to parse saved Firebase config from localStorage",
-        e
-      );
-    }
-  }
-
   return {
     apiKey: process.env.VUE_APP_FIREBASE_API_KEY || "",
     authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN || "",
@@ -35,12 +21,7 @@ export function getStoredFirebaseConfig() {
   };
 }
 
-/**
- * Saves user credentials to localStorage
- */
-export function saveFirebaseConfig(config) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
-}
+
 
 /**
  * Checks if Firebase configuration contains required keys
@@ -90,12 +71,17 @@ export function initFirebase() {
 
     // Initialize Remote Config
     remoteConfigInstance = getRemoteConfig(firebaseApp);
-    remoteConfigInstance.settings.minimumFetchIntervalMillis = 3600000; // 1 hour default
+    remoteConfigInstance.settings.minimumFetchIntervalMillis = process.env.NODE_ENV === 'development' ? 10000 : 3600000;
     remoteConfigInstance.defaultConfig = {
-      course_desenvolvimento_interfaces_enabled: true,
-      course_desenvolvimento_interfaces_config: JSON.stringify({
+      course_desenvolvimento_de_interfaces_enabled: true,
+      course_desenvolvimento_de_interfaces_config: JSON.stringify({
         enabled: true,
-        lockedLessons: [],
+        disabledLessons: [],
+      }),
+      course_desenvolvimento_web_enabled: true,
+      course_desenvolvimento_web_config: JSON.stringify({
+        enabled: true,
+        disabledLessons: [],
       }),
     };
 

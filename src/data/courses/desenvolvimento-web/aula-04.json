@@ -1,21 +1,1095 @@
-[
-  {
-    "id": 1,
-    "type": "intro",
-    "title": "JavaScript",
-    "subtitle": "Módulo 2 - Revisão de Front-End",
-    "content": {
-      "badge": "Aula 04",
-      "description": "Adicione o conteúdo desta aula aqui. (Slide gerado como capa padrão)",
-      "keyPoints": [
-        "Tópico 1",
-        "Tópico 2"
-      ],
-      "image": {
-        "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
-        "alt": "Desenvolvimento Web",
-        "position": "right"
+{
+  "id": 5,
+  "title": "Bootstrap Avançado, JavaScript Moderno e Preparação para Vue 3",
+  "subtitle": "Grid responsivo, Flexbox, JavaScript essencial e os conceitos que formam a base do Vue.",
+  "module": "Módulo 3 — Desenvolvimento Web e Frameworks",
+  "tag": "Teoria + Prática",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "Bootstrap Avançado + JavaScript + Vue 3",
+      "subtitle": "Da construção do layout à criação de interfaces reativas.",
+      "content": {
+        "badge": "Aula 05",
+        "description": "Vamos aprofundar o uso do Bootstrap para construir layouts responsivos, revisar Flexbox e recuperar os principais conceitos modernos de JavaScript que serão utilizados no Vue 3.",
+        "keyPoints": [
+          "Bootstrap Grid e breakpoints",
+          "Flexbox na prática",
+          "Responsividade mobile-first",
+          "JavaScript moderno",
+          "Arrays, objetos e funções",
+          "Preparação para Vue 3"
+        ],
+        "image": {
+          "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop",
+          "alt": "Desenvolvedor trabalhando em uma interface e código em um computador",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": "theory",
+      "title": "A pergunta da aula",
+      "subtitle": "Como saímos de uma página estática para uma aplicação?",
+      "content": {
+        "sections": [
+          {
+            "heading": "HTML + CSS",
+            "text": "Estruturamos e apresentamos o conteúdo da interface."
+          },
+          {
+            "heading": "JavaScript",
+            "text": "Adicionamos comportamento, lógica e interação."
+          },
+          {
+            "heading": "Vue",
+            "text": "Organizamos interface e estado de forma reativa e baseada em componentes."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Vue não substitui HTML, CSS e JavaScript. Ele organiza e potencializa o uso desses fundamentos."
+        },
+        "image": {
+          "url": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
+          "alt": "Pessoa desenvolvendo uma aplicação em um notebook",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "type": "practice",
+      "title": "O mapa da aula",
+      "subtitle": "Do layout à aplicação",
+      "content": {
+        "items": [
+          {
+            "title": "Grid",
+            "detail": "Criar layouts utilizando 12 colunas e breakpoints.",
+            "icon": "grid_view"
+          },
+          {
+            "title": "Flexbox",
+            "detail": "Controlar direção, alinhamento e distribuição dos elementos.",
+            "icon": "tune"
+          },
+          {
+            "title": "Responsividade",
+            "detail": "Pensar primeiro em telas pequenas e adaptar para telas maiores.",
+            "icon": "devices"
+          },
+          {
+            "title": "JavaScript",
+            "detail": "Revisar sintaxe, funções, arrays e objetos.",
+            "icon": "code"
+          },
+          {
+            "title": "Vue 3",
+            "detail": "Conectar JavaScript com interfaces reativas.",
+            "icon": "widgets"
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "type": "intro",
+      "title": "Bootstrap Grid",
+      "subtitle": "Mais do que dividir a tela em colunas.",
+      "content": {
+        "badge": "Bootstrap",
+        "description": "O Grid do Bootstrap permite construir layouts responsivos utilizando containers, rows e columns, com uma grade de 12 unidades.",
+        "keyPoints": [
+          "Container",
+          "Row",
+          "Column",
+          "12 unidades",
+          "Breakpoints",
+          "Mobile-first"
+        ],
+        "image": {
+          "url": "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1200&auto=format&fit=crop",
+          "alt": "Profissional analisando o design de uma interface digital",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "type": "theory",
+      "title": "A anatomia do Grid",
+      "subtitle": "Container → Row → Column → Conteúdo",
+      "content": {
+        "sections": [
+          {
+            "heading": "Container",
+            "text": "Centraliza o conteúdo e controla sua largura máxima conforme o breakpoint."
+          },
+          {
+            "heading": "Row",
+            "text": "Funciona como uma linha que organiza as colunas."
+          },
+          {
+            "heading": "Column",
+            "text": "Define quanto espaço cada conteúdo ocupa dentro das 12 unidades."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "A hierarquia do Grid é container → row → column → conteúdo."
+        },
+        "image": {
+          "url": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1200&auto=format&fit=crop",
+          "alt": "Código sendo desenvolvido em um computador",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "type": "code",
+      "title": "Grid básico",
+      "subtitle": "Três colunas iguais",
+      "content": {
+        "language": "html",
+        "code": "<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col\">A</div>\n        <div class=\"col\">B</div>\n        <div class=\"col\">C</div>\n    </div>\n</div>"
+      }
+    },
+    {
+      "id": 7,
+      "type": "practice",
+      "title": "12 colunas",
+      "subtitle": "Pensando em proporções",
+      "content": {
+        "items": [
+          {
+            "title": "col-12",
+            "detail": "100% da largura disponível no grid.",
+            "icon": "view_column"
+          },
+          {
+            "title": "col-6",
+            "detail": "Metade das 12 unidades.",
+            "icon": "view_column"
+          },
+          {
+            "title": "col-4",
+            "detail": "Um terço das 12 unidades.",
+            "icon": "view_column"
+          },
+          {
+            "title": "col-3",
+            "detail": "Um quarto das 12 unidades.",
+            "icon": "view_column"
+          },
+          {
+            "title": "col-8",
+            "detail": "Dois terços das 12 unidades.",
+            "icon": "view_column"
+          }
+        ],
+        "image": {
+          "url": "https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=1200&auto=format&fit=crop",
+          "alt": "Interface digital organizada em diferentes blocos",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 8,
+      "type": "theory",
+      "title": "Breakpoints",
+      "subtitle": "Quando o layout muda?",
+      "content": {
+        "sections": [
+          {
+            "heading": "xs",
+            "text": "Menor que 576px."
+          },
+          {
+            "heading": "sm / md",
+            "text": "A partir de 576px e 768px, respectivamente."
+          },
+          {
+            "heading": "lg / xl / xxl",
+            "text": "A partir de 992px, 1200px e 1400px."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Os breakpoints não representam modelos específicos de aparelhos. Eles representam larguras de viewport."
+        },
+        "image": {
+          "url": "https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?q=80&w=1200&auto=format&fit=crop",
+          "alt": "Notebook mostrando uma interface responsiva",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 9,
+      "type": "practice",
+      "title": "Mobile-first",
+      "subtitle": "Começamos pequeno e expandimos.",
+      "content": {
+        "items": [
+          {
+            "title": "Mobile",
+            "detail": "Definimos o comportamento inicial da interface.",
+            "icon": "phone_android"
+          },
+          {
+            "title": "Tablet",
+            "detail": "Ajustamos o layout a partir dos breakpoints.",
+            "icon": "tablet"
+          },
+          {
+            "title": "Desktop",
+            "detail": "Expandimos o conteúdo para telas maiores.",
+            "icon": "desktop_windows"
+          },
+          {
+            "title": "Regra",
+            "detail": "As classes de breakpoint se aplicam daquele tamanho para cima.",
+            "icon": "route"
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Pensar mobile-first reduz a necessidade de adaptar uma interface originalmente criada apenas para desktop."
+        }
+      }
+    },
+    {
+      "id": 10,
+      "type": "code",
+      "title": "Layout responsivo",
+      "subtitle": "Uma classe para cada cenário",
+      "content": {
+        "language": "html",
+        "code": "<div class=\"col-12 col-md-6 col-lg-4\">\n    <div class=\"card\">\n        <div class=\"card-body\">\n            Curso\n        </div>\n    </div>\n</div>"
+      }
+    },
+    {
+      "id": 11,
+      "type": "image",
+      "title": "Visualizando o mesmo componente",
+      "subtitle": "Uma interface, três comportamentos",
+      "content": {
+        "imageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1600&auto=format&fit=crop",
+        "imageAlt": "Equipe trabalhando com diferentes dispositivos e interfaces",
+        "description": "No celular, os elementos podem ocupar toda a largura. Em telas médias, podem dividir a linha. Em desktops, podem formar três ou mais colunas."
+      }
+    },
+    {
+      "id": 12,
+      "type": "theory",
+      "title": "Gutters",
+      "subtitle": "O espaço entre as colunas também faz parte do layout.",
+      "content": {
+        "sections": [
+          {
+            "heading": "g-*",
+            "text": "Controla o espaçamento horizontal e vertical entre colunas."
+          },
+          {
+            "heading": "gx-*",
+            "text": "Controla o gutter horizontal."
+          },
+          {
+            "heading": "gy-*",
+            "text": "Controla o gutter vertical."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Espaçamento consistente é parte importante da hierarquia visual."
+        }
+      }
+    },
+    {
+      "id": 13,
+      "type": "code",
+      "title": "Controlando gutters",
+      "subtitle": "Ajustando o espaço entre os elementos",
+      "content": {
+        "language": "html",
+        "code": "<div class=\"row g-4\">\n    <div class=\"col-md-4\">\n        <div class=\"card\">Card 1</div>\n    </div>\n    <div class=\"col-md-4\">\n        <div class=\"card\">Card 2</div>\n    </div>\n    <div class=\"col-md-4\">\n        <div class=\"card\">Card 3</div>\n    </div>\n</div>"
+      }
+    },
+    {
+      "id": 14,
+      "type": "intro",
+      "title": "Flexbox",
+      "subtitle": "O motor de muitos layouts do Bootstrap",
+      "content": {
+        "badge": "CSS + Bootstrap",
+        "description": "O sistema de Grid do Bootstrap é construído sobre Flexbox. Entender Flexbox permite compreender melhor o comportamento das colunas e dos componentes.",
+        "keyPoints": [
+          "Direção",
+          "Alinhamento",
+          "Distribuição",
+          "Quebra de linha",
+          "Ordem"
+        ],
+        "image": {
+          "url": "https://images.unsplash.com/photo-1553484771-047a44eee27b?q=80&w=1200&auto=format&fit=crop",
+          "alt": "Equipe organizando elementos de um projeto",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 15,
+      "type": "theory",
+      "title": "Eixo principal × eixo transversal",
+      "subtitle": "A ideia mais importante do Flexbox",
+      "content": {
+        "sections": [
+          {
+            "heading": "Main Axis",
+            "text": "É definido por flex-direction. Em row, o eixo principal é horizontal."
+          },
+          {
+            "heading": "Cross Axis",
+            "text": "É o eixo perpendicular ao principal. Em row, ele é vertical."
+          },
+          {
+            "heading": "Alinhamento",
+            "text": "justify-content atua no eixo principal; align-items atua no eixo transversal."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Antes de decorar propriedades, identifique qual é o eixo principal."
+        }
+      }
+    },
+    {
+      "id": 16,
+      "type": "code",
+      "title": "Flexbox com Bootstrap",
+      "subtitle": "Utilizando classes utilitárias",
+      "content": {
+        "language": "html",
+        "code": "<div class=\"d-flex justify-content-between align-items-center\">\n    <span>Logo</span>\n    <nav>Menu</nav>\n</div>"
+      }
+    },
+    {
+      "id": 17,
+      "type": "practice",
+      "title": "Principais utilitários Flexbox",
+      "subtitle": "Classes que você vai utilizar frequentemente",
+      "content": {
+        "items": [
+          {
+            "title": "d-flex",
+            "detail": "Transforma o elemento em um flex container.",
+            "icon": "layers"
+          },
+          {
+            "title": "justify-content-between",
+            "detail": "Distribui espaço entre os itens.",
+            "icon": "unfold_more"
+          },
+          {
+            "title": "align-items-center",
+            "detail": "Alinha os itens no eixo transversal.",
+            "icon": "vertical_align_center"
+          },
+          {
+            "title": "flex-column",
+            "detail": "Organiza os itens em uma coluna.",
+            "icon": "view_stream"
+          },
+          {
+            "title": "flex-wrap",
+            "detail": "Permite que os itens quebrem para novas linhas.",
+            "icon": "wrap_text"
+          }
+        ]
+      }
+    },
+    {
+      "id": 18,
+      "type": "theory",
+      "title": "Grid ou Flexbox?",
+      "subtitle": "Eles não são concorrentes.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Grid do Bootstrap",
+            "text": "Excelente para estruturar a página em linhas e colunas responsivas."
+          },
+          {
+            "heading": "Flexbox",
+            "text": "Excelente para alinhar e distribuir elementos dentro de um espaço."
+          },
+          {
+            "heading": "Na prática",
+            "text": "É comum usar Grid para estrutura e Flexbox para organizar o conteúdo dentro das colunas."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Escolha a ferramenta de acordo com o problema de layout que precisa resolver."
+        },
+        "image": {
+          "url": "https://images.unsplash.com/photo-1558655146-9f40138edfeb?q=80&w=1200&auto=format&fit=crop",
+          "alt": "Interface composta por diferentes blocos e componentes",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 19,
+      "type": "code",
+      "title": "Grid + Flexbox",
+      "subtitle": "Duas ferramentas trabalhando juntas",
+      "content": {
+        "language": "html",
+        "code": "<div class=\"row\">\n    <div class=\"col-md-6\">\n        <div class=\"d-flex align-items-center gap-3\">\n            <div class=\"icon\">★</div>\n            <div>\n                <h3>Curso</h3>\n                <p>Aprenda Web.</p>\n            </div>\n        </div>\n    </div>\n</div>"
+      }
+    },
+    {
+      "id": 20,
+      "type": "practice",
+      "title": "Exercício rápido de layout",
+      "subtitle": "Antes de seguir para JavaScript",
+      "content": {
+        "items": [
+          {
+            "title": "Desafio 1",
+            "detail": "Crie três cards que ocupem uma coluna no mobile.",
+            "icon": "phone_android"
+          },
+          {
+            "title": "Desafio 2",
+            "detail": "Faça os cards ocuparem metade da linha no md.",
+            "icon": "tablet"
+          },
+          {
+            "title": "Desafio 3",
+            "detail": "Faça os cards ocuparem um terço no lg.",
+            "icon": "desktop_windows"
+          },
+          {
+            "title": "Desafio 4",
+            "detail": "Use Flexbox para alinhar o conteúdo de cada card.",
+            "icon": "tune"
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Teste redimensionando o navegador. Não confie apenas na visualização inicial."
+        }
+      }
+    },
+    {
+      "id": 21,
+      "type": "intro",
+      "title": "JavaScript moderno",
+      "subtitle": "Agora precisamos recuperar a lógica que dará vida à interface.",
+      "content": {
+        "badge": "Revisão",
+        "description": "Antes de entrar no Vue 3, vamos revisar os recursos de JavaScript que aparecem constantemente em aplicações modernas.",
+        "keyPoints": [
+          "let e const",
+          "Funções",
+          "Arrow functions",
+          "Arrays e objetos",
+          "Map e filter",
+          "Destructuring e spread"
+        ],
+        "image": {
+          "url": "https://images.unsplash.com/photo-1627398242454-45a1465c2479?q=80&w=1200&auto=format&fit=crop",
+          "alt": "Código JavaScript em um editor de programação",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 22,
+      "type": "theory",
+      "title": "let × const",
+      "subtitle": "Declarando valores no JavaScript moderno",
+      "content": {
+        "sections": [
+          {
+            "heading": "const",
+            "text": "Use quando a variável não será reatribuída."
+          },
+          {
+            "heading": "let",
+            "text": "Use quando a variável precisa receber outro valor posteriormente."
+          },
+          {
+            "heading": "var",
+            "text": "É uma declaração legada e possui regras de escopo diferentes de let e const."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Como regra prática, prefira const e utilize let quando houver necessidade real de reatribuição."
+        }
+      }
+    },
+    {
+      "id": 23,
+      "type": "code",
+      "title": "Variáveis",
+      "subtitle": "Uma revisão rápida",
+      "content": {
+        "language": "javascript",
+        "code": "const nome = \"Fernando\";\nconst idade = 37;\n\nlet contador = 0;\ncontador = contador + 1;\n\nconsole.log(nome);\nconsole.log(idade);\nconsole.log(contador);"
+      }
+    },
+    {
+      "id": 24,
+      "type": "theory",
+      "title": "Funções",
+      "subtitle": "Encapsulando comportamentos",
+      "content": {
+        "sections": [
+          {
+            "heading": "Função tradicional",
+            "text": "Permite definir um bloco reutilizável de código."
+          },
+          {
+            "heading": "Parâmetros",
+            "text": "Permitem receber valores para executar uma operação."
+          },
+          {
+            "heading": "Retorno",
+            "text": "Uma função pode produzir um valor utilizando return."
+          }
+        ],
+        "image": {
+          "url": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop",
+          "alt": "Código sendo escrito em um editor",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 25,
+      "type": "code",
+      "title": "Arrow functions",
+      "subtitle": "Uma sintaxe muito utilizada no desenvolvimento moderno",
+      "content": {
+        "language": "javascript",
+        "code": "function somar(a, b) {\n    return a + b;\n}\n\nconst somar = (a, b) => {\n    return a + b;\n};\n\nconst multiplicar = (a, b) => a * b;"
+      }
+    },
+    {
+      "id": 26,
+      "type": "practice",
+      "title": "Onde vamos usar funções?",
+      "subtitle": "JavaScript e Vue dependem muito delas.",
+      "content": {
+        "items": [
+          {
+            "title": "Eventos",
+            "detail": "Executar uma ação quando o usuário interagir.",
+            "icon": "touch_app"
+          },
+          {
+            "title": "Transformação",
+            "detail": "Processar valores e coleções.",
+            "icon": "tune"
+          },
+          {
+            "title": "Reutilização",
+            "detail": "Evitar duplicação de lógica.",
+            "icon": "sync"
+          },
+          {
+            "title": "Componentes",
+            "detail": "Funções e lógica participam da construção de aplicações Vue.",
+            "icon": "widgets"
+          }
+        ]
+      }
+    },
+    {
+      "id": 27,
+      "type": "intro",
+      "title": "Arrays e objetos",
+      "subtitle": "As estruturas de dados que encontraremos o tempo todo",
+      "content": {
+        "badge": "JavaScript",
+        "description": "Aplicações Web trabalham constantemente com listas de dados e objetos que representam entidades do sistema.",
+        "keyPoints": [
+          "Arrays representam coleções",
+          "Objetos representam entidades",
+          "Arrays podem conter objetos",
+          "Métodos ajudam a transformar os dados"
+        ],
+        "image": {
+          "url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
+          "alt": "Visualização de dados em uma interface digital",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 28,
+      "type": "code",
+      "title": "Objetos e arrays",
+      "subtitle": "Uma estrutura comum em aplicações",
+      "content": {
+        "language": "javascript",
+        "code": "const curso = {\n    id: 1,\n    nome: \"HTML e CSS\",\n    cargaHoraria: 40\n};\n\nconst cursos = [\n    curso,\n    {\n        id: 2,\n        nome: \"JavaScript\",\n        cargaHoraria: 60\n    }\n];"
+      }
+    },
+    {
+      "id": 29,
+      "type": "theory",
+      "title": "map × filter",
+      "subtitle": "Transformando e filtrando coleções",
+      "content": {
+        "sections": [
+          {
+            "heading": "map",
+            "text": "Cria um novo array transformando cada elemento da coleção."
+          },
+          {
+            "heading": "filter",
+            "text": "Cria um novo array contendo apenas os elementos que atendem a uma condição."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "map e filter aparecem frequentemente quando trabalhamos com listas que serão renderizadas em interfaces."
+        }
+      }
+    },
+    {
+      "id": 30,
+      "type": "code",
+      "title": "map e filter",
+      "subtitle": "Transformando uma lista de cursos",
+      "content": {
+        "language": "javascript",
+        "code": "const cursos = [\n    { nome: \"HTML\", ativo: true },\n    { nome: \"CSS\", ativo: true },\n    { nome: \"JavaScript\", ativo: false }\n];\n\nconst nomes = cursos.map(curso => curso.nome);\n\nconst ativos = cursos.filter(curso => curso.ativo);"
+      }
+    },
+    {
+      "id": 31,
+      "type": "practice",
+      "title": "Uma pergunta importante",
+      "subtitle": "Por que map é tão importante para Vue?",
+      "content": {
+        "items": [
+          {
+            "title": "Lista de dados",
+            "detail": "Imagine que temos uma lista de cursos vinda de uma API.",
+            "icon": "category"
+          },
+          {
+            "title": "Dados → Interface",
+            "detail": "Cada item da lista precisa gerar uma parte visual da página.",
+            "icon": "sync"
+          },
+          {
+            "title": "Renderização",
+            "detail": "Vue possui recursos específicos para renderizar listas.",
+            "icon": "visibility"
+          },
+          {
+            "title": "Reatividade",
+            "detail": "Quando os dados mudam, a interface pode acompanhar essa mudança.",
+            "icon": "refresh"
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "A ideia de transformar dados em interface será central quando começarmos a trabalhar com Vue."
+        }
+      }
+    },
+    {
+      "id": 32,
+      "type": "theory",
+      "title": "Destructuring",
+      "subtitle": "Extraindo informações de objetos e arrays",
+      "content": {
+        "sections": [
+          {
+            "heading": "Objeto",
+            "text": "Podemos extrair propriedades diretamente para variáveis."
+          },
+          {
+            "heading": "Array",
+            "text": "Podemos extrair valores pela posição."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Destructuring reduz código repetitivo e aparece com frequência em APIs, funções e componentes."
+        }
+      }
+    },
+    {
+      "id": 33,
+      "type": "code",
+      "title": "Destructuring na prática",
+      "subtitle": "Extraindo valores",
+      "content": {
+        "language": "javascript",
+        "code": "const curso = {\n    nome: \"Vue 3\",\n    cargaHoraria: 40\n};\n\nconst { nome, cargaHoraria } = curso;\n\nconsole.log(nome);\nconsole.log(cargaHoraria);\n\nconst [primeiro, segundo] = [10, 20];"
+      }
+    },
+    {
+      "id": 34,
+      "type": "theory",
+      "title": "Spread operator",
+      "subtitle": "Criando cópias e combinando dados",
+      "content": {
+        "sections": [
+          {
+            "heading": "...array",
+            "text": "Permite expandir os elementos de um array em outro array."
+          },
+          {
+            "heading": "...objeto",
+            "text": "Permite copiar propriedades de um objeto para outro."
+          }
+        ],
+        "callout": {
+          "type": "warning",
+          "text": "Spread cria uma nova estrutura, mas não significa clonagem profunda de objetos aninhados."
+        }
+      }
+    },
+    {
+      "id": 35,
+      "type": "code",
+      "title": "Spread na prática",
+      "subtitle": "Copiando e atualizando objetos",
+      "content": {
+        "language": "javascript",
+        "code": "const curso = {\n    nome: \"JavaScript\",\n    ativo: true\n};\n\nconst cursoAtualizado = {\n    ...curso,\n    ativo: false\n};\n\nconst cursos = [\"HTML\", \"CSS\"];\nconst todos = [...cursos, \"JavaScript\"];"
+      }
+    },
+    {
+      "id": 36,
+      "type": "image",
+      "title": "Do dado para a interface",
+      "subtitle": "O conceito que prepara nossa entrada no Vue",
+      "content": {
+        "imageUrl": "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1600&auto=format&fit=crop",
+        "imageAlt": "Equipe trabalhando em conjunto no desenvolvimento de um produto digital",
+        "description": "Dados podem ser recebidos, transformados e apresentados na interface. Vue adiciona uma camada de reatividade para manter esses elementos sincronizados."
+      }
+    },
+    {
+      "id": 37,
+      "type": "intro",
+      "title": "E agora: Vue 3",
+      "subtitle": "Como transformar JavaScript em interfaces reativas?",
+      "content": {
+        "badge": "Próximo passo",
+        "description": "Vue é um framework JavaScript para construção de interfaces. Antes de aprender sua sintaxe, precisamos entender quais problemas ele resolve.",
+        "keyPoints": [
+          "Interface baseada em dados",
+          "Reatividade",
+          "Renderização condicional",
+          "Renderização de listas",
+          "Eventos",
+          "Componentes"
+        ],
+        "image": {
+          "url": "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1200&auto=format&fit=crop",
+          "alt": "Interface de aplicação web exibida em um computador",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 38,
+      "type": "theory",
+      "title": "O problema do JavaScript manual",
+      "subtitle": "Quando a interface começa a ficar complexa",
+      "content": {
+        "sections": [
+          {
+            "heading": "DOM",
+            "text": "Precisamos localizar elementos e alterar a interface manualmente."
+          },
+          {
+            "heading": "Estado",
+            "text": "Precisamos controlar os dados que determinam o que aparece na tela."
+          },
+          {
+            "heading": "Sincronização",
+            "text": "Precisamos garantir que a interface continue refletindo o estado atual."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Frameworks como Vue ajudam a organizar a relação entre estado e interface."
+        }
+      }
+    },
+    {
+      "id": 39,
+      "type": "code",
+      "title": "JavaScript manipulando o DOM",
+      "subtitle": "Uma abordagem imperativa",
+      "content": {
+        "language": "javascript",
+        "code": "const button = document.querySelector(\"#btn\");\nconst mensagem = document.querySelector(\"#mensagem\");\n\nbutton.addEventListener(\"click\", () => {\n    mensagem.textContent = \"Curso selecionado!\";\n});"
+      }
+    },
+    {
+      "id": 40,
+      "type": "theory",
+      "title": "Pensando de forma reativa",
+      "subtitle": "O estado muda e a interface acompanha",
+      "content": {
+        "sections": [
+          {
+            "heading": "Estado",
+            "text": "Representa os dados atuais da aplicação."
+          },
+          {
+            "heading": "Interface",
+            "text": "Representa visualmente o estado."
+          },
+          {
+            "heading": "Reatividade",
+            "text": "Quando o estado muda, o framework atualiza as partes necessárias da interface."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Essa mudança de pensamento é uma das ideias fundamentais para aprender Vue."
+        },
+        "image": {
+          "url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
+          "alt": "Dashboard representando dados sendo atualizados em uma interface",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 41,
+      "type": "practice",
+      "title": "O que aprenderemos no Vue?",
+      "subtitle": "Os próximos conceitos",
+      "content": {
+        "items": [
+          {
+            "title": "Template",
+            "detail": "Escrever a estrutura visual utilizando HTML e sintaxe do Vue.",
+            "icon": "code"
+          },
+          {
+            "title": "Reatividade",
+            "detail": "Manter estado e interface sincronizados.",
+            "icon": "sync"
+          },
+          {
+            "title": "Condicionais",
+            "detail": "Exibir conteúdo dependendo do estado.",
+            "icon": "visibility"
+          },
+          {
+            "title": "Listas",
+            "detail": "Renderizar coleções de dados.",
+            "icon": "category"
+          },
+          {
+            "title": "Eventos",
+            "detail": "Responder às interações do usuário.",
+            "icon": "touch_app"
+          },
+          {
+            "title": "Componentes",
+            "detail": "Dividir a interface em partes reutilizáveis.",
+            "icon": "widgets"
+          }
+        ]
+      }
+    },
+    {
+      "id": 42,
+      "type": "code",
+      "title": "A ideia por trás de Vue",
+      "subtitle": "Estado → Interface",
+      "content": {
+        "language": "javascript",
+        "code": "const curso = {\n    nome: \"Vue 3\",\n    vagas: 20\n};\n\n// A interface pode utilizar esses dados\n// para apresentar o curso ao usuário."
+      }
+    },
+    {
+      "id": 43,
+      "type": "theory",
+      "title": "JavaScript que já conhecemos",
+      "subtitle": "Vue aproveita fundamentos que você já estudou",
+      "content": {
+        "sections": [
+          {
+            "heading": "Objetos",
+            "text": "Representam dados e estados da aplicação."
+          },
+          {
+            "heading": "Arrays",
+            "text": "Representam coleções que podem ser exibidas na interface."
+          },
+          {
+            "heading": "Funções",
+            "text": "Representam comportamentos e respostas a eventos."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Quanto melhor sua base de JavaScript, mais fácil será compreender Vue."
+        }
+      }
+    },
+    {
+      "id": 44,
+      "type": "practice",
+      "title": "Desafio final da aula",
+      "subtitle": "Prepare o terreno para Vue 3",
+      "content": {
+        "items": [
+          {
+            "title": "Layout",
+            "detail": "Crie uma página responsiva usando Bootstrap Grid.",
+            "icon": "grid_view"
+          },
+          {
+            "title": "Flexbox",
+            "detail": "Utilize Flexbox para alinhar elementos dentro dos componentes.",
+            "icon": "tune"
+          },
+          {
+            "title": "Dados",
+            "detail": "Crie um array de objetos representando cursos.",
+            "icon": "category"
+          },
+          {
+            "title": "Transformação",
+            "detail": "Utilize map ou filter para trabalhar com a coleção.",
+            "icon": "sync"
+          },
+          {
+            "title": "Preparação",
+            "detail": "Pense em quais dados precisarão aparecer dinamicamente na interface.",
+            "icon": "route"
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Na próxima aula, esses dados deixarão de ser apenas JavaScript e passarão a alimentar uma interface Vue."
+        },
+        "image": {
+          "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
+          "alt": "Desenvolvedor trabalhando em uma aplicação Web",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 45,
+      "type": "theory",
+      "title": "Checklist antes do Vue",
+      "subtitle": "Você consegue explicar estes conceitos?",
+      "content": {
+        "sections": [
+          {
+            "heading": "Bootstrap",
+            "text": "Sei construir um layout responsivo usando container, row, col e breakpoints."
+          },
+          {
+            "heading": "Flexbox",
+            "text": "Sei explicar eixo principal, eixo transversal e alinhamento."
+          },
+          {
+            "heading": "JavaScript",
+            "text": "Sei trabalhar com const, let, funções, arrays, objetos, map e filter."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Se esses conceitos estiverem claros, a entrada em Vue será muito mais tranquila."
+        }
+      }
+    },
+    {
+      "id": 46,
+      "type": "image",
+      "title": "A evolução da nossa página",
+      "subtitle": "HTML → CSS → Bootstrap → JavaScript → Vue",
+      "content": {
+        "imageUrl": "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1600&auto=format&fit=crop",
+        "imageAlt": "Profissional desenvolvendo e analisando uma interface digital",
+        "description": "A construção de uma aplicação moderna é incremental: primeiro estruturamos, depois estilizamos, organizamos o layout, adicionamos comportamento e finalmente trabalhamos com abstrações de componentes e reatividade."
+      }
+    },
+    {
+      "id": 47,
+      "type": "practice",
+      "title": "Principais aprendizados",
+      "subtitle": "O que levamos desta aula",
+      "content": {
+        "items": [
+          {
+            "title": "Grid",
+            "detail": "12 colunas, containers, rows e breakpoints.",
+            "icon": "grid_view"
+          },
+          {
+            "title": "Responsividade",
+            "detail": "Layouts mobile-first adaptados ao viewport.",
+            "icon": "devices"
+          },
+          {
+            "title": "Flexbox",
+            "detail": "Alinhamento e distribuição de elementos.",
+            "icon": "tune"
+          },
+          {
+            "title": "JavaScript",
+            "detail": "Dados, funções, arrays, objetos e transformações.",
+            "icon": "code"
+          },
+          {
+            "title": "Vue",
+            "detail": "O próximo passo é conectar estado e interface de forma reativa.",
+            "icon": "widgets"
+          }
+        ]
+      }
+    },
+    {
+      "id": 48,
+      "type": "intro",
+      "title": "Próxima aula: Vue 3",
+      "subtitle": "Agora vamos transformar dados em interface.",
+      "content": {
+        "badge": "Próximo passo",
+        "description": "Na próxima aula vamos criar uma aplicação Vue 3 e começar a trabalhar com templates, reatividade, eventos, renderização de listas e componentes.",
+        "keyPoints": [
+          "Criando um projeto Vue 3",
+          "Template Syntax",
+          "Reatividade",
+          "v-if e v-for",
+          "Eventos",
+          "Componentes"
+        ],
+        "image": {
+          "url": "https://images.unsplash.com/photo-1516116216624-53e697fedbea?q=80&w=1200&auto=format&fit=crop",
+          "alt": "Código de uma aplicação sendo desenvolvido em um computador",
+          "position": "right"
+        }
       }
     }
-  }
-]
+  ]
+}

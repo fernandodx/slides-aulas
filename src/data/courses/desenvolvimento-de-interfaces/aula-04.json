@@ -1,74 +1,380 @@
 {
   "id": 4,
-  "title": "Aula 4 — Descobrindo o Problema",
-  "subtitle": "Metodologia Design Thinking, modelo Double Diamond, Personas e Jornada do Usuário.",
+  "title": "Aula 4 — Arquitetura da Informação e Wireframes",
+  "subtitle": "Organização, fluxos, estrutura visual e decisões de design antes da implementação.",
   "module": "Módulo 2 — UI/UX e Design de Produtos",
-  "tag": "Atividade",
+  "tag": "Teoria",
   "slides": [
     {
       "id": 1,
       "type": "intro",
-      "title": "Design Thinking e o Double Diamond",
-      "subtitle": "Como explorar problemas complexos antes de saltar para soluções de código.",
+      "title": "Arquitetura da Informação e Wireframes",
+      "subtitle": "Antes de desenhar uma interface, precisamos organizar a experiência.",
       "content": {
         "badge": "Aula 04",
-        "description": "O modelo de Duplo Diamante divide o processo em 4 fases: Descobrir (Divergir), Definir (Convergir), Desenvolver (Divergir) e Entregar (Convergir).",
-        "keyPoints": [
-          "Descobrir: Pesquisa empírica e empatia com o usuário",
-          "Definir: Sintetizar aprendizados e delimitar o problema real",
-          "Desenvolver: Prototipar hipóteses de interface",
-          "Entregar: Validar e lançar em produção"
-        ]
+        "description": "Uma interface eficiente não começa com cores e botões. Primeiro entendemos o conteúdo, organizamos informações, definimos caminhos e estruturamos as telas.",
+        "keyPoints": ["Organização e hierarquia", "Navegação e arquitetura", "Sitemap, User Flow e Task Flow", "Wireframes de baixa e alta fidelidade", "Tipografia, cores e leis de usabilidade"],
+        "image": {"url": "https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=1200&auto=format&fit=crop", "alt": "Profissional organizando uma interface digital", "position": "right"}
       }
     },
     {
       "id": 2,
       "type": "theory",
-      "title": "O que é uma Persona?",
-      "subtitle": "Representação arquetípica baseada em dados do usuário final.",
+      "title": "Uma pergunta para começar",
+      "subtitle": "Se o usuário não encontra o que precisa, o produto funciona?",
       "content": {
         "sections": [
-          {
-            "heading": "Elementos da Persona",
-            "text": "• Nome, Foto, Idade e Profissão fictícios\n• Dores (Pains) e Necessidades diárias\n• Objetivos com a plataforma e comportamentos de consumo web"
-          },
-          {
-            "heading": "Importância para o Dev",
-            "text": "Evita o viés do 'eu sou o usuário'. O código deve atender às necessidades reais da persona definida."
-          }
-        ]
+          {"heading": "Conteúdo não é suficiente", "text": "Um produto pode ter todas as informações necessárias e ainda oferecer uma experiência ruim se elas estiverem mal organizadas."},
+          {"heading": "O desafio do UX", "text": "Transformar informação em uma estrutura que permita encontrar, compreender e usar o que é necessário."}
+        ],
+        "callout": {"type": "important", "text": "Arquitetura da Informação organiza o conteúdo para que as pessoas encontrem o que precisam e realizem suas tarefas."},
+        "image": {"url": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop", "alt": "Pessoa planejando informações em uma mesa", "position": "right"}
       }
     },
     {
       "id": 3,
-      "type": "theory",
-      "title": "Mapa da Jornada do Usuário",
-      "subtitle": "Visualizando a experiência completa passo a passo.",
+      "type": "practice",
+      "title": "O que uma boa arquitetura responde?",
+      "subtitle": "Perguntas que orientam a organização de um produto.",
       "content": {
-        "sections": [
-          {
-            "heading": "Etapas Típicas da Jornada",
-            "text": "Descoberta → Cadastro → Primeiro Uso → Solução da Dor → Retorno / Fidelização"
-          },
-          {
-            "heading": "Análise de Emoções",
-            "text": "Mapeamento dos pontos de fricção (onde o usuário fica frustrado) e oportunidades de melhoria."
-          }
-        ]
+        "items": [
+          {"title": "O que existe?", "detail": "Quais conteúdos, páginas, recursos e serviços fazem parte do produto?", "icon": "category"},
+          {"title": "Onde está?", "detail": "Onde cada conteúdo pode ser encontrado?", "icon": "search"},
+          {"title": "Como chego?", "detail": "Qual caminho permite alcançar o objetivo?", "icon": "route"},
+          {"title": "O que importa agora?", "detail": "Qual informação ou ação deve receber destaque?", "icon": "visibility"}
+        ],
+        "image": {"url": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop", "alt": "Pessoa utilizando um notebook", "position": "right"}
       }
     },
     {
       "id": 4,
+      "type": "theory",
+      "title": "Organização: como agrupar conteúdos?",
+      "subtitle": "O mesmo conteúdo pode ser apresentado de formas muito diferentes.",
+      "content": {
+        "sections": [
+          {"heading": "Por categoria", "text": "Ex.: Produtos → Celulares, Notebooks e Tablets."},
+          {"heading": "Por público", "text": "Ex.: Área do aluno, Área do professor e Área administrativa."},
+          {"heading": "Por tarefa", "text": "Ex.: Comprar, consultar pedido, solicitar troca e acompanhar entrega."}
+        ],
+        "callout": {"type": "tip", "text": "Escolha a organização que melhor corresponde ao modelo mental das pessoas usuárias."},
+        "image": {"url": "https://images.unsplash.com/photo-1516321165247-4aa89a48be28?q=80&w=1200&auto=format&fit=crop", "alt": "Pessoas trabalhando com conteúdo em telas", "position": "right"}
+      }
+    },
+    {
+      "id": 5,
+      "type": "image",
+      "title": "Exemplo: aplicativo universitário",
+      "subtitle": "Agrupar reduz a sensação de desordem.",
+      "content": {
+        "imageUrl": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1600&auto=format&fit=crop",
+        "imageAlt": "Estudantes em ambiente universitário",
+        "description": "Acadêmico: Disciplinas, Notas, Calendário e Professores. Financeiro: Mensalidades, Boletos e Histórico. Institucional: Notícias, Eventos e Biblioteca."
+      }
+    },
+    {
+      "id": 6,
+      "type": "theory",
+      "title": "Hierarquia: nem tudo tem o mesmo peso",
+      "subtitle": "A interface precisa mostrar o que deve ser visto primeiro.",
+      "content": {
+        "sections": [
+          {"heading": "Prioridade visual", "text": "Tamanho, posição, contraste, espaçamento, tipografia, cor e agrupamento orientam a atenção."},
+          {"heading": "Decisão de design", "text": "Uma ação importante, como finalizar uma compra, deve se destacar sem competir com tudo ao redor."}
+        ],
+        "callout": {"type": "important", "text": "Hierarquia visual ajuda o usuário a entender o que fazer sem precisar ler tudo."},
+        "image": {"url": "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1200&auto=format&fit=crop", "alt": "Profissional analisando uma interface", "position": "right"}
+      }
+    },
+    {
+      "id": 7,
       "type": "practice",
-      "title": "Atividade: Construir a Persona do Projeto",
-      "subtitle": "Exercício prático em grupo para criar a persona principal da disciplina.",
+      "title": "Navegação",
+      "subtitle": "Como o usuário se desloca dentro do produto.",
       "content": {
         "items": [
-          { "title": "Passo 1", "detail": "Escolha o segmento do seu projeto (e-commerce, educação, finanças, produtividade)." },
-          { "title": "Passo 2", "detail": "No Figma, crie um card com Foto, Nome, Bio, 3 Dores Principais e 3 Objetivos." },
-          { "title": "Passo 3", "detail": "Defina qual o principal problema que a sua interface vai resolver para ela." }
+          {"title": "Global", "detail": "Presente em grande parte do sistema: Home, Produtos, Serviços e Perfil.", "icon": "home"},
+          {"title": "Local", "detail": "Organiza conteúdos dentro de uma seção: Informações, Avaliações e Especificações.", "icon": "layers"},
+          {"title": "Contextual", "detail": "Surge relacionado ao conteúdo atual, como produtos relacionados.", "icon": "link"}
+        ],
+        "callout": {"type": "tip", "text": "O usuário deve saber onde está, para onde pode ir e como voltar."}
+      }
+    },
+    {
+      "id": 8,
+      "type": "intro",
+      "title": "Fluxos: antes da tela, a tarefa",
+      "subtitle": "Mapeamos caminhos para reduzir etapas desnecessárias.",
+      "content": {
+        "badge": "Fluxos",
+        "description": "Antes de desenhar a interface, precisamos entender o que a pessoa precisa fazer, quais decisões ela toma e quais resultados são possíveis.",
+        "keyPoints": ["Sitemap: estrutura", "User Flow: caminho", "Task Flow: tarefa específica"],
+        "image": {"url": "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1200&auto=format&fit=crop", "alt": "Equipe discutindo um fluxo de trabalho", "position": "right"}
+      }
+    },
+    {
+      "id": 9,
+      "type": "image",
+      "title": "Sitemap",
+      "subtitle": "Quais páginas ou telas existem e como se organizam?",
+      "content": {
+        "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1600&auto=format&fit=crop",
+        "imageAlt": "Painel com visualização de dados e organização", 
+        "description": "Exemplo estrutural: Home → Produtos, Serviços e Perfil; Produtos → Celulares, Notebooks e Tablets. Sitemap é o mapa do produto."
+      }
+    },
+    {
+      "id": 10,
+      "type": "theory",
+      "title": "User Flow",
+      "subtitle": "O caminho percorrido para atingir um objetivo.",
+      "content": {
+        "sections": [
+          {"heading": "Exemplo", "text": "Home → Produtos → Celulares → Selecionar produto → Carrinho → Pagamento → Confirmação."},
+          {"heading": "Pergunta-chave", "text": "Qual caminho o usuário percorre para concluir seu objetivo?"}
+        ],
+        "callout": {"type": "info", "text": "Um fluxo pode ter caminhos alternativos, retornos, erros e decisões."},
+        "image": {"url": "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop", "alt": "Equipe discutindo etapas de um projeto", "position": "right"}
+      }
+    },
+    {
+      "id": 11,
+      "type": "theory",
+      "title": "Task Flow",
+      "subtitle": "O passo a passo de uma tarefa específica.",
+      "content": {
+        "sections": [
+          {"heading": "Exemplo: fazer login", "text": "Iniciar → Informar e-mail → Informar senha → Clicar em entrar → Login realizado."},
+          {"heading": "Decisões", "text": "A senha está correta? Sim: entrar. Não: mostrar erro e permitir nova tentativa."}
+        ],
+        "callout": {"type": "important", "text": "Task Flow detalha a execução; ele ajuda a revelar atritos e situações de erro."}
+      }
+    },
+    {
+      "id": 12,
+      "type": "practice",
+      "title": "Sitemap, User Flow e Task Flow",
+      "subtitle": "Três visões complementares do mesmo produto.",
+      "content": {
+        "items": [
+          {"title": "Sitemap", "detail": "Responde: o que existe? É o mapa da cidade.", "icon": "account_tree"},
+          {"title": "User Flow", "detail": "Responde: qual caminho o usuário percorre? É a rota escolhida.", "icon": "route"},
+          {"title": "Task Flow", "detail": "Responde: como uma tarefa é realizada? É o passo a passo da ação.", "icon": "fact_check"}
+        ],
+        "image": {"url": "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=1200&auto=format&fit=crop", "alt": "Pessoa organizando post-its em um quadro", "position": "right"}
+      }
+    },
+    {
+      "id": 13,
+      "type": "intro",
+      "title": "Wireframes",
+      "subtitle": "A representação estrutural de uma interface.",
+      "content": {
+        "badge": "Estrutura de tela",
+        "description": "Wireframes definem localização, prioridade e relação entre os elementos de uma tela antes dos detalhes visuais finais.",
+        "keyPoints": ["Onde fica o menu?", "O que aparece primeiro?", "Onde ficam ações e conteúdos?", "Como as telas se conectam?"],
+        "image": {"url": "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?q=80&w=1200&auto=format&fit=crop", "alt": "Pessoa desenhando um wireframe em papel", "position": "right"}
+      }
+    },
+    {
+      "id": 14,
+      "type": "theory",
+      "title": "Wireframe de baixa fidelidade",
+      "subtitle": "Simples, rápido e focado em ideias.",
+      "content": {
+        "sections": [
+          {"heading": "Características", "text": "Blocos, rascunhos, textos simulados e poucos detalhes visuais. Pode ser feito no papel, quadro ou Figma."},
+          {"heading": "Quando usar", "text": "No início do projeto, em brainstorming, validação rápida e discussões de layout."}
+        ],
+        "callout": {"type": "tip", "text": "Baixa fidelidade é barata de mudar: desenhe, teste, ajuste e teste novamente."},
+        "image": {"url": "https://images.unsplash.com/photo-1516383607781-913a19294fd1?q=80&w=1200&auto=format&fit=crop", "alt": "Rascunhos e anotações de projeto", "position": "right"}
+      }
+    },
+    {
+      "id": 15,
+      "type": "theory",
+      "title": "Wireframe de alta fidelidade",
+      "subtitle": "Mais próximo da interface que será implementada.",
+      "content": {
+        "sections": [
+          {"heading": "Pode incluir", "text": "Tipografia, componentes, espaçamentos, imagens, cores, estados e interações."},
+          {"heading": "Quando usar", "text": "Após validar a estrutura; para avaliar decisões visuais, apresentar a stakeholders ou orientar desenvolvimento."}
+        ],
+        "callout": {"type": "important", "text": "Regra prática: baixa fidelidade para pensar; alta fidelidade para validar e detalhar."},
+        "image": {"url": "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1200&auto=format&fit=crop", "alt": "Tela de interface digital em processo de design", "position": "right"}
+      }
+    },
+    {
+      "id": 16,
+      "type": "practice",
+      "title": "Comparando fidelidades",
+      "subtitle": "Escolha o nível de detalhe de acordo com a pergunta do projeto.",
+      "content": {
+        "items": [
+          {"title": "Baixa fidelidade", "detail": "Valida estrutura, conteúdo, hierarquia e fluxo com rapidez.", "icon": "edit_note"},
+          {"title": "Alta fidelidade", "detail": "Valida aparência, componentes, estados e interação próxima do real.", "icon": "devices"},
+          {"title": "Cuidado", "detail": "Não pule para o visual antes de confirmar se a estrutura faz sentido.", "icon": "warning"}
         ]
+      }
+    },
+    {
+      "id": 17,
+      "type": "intro",
+      "title": "Tipografia e cor",
+      "subtitle": "A transição entre estrutura e linguagem visual.",
+      "content": {
+        "badge": "Design visual",
+        "description": "Depois de organizar a experiência, tipografia e cores reforçam hierarquia, legibilidade, personalidade e entendimento de estados.",
+        "keyPoints": ["Legibilidade", "Hierarquia", "Consistência", "Acessibilidade"],
+        "image": {"url": "https://images.unsplash.com/photo-1561070791-36c11767b26a?q=80&w=1200&auto=format&fit=crop", "alt": "Materiais de design com cores e tipografia", "position": "right"}
+      }
+    },
+    {
+      "id": 18,
+      "type": "theory",
+      "title": "Tipografia é mais que uma fonte bonita",
+      "subtitle": "Ela torna o conteúdo legível, organizado e reconhecível.",
+      "content": {
+        "sections": [
+          {"heading": "Hierarquia", "text": "Use tamanhos e pesos para diferenciar título, seção, texto e botão."},
+          {"heading": "Consistência", "text": "Uma família tipográfica bem estruturada costuma ser suficiente para uma interface."},
+          {"heading": "Acessibilidade", "text": "Prefira contraste, tamanho e espaçamento que favoreçam a leitura."}
+        ],
+        "callout": {"type": "warning", "text": "Mais fontes não significam mais design. Use poucas famílias com papéis claros."}
+      }
+    },
+    {
+      "id": 19,
+      "type": "theory",
+      "title": "Paleta de cores",
+      "subtitle": "Cores precisam exercer funções dentro do sistema.",
+      "content": {
+        "sections": [
+          {"heading": "Cores de marca", "text": "Primary e Secondary reforçam identidade e destacam áreas ou ações importantes."},
+          {"heading": "Cores funcionais", "text": "Background, Surface, Text, Success, Warning e Error ajudam a comunicar contexto e estado."}
+        ],
+        "callout": {"type": "tip", "text": "Não escolha uma cor apenas porque gosta dela: defina que função ela terá na interface."},
+        "image": {"url": "https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=1200&auto=format&fit=crop", "alt": "Equipe analisando um painel com cores", "position": "right"}
+      }
+    },
+    {
+      "id": 20,
+      "type": "practice",
+      "title": "Psicologia das cores: contexto importa",
+      "subtitle": "Associações são úteis, mas não são regras universais.",
+      "content": {
+        "items": [
+          {"title": "Azul", "detail": "Frequentemente associado a confiança, estabilidade e segurança.", "icon": "shield"},
+          {"title": "Vermelho", "detail": "Pode comunicar urgência, energia, erro, perigo ou promoção.", "icon": "error_outline"},
+          {"title": "Verde", "detail": "Costuma indicar natureza, sucesso ou crescimento.", "icon": "eco"},
+          {"title": "Amarelo e laranja", "detail": "Podem comunicar atenção, energia e entusiasmo.", "icon": "wb_sunny"}
+        ],
+        "callout": {"type": "important", "text": "Cultura, contexto, contraste e combinação de cores mudam a interpretação."}
+      }
+    },
+    {
+      "id": 21,
+      "type": "theory",
+      "title": "Lei de Fitts",
+      "subtitle": "Alvos maiores e próximos são mais fáceis de alcançar.",
+      "content": {
+        "sections": [
+          {"heading": "Em termos simples", "text": "Quanto maior e mais próximo estiver um alvo, mais rápido e fácil tende a ser selecioná-lo."},
+          {"heading": "Aplicação", "text": "Botões, áreas clicáveis, controles touch e navegação mobile precisam de áreas de toque confortáveis."}
+        ],
+        "callout": {"type": "tip", "text": "Não transforme ações importantes em ícones pequenos e isolados."},
+        "image": {"url": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200&auto=format&fit=crop", "alt": "Pessoa usando um smartphone", "position": "right"}
+      }
+    },
+    {
+      "id": 22,
+      "type": "theory",
+      "title": "Lei de Hick",
+      "subtitle": "Mais escolhas e complexidade aumentam o tempo de decisão.",
+      "content": {
+        "sections": [
+          {"heading": "Em termos simples", "text": "Quanto mais opções o usuário precisa analisar, maior tende a ser o tempo necessário para decidir."},
+          {"heading": "Aplicação", "text": "Organize opções em categorias, apresente escolhas progressivamente e destaque o próximo passo."}
+        ],
+        "callout": {"type": "important", "text": "Reduzir complexidade percebida é melhor do que simplesmente esconder informação importante."},
+        "image": {"url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop", "alt": "Pessoa escolhendo opções em uma tela de computador", "position": "right"}
+      }
+    },
+    {
+      "id": 23,
+      "type": "image",
+      "title": "Conectando todos os conceitos",
+      "subtitle": "Exemplo: pedido em um aplicativo de delivery.",
+      "content": {
+        "imageUrl": "https://images.unsplash.com/photo-1526367790999-0150786686a2?q=80&w=1600&auto=format&fit=crop",
+        "imageAlt": "Pessoa utilizando aplicativo de delivery no celular",
+        "description": "Arquitetura organiza restaurantes; sitemap mostra telas; user flow leva ao pedido; wireframe estrutura a tela; tipografia e cores comunicam; Fitts facilita tocar em Adicionar; Hick evita excesso de opções." 
+      }
+    },
+    {
+      "id": 24,
+      "type": "intro",
+      "title": "Atividade prática",
+      "subtitle": "Escolhendo tipografia e paleta de cores para um produto digital.",
+      "content": {
+        "badge": "Em grupo",
+        "description": "Cada grupo definirá a linguagem visual de um produto digital e justificará suas decisões de tipografia e cores.",
+        "keyPoints": ["Definir produto e usuário", "Escolher três palavras de personalidade", "Criar sistema tipográfico", "Criar paleta funcional", "Aplicar em uma tela conceitual"],
+        "image": {"url": "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=1200&auto=format&fit=crop", "alt": "Grupo colaborando em uma atividade de design", "position": "right"}
+      }
+    },
+    {
+      "id": 25,
+      "type": "practice",
+      "title": "Etapas 1 e 2: produto e personalidade",
+      "subtitle": "Comece pela intenção, não pela estética.",
+      "content": {
+        "items": [
+          {"title": "Defina o produto", "detail": "Ex.: banco, academia, restaurante, cursos, transporte, saúde ou loja virtual.", "icon": "devices"},
+          {"title": "Defina o usuário", "detail": "Para quem o produto é feito e qual problema ele resolve?", "icon": "person"},
+          {"title": "Escolha três palavras", "detail": "Ex.: seguro, moderno e confiável; ou educacional, acessível e inspirador.", "icon": "psychology"}
+        ]
+      }
+    },
+    {
+      "id": 26,
+      "type": "practice",
+      "title": "Etapas 3 e 4: tipografia e paleta",
+      "subtitle": "Transforme a personalidade em escolhas coerentes.",
+      "content": {
+        "items": [
+          {"title": "Tipografia", "detail": "Escolha família, peso para títulos, textos e botões; explique por que ela combina com o produto.", "icon": "text_fields"},
+          {"title": "Paleta", "detail": "Defina Primary, Secondary, Background, Surface, Text, Success e Error.", "icon": "palette"},
+          {"title": "Justificativa", "detail": "Explique as funções de cada escolha, não apenas a preferência pessoal.", "icon": "format_quote"}
+        ],
+        "callout": {"type": "tip", "text": "Exemplo tipográfico: Inter — H1 Bold, H2 Semibold, Body Regular e Button Medium."}
+      }
+    },
+    {
+      "id": 27,
+      "type": "practice",
+      "title": "Etapa 5: aplicação e apresentação",
+      "subtitle": "Mostre as decisões em uma pequena tela conceitual.",
+      "content": {
+        "items": [
+          {"title": "Crie uma tela", "detail": "Inclua título, texto, botão e um elemento de destaque usando as escolhas do grupo.", "icon": "dashboard"},
+          {"title": "Apresente em 3 minutos", "detail": "Explique produto, usuário, personalidade, tipografia, paleta e justificativa.", "icon": "present_to_all"},
+          {"title": "Pergunta de avaliação", "detail": "Sem o nome do produto, a linguagem visual comunica seu propósito?", "icon": "help"}
+        ]
+      }
+    },
+    {
+      "id": 28,
+      "type": "intro",
+      "title": "Síntese da aula",
+      "subtitle": "Uma interface bonita precisa, antes, fazer sentido.",
+      "content": {
+        "badge": "Fechamento",
+        "description": "O trabalho de UX conecta necessidade, organização, navegação, fluxos, estrutura e linguagem visual para tornar tarefas mais claras e possíveis.",
+        "keyPoints": ["Organizar antes de desenhar", "Priorizar antes de decorar", "Mapear fluxos antes de criar telas", "Validar estrutura antes de detalhar", "Usar cores e tipografia com intenção"],
+        "image": {"url": "https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1200&auto=format&fit=crop", "alt": "Equipe discutindo um projeto de produto digital", "position": "right"}
       }
     }
   ]
 }
+

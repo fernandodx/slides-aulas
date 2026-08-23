@@ -71,7 +71,7 @@ export function initFirebase() {
 
     // Initialize Remote Config
     remoteConfigInstance = getRemoteConfig(firebaseApp);
-    remoteConfigInstance.settings.minimumFetchIntervalMillis = process.env.NODE_ENV === 'development' ? 10000 : 3600000;
+    remoteConfigInstance.settings.minimumFetchIntervalMillis = 60000;
     remoteConfigInstance.defaultConfig = {
       course_desenvolvimento_de_interfaces_enabled: true,
       course_desenvolvimento_de_interfaces_config: JSON.stringify({
@@ -85,9 +85,19 @@ export function initFirebase() {
       }),
     };
 
-    fetchAndActivate(remoteConfigInstance).catch((err) => {
-      console.warn("[Firebase RemoteConfig] Using default configuration", err);
-    });
+    fetchAndActivate(remoteConfigInstance)
+      .then((activated) => {
+        console.info(
+          "[Firebase RemoteConfig] Config fetched/activated:",
+          activated
+        );
+      })
+      .catch((err) => {
+        console.warn(
+          "[Firebase RemoteConfig] Failed to fetch. Using default configuration",
+          err
+        );
+      });
 
     // Initialize Firestore
     dbInstance = getFirestore(firebaseApp);

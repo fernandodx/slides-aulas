@@ -76,14 +76,15 @@ class RemoteConfigService {
   isLessonEnabled(courseId, lessonNumber) {
     const courseConfig = this.getCourseConfig(courseId);
     if (!courseConfig.enabled) return false;
-    
-    if (
-      Array.isArray(courseConfig.disabledLessons) &&
-      courseConfig.disabledLessons.includes(lessonNumber)
-    ) {
+
+    const disabledList = Array.isArray(courseConfig.disabledLessons)
+      ? courseConfig.disabledLessons.map(Number)
+      : [];
+
+    if (disabledList.includes(Number(lessonNumber))) {
       return false;
     }
-    
+
     return true;
   }
 }

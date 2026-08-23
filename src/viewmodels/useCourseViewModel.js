@@ -3,6 +3,7 @@ import { courseRepository } from "@/services/course.repository";
 import { remoteConfigService } from "@/services/remote-config.service";
 
 export function useCourseViewModel(courseId = "desenvolvimento-de-interfaces") {
+
   const course = ref(null);
   const loading = ref(true);
   const error = ref(null);

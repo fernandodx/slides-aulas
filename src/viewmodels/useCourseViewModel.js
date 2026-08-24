@@ -12,6 +12,7 @@ export function useCourseViewModel(courseId = "desenvolvimento-de-interfaces") {
   const loadCourse = async () => {
     loading.value = true;
     try {
+      await remoteConfigService.ensureInitialized();
       isCourseUnlocked.value = remoteConfigService.isCourseEnabled(courseId);
       const data = courseRepository.getCourseById(courseId);
       course.value = data;

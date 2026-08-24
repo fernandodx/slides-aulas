@@ -1,5 +1,5 @@
 import { getValue, fetchAndActivate } from "firebase/remote-config";
-import { remoteConfigInstance, isFirebaseConfigured } from "./firebase.config";
+import { getRemoteConfigInstance, isFirebaseConfigured } from "./firebase.config";
 
 class RemoteConfigService {
   constructor() {
@@ -12,12 +12,21 @@ class RemoteConfigService {
         disabledLessons: [],
       }),
     };
+    this.initPromise = null;
+  }
+
+  async ensureInitialized() {
+    if (!this.initPromise) {
+      this.initPromise = this.refresh();
+    }
+    return this.initPromise;
   }
 
   async refresh() {
-    if (isFirebaseConfigured() && remoteConfigInstance) {
+    const rc = getRemoteConfigInstance();
+    if (isFirebaseConfigured() && rc) {
       try {
-        await fetchAndActivate(remoteConfigInstance);
+        await fetchAndActivate(rc);
       } catch (e) {
         console.warn("[RemoteConfigService] Refresh fallback", e);
       }
@@ -25,9 +34,10 @@ class RemoteConfigService {
   }
 
   getFlag(key, defaultValue = true) {
-    if (isFirebaseConfigured() && remoteConfigInstance) {
+    const rc = getRemoteConfigInstance();
+    if (isFirebaseConfigured() && rc) {
       try {
-        const val = getValue(remoteConfigInstance, key);
+        const val = getValue(rc, key);
         if (val && val.asBoolean !== undefined) {
           return val.asBoolean();
         }
@@ -45,9 +55,10 @@ class RemoteConfigService {
 
   getCourseConfig(courseId) {
     const key = `course_${courseId.replace(/-/g, "_")}_config`;
-    if (isFirebaseConfigured() && remoteConfigInstance) {
+    const rc = getRemoteConfigInstance();
+    if (isFirebaseConfigured() && rc) {
       try {
-        const val = getValue(remoteConfigInstance, key);
+        const val = getValue(rc, key);
         if (val && val.asString()) {
           return JSON.parse(val.asString());
         }
@@ -69,6 +80,15 @@ class RemoteConfigService {
   }
 
   isCourseEnabled(courseId) {
+    const courseConfig = this.getCourseConfig(courseId);
+    if (
+      courseConfig &&
+      typeof courseConfig.enabled === "boolean" &&
+      !courseConfig.enabled
+    ) {
+      return false;
+    }
+
     const flagKey = `course_${courseId.replace(/-/g, "_")}_enabled`;
     return this.getFlag(flagKey, true);
   }

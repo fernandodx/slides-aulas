@@ -114,4 +114,11 @@ export function initFirebase() {
   }
 }
 
+export function getRemoteConfigInstance() {
+  if (!remoteConfigInstance) {
+    initFirebase();
+  }
+  return remoteConfigInstance;
+}
+
 export { firebaseApp, analyticsInstance, remoteConfigInstance, dbInstance };

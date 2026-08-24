@@ -111,8 +111,9 @@ const goToCourse = (courseId) => {
   router.push({ name: "course-detail", params: { courseId } });
 };
 
-onMounted(() => {
+onMounted(async () => {
   loading.value = true;
+  await remoteConfigService.ensureInitialized();
   // Carrega todos os cursos registrados e checa se estão habilitados no Remote Config
   const allCourses = courseRepository.getAllCourses();
   availableCourses.value = allCourses.filter((course) => 

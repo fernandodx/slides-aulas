@@ -1,79 +1,632 @@
 {
   "id": 5,
-  "title": "Aula 5 — Arquitetura da Info e Wireframes",
-  "subtitle": "Organização de conteúdo, navegação, User Flow, Task Flow, Sitemap e tipos de wireframe.",
+  "title": "Aula 5 — Design System, Cores e Tipografia",
+  "subtitle": "Decisões visuais reutilizáveis para criar produtos consistentes em Light e Dark Mode.",
   "module": "Módulo 2 — UI/UX e Design de Produtos",
-  "tag": "Prática",
+  "tag": "Teoria e Prática",
   "slides": [
     {
       "id": 1,
       "type": "intro",
-      "title": "Arquitetura da Informação (AI)",
-      "subtitle": "A arte de estruturar e organizar o conteúdo para facilitar a navegabilidade.",
+      "title": "Design System, Cores e Tipografia",
+      "subtitle": "Da intenção visual a um sistema que funciona em escala.",
       "content": {
         "badge": "Aula 05",
-        "description": "Uma boa Arquitetura da Informação garante que os usuários encontrem o que procuram intuitivamente, reduzindo a carga cognitiva.",
+        "description": "Nesta aula, vamos transformar escolhas de cor, tipografia e componentes em decisões reutilizáveis para todo o produto.",
         "keyPoints": [
-          "Organização: Categorização clara de menus e seções",
-          "Hierarquia: Informações mais importantes em destaque visual",
-          "Navegação: Breadcrumbs, menus persistentes e botões de retorno"
-        ]
+          "Consistência",
+          "Design tokens",
+          "Light e Dark Mode",
+          "Hierarquia tipográfica"
+        ],
+        "image": {
+          "url": "https://www.delasign.com/CDN/images/Create-Styleguide.webp",
+          "alt": "Tela do Figma com guia de estilos, paleta de cores e variáveis",
+          "position": "right"
+        }
       }
     },
     {
       "id": 2,
       "type": "theory",
-      "title": "User Flow vs Task Flow vs Sitemap",
-      "subtitle": "Mapeando a estrutura das telas antes de desenhar os componentes.",
+      "title": "O problema: cada tela de um jeito",
+      "subtitle": "Pequenas inconsistências se acumulam rapidamente.",
       "content": {
         "sections": [
           {
-            "heading": "User Flow",
-            "text": "Diagrama de passos que o usuário realiza para concluir uma meta no sistema (ex: de Visitante até Comprador)."
+            "heading": "Sem sistema",
+            "text": "Cada pessoa escolhe cores, tamanhos, espaçamentos e botões de forma independente."
           },
           {
-            "heading": "Task Flow",
-            "text": "Fluxo sequencial simples de uma tarefa específica (ex: redefinir senha)."
-          },
-          {
-            "heading": "Sitemap",
-            "text": "Árvore hierárquica que mapeia todas as páginas e subpáginas do site."
+            "heading": "Consequência",
+            "text": "O produto parece fragmentado e mudanças simples exigem revisar muitas telas."
           }
-        ]
+        ],
+        "callout": {
+          "type": "warning",
+          "text": "Sete tons de azul e três botões primários são sinais de que as decisões não estão centralizadas."
+        }
       }
     },
     {
       "id": 3,
-      "type": "theory",
-      "title": "Níveis de Fidelidade de Wireframes",
-      "subtitle": "Quando usar papel, escala de cinza ou componentes reais.",
+      "type": "practice",
+      "title": "O que um sistema organiza?",
+      "subtitle": "Uma linguagem compartilhada para design e desenvolvimento.",
       "content": {
-        "sections": [
+        "items": [
           {
-            "heading": "Baixa Fidelidade (Low-Fi)",
-            "text": "Rabiscos no papel (Sketches). Foco em testar ideias rapidamente sem se preocupar com estética."
+            "title": "Cores",
+            "detail": "Papéis visuais para marca, texto, superfícies e feedback.",
+            "icon": "brush"
           },
           {
-            "heading": "Média Fidelidade (Mid-Fi)",
-            "text": "Estrutura digital em escala de cinza no Figma. Foco na hierarquia, botões, containers e textos de exemplo."
+            "title": "Tipografia",
+            "detail": "Escala, pesos e regras de leitura.",
+            "icon": "tune"
           },
           {
-            "heading": "Alta Fidelidade (Hi-Fi)",
-            "text": "Layout final com cores, tipografia definida, imagens e assets prontos para codificação."
+            "title": "Componentes",
+            "detail": "Elementos reutilizáveis, como botões, campos e cards.",
+            "icon": "widgets"
+          },
+          {
+            "title": "Documentação",
+            "detail": "Orientações para escolher e aplicar cada padrão.",
+            "icon": "fact_check"
           }
         ]
       }
     },
     {
       "id": 4,
+      "type": "theory",
+      "title": "O que é Design System?",
+      "subtitle": "Não é apenas uma biblioteca de componentes.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Definição",
+            "text": "É um conjunto de princípios, tokens, componentes e regras que orienta produtos digitais consistentes."
+          },
+          {
+            "heading": "Objetivo",
+            "text": "Permitir que equipes criem e evoluam interfaces com mais qualidade e menos retrabalho."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Um Design System conecta decisões de design à implementação."
+        }
+      }
+    },
+    {
+      "id": 5,
       "type": "practice",
-      "title": "Atividade Prática: Desenhar Wireframes Mid-Fi",
-      "subtitle": "Criar as telas principais do seu projeto no Figma.",
+      "title": "Style Guide, UI Kit e Design System",
+      "subtitle": "Termos próximos, mas com alcances diferentes.",
       "content": {
         "items": [
-          { "title": "Passo 1", "detail": "Monte o User Flow básico no Figma (Home → Detalhes → Ação Principal)." },
-          { "title": "Passo 2", "detail": "Crie o wireframe de média fidelidade para a versão Desktop (1440px)." },
-          { "title": "Passo 3", "detail": "Crie o wireframe de média fidelidade equivalente para a versão Mobile (390px)." }
+          {
+            "title": "Style Guide",
+            "detail": "Reúne regras visuais, como cores, fontes e espaçamentos.",
+            "icon": "brush"
+          },
+          {
+            "title": "UI Kit",
+            "detail": "Oferece peças prontas, como botão, input e card.",
+            "icon": "widgets"
+          },
+          {
+            "title": "Design System",
+            "detail": "Une padrões, componentes, documentação e governança.",
+            "icon": "layers"
+          }
+        ],
+        "callout": {
+          "type": "info",
+          "text": "Um UI Kit pode fazer parte de um Design System, mas não o substitui."
+        }
+      }
+    },
+    {
+      "id": 6,
+      "type": "image",
+      "title": "Como empresas trabalham em escala",
+      "subtitle": "Sistemas públicos inspiram, mas cada produto precisa de suas próprias decisões.",
+      "content": {
+        "imageUrl": "https://framerusercontent.com/images/FmBymLdWrc7RRYqgQgfZvEonU0.png",
+        "imageAlt": "Interface do Figma organizada com tokens, estilos e componentes de um design system",
+        "description": "Material Design, Carbon, Fluent, Lightning, Polaris e Primer são exemplos de sistemas que tornam decisões repetíveis para equipes grandes."
+      }
+    },
+    {
+      "id": 7,
+      "type": "theory",
+      "title": "Design tokens: decisões com nome",
+      "subtitle": "Em vez de repetir valores, damos significado a eles.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Valor solto",
+            "text": "Usar #1565C0 em muitas telas dificulta descobrir onde e por que a cor é aplicada."
+          },
+          {
+            "heading": "Token",
+            "text": "Usar color.action.primary comunica a função e permite alterar o valor em um ponto central."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Tokens também podem representar espaçamento, raio, sombra e tipografia."
+        }
+      }
+    },
+    {
+      "id": 8,
+      "type": "practice",
+      "title": "Uma base mínima de tokens",
+      "subtitle": "Comece pequeno e nomeie de forma previsível.",
+      "content": {
+        "items": [
+          {
+            "title": "Cor",
+            "detail": "color.background, color.text.primary e color.action.primary.",
+            "icon": "brush"
+          },
+          {
+            "title": "Espaçamento",
+            "detail": "space.xs, space.sm, space.md e space.lg.",
+            "icon": "tune"
+          },
+          {
+            "title": "Raio",
+            "detail": "radius.sm, radius.md e radius.lg.",
+            "icon": "category"
+          },
+          {
+            "title": "Tipo",
+            "detail": "text.body, text.title e text.caption.",
+            "icon": "layers"
+          }
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "type": "theory",
+      "title": "Primitive × Semantic tokens",
+      "subtitle": "Valor de base não é a mesma coisa que função na interface.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Primitive",
+            "text": "É a matéria-prima: blue.600, gray.100 ou red.500."
+          },
+          {
+            "heading": "Semantic",
+            "text": "É o uso: color.action.primary, color.surface ou color.feedback.error."
+          },
+          {
+            "heading": "Vantagem",
+            "text": "O componente usa o significado, sem precisar saber qual tom específico está por trás."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "É a camada semântica que torna a troca entre Light e Dark Mode sustentável."
+        }
+      }
+    },
+    {
+      "id": 10,
+      "type": "theory",
+      "title": "Componentes consomem tokens",
+      "subtitle": "A consistência nasce quando padrões são reutilizados.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Exemplo",
+            "text": "Um botão primário usa color.action.primary, color.text.onPrimary e radius.md."
+          },
+          {
+            "heading": "Resultado",
+            "text": "Ao atualizar um token, componentes e telas refletem a mudança de forma coerente."
+          }
+        ],
+        "image": {
+          "url": "https://gluestack.io/images/blogs/figma_2.png",
+          "alt": "Tela do Figma mostrando variáveis de cores e estilos tipográficos",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 11,
+      "type": "practice",
+      "title": "O que um componente precisa prever?",
+      "subtitle": "Não basta desenhar apenas o estado padrão.",
+      "content": {
+        "items": [
+          {
+            "title": "Função",
+            "detail": "Quando e por que o componente deve ser usado.",
+            "icon": "fact_check"
+          },
+          {
+            "title": "Variações",
+            "detail": "Por exemplo: primário, secundário e destrutivo.",
+            "icon": "category"
+          },
+          {
+            "title": "Estados",
+            "detail": "Normal, foco, desabilitado, carregando e erro quando aplicável.",
+            "icon": "visibility"
+          },
+          {
+            "title": "Acessibilidade",
+            "detail": "Contraste, foco visível e rótulos compreensíveis.",
+            "icon": "accessibility"
+          }
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "type": "intro",
+      "title": "Cores: escolha função, não apenas beleza",
+      "subtitle": "Uma paleta útil orienta ações, leitura e estados.",
+      "content": {
+        "badge": "Fundação: cores",
+        "description": "Uma cor só se torna parte do sistema quando sabemos qual problema ela resolve na interface.",
+        "keyPoints": [
+          "Marca",
+          "Neutros",
+          "Feedback",
+          "Superfícies",
+          "Texto"
+        ],
+        "image": {
+          "url": "https://mecdesigner.com/img/bbg-gds-08.jpg",
+          "alt": "Painel de design system com paleta de cores e tokens semânticos",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 13,
+      "type": "practice",
+      "title": "Anatomia de uma paleta funcional",
+      "subtitle": "Organize cores por papéis claros.",
+      "content": {
+        "items": [
+          {
+            "title": "Brand",
+            "detail": "Cores que expressam a identidade e ações principais.",
+            "icon": "brush"
+          },
+          {
+            "title": "Neutros",
+            "detail": "Base para fundos, superfícies, bordas e textos.",
+            "icon": "layers"
+          },
+          {
+            "title": "Feedback",
+            "detail": "Success, warning, error e info para comunicar estados.",
+            "icon": "feedback"
+          },
+          {
+            "title": "On colors",
+            "detail": "Cores de conteúdo exibido sobre uma superfície colorida.",
+            "icon": "visibility"
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Evite tratar a cor de marca como resposta para todas as situações da interface."
+        }
+      }
+    },
+    {
+      "id": 14,
+      "type": "theory",
+      "title": "Light Mode: hierarquia em superfícies claras",
+      "subtitle": "O fundo não é o único branco da interface.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Estrutura",
+            "text": "Diferencie background, surface, border e texto para construir profundidade sem excesso de sombras."
+          },
+          {
+            "heading": "Exemplo",
+            "text": "Background pode ser quase branco; cards usam surface; textos usam tons escuros com papéis distintos."
+          }
+        ],
+        "callout": {
+          "type": "info",
+          "text": "Os nomes dos tokens devem expressar o papel, não o hexadecimal."
+        }
+      }
+    },
+    {
+      "id": 15,
+      "type": "theory",
+      "title": "Dark Mode: não é inverter cores",
+      "subtitle": "O tema escuro precisa preservar leitura, contraste e hierarquia.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Superfícies",
+            "text": "Use camadas de escuro para separar áreas; preto absoluto nem sempre é a melhor base."
+          },
+          {
+            "heading": "Conteúdo",
+            "text": "Textos e cores de ação podem precisar de tons diferentes para manter contraste confortável."
+          },
+          {
+            "heading": "Tokens",
+            "text": "color.background muda de valor por modo, mas seu significado continua o mesmo."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Componentes devem consumir tokens semânticos para trocar de modo sem redesenho manual."
+        }
+      }
+    },
+    {
+      "id": 16,
+      "type": "image",
+      "title": "Tokens conectam Light e Dark Mode",
+      "subtitle": "O nome permanece; o valor muda conforme o modo.",
+      "content": {
+        "imageUrl": "https://framerusercontent.com/images/RXCGuOOoVU34joSOUx1XPB2O3S4.png?scale-down-to=2048",
+        "imageAlt": "Painel de tokens no Figma com temas light, dark e alto contraste",
+        "description": "Exemplo de organização: color.background, color.surface e color.text.primary recebem valores específicos em cada modo."
+      }
+    },
+    {
+      "id": 17,
+      "type": "theory",
+      "title": "Contraste é parte do sistema",
+      "subtitle": "Legibilidade não pode depender apenas de percepção visual.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Leitura",
+            "text": "Texto e fundo precisam de contraste suficiente para que o conteúdo seja percebido com clareza."
+          },
+          {
+            "heading": "Estados",
+            "text": "Não comunique sucesso, erro ou seleção somente pela cor; combine texto, ícone ou forma."
+          }
+        ],
+        "callout": {
+          "type": "warning",
+          "text": "Contraste baixo costuma aparecer principalmente em texto secundário, botões desabilitados e Dark Mode."
+        }
+      }
+    },
+    {
+      "id": 18,
+      "type": "practice",
+      "title": "Ferramentas para cores",
+      "subtitle": "Use ferramentas para explorar, testar e documentar decisões.",
+      "content": {
+        "items": [
+          {
+            "title": "Coolors",
+            "detail": "Gera e explora paletas de forma rápida.",
+            "icon": "brush"
+          },
+          {
+            "title": "Adobe Color",
+            "detail": "Ajuda a estudar harmonia e relações entre cores.",
+            "icon": "tune"
+          },
+          {
+            "title": "Material Theme Builder",
+            "detail": "Mostra como uma cor-base pode alimentar um tema.",
+            "icon": "layers"
+          },
+          {
+            "title": "WebAIM Contrast Checker",
+            "detail": "Verifica contraste entre texto e fundo.",
+            "icon": "accessibility"
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "A ferramenta sugere possibilidades; o contexto do produto decide a paleta final."
+        }
+      }
+    },
+    {
+      "id": 19,
+      "type": "intro",
+      "title": "Tipografia: a interface também fala",
+      "subtitle": "Hierarquia tipográfica orienta leitura e atenção.",
+      "content": {
+        "badge": "Fundação: tipografia",
+        "description": "Uma tipografia mínima define como títulos, textos e informações auxiliares se relacionam.",
+        "keyPoints": [
+          "Família",
+          "Tamanho",
+          "Peso",
+          "Line-height",
+          "Hierarquia"
+        ],
+        "image": {
+          "url": "https://miro.medium.com/v2/resize%3Afit%3A2000/1%2A88UM26F92dzHtQTCAV5dOQ.png",
+          "alt": "Prancha de design com paleta de cores e exemplos de estilos tipográficos",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 20,
+      "type": "theory",
+      "title": "Uma escala tipográfica mínima",
+      "subtitle": "Poucos estilos bem definidos resolvem a maior parte das interfaces.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Hierarquia",
+            "text": "Display, título, subtítulo, body e caption criam níveis claros de informação."
+          },
+          {
+            "heading": "Consistência",
+            "text": "Cada estilo combina tamanho, peso e line-height; não é apenas escolher um número em pixels."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Comece com uma escala enxuta e adicione estilos somente quando houver necessidade real."
+        }
+      }
+    },
+    {
+      "id": 21,
+      "type": "practice",
+      "title": "Exemplo de escala inicial",
+      "subtitle": "Um ponto de partida para uma interface digital.",
+      "content": {
+        "items": [
+          {
+            "title": "Display",
+            "detail": "32/40, bold, para destaques grandes.",
+            "icon": "visibility"
+          },
+          {
+            "title": "Título",
+            "detail": "28/36, bold, para o assunto principal da tela.",
+            "icon": "layers"
+          },
+          {
+            "title": "Subtítulo",
+            "detail": "18/26, regular, para contextualizar títulos.",
+            "icon": "category"
+          },
+          {
+            "title": "Body",
+            "detail": "16/24, regular, para leitura principal.",
+            "icon": "fact_check"
+          },
+          {
+            "title": "Caption",
+            "detail": "12/16, regular, para informações auxiliares.",
+            "icon": "feedback"
+          }
+        ]
+      }
+    },
+    {
+      "id": 22,
+      "type": "theory",
+      "title": "Tamanho, peso e line-height",
+      "subtitle": "Três decisões que afetam diretamente a leitura.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Tamanho",
+            "text": "Ajuda a estabelecer prioridade entre conteúdos."
+          },
+          {
+            "heading": "Peso",
+            "text": "Dá ênfase sem depender somente de tamanho ou cor."
+          },
+          {
+            "heading": "Line-height",
+            "text": "Define o respiro vertical e melhora a leitura de textos corridos."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Use poucos pesos, como regular, medium, semibold e bold, com regras claras de aplicação."
+        }
+      }
+    },
+    {
+      "id": 23,
+      "type": "practice",
+      "title": "Ferramentas para tipografia",
+      "subtitle": "Escolha fontes e escalas com intenção.",
+      "content": {
+        "items": [
+          {
+            "title": "Google Fonts",
+            "detail": "Explora famílias tipográficas para uso digital.",
+            "icon": "search"
+          },
+          {
+            "title": "Fontpair",
+            "detail": "Sugere combinações de fontes.",
+            "icon": "groups"
+          },
+          {
+            "title": "Fontjoy",
+            "detail": "Ajuda a experimentar pares tipográficos.",
+            "icon": "tune"
+          },
+          {
+            "title": "Type Scale",
+            "detail": "Gera escalas proporcionais de tamanho de texto.",
+            "icon": "layers"
+          }
+        ]
+      }
+    },
+    {
+      "id": 24,
+      "type": "theory",
+      "title": "Figma Variables: levando o sistema ao arquivo",
+      "subtitle": "Variáveis transformam decisões em referências reutilizáveis.",
+      "content": {
+        "sections": [
+          {
+            "heading": "Coleções",
+            "text": "Organize categorias como Colors, Spacing, Radius e Typography."
+          },
+          {
+            "heading": "Modos",
+            "text": "Na coleção de cores, crie Light e Dark com valores específicos por token."
+          },
+          {
+            "heading": "Aplicação",
+            "text": "Vincule variáveis aos componentes para que a interface acompanhe as mudanças."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "O arquivo do Figma deixa de ser uma coleção de telas e passa a representar um sistema."
+        }
+      }
+    },
+    {
+      "id": 25,
+      "type": "image",
+      "title": "Organização de variáveis no Figma",
+      "subtitle": "Coleções e modos tornam os temas mais fáceis de manter.",
+      "content": {
+        "imageUrl": "https://pbs.twimg.com/media/FVBg5lfaIAAqlms?format=jpg&name=4096x4096",
+        "imageAlt": "Arquivo do Figma em tema escuro com componentes, cores e estilos tipográficos",
+        "description": "Crie nomes que comuniquem o papel de cada decisão: color.surface, color.text.primary, space.md e radius.md."
+      }
+    },
+    {
+      "id": 26,
+      "type": "intro",
+      "title": "Atividade: inicie um Design System",
+      "subtitle": "Crie uma base de cores e tipografia para um produto digital.",
+      "content": {
+        "badge": "Atividade individual",
+        "description": "Vocês vão transformar decisões visuais em tokens reutilizáveis e aplicá-los em uma tela simples no Figma.",
+        "keyPoints": [
+          "Escolher um produto",
+          "Criar modos Light e Dark",
+          "Definir tipografia",
+          "Aplicar em uma tela"
         ]
       }
     }

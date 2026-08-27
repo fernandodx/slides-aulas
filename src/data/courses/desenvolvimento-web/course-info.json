@@ -109,10 +109,10 @@
         },
         {
           "id": 5,
-          "title": "Aula 5 — Projeto TO DO",
+          "title": "Aula 5 — Instalação do BootStrap e Vue via CDN",
           "tag": "Entrega",
           "duration": "4h",
-          "description": "CRUD Completo com Vanilla JS e Local Storage."
+          "description": "Breakpoints, alinhamentos, classes utilitárias e primeiros passos com Vue"
         }
       ]
     },

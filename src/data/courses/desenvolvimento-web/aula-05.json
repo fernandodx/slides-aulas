@@ -1,21 +1,659 @@
-[
-  {
-    "id": 1,
-    "type": "intro",
-    "title": "Projeto TO DO",
-    "subtitle": "Módulo 2 - Revisão de Front-End",
-    "content": {
-      "badge": "Aula 05",
-      "description": "Adicione o conteúdo desta aula aqui. (Slide gerado como capa padrão)",
-      "keyPoints": [
-        "Tópico 1",
-        "Tópico 2"
-      ],
-      "image": {
-        "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
-        "alt": "Desenvolvimento Web",
-        "position": "right"
+{
+  "id": 8,
+  "title": "Bootstrap Responsivo e Introdução ao Vue 3",
+  "subtitle": "Breakpoints, alinhamentos, classes utilitárias e primeiros passos com Vue",
+  "module": "Desenvolvimento Web",
+  "tag": "Teoria e Prática",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "Bootstrap + Vue 3",
+      "subtitle": "Do layout responsivo à interface dinâmica",
+      "content": {
+        "badge": "Aula",
+        "description": "Vamos finalizar os principais fundamentos práticos do Bootstrap e iniciar o estudo do Vue 3.",
+        "keyPoints": [
+          "Breakpoints e responsividade",
+          "Grid e alinhamentos",
+          "Principais classes utilitárias",
+          "Conceitos fundamentais do Vue 3",
+          "Primeiro exemplo com Vue via CDN"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "theory",
+      "title": "O que são Breakpoints?",
+      "subtitle": "Adaptando o layout ao tamanho da tela",
+      "content": {
+        "sections": [
+          {
+            "heading": "Conceito",
+            "text": "Breakpoints são pontos de mudança utilizados para adaptar o layout conforme a largura disponível da tela."
+          },
+          {
+            "heading": "Mobile First",
+            "text": "O Bootstrap começa pelo comportamento para telas pequenas e permite alterar o layout a partir de determinados breakpoints."
+          },
+          {
+            "heading": "Uso prático",
+            "text": "Podemos fazer um elemento ocupar toda a largura em telas pequenas e dividir o espaço em telas maiores."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Breakpoint representa uma faixa de largura da viewport, e não necessariamente um dispositivo específico."
+        }
+      }
+    },
+    {
+      "id": 3,
+      "type": "theory",
+      "title": "Breakpoints do Bootstrap",
+      "subtitle": "sm, md, lg, xl e xxl",
+      "content": {
+        "sections": [
+          {
+            "heading": "Sem prefixo",
+            "text": "O comportamento sem breakpoint vale desde as telas pequenas."
+          },
+          {
+            "heading": "sm e md",
+            "text": "sm começa em 576px e md em 768px."
+          },
+          {
+            "heading": "lg, xl e xxl",
+            "text": "lg começa em 992px, xl em 1200px e xxl em 1400px."
+          }
+        ],
+        "callout": {
+          "type": "info",
+          "text": "Uma classe responsiva normalmente define um comportamento a partir daquele breakpoint."
+        }
+      }
+    },
+    {
+      "id": 4,
+      "type": "practice",
+      "title": "Como ler uma classe responsiva?",
+      "subtitle": "col-12 col-md-6",
+      "content": {
+        "items": [
+          {
+            "title": "col-12",
+            "detail": "No comportamento padrão, ocupa as 12 colunas disponíveis.",
+            "icon": "view_column"
+          },
+          {
+            "title": "col-md-6",
+            "detail": "A partir de md, passa a ocupar 6 das 12 colunas.",
+            "icon": "view_week"
+          },
+          {
+            "title": "Na prática",
+            "detail": "No celular fica em uma linha inteira; a partir de md pode ficar ao lado de outro elemento.",
+            "icon": "devices"
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Leia col-md-6 como: '6 colunas a partir do breakpoint md'."
+        }
+      }
+    },
+     {
+      "id": 5,
+      "type": "theory",
+      "title": "Como adicionar Bootstrap?",
+      "subtitle": "Bootstrap via CDN",
+      "content": {
+        "sections": [
+          {
+            "heading": "CSS",
+            "text": "Adicionamos o arquivo CSS do Bootstrap dentro do head do HTML."
+          },
+          {
+            "heading": "JavaScript",
+            "text": "O bundle JavaScript pode ser adicionado antes do fechamento do body quando os componentes interativos forem necessários."
+          },
+          {
+            "heading": "CDN",
+            "text": "Uma CDN permite carregar os arquivos da biblioteca diretamente por uma URL."
+          }
+        ],
+        "callout": {
+          "type": "info",
+          "text": "Para uma aula ou protótipo, CDN permite começar rapidamente sem configurar um processo de build."
+        }
+      }
+    },
+    {
+      "id": 6,
+      "type": "code",
+      "title": "Bootstrap via CDN",
+      "subtitle": "Página mínima funcional",
+      "content": {
+        "language": "html",
+        "code": "<!doctype html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Bootstrap</title>\n\n  <link\n    href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css\"\n    rel=\"stylesheet\">\n</head>\n<body>\n\n  <div class=\"container py-5\">\n    <div class=\"p-4 bg-primary text-white text-center rounded\">\n      Bootstrap funcionando!\n    </div>\n  </div>\n\n  <script\n    src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js\">\n  </script>\n</body>\n</html>"
+      }
+    },
+    {
+      "id": 7,
+      "type": "theory",
+      "title": "O que é uma CDN?",
+      "subtitle": "Distribuindo arquivos pela internet",
+      "content": {
+        "sections": [
+          {
+            "heading": "Content Delivery Network",
+            "text": "CDN significa Content Delivery Network: uma rede de servidores utilizada para distribuir recursos pela internet."
+          },
+          {
+            "heading": "Recursos",
+            "text": "Pode distribuir arquivos como CSS, JavaScript, imagens e fontes."
+          },
+          {
+            "heading": "No nosso projeto",
+            "text": "O navegador acessa a URL da CDN e carrega o arquivo Bootstrap para utilizá-lo na página."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "CDN é uma forma de disponibilizar a biblioteca; não é a própria biblioteca."
+        }
+      }
+    },
+    {
+      "id": 8,
+      "type": "code",
+      "title": "Breakpoint com caixas coloridas",
+      "subtitle": "Observe o layout mudar ao redimensionar a janela",
+      "content": {
+        "language": "html",
+        "code": "<div class=\"container py-4\">\n  <div class=\"row g-3\">\n    <div class=\"col-12 col-md-6\">\n      <div class=\"bg-primary rounded\" style=\"height: 120px;\"></div>\n    </div>\n    <div class=\"col-12 col-md-6\">\n      <div class=\"bg-success rounded\" style=\"height: 120px;\"></div>\n    </div>\n  </div>\n</div>"
+      }
+    },
+    {
+      "id": 9,
+      "type": "code",
+      "title": "Três tamanhos de layout",
+      "subtitle": "col-12, col-md-6 e col-lg-4",
+      "content": {
+        "language": "html",
+        "code": "<div class=\"container py-4\">\n  <div class=\"row g-3\">\n    <div class=\"col-12 col-md-6 col-lg-4\">\n      <div class=\"bg-primary rounded\" style=\"height: 120px;\"></div>\n    </div>\n    <div class=\"col-12 col-md-6 col-lg-4\">\n      <div class=\"bg-success rounded\" style=\"height: 120px;\"></div>\n    </div>\n    <div class=\"col-12 col-md-6 col-lg-4\">\n      <div class=\"bg-warning rounded\" style=\"height: 120px;\"></div>\n    </div>\n  </div>\n</div>"
+      }
+    },
+    {
+      "id": 10,
+      "type": "theory",
+      "title": "O sistema de Grid",
+      "subtitle": "12 colunas para construir layouts",
+      "content": {
+        "sections": [
+          {
+            "heading": "container",
+            "text": "Cria uma área de conteúdo com largura adequada para diferentes tamanhos de tela."
+          },
+          {
+            "heading": "row",
+            "text": "Organiza as colunas dentro de uma linha."
+          },
+          {
+            "heading": "col",
+            "text": "Define quanto espaço cada elemento ocupa dentro da linha."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Uma combinação muito comum é: container → row → col."
+        }
+      }
+    },
+    {
+      "id": 11,
+      "type": "code",
+      "title": "Testando o Grid",
+      "subtitle": "Dividindo uma linha em 3 partes",
+      "content": {
+        "language": "html",
+        "code": "<div class=\"container py-4\">\n  <div class=\"row g-2\">\n    <div class=\"col-4\">\n      <div class=\"bg-primary rounded\" style=\"height: 100px;\"></div>\n    </div>\n    <div class=\"col-4\">\n      <div class=\"bg-success rounded\" style=\"height: 100px;\"></div>\n    </div>\n    <div class=\"col-4\">\n      <div class=\"bg-warning rounded\" style=\"height: 100px;\"></div>\n    </div>\n  </div>\n</div>"
+      }
+    },
+    {
+      "id": 12,
+      "type": "theory",
+      "title": "Alinhamento de texto",
+      "subtitle": "text-start, text-center e text-end",
+      "content": {
+        "sections": [
+          {
+            "heading": "text-start",
+            "text": "Alinha o texto no início da linha."
+          },
+          {
+            "heading": "text-center",
+            "text": "Centraliza o texto."
+          },
+          {
+            "heading": "text-end",
+            "text": "Alinha o texto no final da linha."
+          }
+        ],
+        "callout": {
+          "type": "info",
+          "text": "Também podemos combinar alinhamento com breakpoints, como text-center text-md-start."
+        }
+      }
+    },
+    {
+      "id": 13,
+      "type": "code",
+      "title": "Alinhamento na prática",
+      "subtitle": "Três caixas, três alinhamentos",
+      "content": {
+        "language": "html",
+        "code": "<div class=\"container py-4\">\n  <div class=\"d-flex justify-content-start mb-2 p-2 bg-light\">\n    <div class=\"bg-primary rounded\" style=\"width: 80px; height: 50px;\"></div>\n  </div>\n  <div class=\"d-flex justify-content-center mb-2 p-2 bg-light\">\n    <div class=\"bg-success rounded\" style=\"width: 80px; height: 50px;\"></div>\n  </div>\n  <div class=\"d-flex justify-content-end p-2 bg-light\">\n    <div class=\"bg-warning rounded\" style=\"width: 80px; height: 50px;\"></div>\n  </div>\n</div>"
+      }
+    },
+    {
+      "id": 14,
+      "type": "theory",
+      "title": "Alinhamento com Flexbox",
+      "subtitle": "d-flex, justify-content e align-items",
+      "content": {
+        "sections": [
+          {
+            "heading": "d-flex",
+            "text": "Transforma o elemento em um flex container."
+          },
+          {
+            "heading": "justify-content",
+            "text": "Controla a distribuição dos elementos no eixo principal."
+          },
+          {
+            "heading": "align-items",
+            "text": "Controla o alinhamento dos elementos no eixo transversal."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "O Bootstrap oferece classes prontas para trabalhar com Flexbox sem escrever CSS."
+        }
+      }
+    },
+    {
+      "id": 15,
+      "type": "code",
+      "title": "Centralizando uma caixa",
+      "subtitle": "Um exemplo simples de Flexbox",
+      "content": {
+        "language": "html",
+        "code": "<div class=\"container py-4\">\n  <div class=\"d-flex justify-content-center\">\n    <div class=\"bg-primary rounded\" style=\"width: 120px; height: 120px;\"></div>\n  </div>\n</div>"
+      }
+    },
+    {
+      "id": 16,
+      "type": "code",
+      "title": "Espaçando elementos",
+      "subtitle": "justify-content-between",
+      "content": {
+        "language": "html",
+        "code": "<div class=\"container py-4\">\n  <div class=\"d-flex justify-content-between align-items-center p-3 bg-light\">\n    <div class=\"bg-primary rounded\" style=\"width: 70px; height: 70px;\"></div>\n    <div class=\"bg-success rounded\" style=\"width: 70px; height: 70px;\"></div>\n    <div class=\"bg-warning rounded\" style=\"width: 70px; height: 70px;\"></div>\n  </div>\n</div>"
+      }
+    },
+    {
+      "id": 17,
+      "type": "practice",
+      "title": "Principais classes utilitárias",
+      "subtitle": "O kit de ferramentas do Bootstrap",
+      "content": {
+        "items": [
+          {
+            "title": "Spacing",
+            "detail": "m-* e p-* controlam margem e padding.",
+            "icon": "space_bar"
+          },
+          {
+            "title": "Display",
+            "detail": "d-none, d-block e d-flex controlam o display.",
+            "icon": "visibility"
+          },
+          {
+            "title": "Texto",
+            "detail": "text-start, text-center, text-end e fw-bold alteram a apresentação do texto.",
+            "icon": "format_size"
+          },
+          {
+            "title": "Cores",
+            "detail": "text-primary, bg-primary, text-white e outras classes aplicam cores.",
+            "icon": "palette"
+          },
+          {
+            "title": "Flexbox",
+            "detail": "d-flex, justify-content-* e align-items-* ajudam a criar layouts.",
+            "icon": "view_agenda"
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Classes utilitárias resolvem pequenas necessidades sem exigir uma regra CSS nova."
+        }
+      }
+    },
+    {
+      "id": 18,
+      "type": "code",
+      "title": "Spacing e cores",
+      "subtitle": "Classes fáceis de testar",
+      "content": {
+        "language": "html",
+        "code": "<div class=\"container py-4\">\n  <div class=\"mb-3 bg-primary rounded\" style=\"height: 70px;\"></div>\n  <div class=\"p-3 mb-3 bg-success rounded\" style=\"height: 70px;\"></div>\n  <div class=\"p-4 bg-warning rounded\" style=\"height: 70px;\"></div>\n</div>"
+      }
+    },
+    {
+      "id": 19,
+      "type": "intro",
+      "title": "Finalizando Bootstrap",
+      "subtitle": "Do layout para o comportamento",
+      "content": {
+        "badge": "Transição",
+        "description": "Bootstrap facilita a criação da apresentação visual. Agora vamos começar a estudar uma tecnologia que ajuda a construir interfaces interativas e reativas.",
+        "keyPoints": [
+          "Bootstrap cuida principalmente da apresentação",
+          "JavaScript adiciona comportamento",
+          "Vue organiza interfaces interativas",
+          "Vue utiliza componentes e reatividade",
+          "Vamos criar nosso primeiro exemplo"
+        ]
+      }
+    },
+    {
+      "id": 20,
+      "type": "theory",
+      "title": "O que é Vue 3?",
+      "subtitle": "Um framework JavaScript para interfaces",
+      "content": {
+        "sections": [
+          {
+            "heading": "Definição",
+            "text": "Vue é um framework JavaScript para construção de interfaces de usuário."
+          },
+          {
+            "heading": "Reatividade",
+            "text": "Quando dados utilizados pela interface mudam, o Vue atualiza automaticamente as partes relacionadas da interface."
+          },
+          {
+            "heading": "Componentes",
+            "text": "A interface pode ser dividida em componentes reutilizáveis, facilitando organização e manutenção."
+          }
+        ],
+        "callout": {
+          "type": "info",
+          "text": "Vue permite começar pequeno e evoluir para aplicações web mais complexas."
+        }
+      }
+    },
+    {
+      "id": 21,
+      "type": "theory",
+      "title": "Quem utiliza Vue?",
+      "subtitle": "De pequenas interfaces a aplicações completas",
+      "content": {
+        "sections": [
+          {
+            "heading": "Adoção incremental",
+            "text": "Vue pode ser adicionado gradualmente a uma página existente, começando por uma pequena área interativa."
+          },
+          {
+            "heading": "Aplicações completas",
+            "text": "Também pode ser utilizado para construir aplicações web completas com componentes, roteamento, estado e ferramentas de build."
+          },
+          {
+            "heading": "Ecossistema",
+            "text": "Vue possui um ecossistema próprio e uma comunidade ampla de desenvolvedores e projetos."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Essa flexibilidade é uma das características que torna Vue interessante para diferentes tamanhos de projeto."
+        }
+      }
+    },
+    {
+      "id": 22,
+      "type": "theory",
+      "title": "História do Vue",
+      "subtitle": "De projeto pessoal a framework",
+      "content": {
+        "sections": [
+          {
+            "heading": "2014",
+            "text": "Vue foi criado por Evan You em 2014 como um projeto pessoal."
+          },
+          {
+            "heading": "Vue 2",
+            "text": "O Vue 2 foi lançado em 2016 e teve ampla adoção."
+          },
+          {
+            "heading": "Vue 3",
+            "text": "O Vue 3 foi lançado oficialmente em setembro de 2020 e tornou-se a versão padrão do ecossistema em fevereiro de 2022."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "O Vue é um projeto open source liderado por sua comunidade e equipe de mantenedores."
+        }
+      }
+    },
+    {
+      "id": 23,
+      "type": "theory",
+      "title": "Vue e reatividade",
+      "subtitle": "A interface reage aos dados",
+      "content": {
+        "sections": [
+          {
+            "heading": "Estado",
+            "text": "O estado representa os dados que a interface utiliza."
+          },
+          {
+            "heading": "Mudança",
+            "text": "Quando um dado reativo muda, o Vue identifica que a interface relacionada precisa ser atualizada."
+          },
+          {
+            "heading": "Resultado",
+            "text": "O desenvolvedor trabalha principalmente com os dados e declara como eles devem aparecer na interface."
+          }
+        ],
+        "callout": {
+          "type": "info",
+          "text": "Reatividade é um dos conceitos fundamentais para entender o funcionamento do Vue."
+        }
+      }
+    },
+    {
+      "id": 24,
+      "type": "theory",
+      "title": "Vue 3 usando CDN",
+      "subtitle": "Começando sem build step",
+      "content": {
+        "sections": [
+          {
+            "heading": "Script",
+            "text": "Podemos carregar Vue diretamente no HTML usando uma tag script apontando para uma CDN."
+          },
+          {
+            "heading": "Sem configuração",
+            "text": "Para este primeiro exemplo não precisamos configurar Node.js, Vite ou outro processo de build."
+          },
+          {
+            "heading": "Aprendizado",
+            "text": "Essa abordagem permite focar nos conceitos básicos do Vue antes de conhecer uma estrutura de projeto completa."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "A abordagem via CDN é ótima para aprender os fundamentos do Vue de forma rápida."
+        }
+      }
+    },
+    {
+      "id": 25,
+      "type": "code",
+      "title": "Primeiro exemplo com Vue 3",
+      "subtitle": "Exibindo uma mensagem",
+      "content": {
+        "language": "html",
+        "code": "<div id=\"app\">\n  <h1>{{ mensagem }}</h1>\n</div>\n\n<script src=\"https://unpkg.com/vue@3/dist/vue.global.js\"></script>\n\n<script>\n  const { createApp } = Vue\n\n  createApp({\n    data() {\n      return {\n        mensagem: 'Olá, Vue 3!'\n      }\n    }\n  }).mount('#app')\n</script>"
+      }
+    },
+    {
+      "id": 26,
+      "type": "theory",
+      "title": "Entendendo o exemplo Vue",
+      "subtitle": "As partes fundamentais",
+      "content": {
+        "sections": [
+          {
+            "heading": "createApp",
+            "text": "Cria uma aplicação Vue a partir da configuração fornecida."
+          },
+          {
+            "heading": "data",
+            "text": "Retorna os dados que serão utilizados pela aplicação."
+          },
+          {
+            "heading": "mount",
+            "text": "Conecta a aplicação Vue ao elemento HTML indicado, neste caso #app."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "{{ mensagem }} é uma interpolação: o valor da propriedade mensagem será exibido no HTML."
+        }
+      }
+    },
+    {
+      "id": 27,
+      "type": "code",
+      "title": "Vue + Bootstrap",
+      "subtitle": "Uma interface simples e interativa",
+      "content": {
+        "language": "html",
+        "code": "<div id=\"app\" class=\"container py-5\">\n  <div class=\"p-4 bg-light text-center rounded\">\n    <h1>{{ mensagem }}</h1>\n\n    <button\n      class=\"btn btn-primary\"\n      @click=\"contador++\">\n      Cliques: {{ contador }}\n    </button>\n  </div>\n</div>\n\n<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js\"></script>\n<script src=\"https://unpkg.com/vue@3/dist/vue.global.js\"></script>\n\n<script>\n  const { createApp } = Vue\n\n  createApp({\n    data() {\n      return {\n        mensagem: 'Minha primeira interface Vue',\n        contador: 0\n      }\n    }\n  }).mount('#app')\n</script>"
+      }
+    },
+    {
+      "id": 28,
+      "type": "practice",
+      "title": "O que cada tecnologia faz?",
+      "subtitle": "Bootstrap e Vue trabalhando juntos",
+      "content": {
+        "items": [
+          {
+            "title": "HTML",
+            "detail": "Define a estrutura da página.",
+            "icon": "html"
+          },
+          {
+            "title": "Bootstrap",
+            "detail": "Ajuda no layout, responsividade, espaçamento e aparência.",
+            "icon": "palette"
+          },
+          {
+            "title": "Vue",
+            "detail": "Controla dados, reatividade e comportamento da interface.",
+            "icon": "code"
+          },
+          {
+            "title": "CDN",
+            "detail": "Entrega os arquivos das bibliotecas por meio de URLs.",
+            "icon": "cloud_download"
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Bootstrap e Vue podem ser usados juntos porque resolvem problemas diferentes."
+        }
+      }
+    },
+    {
+      "id": 29,
+      "type": "practice",
+      "title": "Atividade prática",
+      "subtitle": "Criando uma interface simples",
+      "content": {
+        "items": [
+          {
+            "title": "Bootstrap",
+            "detail": "Adicione Bootstrap ao HTML usando CDN.",
+            "icon": "add_circle"
+          },
+          {
+            "title": "Layout",
+            "detail": "Crie duas caixas usando col-12 col-md-6.",
+            "icon": "view_column"
+          },
+          {
+            "title": "Vue",
+            "detail": "Adicione Vue 3 usando CDN.",
+            "icon": "code"
+          },
+          {
+            "title": "Estado",
+            "detail": "Crie uma variável para armazenar um texto.",
+            "icon": "data_object"
+          },
+          {
+            "title": "Interação",
+            "detail": "Crie um botão que altere uma informação exibida na página.",
+            "icon": "touch_app"
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "O objetivo é perceber como Bootstrap cuida da apresentação enquanto Vue controla dados e comportamento."
+        }
+      }
+    },
+    {
+      "id": 30,
+      "type": "theory",
+      "title": "Resumo da aula",
+      "subtitle": "Do Bootstrap ao Vue 3",
+      "content": {
+        "sections": [
+          {
+            "heading": "Bootstrap",
+            "text": "Aprendemos breakpoints, grid, alinhamento, Flexbox, spacing, display e integração via CDN."
+          },
+          {
+            "heading": "CDN",
+            "text": "Entendemos como uma CDN disponibiliza recursos como CSS e JavaScript por URLs."
+          },
+          {
+            "heading": "Vue 3",
+            "text": "Conhecemos o framework, sua história, reatividade e criamos uma aplicação simples utilizando CDN."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Na próxima aula podemos aprofundar templates, diretivas, eventos, estado e componentes do Vue 3."
+        }
+      }
+    },
+    {
+      "id": 31,
+      "type": "image",
+      "title": "Fontes e documentação",
+      "subtitle": "Referências oficiais para continuar estudando",
+      "content": {
+        "imageUrl": "https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png",
+        "imageAlt": "Logotipo do Bootstrap",
+        "description": "Bootstrap: https://getbootstrap.com/docs/5.3/ | Vue: https://vuejs.org/guide/ | Vue Quick Start: https://vuejs.org/guide/quick-start | Vue FAQ: https://vuejs.org/about/faq.html"
       }
     }
-  }
-]
+  ]
+}

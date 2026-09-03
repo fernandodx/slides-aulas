@@ -125,10 +125,10 @@
       "lessons": [
         {
           "id": 6,
-          "title": "Aula 6 — Primeiros passos com Vue",
+          "title": "Aula 6 — Introdução ao Vue.js",
           "tag": "Prática",
-          "duration": "4h",
-          "description": "O que é Vue, SPA x MPA, configuração inicial."
+          "duration": "3h",
+          "description": "Do JavaScript ao primeiro projeto Vue"
         },
         {
           "id": 7,

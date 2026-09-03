@@ -1,21 +1,570 @@
-[
-  {
-    "id": 1,
-    "type": "intro",
-    "title": "Primeiros passos com Vue",
-    "subtitle": "Módulo 3 - Introdução ao Vue 3",
-    "content": {
-      "badge": "Aula 06",
-      "description": "Adicione o conteúdo desta aula aqui. (Slide gerado como capa padrão)",
-      "keyPoints": [
-        "Tópico 1",
-        "Tópico 2"
-      ],
-      "image": {
-        "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
-        "alt": "Desenvolvimento Web",
-        "position": "right"
+{
+  "id": 6,
+  "title": "Introdução ao Vue.js",
+  "subtitle": "Do JavaScript ao primeiro projeto Vue",
+  "module": "Desenvolvimento Web",
+  "tag": "Vue.js",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "Vue.js",
+      "subtitle": "Interfaces modernas com JavaScript",
+      "content": {
+        "badge": "Aula 06",
+        "description": "Vamos conhecer o Vue e criar nossa primeira aplicação.",
+        "keyPoints": [
+          "O que é Vue?",
+          "Pré-requisitos",
+          "Instalação e CLI",
+          "Primeiro projeto",
+          "Estrutura do projeto",
+          "VS Code e extensões"
+        ],
+        "image": {
+          "url": "https://vuejs.org/images/logo.png",
+          "alt": "Logotipo do Vue.js",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": "theory",
+      "title": "O que é Vue?",
+      "subtitle": "Um framework progressivo para interfaces",
+      "content": {
+        "sections": [
+          {
+            "heading": "Vue.js",
+            "text": "Framework JavaScript para construção de interfaces de usuário."
+          },
+          {
+            "heading": "Progressivo",
+            "text": "Pode ser adotado gradualmente em diferentes partes de uma aplicação."
+          },
+          {
+            "heading": "Componentes",
+            "text": "Organiza a interface em partes reutilizáveis."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Vue não substitui HTML, CSS e JavaScript: ele organiza e potencializa seu uso."
+        },
+        "image": {
+          "url": "https://vuejs.org/images/logo.png",
+          "alt": "Logotipo do Vue.js representando o framework",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "type": "practice",
+      "title": "Três ideias para entender Vue",
+      "subtitle": "O que muda na forma de desenvolver",
+      "content": {
+        "items": [
+          {
+            "title": "Reatividade",
+            "detail": "A interface acompanha automaticamente as mudanças dos dados.",
+            "icon": "sync"
+          },
+          {
+            "title": "Componentes",
+            "detail": "Cada parte da interface pode ter estado, comportamento e marcação próprios.",
+            "icon": "widgets"
+          },
+          {
+            "title": "Diretivas",
+            "detail": "Comandos como v-if e v-for permitem controlar a interface de forma declarativa.",
+            "icon": "code"
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "A ideia central: dados mudam → Vue atualiza a interface."
+        }
+      }
+    },
+    {
+      "id": 4,
+      "type": "theory",
+      "title": "Reatividade",
+      "subtitle": "Dados e interface trabalhando juntos",
+      "content": {
+        "sections": [
+          {
+            "heading": "Estado",
+            "text": "A aplicação possui dados que podem mudar."
+          },
+          {
+            "heading": "Dependências",
+            "text": "Vue acompanha quais partes da interface dependem desses dados."
+          },
+          {
+            "heading": "Atualização",
+            "text": "Quando o dado muda, a interface é atualizada automaticamente."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Você altera o estado; o Vue cuida da atualização da interface."
+        }
+      }
+    },
+    {
+      "id": 5,
+      "type": "theory",
+      "title": "Componentes",
+      "subtitle": "Construindo interfaces por partes",
+      "content": {
+        "sections": [
+          {
+            "heading": "Componente",
+            "text": "Uma unidade reutilizável da interface."
+          },
+          {
+            "heading": "Encapsulamento",
+            "text": "Pode reunir template, comportamento e estilo."
+          },
+          {
+            "heading": "Reutilização",
+            "text": "O mesmo componente pode aparecer em diferentes partes da aplicação."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Pense em componentes como peças que formam a interface."
+        }
+      }
+    },
+    {
+      "id": 6,
+      "type": "theory",
+      "title": "Diretivas",
+      "subtitle": "Instruções especiais no template",
+      "content": {
+        "sections": [
+          {
+            "heading": "v-if",
+            "text": "Controla a renderização condicional."
+          },
+          {
+            "heading": "v-for",
+            "text": "Permite renderizar elementos a partir de uma coleção."
+          },
+          {
+            "heading": "v-bind / v-on",
+            "text": "Conectam dados e eventos à interface."
+          }
+        ],
+        "callout": {
+          "type": "info",
+          "text": "Diretivas Vue são identificadas pelo prefixo v-."
+        }
+      }
+    },
+    {
+      "id": 7,
+      "type": "practice",
+      "title": "Pré-requisitos",
+      "subtitle": "O que você precisa saber antes de começar",
+      "content": {
+        "items": [
+          {
+            "title": "HTML",
+            "detail": "Estrutura e elementos de uma página.",
+            "icon": "language"
+          },
+          {
+            "title": "CSS",
+            "detail": "Estilização e layout.",
+            "icon": "brush"
+          },
+          {
+            "title": "JavaScript",
+            "detail": "Lógica, variáveis, funções e eventos.",
+            "icon": "code"
+          },
+          {
+            "title": "JSON",
+            "detail": "Estrutura e manipulação com JSON.parse e JSON.stringify.",
+            "icon": "data_object"
+          },
+          {
+            "title": "Node.js + npm",
+            "detail": "Ambiente necessário para as ferramentas do projeto.",
+            "icon": "terminal"
+          },
+          {
+            "title": "VS Code + GitHub",
+            "detail": "Editor e conta para trabalhar com o projeto.",
+            "icon": "devices"
+          }
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "type": "practice",
+      "title": "Primeiro diagnóstico",
+      "subtitle": "Seu ambiente está pronto?",
+      "content": {
+        "items": [
+          {
+            "title": "Node.js",
+            "detail": "Verifique a versão instalada.",
+            "icon": "terminal"
+          },
+          {
+            "title": "npm",
+            "detail": "Confirme que o gerenciador está funcionando.",
+            "icon": "inventory_2"
+          },
+          {
+            "title": "VS Code",
+            "detail": "Editor instalado e funcionando.",
+            "icon": "devices"
+          },
+          {
+            "title": "GitHub",
+            "detail": "Conta disponível para os próximos projetos.",
+            "icon": "account_circle"
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Antes de instalar o Vue, confirme Node.js e npm."
+        }
+      }
+    },
+    {
+      "id": 9,
+      "type": "code",
+      "title": "Verificando Node e npm",
+      "subtitle": "Execute no terminal",
+      "content": {
+        "language": "bash",
+        "code": "node -v\nnpm -v"
+      }
+    },
+    {
+      "id": 10,
+      "type": "theory",
+      "title": "O papel da CLI",
+      "subtitle": "Automatizando a criação do projeto",
+      "content": {
+        "sections": [
+          {
+            "heading": "CLI",
+            "text": "Command Line Interface: ferramentas executadas pelo terminal."
+          },
+          {
+            "heading": "Scaffolding",
+            "text": "Cria a estrutura inicial do projeto automaticamente."
+          },
+          {
+            "heading": "Configuração",
+            "text": "Evita configurar manualmente toda a estrutura inicial."
+          }
+        ],
+        "callout": {
+          "type": "warning",
+          "text": "Vue CLI está atualmente em modo de manutenção. Para novos projetos, a recomendação atual é create-vue com Vite."
+        }
+      }
+    },
+    {
+      "id": 11,
+      "type": "practice",
+      "title": "Máquinas do CEUB",
+      "subtitle": "Atenção ao terminal utilizado",
+      "content": {
+        "items": [
+          {
+            "title": "Use o CMD",
+            "detail": "Na máquina da faculdade, utilize o Prompt de Comando.",
+            "icon": "terminal"
+          },
+          {
+            "title": "Evite PowerShell",
+            "detail": "PowerShell ou outros terminais podem não funcionar para este fluxo.",
+            "icon": "warning"
+          },
+          {
+            "title": "Use npx",
+            "detail": "Todo comando vue deve ser executado com npx na frente.",
+            "icon": "code"
+          }
+        ],
+        "callout": {
+          "type": "warning",
+          "text": "No CEUB: CMD + npx vue. Exemplo: npx vue --version"
+        }
+      }
+    },
+    {
+      "id": 12,
+      "type": "code",
+      "title": "Instalando o Vue CLI",
+      "subtitle": "Fluxo utilizado nesta aula",
+      "content": {
+        "language": "bash",
+        "code": "npm install -g @vue/cli\n\nnpx vue --version"
+      }
+    },
+    {
+      "id": 13,
+      "type": "practice",
+      "title": "Criando o projeto",
+      "subtitle": "Vamos colocar o Vue para funcionar",
+      "content": {
+        "items": [
+          {
+            "title": "1. Crie a pasta",
+            "detail": "Escolha o diretório onde ficará o projeto.",
+            "icon": "create_new_folder"
+          },
+          {
+            "title": "2. Entre na pasta",
+            "detail": "Abra o CMD nesse diretório.",
+            "icon": "folder_open"
+          },
+          {
+            "title": "3. Execute o CLI",
+            "detail": "Use npx vue create . para criar o projeto na pasta atual.",
+            "icon": "terminal"
+          },
+          {
+            "title": "4. Escolha a configuração",
+            "detail": "Siga as opções apresentadas pelo assistente.",
+            "icon": "tune"
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "No CEUB, lembre-se: npx vue create ."
+        }
+      }
+    },
+    {
+      "id": 14,
+      "type": "code",
+      "title": "Criando o projeto",
+      "subtitle": "Com Vue CLI",
+      "content": {
+        "language": "bash",
+        "code": "mkdir meu-projeto\ncd meu-projeto\nnpx vue create ."
+      }
+    },
+    {
+      "id": 15,
+      "type": "image",
+      "title": "Estrutura inicial",
+      "subtitle": "O que o Vue CLI criou?",
+      "content": {
+        "imageUrl": "https://cli.vuejs.org/_images/cli-new-project.png",
+        "imageAlt": "Estrutura de arquivos de um projeto criado com Vue CLI",
+        "description": "O CLI cria uma estrutura inicial para organizar código, dependências, configurações e arquivos públicos."
+      }
+    },
+    {
+      "id": 16,
+      "type": "theory",
+      "title": "Pastas principais",
+      "subtitle": "Onde cada coisa fica?",
+      "content": {
+        "sections": [
+          {
+            "heading": "src/",
+            "text": "Código principal da aplicação: componentes, estilos e lógica."
+          },
+          {
+            "heading": "public/",
+            "text": "Arquivos públicos que podem ser servidos diretamente."
+          },
+          {
+            "heading": "node_modules/",
+            "text": "Dependências instaladas pelo npm."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "No dia a dia, a maior parte do desenvolvimento acontece dentro de src/."
+        }
+      }
+    },
+    {
+      "id": 17,
+      "type": "theory",
+      "title": "Arquivos importantes",
+      "subtitle": "Os primeiros arquivos que você deve reconhecer",
+      "content": {
+        "sections": [
+          {
+            "heading": "package.json",
+            "text": "Define dependências, scripts e informações do projeto."
+          },
+          {
+            "heading": "src/main.js",
+            "text": "Ponto de entrada que inicializa a aplicação Vue."
+          },
+          {
+            "heading": "src/App.vue",
+            "text": "Componente raiz da aplicação."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Comece explorando App.vue e main.js para entender como a aplicação é iniciada."
+        }
+      }
+    },
+    {
+      "id": 18,
+      "type": "theory",
+      "title": "O arquivo App.vue",
+      "subtitle": "O componente raiz",
+      "content": {
+        "sections": [
+          {
+            "heading": "template",
+            "text": "Define a estrutura visual do componente."
+          },
+          {
+            "heading": "script",
+            "text": "Contém a lógica e o comportamento."
+          },
+          {
+            "heading": "style",
+            "text": "Define os estilos do componente."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Um Single-File Component pode concentrar estrutura, lógica e estilo em um único arquivo."
+        }
+      }
+    },
+    {
+      "id": 19,
+      "type": "code",
+      "title": "Executando a aplicação",
+      "subtitle": "Servidor de desenvolvimento",
+      "content": {
+        "language": "bash",
+        "code": "npm run serve"
+      }
+    },
+    {
+      "id": 20,
+      "type": "image",
+      "title": "Hello World!",
+      "subtitle": "O primeiro resultado no navegador",
+      "content": {
+        "imageUrl": "https://code.visualstudio.com/assets/docs/nodejs/vuejs/hello-world.png",
+        "imageAlt": "Aplicação Vue exibindo uma tela de Hello World no navegador",
+        "description": "Depois de iniciar o servidor, a aplicação fica disponível no navegador."
+      }
+    },
+    {
+      "id": 21,
+      "type": "image",
+      "title": "Vue no VS Code",
+      "subtitle": "Um bom editor faz diferença",
+      "content": {
+        "imageUrl": "https://code.visualstudio.com/assets/docs/nodejs/vuejs/vue-extension.png",
+        "imageAlt": "Extensão Vue - Official instalada no Visual Studio Code",
+        "description": "A extensão oficial adiciona suporte específico para arquivos .vue."
+      }
+    },
+    {
+      "id": 22,
+      "type": "practice",
+      "title": "Extensões essenciais",
+      "subtitle": "Melhorando a experiência no VS Code",
+      "content": {
+        "items": [
+          {
+            "title": "Vue - Official",
+            "detail": "Syntax highlighting, IntelliSense e recursos para Vue.",
+            "icon": "extension"
+          },
+          {
+            "title": "ESLint",
+            "detail": "Ajuda a identificar problemas e manter qualidade no código.",
+            "icon": "fact_check"
+          },
+          {
+            "title": "Prettier",
+            "detail": "Formata o código automaticamente seguindo regras definidas.",
+            "icon": "format_paint"
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Instale primeiro a Vue - Official. As demais entram para qualidade e produtividade."
+        }
+      }
+    },
+    {
+      "id": 23,
+      "type": "practice",
+      "title": "Atividade: seu primeiro Vue",
+      "subtitle": "Agora é sua vez",
+      "content": {
+        "items": [
+          {
+            "title": "Criar",
+            "detail": "Monte um novo projeto Vue.",
+            "icon": "create_new_folder"
+          },
+          {
+            "title": "Explorar",
+            "detail": "Identifique src, public, package.json e App.vue.",
+            "icon": "search"
+          },
+          {
+            "title": "Executar",
+            "detail": "Inicie o servidor de desenvolvimento.",
+            "icon": "play_arrow"
+          },
+          {
+            "title": "Editar",
+            "detail": "Altere a mensagem exibida na tela.",
+            "icon": "edit"
+          },
+          {
+            "title": "Testar",
+            "detail": "Salve e observe a mudança no navegador.",
+            "icon": "refresh"
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Não copie apenas os comandos: observe o que cada etapa criou."
+        }
+      }
+    },
+    {
+      "id": 24,
+      "type": "intro",
+      "title": "O que aprendemos?",
+      "subtitle": "Primeiros passos com Vue.js",
+      "content": {
+        "badge": "Resumo",
+        "description": "Agora você já consegue reconhecer o ecossistema básico e iniciar um projeto Vue.",
+        "keyPoints": [
+          "Vue organiza interfaces com componentes.",
+          "Reatividade conecta dados e interface.",
+          "Diretivas tornam o template declarativo.",
+          "Node.js e npm fazem parte do ambiente.",
+          "O projeto possui uma estrutura organizada.",
+          "VS Code pode ser preparado com extensões específicas."
+        ]
       }
     }
-  }
-]
+  ]
+}

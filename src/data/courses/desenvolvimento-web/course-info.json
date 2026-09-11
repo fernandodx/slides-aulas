@@ -132,10 +132,10 @@
         },
         {
           "id": 7,
-          "title": "Aula 7 — Criando um Projeto Vue",
+          "title": "Aula 7 — Componentes e Ciclo de Vida no Vue 3",
           "tag": "Prática",
           "duration": "4h",
-          "description": "Estrutura do projeto, SFC, importação de componentes."
+          "description": "Construindo interfaces com componentes e entendendo o ciclo de vida"
         },
         {
           "id": 8,

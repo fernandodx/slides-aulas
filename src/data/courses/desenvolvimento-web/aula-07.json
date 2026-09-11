@@ -1,21 +1,741 @@
-[
-  {
-    "id": 1,
-    "type": "intro",
-    "title": "Criando um Projeto Vue",
-    "subtitle": "Módulo 3 - Introdução ao Vue 3",
-    "content": {
-      "badge": "Aula 07",
-      "description": "Adicione o conteúdo desta aula aqui. (Slide gerado como capa padrão)",
-      "keyPoints": [
-        "Tópico 1",
-        "Tópico 2"
-      ],
-      "image": {
-        "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
-        "alt": "Desenvolvimento Web",
-        "position": "right"
+{
+  "id": 7,
+  "title": "Componentes e Ciclo de Vida no Vue 3",
+  "subtitle": "Construindo interfaces com componentes e entendendo o ciclo de vida",
+  "module": "Desenvolvimento Web",
+  "tag": "Vue 3",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "Componentes e Ciclo de Vida",
+      "subtitle": "Como o Vue 3 organiza e executa uma aplicação",
+      "content": {
+        "badge": "Aula 07",
+        "description": "Nesta aula vamos entender como aplicações Vue são divididas em componentes e como esses componentes passam por diferentes etapas durante sua existência.",
+        "keyPoints": [
+          "O que são componentes",
+          "Vantagens da componentização",
+          "Hierarquia de componentes",
+          "Comunicação entre componentes",
+          "Ciclo de vida",
+          "Lifecycle Hooks",
+          "Foco no mounted"
+        ],
+        "image": {
+          "url": "https://vuejs.org/assets/lifecycle.16dc05e2.png",
+          "alt": "Diagrama representando o ciclo de vida de um componente Vue",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": "theory",
+      "title": "O que é um componente?",
+      "subtitle": "Uma parte independente e reutilizável da interface",
+      "content": {
+        "sections": [
+          {
+            "heading": "Componente",
+            "text": "É uma unidade da interface que reúne estrutura, comportamento e, quando necessário, estilos próprios."
+          },
+          {
+            "heading": "Reutilização",
+            "text": "Um componente pode ser utilizado várias vezes em diferentes partes da aplicação."
+          },
+          {
+            "heading": "Responsabilidade",
+            "text": "Cada componente deve possuir uma responsabilidade clara dentro da interface."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Componentização significa dividir uma interface complexa em partes menores, organizadas e reutilizáveis."
+        },
+        "image": {
+          "url": "https://vuejs.org/images/components.png",
+          "alt": "Exemplo visual de componentes Vue",
+          "position": "left"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "type": "practice",
+      "title": "Imagine uma página como LEGO",
+      "subtitle": "Componentes são as peças da interface",
+      "content": {
+        "items": [
+          {
+            "title": "Header",
+            "detail": "Responsável pelo cabeçalho e navegação principal.",
+            "icon": "web_asset"
+          },
+          {
+            "title": "Menu",
+            "detail": "Concentra os elementos utilizados para navegação.",
+            "icon": "menu"
+          },
+          {
+            "title": "Card",
+            "detail": "Representa uma unidade visual reutilizável.",
+            "icon": "view_agenda"
+          },
+          {
+            "title": "Button",
+            "detail": "Representa uma ação reutilizável da interface.",
+            "icon": "smart_button"
+          },
+          {
+            "title": "Footer",
+            "detail": "Concentra informações apresentadas no final da página.",
+            "icon": "vertical_align_bottom"
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Uma página pode ser composta por dezenas ou centenas de componentes menores."
+        }
+      }
+    },
+    {
+      "id": 4,
+      "type": "theory",
+      "title": "Por que utilizar componentes?",
+      "subtitle": "As principais vantagens da componentização",
+      "content": {
+        "sections": [
+          {
+            "heading": "Reutilização",
+            "text": "O mesmo componente pode ser utilizado em diferentes telas sem duplicar código."
+          },
+          {
+            "heading": "Manutenção",
+            "text": "Alterações ficam concentradas no componente responsável por aquela funcionalidade."
+          },
+          {
+            "heading": "Organização",
+            "text": "Interfaces grandes podem ser divididas em pequenas responsabilidades."
+          },
+          {
+            "heading": "Escalabilidade",
+            "text": "A aplicação pode crescer sem transformar um único arquivo em um bloco gigante de código."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Componentização reduz duplicação e facilita a manutenção de aplicações grandes."
+        }
+      }
+    },
+    {
+      "id": 5,
+      "type": "code",
+      "title": "Nosso primeiro componente",
+      "subtitle": "Um componente Vue 3 simples",
+      "content": {
+        "language": "vue",
+        "code": "<template>\n  <div>\n    <h2>Olá, Vue!</h2>\n    <p>Este é o meu primeiro componente.</p>\n  </div>\n</template>\n\n<script>\nexport default {\n  name: 'MensagemBoasVindas'\n}\n</script>"
+      }
+    },
+    {
+      "id": 6,
+      "type": "theory",
+      "title": "Single-File Component",
+      "subtitle": "O famoso arquivo .vue",
+      "content": {
+        "sections": [
+          {
+            "heading": "<template>",
+            "text": "Define a estrutura HTML que será renderizada pelo componente."
+          },
+          {
+            "heading": "<script>",
+            "text": "Contém a lógica, dados, métodos, propriedades e comportamento do componente."
+          },
+          {
+            "heading": "<style>",
+            "text": "Pode conter os estilos utilizados pelo componente."
+          }
+        ],
+        "callout": {
+          "type": "info",
+          "text": "No Vue, é comum representar cada componente em seu próprio arquivo .vue."
+        },
+        "image": {
+          "url": "https://vuejs.org/assets/sfc-diagram.png",
+          "alt": "Diagrama de um Single File Component Vue",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "type": "theory",
+      "title": "Hierarquia de componentes",
+      "subtitle": "Componentes também possuem uma relação entre si",
+      "content": {
+        "sections": [
+          {
+            "heading": "App.vue",
+            "text": "Normalmente funciona como componente raiz da aplicação."
+          },
+          {
+            "heading": "Componentes filhos",
+            "text": "São componentes utilizados dentro de outros componentes."
+          },
+          {
+            "heading": "Níveis",
+            "text": "Um componente pode possuir filhos e, ao mesmo tempo, ser filho de outro componente."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "A interface pode ser representada como uma árvore: App → Página → Seção → Card → Botão."
+        }
+      }
+    },
+    {
+      "id": 8,
+      "type": "image",
+      "title": "Visualizando a hierarquia",
+      "subtitle": "Uma interface como árvore de componentes",
+      "content": {
+        "imageUrl": "https://vuejs.org/assets/component-relationship.7a5b7c1e.png",
+        "imageAlt": "Hierarquia de componentes em uma aplicação Vue",
+        "description": "Um componente raiz pode possuir componentes filhos, formando uma árvore hierárquica.",
+        "position": "center"
+      }
+    },
+    {
+      "id": 9,
+      "type": "code",
+      "title": "Criando um componente filho",
+      "subtitle": "CardProduto.vue",
+      "content": {
+        "language": "vue",
+        "code": "<template>\n  <div class=\"card\">\n    <h2>Notebook</h2>\n    <p>Computador para desenvolvimento.</p>\n  </div>\n</template>\n\n<script>\nexport default {\n  name: 'CardProduto'\n}\n</script>"
+      }
+    },
+    {
+      "id": 10,
+      "type": "code",
+      "title": "Utilizando o componente",
+      "subtitle": "App.vue chamando um componente filho",
+      "content": {
+        "language": "vue",
+        "code": "<template>\n  <div>\n    <h1>Minha loja</h1>\n    <CardProduto />\n  </div>\n</template>\n\n<script>\nimport CardProduto from './components/CardProduto.vue'\n\nexport default {\n  components: {\n    CardProduto\n  }\n}\n</script>"
+      }
+    },
+    {
+      "id": 11,
+      "type": "practice",
+      "title": "Leia a hierarquia",
+      "subtitle": "Quem é pai e quem é filho?",
+      "content": {
+        "items": [
+          {
+            "title": "App.vue",
+            "detail": "É o componente raiz da aplicação.",
+            "icon": "account_tree"
+          },
+          {
+            "title": "CardProduto.vue",
+            "detail": "É utilizado pelo App.vue e, portanto, é um componente filho.",
+            "icon": "subdirectory_arrow_right"
+          },
+          {
+            "title": "BotaoComprar.vue",
+            "detail": "Pode ser utilizado dentro do CardProduto.vue.",
+            "icon": "smart_button"
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Sempre pergunte: quem utiliza este componente? Isso ajuda a entender sua posição na árvore."
+        }
+      }
+    },
+    {
+      "id": 12,
+      "type": "theory",
+      "title": "Componentes e responsabilidades",
+      "subtitle": "Evite componentes gigantes",
+      "content": {
+        "sections": [
+          {
+            "heading": "Responsabilidade única",
+            "text": "Um componente deve possuir uma responsabilidade bem definida."
+          },
+          {
+            "heading": "Componente gigante",
+            "text": "Concentrar toda a aplicação em App.vue dificulta manutenção e reutilização."
+          },
+          {
+            "heading": "Componentes menores",
+            "text": "Dividir a interface permite reutilizar e testar partes específicas."
+          }
+        ],
+        "callout": {
+          "type": "warning",
+          "text": "Se um componente está fazendo coisas demais, provavelmente existem oportunidades de componentização."
+        }
+      }
+    },
+    {
+      "id": 13,
+      "type": "theory",
+      "title": "Um componente não nasce pronto",
+      "subtitle": "Ele possui um ciclo de vida",
+      "content": {
+        "sections": [
+          {
+            "heading": "Criação",
+            "text": "O Vue cria e prepara a instância do componente."
+          },
+          {
+            "heading": "Montagem",
+            "text": "O componente é transformado em elementos reais no DOM."
+          },
+          {
+            "heading": "Atualização",
+            "text": "Mudanças no estado podem provocar novas renderizações."
+          },
+          {
+            "heading": "Desmontagem",
+            "text": "Quando o componente deixa de existir na interface, ele é desmontado."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Lifecycle Hooks permitem executar código em momentos específicos desse ciclo."
+        },
+        "image": {
+          "url": "https://vuejs.org/assets/lifecycle.16dc05e2.png",
+          "alt": "Ciclo de vida de um componente Vue",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 14,
+      "type": "theory",
+      "title": "O que são Lifecycle Hooks?",
+      "subtitle": "Ganchos para momentos importantes do componente",
+      "content": {
+        "sections": [
+          {
+            "heading": "Hook",
+            "text": "É uma função disponibilizada pelo Vue para executar código em determinado momento do ciclo de vida."
+          },
+          {
+            "heading": "Controle",
+            "text": "Permite reagir à criação, montagem, atualização e desmontagem de componentes."
+          },
+          {
+            "heading": "Uso prático",
+            "text": "São muito utilizados para buscar dados, configurar recursos e liberar recursos."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Hooks respondem à pergunta: 'em que momento da vida do componente eu quero executar este código?'"
+        }
+      }
+    },
+    {
+      "id": 15,
+      "type": "practice",
+      "title": "Principais Lifecycle Hooks",
+      "subtitle": "Os hooks que você precisa reconhecer",
+      "content": {
+        "items": [
+          {
+            "title": "beforeCreate",
+            "detail": "Executado antes da criação da instância do componente.",
+            "icon": "play_circle"
+          },
+          {
+            "title": "created",
+            "detail": "Executado depois que a instância foi criada.",
+            "icon": "construction"
+          },
+          {
+            "title": "beforeMount",
+            "detail": "Executado antes da montagem do componente no DOM.",
+            "icon": "hourglass_top"
+          },
+          {
+            "title": "mounted",
+            "detail": "Executado depois que o componente foi montado no DOM.",
+            "icon": "check_circle"
+          },
+          {
+            "title": "beforeUpdate",
+            "detail": "Executado antes de uma atualização do DOM.",
+            "icon": "update"
+          },
+          {
+            "title": "updated",
+            "detail": "Executado depois que o DOM foi atualizado.",
+            "icon": "sync"
+          },
+          {
+            "title": "beforeUnmount",
+            "detail": "Executado antes de o componente ser desmontado.",
+            "icon": "logout"
+          },
+          {
+            "title": "unmounted",
+            "detail": "Executado depois que o componente foi desmontado.",
+            "icon": "delete"
+          }
+        ]
+      }
+    },
+    {
+      "id": 16,
+      "type": "theory",
+      "title": "Options API x Composition API",
+      "subtitle": "Duas formas de trabalhar com Vue 3",
+      "content": {
+        "sections": [
+          {
+            "heading": "Options API",
+            "text": "Utiliza opções como data, methods, computed e mounted dentro do export default."
+          },
+          {
+            "heading": "Composition API",
+            "text": "Utiliza funções como ref, computed e onMounted para organizar a lógica."
+          },
+          {
+            "heading": "Vue 3",
+            "text": "As duas abordagens são suportadas. Nesta disciplina podemos encontrar exemplos das duas."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "mounted pertence à Options API. Na Composition API, o equivalente é onMounted."
+        }
+      }
+    },
+    {
+      "id": 17,
+      "type": "code",
+      "title": "O mounted na Options API",
+      "subtitle": "Executando código depois da montagem",
+      "content": {
+        "language": "vue",
+        "code": "<template>\n  <div>\n    <h1>Olá!</h1>\n  </div>\n</template>\n\n<script>\nexport default {\n  mounted() {\n    console.log('Componente montado!')\n  }\n}\n</script>"
+      }
+    },
+    {
+      "id": 18,
+      "type": "theory",
+      "title": "Por que o mounted é importante?",
+      "subtitle": "Quando o DOM já está disponível",
+      "content": {
+        "sections": [
+          {
+            "heading": "DOM disponível",
+            "text": "O hook mounted acontece depois que o componente foi montado no DOM."
+          },
+          {
+            "heading": "Integrações",
+            "text": "É útil para inicializar bibliotecas que precisam acessar elementos da página."
+          },
+          {
+            "heading": "Busca de dados",
+            "text": "Pode ser utilizado para iniciar chamadas de API quando a tela é carregada."
+          },
+          {
+            "heading": "Eventos",
+            "text": "Também pode ser utilizado para registrar comportamentos necessários após a montagem."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "mounted é especialmente útil quando precisamos trabalhar com algo que só existe depois que o componente foi renderizado."
+        }
+      }
+    },
+    {
+      "id": 19,
+      "type": "code",
+      "title": "mounted + API",
+      "subtitle": "Buscando dados quando a tela é carregada",
+      "content": {
+        "language": "vue",
+        "code": "<template>\n  <div>\n    <h1>Usuários</h1>\n    <p>{{ mensagem }}</p>\n  </div>\n</template>\n\n<script>\nexport default {\n  data() {\n    return {\n      mensagem: 'Carregando...'\n    }\n  },\n\n  mounted() {\n    this.mensagem = 'Dados carregados!'\n  }\n}\n</script>"
+      }
+    },
+    {
+      "id": 20,
+      "type": "practice",
+      "title": "O que pode acontecer no mounted?",
+      "subtitle": "Casos comuns no desenvolvimento",
+      "content": {
+        "items": [
+          {
+            "title": "Buscar dados",
+            "detail": "Iniciar uma requisição para uma API quando a tela estiver pronta.",
+            "icon": "cloud_download"
+          },
+          {
+            "title": "Manipular DOM",
+            "detail": "Acessar elementos que já foram renderizados.",
+            "icon": "html"
+          },
+          {
+            "title": "Inicializar biblioteca",
+            "detail": "Configurar gráficos, mapas ou outras bibliotecas dependentes do DOM.",
+            "icon": "extension"
+          },
+          {
+            "title": "Adicionar eventos",
+            "detail": "Registrar eventos que dependem da existência dos elementos.",
+            "icon": "event"
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Pergunte sempre: este código precisa que o componente já esteja na tela? Se sim, mounted pode ser o momento adequado."
+        }
+      }
+    },
+    {
+      "id": 21,
+      "type": "code",
+      "title": "Acessando o DOM",
+      "subtitle": "Um exemplo simples com mounted",
+      "content": {
+        "language": "vue",
+        "code": "<template>\n  <div>\n    <h1 id=\"titulo\">Minha aplicação</h1>\n  </div>\n</template>\n\n<script>\nexport default {\n  mounted() {\n    const titulo = document.getElementById('titulo')\n\n    console.log(titulo)\n  }\n}\n</script>"
+      }
+    },
+    {
+      "id": 22,
+      "type": "theory",
+      "title": "mounted não é um botão mágico",
+      "subtitle": "Quando devemos realmente utilizá-lo?",
+      "content": {
+        "sections": [
+          {
+            "heading": "Não coloque tudo no mounted",
+            "text": "O hook deve ser utilizado apenas quando a lógica realmente depende do momento de montagem."
+          },
+          {
+            "heading": "Prefira reatividade",
+            "text": "Quando o problema pode ser resolvido utilizando o sistema reativo do Vue, normalmente essa é uma solução melhor."
+          },
+          {
+            "heading": "API",
+            "text": "Chamadas de API podem ser iniciadas durante a montagem, mas devem considerar estados de carregamento e erro."
+          }
+        ],
+        "callout": {
+          "type": "warning",
+          "text": "Lifecycle hooks são ferramentas de controle do ciclo de vida, não um lugar para colocar qualquer código."
+        }
+      }
+    },
+    {
+      "id": 23,
+      "type": "theory",
+      "title": "O ciclo completo",
+      "subtitle": "Do nascimento à destruição",
+      "content": {
+        "sections": [
+          {
+            "heading": "1. Criação",
+            "text": "O Vue prepara o componente e sua instância."
+          },
+          {
+            "heading": "2. Montagem",
+            "text": "O template é transformado em DOM e inserido na página."
+          },
+          {
+            "heading": "3. Atualização",
+            "text": "Alterações reativas provocam atualizações da interface."
+          },
+          {
+            "heading": "4. Desmontagem",
+            "text": "O componente deixa de fazer parte da interface e pode liberar seus recursos."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Hoje o nosso principal ponto de atenção é a montagem: mounted."
+        },
+        "image": {
+          "url": "https://vuejs.org/assets/lifecycle.16dc05e2.png",
+          "alt": "Fluxo completo do ciclo de vida de um componente Vue",
+          "position": "bottom"
+        }
+      }
+    },
+    {
+      "id": 24,
+      "type": "code",
+      "title": "Composition API: onMounted",
+      "subtitle": "A alternativa moderna no Vue 3",
+      "content": {
+        "language": "vue",
+        "code": "<script setup>\nimport { onMounted } from 'vue'\n\nonMounted(() => {\n  console.log('Componente montado!')\n})\n</script>\n\n<template>\n  <h1>Vue 3</h1>\n</template>"
+      }
+    },
+    {
+      "id": 25,
+      "type": "practice",
+      "title": "mounted ou onMounted?",
+      "subtitle": "A ideia é a mesma",
+      "content": {
+        "items": [
+          {
+            "title": "Options API",
+            "detail": "Utilizamos mounted() dentro do objeto export default.",
+            "icon": "code"
+          },
+          {
+            "title": "Composition API",
+            "detail": "Utilizamos onMounted() importado de vue.",
+            "icon": "code_blocks"
+          },
+          {
+            "title": "Momento",
+            "detail": "Ambos representam o momento após a montagem do componente.",
+            "icon": "schedule"
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Não confunda a sintaxe: mounted e onMounted representam o mesmo conceito em APIs diferentes."
+        }
+      }
+    },
+    {
+      "id": 26,
+      "type": "code",
+      "title": "Exemplo completo",
+      "subtitle": "Vue 3 + componente + mounted",
+      "content": {
+        "language": "vue",
+        "code": "<template>\n  <div>\n    <h1>{{ titulo }}</h1>\n    <p>{{ mensagem }}</p>\n  </div>\n</template>\n\n<script>\nexport default {\n  name: 'TelaInicial',\n\n  data() {\n    return {\n      titulo: 'Minha aplicação Vue 3',\n      mensagem: 'Carregando...'\n    }\n  },\n\n  mounted() {\n    console.log('TelaInicial foi montada!')\n    this.mensagem = 'Aplicação pronta!'\n  }\n}\n</script>"
+      }
+    },
+    {
+      "id": 27,
+      "type": "practice",
+      "title": "Atividade prática",
+      "subtitle": "Construindo uma tela com componentes",
+      "content": {
+        "items": [
+          {
+            "title": "1. Criar",
+            "detail": "Crie um componente chamado CardAluno.vue.",
+            "icon": "create_new_folder"
+          },
+          {
+            "title": "2. Estruturar",
+            "detail": "Adicione nome, curso e período utilizando template.",
+            "icon": "html"
+          },
+          {
+            "title": "3. Registrar",
+            "detail": "Importe e registre o componente no App.vue.",
+            "icon": "link"
+          },
+          {
+            "title": "4. Utilizar",
+            "detail": "Renderize o CardAluno dentro do App.vue.",
+            "icon": "widgets"
+          },
+          {
+            "title": "5. Montar",
+            "detail": "Adicione mounted() ao componente e exiba uma mensagem no console.",
+            "icon": "terminal"
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Abra o DevTools do navegador e observe o console quando o componente for montado."
+        }
+      }
+    },
+    {
+      "id": 28,
+      "type": "code",
+      "title": "Desafio: carregamento",
+      "subtitle": "Simulando uma tela que carrega dados",
+      "content": {
+        "language": "vue",
+        "code": "<template>\n  <div>\n    <h1>Alunos</h1>\n    <p v-if=\"carregando\">Carregando...</p>\n    <p v-else>{{ mensagem }}</p>\n  </div>\n</template>\n\n<script>\nexport default {\n  data() {\n    return {\n      carregando: true,\n      mensagem: ''\n    }\n  },\n\n  mounted() {\n    setTimeout(() => {\n      this.mensagem = 'Dados carregados com sucesso!'\n      this.carregando = false\n    }, 1500)\n  }\n}\n</script>"
+      }
+    },
+    {
+      "id": 29,
+      "type": "practice",
+      "title": "Desafio final",
+      "subtitle": "Monte sua própria árvore de componentes",
+      "content": {
+        "items": [
+          {
+            "title": "App.vue",
+            "detail": "Componente principal da aplicação.",
+            "icon": "account_tree"
+          },
+          {
+            "title": "Cabecalho.vue",
+            "detail": "Componente responsável pelo cabeçalho.",
+            "icon": "web_asset"
+          },
+          {
+            "title": "ListaAlunos.vue",
+            "detail": "Componente responsável pela lista.",
+            "icon": "list"
+          },
+          {
+            "title": "CardAluno.vue",
+            "detail": "Componente responsável por cada aluno.",
+            "icon": "badge"
+          },
+          {
+            "title": "mounted()",
+            "detail": "Utilize o hook para simular o carregamento inicial dos alunos.",
+            "icon": "play_arrow"
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Tente pensar primeiro na hierarquia e nas responsabilidades. Depois escreva o código."
+        }
+      }
+    },
+    {
+      "id": 30,
+      "type": "intro",
+      "title": "O que aprendemos?",
+      "subtitle": "Componentes e ciclo de vida no Vue 3",
+      "content": {
+        "badge": "Resumo",
+        "description": "Agora você consegue dividir uma interface em componentes e compreender quando executar código durante o ciclo de vida.",
+        "keyPoints": [
+          "Componentes dividem a interface em partes reutilizáveis.",
+          "Cada componente deve possuir uma responsabilidade clara.",
+          "Componentes formam uma hierarquia em árvore.",
+          "Lifecycle Hooks permitem executar código em momentos específicos.",
+          "mounted acontece depois que o componente é montado no DOM.",
+          "Na Composition API, o equivalente é onMounted.",
+          "mounted pode ser útil para carregamento inicial e integrações dependentes do DOM.",
+          "O ciclo de vida possui criação, montagem, atualização e desmontagem."
+        ],
+        "image": {
+          "url": "https://vuejs.org/assets/lifecycle.16dc05e2.png",
+          "alt": "Resumo visual do ciclo de vida Vue",
+          "position": "right"
+        }
       }
     }
-  }
-]
+  ]
+}

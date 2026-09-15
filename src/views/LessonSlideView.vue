@@ -20,7 +20,20 @@
     <!-- Main Slide Presentation Stage -->
     <main class="slide-stage">
       <div v-if="loading" class="loading-container">
-        <p class="m3-body-large">Carregando slide da aula...</p>
+        <p class="m3-body-large">Carregando conteúdo dos slides...</p>
+      </div>
+
+      <div v-else-if="isBlocked" class="blocked-container">
+        <div class="blocked-card">
+          <span class="material-icons-round blocked-icon">lock</span>
+          <h2 class="m3-headline-medium">Conteúdo Bloqueado</h2>
+          <p class="m3-body-large">
+            Este conteúdo ou avaliação não está liberado no momento pelo professor no Remote Config.
+          </p>
+          <M3Button variant="filled" icon="arrow_back" @click="backToCourse">
+            Voltar à Ementa do Curso
+          </M3Button>
+        </div>
       </div>
 
       <SlideViewer
@@ -74,10 +87,14 @@ const router = useRouter();
 const courseId = computed(
   () => route.params.courseId || "desenvolvimento-de-interfaces"
 );
-const lessonId = computed(() => parseInt(route.params.lessonId, 10) || 1);
+const lessonId = computed(() => {
+  const param = route.params.lessonId;
+  return param ? String(param) : "1";
+});
 
 const lesson = ref(null);
 const loading = ref(true);
+const isBlocked = ref(false);
 const slideDataList = ref([]);
 
 const {
@@ -100,14 +117,37 @@ const {
 
 const fetchLessonData = async () => {
   loading.value = true;
+  isBlocked.value = false;
   try {
+    const { remoteConfigService } = await import("@/services/remote-config.service");
+    await remoteConfigService.ensureInitialized();
+
+    const isAssessment = String(lessonId.value).startsWith("avaliacao");
+    const isUnlocked = isAssessment
+      ? remoteConfigService.isAssessmentEnabled(courseId.value, lessonId.value)
+      : remoteConfigService.isLessonEnabled(courseId.value, lessonId.value);
+
+    if (!isUnlocked) {
+      isBlocked.value = true;
+      return;
+    }
+
     const data = await courseRepository.getLesson(
       courseId.value,
       lessonId.value
     );
     if (data) {
       lesson.value = data;
-      slides.value = data.slides || [];
+      if (Array.isArray(data.slides)) {
+        slides.value = data.slides;
+      } else if (Array.isArray(data)) {
+        slides.value = data;
+      } else if (data.type) {
+        // Objeto de slide único diretamente na raiz do arquivo JSON
+        slides.value = [data];
+      } else {
+        slides.value = [];
+      }
     }
   } catch (e) {
     console.error("Failed to load lesson slides", e);
@@ -186,5 +226,32 @@ watch([courseId, lessonId], () => {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.blocked-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.blocked-card {
+  background-color: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-shape-corner-extra-large);
+  padding: 48px;
+  max-width: 540px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--md-elevation-3);
+}
+
+.blocked-icon {
+  font-size: 64px;
+  color: var(--md-sys-color-error);
 }
 </style>

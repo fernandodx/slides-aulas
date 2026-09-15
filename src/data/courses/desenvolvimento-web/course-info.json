@@ -30,6 +30,44 @@
       }
     ]
   },
+  "assessments": [
+    {
+      "id": "avaliacao-01",
+      "number": 1,
+      "title": "Avaliação 01: Aplicação Interativa em JS",
+      "subtitle": "Entrega via GitHub da aplicação To Do funcional",
+      "type": "activity",
+      "badge": "Atividade Prática",
+      "weight": "10%",
+      "deadline": "Aula 05 • 03/10/2026",
+      "duration": "Entrega via Repositório",
+      "description": "Construção de uma aplicação web interativa utilizando JavaScript puro, manipulação do DOM e README documentado."
+    },
+    {
+      "id": "avaliacao-02",
+      "number": 2,
+      "title": "Avaliação 02: Seminário de Tecnologias Web",
+      "subtitle": "Apresentação técnica em equipes com arguição",
+      "type": "seminar",
+      "badge": "Seminário (A1)",
+      "weight": "40%",
+      "deadline": "Aula 11 • 31/10/2026",
+      "duration": "15 min por equipe",
+      "description": "Pesquisa e apresentação sobre frameworks (Angular, React, Vue), padrões REST e segurança web (JWT, OAuth)."
+    },
+    {
+      "id": "avaliacao-03",
+      "number": 3,
+      "title": "Avaliação 03: Projeto Final & Deploy",
+      "subtitle": "Submissão via Pull Request com aplicação em produção",
+      "type": "final_project",
+      "badge": "Projeto Final (N2)",
+      "weight": "50%",
+      "deadline": "Aula 18 • 05/12/2026",
+      "duration": "Banca Avaliativa",
+      "description": "Apresentação do projeto completo, componentizado, com Vue 3, consumo de APIs e deploy funcional."
+    }
+  ],
   "tools": [
     {
       "name": "HTML & CSS",

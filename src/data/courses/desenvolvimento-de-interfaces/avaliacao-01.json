@@ -1,0 +1,108 @@
+{
+  "id": "avaliacao-01",
+  "title": "1ª Avaliação: Desenvolvimento de Interfaces",
+  "subtitle": "Design System e Protótipo Navegável no Figma",
+  "module": "Desenvolvimento de Interfaces",
+  "tag": "1ª Avaliação",
+  "slides": [
+    {
+      "id": 1,
+      "type": "assessment",
+      "title": "1ª Avaliação: Design System & Protótipo",
+      "subtitle": "Crie um Design System e um protótipo navegável de sua escolha no Figma",
+      "content": {
+        "assessmentType": "activity",
+        "badge": "1ª Avaliação Oficial",
+        "date": "22/09/26 às 23:59h",
+        "activityReadme": {
+          "description": "Desenvolva no Figma um Design System estruturado e um fluxo navegável aplicando:",
+          "requirements": [
+            "Cores: Primary, Secondary, Tertiary, Background, OnBackground e a nova cor onSurface (Light e Dark)",
+            "Tipografia: Headline, Subtitle, Body, Button e a nova fonte Title (tamanho, peso e espaçamento)",
+            "Componentes: Botões Primário, Secundário, Terciário e o novo componente AppBar com variante Dark",
+            "Protótipo: Telas navegáveis utilizando AppBar em todas elas e consumindo as variáveis e componentes"
+          ]
+        },
+        "evaluationCriteria": [
+          {
+            "label": "Variáveis do Design System",
+            "weight": "25%",
+            "detail": "Cores e tipografias criadas como variáveis locais reutilizáveis."
+          },
+          {
+            "label": "Componentes de Botão",
+            "weight": "25%",
+            "detail": "Botões Primário, Secundário e Terciário como componentes reais no Figma."
+          },
+          {
+            "label": "Novos Elementos Criados",
+            "weight": "20%",
+            "detail": "Presença obrigatória de onSurface, Title, AppBar e a variante Dark do AppBar."
+          },
+          {
+            "label": "Protótipo Navegável",
+            "weight": "30%",
+            "detail": "Uso da AppBar em todas as telas, fidelidade aos nomes e aos padrões ensinados."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "No Figma, certifique-se de que botões e AppBar sejam componentes de fato (símbolo roxo do componente)."
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": "assessment",
+      "title": "Entrega no GitHub & Checklist",
+      "subtitle": "Instruções de envio do projeto e oportunidade de upgrade de menção",
+      "content": {
+        "assessmentType": "activity",
+        "badge": "Entrega • Bônus Extra",
+        "date": "Data a definir",
+        "activityReadme": {
+          "description": "Checklist de conformidade para conferência antes de realizar o envio:",
+          "requirements": [
+            "Cores: Primary, Secondary, Tertiary, Background, OnBackground e a nova cor onSurface (Light & Dark)",
+            "Tipografia: Headline, Subtitle, Body, Button e a nova fonte Title com especificações",
+            "Componentes: Botões Primário, Secundário, Terciário e componente AppBar com variante Dark",
+            "Protótipo Navegável: Fluxo interativo de telas consumindo todas as variáveis e componentes"
+          ]
+        },
+        "githubSubmission": {
+          "instruction": "Submeta no repositório a pasta do projeto contendo o arquivo .txt com descrição, link do Figma e capturas obrigatórias:",
+          "folderPath": "seuNome/Atividades/design_system",
+          "documentation": "Arquivo .txt contendo descrição do trabalho e link público do Figma",
+          "requiredScreenshots": [
+            "Paleta de cores (Light e Dark)",
+            "Escala tipográfica (com Title)",
+            "Componentes (Botões e AppBar)",
+            "1ª tela do protótipo navegável"
+          ],
+          "bonus": "Apresentação voluntária em sala garante upgrade de menção (ex: MM vira MS; MS vira SS)!"
+        },
+        "evaluationCriteria": [
+          {
+            "label": "Estrutura no GitHub",
+            "weight": "Obrigatório",
+            "detail": "Pasta correta com .txt, link público do Figma e os 4 prints solicitados."
+          },
+          {
+            "label": "Conformidade Técnica",
+            "weight": "Obrigatório",
+            "detail": "Atendimento integral ao Design System e protótipo interativo."
+          },
+          {
+            "label": "Apresentação Voluntária",
+            "weight": "Bônus (+1 Menção)",
+            "detail": "Upgrade de uma menção para quem demonstrar o protótipo ao vivo na aula de entrega."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Dica: Teste o link público do Figma em uma aba anônima antes de salvar no .txt para garantir o acesso do professor."
+        }
+      }
+    }
+  ]
+}

@@ -27,6 +27,10 @@ export function useCourseViewModel(courseId = "desenvolvimento-de-interfaces") {
     return remoteConfigService.isLessonEnabled(courseId, lessonId);
   };
 
+  const isAssessmentUnlocked = (assessmentId) => {
+    return remoteConfigService.isAssessmentEnabled(courseId, assessmentId);
+  };
+
   const getLessonById = (lessonId) => {
     if (!course.value) return null;
     for (const mod of course.value.modules) {
@@ -48,6 +52,7 @@ export function useCourseViewModel(courseId = "desenvolvimento-de-interfaces") {
     totalLessons,
     loadCourse,
     isLessonUnlocked,
+    isAssessmentUnlocked,
     getLessonById,
   };
 }

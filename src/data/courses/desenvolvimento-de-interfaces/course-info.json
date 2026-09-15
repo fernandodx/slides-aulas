@@ -30,6 +30,44 @@
       }
     ]
   },
+  "assessments": [
+    {
+      "id": "avaliacao-01",
+      "number": 1,
+      "title": "Avaliação 01: Design System & Protótipo Figma",
+      "subtitle": "Entrega do Design System completo com tokens e protótipo",
+      "type": "activity",
+      "badge": "Protótipo & UI",
+      "weight": "30%",
+      "deadline": "Aula 9 • 22/09/2026",
+      "duration": "Entrega de Link do Figma",
+      "description": "Criação do Design System com tipografia, cores semânticas, componentes e protótipo navegável de alta fidelidade no Figma."
+    },
+    {
+      "id": "avaliacao-02",
+      "number": 2,
+      "title": "Avaliação 02: Aplicação Web Responsiva",
+      "subtitle": "Implementação funcional com manipulação de interface",
+      "type": "activity",
+      "badge": "Código & DOM",
+      "weight": "30%",
+      "deadline": "Aula 17 • 12/11/2026",
+      "duration": "Entrega via GitHub",
+      "description": "Aplicação web desenvolvida com HTML, CSS e JavaScript puro, consumindo e atualizando o DOM com responsividade."
+    },
+    {
+      "id": "avaliacao-03",
+      "number": 3,
+      "title": "Avaliação 03: Apresentação de Projeto Completo",
+      "subtitle": "Banca individual com projeto em produção e código versionado",
+      "type": "final_project",
+      "badge": "Projeto Final (N2)",
+      "weight": "40%",
+      "deadline": "Aula 20 • 03/12/2026",
+      "duration": "Banca Final",
+      "description": "Apresentação completa: protótipo Figma, repositório GitHub com Clean Code e deploy da aplicação em produção funcional."
+    }
+  ],
   "tools": [
     {
       "name": "Figma",

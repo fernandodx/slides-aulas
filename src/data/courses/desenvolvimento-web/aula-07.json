@@ -23,7 +23,7 @@
           "Foco no mounted"
         ],
         "image": {
-          "url": "https://vuejs.org/assets/lifecycle.16dc05e2.png",
+          "url": "https://raw.githubusercontent.com/vuejs/docs/main/src/guide/essentials/images/lifecycle.png",
           "alt": "Diagrama representando o ciclo de vida de um componente Vue",
           "position": "right"
         }
@@ -54,7 +54,7 @@
           "text": "Componentização significa dividir uma interface complexa em partes menores, organizadas e reutilizáveis."
         },
         "image": {
-          "url": "https://vuejs.org/images/components.png",
+          "url": "https://raw.githubusercontent.com/vuejs/docs/main/src/guide/essentials/images/components.png",
           "alt": "Exemplo visual de componentes Vue",
           "position": "left"
         }
@@ -164,7 +164,7 @@
           "text": "No Vue, é comum representar cada componente em seu próprio arquivo .vue."
         },
         "image": {
-          "url": "https://vuejs.org/assets/sfc-diagram.png",
+          "url": "/img/vue-sfc-structure.svg",
           "alt": "Diagrama de um Single File Component Vue",
           "position": "right"
         }
@@ -202,7 +202,7 @@
       "title": "Visualizando a hierarquia",
       "subtitle": "Uma interface como árvore de componentes",
       "content": {
-        "imageUrl": "https://vuejs.org/assets/component-relationship.7a5b7c1e.png",
+        "imageUrl": "https://raw.githubusercontent.com/vuejs/docs/main/src/guide/essentials/images/components.png",
         "imageAlt": "Hierarquia de componentes em uma aplicação Vue",
         "description": "Um componente raiz pode possuir componentes filhos, formando uma árvore hierárquica.",
         "position": "center"
@@ -312,7 +312,7 @@
           "text": "Lifecycle Hooks permitem executar código em momentos específicos desse ciclo."
         },
         "image": {
-          "url": "https://vuejs.org/assets/lifecycle.16dc05e2.png",
+          "url": "https://raw.githubusercontent.com/vuejs/docs/main/src/guide/essentials/images/lifecycle.png",
           "alt": "Ciclo de vida de um componente Vue",
           "position": "right"
         }
@@ -569,9 +569,9 @@
           "text": "Hoje o nosso principal ponto de atenção é a montagem: mounted."
         },
         "image": {
-          "url": "https://vuejs.org/assets/lifecycle.16dc05e2.png",
+          "url": "https://raw.githubusercontent.com/vuejs/docs/main/src/guide/essentials/images/lifecycle.png",
           "alt": "Fluxo completo do ciclo de vida de um componente Vue",
-          "position": "bottom"
+          "position": "right"
         }
       }
     },
@@ -731,7 +731,7 @@
           "O ciclo de vida possui criação, montagem, atualização e desmontagem."
         ],
         "image": {
-          "url": "https://vuejs.org/assets/lifecycle.16dc05e2.png",
+          "url": "https://raw.githubusercontent.com/vuejs/docs/main/src/guide/essentials/images/lifecycle.png",
           "alt": "Resumo visual do ciclo de vida Vue",
           "position": "right"
         }

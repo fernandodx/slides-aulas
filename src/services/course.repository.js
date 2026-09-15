@@ -27,19 +27,27 @@ class CourseRepository {
       return this.lessonCache[cacheKey];
     }
 
+    const strId = String(lessonId).trim();
+    let fileName;
+
+    if (strId.startsWith("avaliacao")) {
+      const parts = strId.split("-");
+      const num = parts.length > 1 ? parts[1] : strId.replace("avaliacao", "");
+      fileName = `avaliacao-${String(num).padStart(2, "0")}`;
+    } else {
+      fileName = `aula-${String(strId).padStart(2, "0")}`;
+    }
+
     try {
-      // Dynamic import of lesson JSON files
+      // Dynamic import of lesson or assessment JSON files
       const lessonData = await import(
-        `@/data/courses/${courseId}/aula-${String(lessonId).padStart(
-          2,
-          "0"
-        )}.json`
+        `@/data/courses/${courseId}/${fileName}.json`
       );
       this.lessonCache[cacheKey] = lessonData.default || lessonData;
       return this.lessonCache[cacheKey];
     } catch (error) {
       console.error(
-        `[CourseRepository] Failed to load slide data for course ${courseId}, lesson ${lessonId}`,
+        `[CourseRepository] Failed to load slide data for course ${courseId}, file ${fileName}`,
         error
       );
       return null;

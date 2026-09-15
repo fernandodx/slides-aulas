@@ -104,6 +104,80 @@
         </M3Card>
       </div>
 
+      <!-- ESPAÇO ESPECIAL DE AVALIAÇÕES -->
+      <section
+        v-if="courseAssessments.length > 0"
+        class="assessments-section"
+      >
+        <div class="assessments-header">
+          <div class="assessments-title-group">
+            <M3Chip variant="secondary" icon="assignment_turned_in" class="assessment-badge-chip">
+              Espaço Avaliativo
+            </M3Chip>
+            <h2 class="m3-headline-medium assessments-title">
+              Avaliações &amp; Entregas da Disciplina
+            </h2>
+            <p class="m3-body-medium assessments-subtitle">
+              Orientações oficiais de entregas, critérios de pontuação, datas e dinâmicas avaliativas.
+            </p>
+          </div>
+        </div>
+
+        <div class="assessments-grid">
+          <M3Card
+            v-for="item in courseAssessments"
+            :key="item.id"
+            variant="surface"
+            class="assessment-card"
+          >
+            <div class="assessment-card__top">
+              <div class="assessment-chips-left">
+                <M3Chip
+                  :variant="item.badgeVariant || (item.type === 'seminar' ? 'secondary' : (item.type === 'final_project' ? 'error' : 'primary'))"
+                  :icon="item.icon || (item.type === 'seminar' ? 'groups' : (item.type === 'final_project' ? 'rocket_launch' : 'assignment'))"
+                >
+                  {{ item.badge || 'Avaliação' }}
+                </M3Chip>
+                <M3Chip v-if="item.weight" variant="assist">
+                  Peso: {{ item.weight }}
+                </M3Chip>
+              </div>
+
+              <div class="assessment-status">
+                <span class="status-indicator status-indicator--open">
+                  <span class="material-icons-round">check_circle</span> Liberada
+                </span>
+              </div>
+            </div>
+
+            <h3 class="m3-title-large assessment-card__title">{{ item.title }}</h3>
+            <p class="m3-body-medium assessment-card__sub">{{ item.subtitle }}</p>
+            <p class="m3-body-small assessment-card__desc">{{ item.description }}</p>
+
+            <div class="assessment-card__meta">
+              <div v-if="item.deadline" class="meta-row">
+                <span class="material-icons-round meta-icon">event</span>
+                <span class="meta-text">{{ item.deadline }}</span>
+              </div>
+              <div v-if="item.duration" class="meta-row">
+                <span class="material-icons-round meta-icon">schedule</span>
+                <span class="meta-text">{{ item.duration }}</span>
+              </div>
+            </div>
+
+            <div class="assessment-card__action">
+              <M3Button
+                variant="filled"
+                icon="slideshow"
+                @click="openLesson(item.id)"
+              >
+                Abrir Slides da Avaliação
+              </M3Button>
+            </div>
+          </M3Card>
+        </div>
+      </section>
+
       <!-- Modules & 20 Lessons Breakdown -->
       <section class="modules-section">
         <h2 class="m3-headline-medium section-title">
@@ -185,7 +259,7 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { computed, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import M3Navbar from "@/components/layout/M3Navbar.vue";
 import M3Card from "@/components/ui/M3Card.vue";
@@ -197,8 +271,24 @@ const route = useRoute();
 const router = useRouter();
 const courseId = route.params.courseId || "desenvolvimento-de-interfaces";
 
-const { course, loading, isCourseUnlocked, loadCourse, isLessonUnlocked } =
-  useCourseViewModel(courseId);
+const {
+  course,
+  loading,
+  isCourseUnlocked,
+  loadCourse,
+  isLessonUnlocked,
+  isAssessmentUnlocked,
+} = useCourseViewModel(courseId);
+
+const courseAssessments = computed(() => {
+  if (!course.value) return [];
+  if (Array.isArray(course.value.assessments)) {
+    return course.value.assessments.filter((item) =>
+      isAssessmentUnlocked(item.id)
+    );
+  }
+  return [];
+});
 
 const startFirstLesson = () => {
   openLesson(1);
@@ -475,5 +565,170 @@ onMounted(() => {
   font-size: 64px;
   color: var(--md-sys-color-on-surface-variant);
   opacity: 0.5;
+}
+
+/* --- Seção de Avaliações & Entregas --- */
+.assessments-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 8px;
+}
+
+.assessments-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.assessments-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.assessment-badge-chip {
+  align-self: flex-start;
+  font-size: 14px;
+}
+
+.assessments-title {
+  color: var(--md-sys-color-primary);
+  font-weight: 800;
+}
+
+.assessments-subtitle {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.assessments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+}
+
+.assessment-card {
+  padding: 24px;
+  border-radius: var(--md-shape-corner-large);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all var(--md-motion-duration-short) ease;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  position: relative;
+  overflow: hidden;
+}
+
+.assessment-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--md-elevation-2);
+  border-color: var(--md-sys-color-primary);
+}
+
+.assessment-card--locked {
+  opacity: 0.75;
+  background-color: var(--md-sys-color-surface-container-low);
+  filter: grayscale(0.2);
+}
+
+.assessment-card--locked:hover {
+  transform: none;
+  border-color: var(--md-sys-color-outline-variant);
+  box-shadow: none;
+}
+
+.assessment-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.assessment-chips-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.assessment-status {
+  display: flex;
+  align-items: center;
+}
+
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.status-indicator--open {
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+}
+
+.status-indicator--open .material-icons-round {
+  font-size: 16px;
+}
+
+.status-indicator--locked {
+  background-color: var(--md-sys-color-error-container);
+  color: var(--md-sys-color-on-error-container);
+}
+
+.status-indicator--locked .material-icons-round {
+  font-size: 16px;
+}
+
+.assessment-card__title {
+  color: var(--md-sys-color-on-surface);
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.assessment-card__sub {
+  color: var(--md-sys-color-primary);
+  font-weight: 600;
+}
+
+.assessment-card__desc {
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.assessment-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 14px;
+  background-color: var(--md-sys-color-surface-container-high);
+  border-radius: var(--md-shape-corner-small);
+  margin-top: 4px;
+}
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface);
+}
+
+.meta-icon {
+  font-size: 18px;
+  color: var(--md-sys-color-primary);
+}
+
+.assessment-card__action {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
 }
 </style>

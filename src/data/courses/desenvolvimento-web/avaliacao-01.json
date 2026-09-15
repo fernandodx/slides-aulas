@@ -1,0 +1,120 @@
+{
+  "id": "avaliacao-01",
+  "title": "Avaliação 01: Aplicação Interativa em JS",
+  "subtitle": "Construção de uma aplicação To Do com manipulação do DOM e README profissional",
+  "module": "Desenvolvimento Web",
+  "tag": "Avaliação",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "Avaliação 01: Aplicação Interativa",
+      "subtitle": "Desenvolvimento e entrega no GitHub",
+      "content": {
+        "badge": "Avaliação Oficial • 10% da Média",
+        "description": "Nesta primeira entrega avaliativa da disciplina, cada aluno(a) deverá desenvolver uma aplicação web interativa em JavaScript puro, sem frameworks, aplicando conceitos de manipulação do DOM, eventos e persistência local.",
+        "keyPoints": [
+          "Aplicação de JavaScript ES6+ e boas práticas",
+          "Manipulação do DOM e escuta de eventos do usuário",
+          "Persistência no navegador com localStorage",
+          "Entrega via repositório público no GitHub com README"
+        ],
+        "image": {
+          "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop",
+          "alt": "Estação de trabalho com código JavaScript na tela",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": "assessment",
+      "title": "Regras da Entrega da Atividade",
+      "subtitle": "Critérios objetivos de avaliação e documentação no README",
+      "content": {
+        "assessmentType": "activity",
+        "badge": "Entrega Oficial",
+        "date": "03/10/2026 às 23h59",
+        "activityReadme": {
+          "description": "O projeto deve ser documentado no README.md do repositório contendo:",
+          "requirements": [
+            "Descrição do projeto, propósito e funcionalidades implementadas",
+            "Instruções claras de execução local (ex: via Live Server ou navegador)",
+            "Demonstração visual com screenshots ou GIF da aplicação funcionando",
+            "Lista de conceitos de JavaScript e DOM explorados na solução"
+          ]
+        },
+        "githubSubmission": {
+          "instruction": "Submeta o link do repositório público no GitHub na tarefa correspondente no Google Classroom.",
+          "repositoryPattern": "devweb-todo-[primeironome]-[matricula]"
+        },
+        "evaluationCriteria": [
+          {
+            "label": "Documentação no README",
+            "weight": "30%",
+            "detail": "Instruções claras, bem formatadas e com screenshots."
+          },
+          {
+            "label": "Funcionalidades da Aplicação",
+            "weight": "50%",
+            "detail": "Adicionar, remover, marcar como concluído e salvar no localStorage."
+          },
+          {
+            "label": "Qualidade do Código e Git",
+            "weight": "20%",
+            "detail": "Código limpo, indentado e histórico de commits coerente."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Repositórios configurados como privados que não puderem ser acessados pelo professor receberão nota zero."
+        }
+      }
+    },
+    {
+      "id": 3,
+      "type": "practice",
+      "title": "Checklist de Preparação da Entrega",
+      "subtitle": "4 passos para garantir nota máxima antes de submeter",
+      "content": {
+        "items": [
+          {
+            "title": "1. Validação Local",
+            "detail": "Abra o Console do navegador (F12) e garanta que não há erros em vermelho.",
+            "icon": "bug_report"
+          },
+          {
+            "title": "2. Teste do localStorage",
+            "detail": "Recarregue a página (F5) e confirme se os dados inseridos continuam visíveis.",
+            "icon": "storage"
+          },
+          {
+            "title": "3. Revisão do README",
+            "detail": "Confira se todos os links, imagens e instruções de uso abrem corretamente.",
+            "icon": "description"
+          },
+          {
+            "title": "4. Submissão no Prazo",
+            "detail": "Envie o link público do repositório no Classroom antes das 23h59 da data estipulada.",
+            "icon": "send"
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Dica: Peça para um colega clonar seu repositório e tentar rodar seguindo apenas o seu README."
+        }
+      }
+    },
+    {
+      "id": 4,
+      "type": "code",
+      "title": "Estrutura Recomendada de Pastas",
+      "subtitle": "Organização limpa e profissional do repositório",
+      "content": {
+        "language": "text",
+        "code": "devweb-todo-seu-nome/\n├── index.html         # Estrutura semântica da aplicação\n├── css/\n│   └── style.css      # Estilização responsiva e acessível\n├── js/\n│   ├── app.js         # Ponto de entrada e escuta de eventos\n│   └── storage.js     # Módulo auxiliar para o localStorage\n├── assets/            # Imagens e screenshots para o README\n└── README.md          # Documentação completa da atividade",
+        "explanation": "Uma separação clara entre HTML, CSS e JavaScript demonstra maturidade profissional e facilita a avaliação."
+      }
+    }
+  ]
+}

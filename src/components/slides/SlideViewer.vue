@@ -33,6 +33,15 @@
             v-else-if="currentSlide.type === 'image' || currentSlide.type === 'infographic'"
             :slide="currentSlide"
           />
+
+          <AssessmentSlideContent
+            v-else-if="
+              currentSlide.type === 'assessment' ||
+              currentSlide.type === 'evaluation' ||
+              currentSlide.type === 'avaliacao'
+            "
+            :slide="currentSlide"
+          />
         </M3Card>
       </div>
     </Transition>
@@ -45,6 +54,7 @@ import TheorySlideContent from "@/components/slides/content/TheorySlideContent.v
 import PracticeSlideContent from "@/components/slides/content/PracticeSlideContent.vue";
 import CodeSlideContent from "@/components/slides/content/CodeSlideContent.vue";
 import ImageSlideContent from "@/components/slides/content/ImageSlideContent.vue";
+import AssessmentSlideContent from "@/components/slides/content/AssessmentSlideContent.vue";
 
 defineProps({
   currentSlide: {

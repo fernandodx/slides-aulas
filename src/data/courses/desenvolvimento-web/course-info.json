@@ -177,10 +177,10 @@
         },
         {
           "id": 8,
-          "title": "Aula 8 — Reatividade e Ciclo de Vida",
+          "title": "Aula 8 — Diretivas, CSS e Eventos no Vue 3",
           "tag": "Prática",
           "duration": "4h",
-          "description": "ref(), reactive(), computed(), onMounted."
+          "description": "Controlando a interface e respondendo às interações do usuário"
         },
         {
           "id": 9,

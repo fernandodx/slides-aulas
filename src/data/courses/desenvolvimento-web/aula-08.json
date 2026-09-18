@@ -1,21 +1,198 @@
-[
-  {
-    "id": 1,
-    "type": "intro",
-    "title": "Reatividade e Ciclo de Vida",
-    "subtitle": "Módulo 3 - Introdução ao Vue 3",
-    "content": {
-      "badge": "Aula 08",
-      "description": "Adicione o conteúdo desta aula aqui. (Slide gerado como capa padrão)",
-      "keyPoints": [
-        "Tópico 1",
-        "Tópico 2"
-      ],
-      "image": {
-        "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
-        "alt": "Desenvolvimento Web",
-        "position": "right"
+{
+  "id": 7,
+  "title": "Diretivas, CSS e Eventos no Vue 3",
+  "subtitle": "Controlando a interface e respondendo às interações do usuário",
+  "module": "Vue 3",
+  "tag": "Diretivas e Eventos",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "Diretivas e Eventos no Vue 3",
+      "subtitle": "Como controlar o DOM e responder às ações do usuário",
+      "content": {
+        "badge": "Aula 07 • Vue 3",
+        "description": "Nesta aula vamos explorar diretivas, estilos CSS e eventos para construir interfaces Vue mais dinâmicas e interativas.",
+        "keyPoints": [
+          "Entender o conceito e a vantagem das diretivas",
+          "Aplicar as principais diretivas do Vue",
+          "Trabalhar com CSS global e scoped",
+          "Responder a eventos de interação do usuário"
+        ],
+         "image": {
+          "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1600&q=80",
+          "alt": "Código sendo desenvolvido em um computador",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": "theory",
+      "title": "O que são diretivas?",
+      "subtitle": "Instruções especiais que conectam o template à lógica do Vue",
+      "content": {
+        "sections": [
+          {
+            "heading": "Instruções no HTML",
+            "text": "Diretivas são atributos especiais iniciados por `v-` que informam ao Vue como um elemento deve ser renderizado ou atualizado."
+          },
+          {
+            "heading": "Ligação com a reatividade",
+            "text": "Elas permitem que o template reaja aos dados do componente, alterando conteúdo, atributos, estilos ou a própria presença dos elementos."
+          },
+          {
+            "heading": "Menos manipulação manual",
+            "text": "Em vez de buscar elementos e alterar o DOM diretamente, descrevemos o resultado esperado e deixamos o Vue controlar a atualização da interface."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Pense na diretiva como uma instrução declarativa: você descreve o que a interface deve fazer."
+        }
+      }
+    },
+    {
+      "id": 3,
+      "type": "code",
+      "title": "Principais diretivas do Vue",
+      "subtitle": "Diretivas essenciais para construir templates dinâmicos",
+      "content": {
+        "language": "html",
+        "code": "<p v-if=\"isLogged\">Bem-vindo!</p>\n<p v-else>Faça login</p>\n\n<li v-for=\"item in items\" :key=\"item.id\">\n  {{ item.name }}\n</li>\n\n<input v-model=\"name\" />\n\n<button :disabled=\"loading\">\n  Enviar\n</button>",
+        "explanation": "v-if controla renderização, v-for repete elementos, v-model cria ligação bidirecional e : permite vincular atributos aos dados reativos."
+      }
+    },
+    {
+      "id": 4,
+      "type": "practice",
+      "title": "Diretivas mais utilizadas",
+      "subtitle": "Escolha a diretiva de acordo com o comportamento necessário",
+      "content": {
+        "items": [
+          {
+            "title": "v-if / v-else",
+            "detail": "Renderiza elementos condicionalmente. Use quando a presença do elemento depende de uma condição.",
+            "icon": "visibility"
+          },
+          {
+            "title": "v-for",
+            "detail": "Percorre arrays ou coleções para gerar elementos repetidos. Utilize uma chave única com `:key`.",
+            "icon": "format_list_bulleted"
+          },
+          {
+            "title": "v-model",
+            "detail": "Sincroniza campos de formulário com dados reativos, facilitando entradas como texto, checkbox e select.",
+            "icon": "input"
+          },
+          {
+            "title": "v-bind",
+            "detail": "Vincula atributos HTML a valores dinâmicos. A forma abreviada é usar apenas `:` antes do atributo.",
+            "icon": "link"
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "No v-for, use uma `:key` estável e única para ajudar o Vue a atualizar a lista corretamente."
+        }
+      }
+    },
+    {
+      "id": 5,
+      "type": "theory",
+      "title": "Trabalhando com CSS no Vue",
+      "subtitle": "Entenda a diferença entre estilos globais e estilos isolados",
+      "content": {
+        "sections": [
+          {
+            "heading": "CSS Global",
+            "text": "Estilos sem `scoped` podem afetar elementos de outros componentes. São úteis para reset, tipografia, variáveis CSS e regras compartilhadas."
+          },
+          {
+            "heading": "CSS Scoped",
+            "text": "Com `<style scoped>`, o Vue aplica atributos aos elementos e seletores para limitar o estilo ao componente onde ele foi declarado."
+          },
+          {
+            "heading": "Quando utilizar",
+            "text": "Prefira scoped para estilos específicos do componente e global para regras realmente compartilhadas pela aplicação."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Scoped reduz conflitos entre componentes, mas não transforma o CSS em um isolamento completo como Shadow DOM."
+        }
+      }
+    },
+    {
+      "id": 6,
+      "type": "code",
+      "title": "CSS global e scoped na prática",
+      "subtitle": "Organizando estilos para evitar conflitos entre componentes",
+      "content": {
+        "language": "vue",
+        "code": "<!-- App.vue -->\n<template>\n  <h1 class=\"title\">Minha aplicação</h1>\n</template>\n\n<style>\n.title {\n  font-size: 32px;\n}\n</style>\n\n<!-- Card.vue -->\n<style scoped>\n.title {\n  color: blue;\n}\n</style>",
+        "explanation": "O primeiro estilo é global. O segundo é scoped e fica associado ao componente Card.vue, reduzindo o risco de alterar títulos de outros componentes."
+      }
+    },
+    {
+      "id": 7,
+      "type": "theory",
+      "title": "Eventos no Vue",
+      "subtitle": "Respondendo às interações realizadas pelo usuário",
+      "content": {
+        "sections": [
+          {
+            "heading": "Para que servem?",
+            "text": "Eventos permitem executar lógica quando o usuário interage com a interface, como clicar em um botão, digitar ou enviar um formulário."
+          },
+          {
+            "heading": "Sintaxe com @",
+            "text": "O Vue oferece uma forma curta para `v-on`: `@click`, `@input` e `@submit` são exemplos de eventos diretamente no template."
+          },
+          {
+            "heading": "Métodos e handlers",
+            "text": "O evento pode chamar uma função definida no componente. Essa função pode atualizar estado, validar dados ou executar outras regras da aplicação."
+          }
+        ],
+        "callout": {
+          "type": "info",
+          "text": "A sintaxe `@evento=\"handler\"` é uma abreviação de `v-on:evento=\"handler\"`."
+        }
+      }
+    },
+    {
+      "id": 8,
+      "type": "practice",
+      "title": "Principais eventos do Vue",
+      "subtitle": "Eventos comuns para formulários e interações da interface",
+      "content": {
+        "items": [
+          {
+            "title": "@click",
+            "detail": "Executa uma ação quando o usuário clica em um elemento, como botões, links ou cards interativos.",
+            "icon": "touch_app"
+          },
+          {
+            "title": "@input",
+            "detail": "Dispara quando o valor de um campo de entrada é alterado durante a digitação.",
+            "icon": "keyboard"
+          },
+          {
+            "title": "@submit",
+            "detail": "Executa uma ação no envio de um formulário. Pode ser combinado com `.prevent` para evitar o recarregamento da página.",
+            "icon": "send"
+          },
+          {
+            "title": "@change",
+            "detail": "Indica que o valor de um campo foi alterado, sendo comum em select, checkbox e outros controles.",
+            "icon": "change_circle"
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Use modificadores como `@submit.prevent` para aplicar comportamentos comuns diretamente no template."
+        }
       }
     }
-  }
-]
+  ]
+}

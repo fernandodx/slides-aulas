@@ -34,14 +34,14 @@
     {
       "id": "avaliacao-01",
       "number": 1,
-      "title": "Avaliação 01: Aplicação Interativa em JS",
-      "subtitle": "Entrega via GitHub da aplicação To Do funcional",
+      "title": "Atividade: Sistema de Deputados",
+      "subtitle": "Desenvolva uma aplicação consumindo a API da Câmara",
       "type": "activity",
       "badge": "Atividade Prática",
       "weight": "10%",
-      "deadline": "Aula 05 • 03/10/2026",
-      "duration": "Entrega via Repositório",
-      "description": "Construção de uma aplicação web interativa utilizando JavaScript puro, manipulação do DOM e README documentado."
+      "deadline": "Aula 09 • 05/11/2026 23:59h",
+      "duration": "Entrega via Repositório do Github da disciplina",
+      "description": "Construção de uma aplicação utilizando Vue com CLI"
     },
     {
       "id": "avaliacao-02",

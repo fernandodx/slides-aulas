@@ -1,119 +1,100 @@
 {
-  "id": "avaliacao-01",
-  "title": "Avaliação 01: Aplicação Interativa em JS",
-  "subtitle": "Construção de uma aplicação To Do com manipulação do DOM e README profissional",
-  "module": "Desenvolvimento Web",
-  "tag": "Avaliação",
+  "id": 9,
+  "title": "Atividade: Sistema de Consulta de Deputados",
+  "subtitle": "Integração com API pública, componentes, eventos e navegação",
+  "module": "Desenvolvimento de Interfaces",
+  "tag": "Atividade Prática",
   "slides": [
     {
       "id": 1,
-      "type": "intro",
-      "title": "Avaliação 01: Aplicação Interativa",
-      "subtitle": "Desenvolvimento e entrega no GitHub",
+      "type": "assessment",
+      "title": "Atividade: Sistema de Deputados",
+      "subtitle": "Desenvolva uma aplicação consumindo a API da Câmara",
       "content": {
-        "badge": "Avaliação Oficial • 10% da Média",
-        "description": "Nesta primeira entrega avaliativa da disciplina, cada aluno(a) deverá desenvolver uma aplicação web interativa em JavaScript puro, sem frameworks, aplicando conceitos de manipulação do DOM, eventos e persistência local.",
-        "keyPoints": [
-          "Aplicação de JavaScript ES6+ e boas práticas",
-          "Manipulação do DOM e escuta de eventos do usuário",
-          "Persistência no navegador com localStorage",
-          "Entrega via repositório público no GitHub com README"
-        ],
-        "image": {
-          "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop",
-          "alt": "Estação de trabalho com código JavaScript na tela",
-          "position": "right"
+        "assessmentType": "activity",
+        "badge": "Atividade Prática",
+        "date": "05/10/2026 23:59",
+        "activityReadme": {
+          "description": "Crie um sistema web de consulta de deputados utilizando os conhecimentos desenvolvidos em sala de aula.",
+          "requirements": [
+            "Criar um novo projeto utilizando a CLI do framework estudado.",
+            "Consultar deputados por nome utilizando a API pública da Câmara.",
+            "Exibir nome, foto, partido e UF em cards de listagem.",
+            "Ao selecionar um deputado, apresentar uma página com seus detalhes.",
+            "Na página de detalhes, exibir redes sociais, e-mail e telefone do gabinete."
+          ]
+        },
+        "githubSubmission": {
+          "instruction": "Envie o projeto pelo GitHub da turma, respeitando a estrutura de pastas indicada.",
+          "folderPath": "seuNome/Atividades/sistema_deputados",
+          "documentation": "O projeto deve estar completo e executável, com código-fonte e arquivos necessários para sua execução.",
+          "requiredScreenshots": [
+            "Tela de listagem dos deputados",
+            "Tela de detalhes de um deputado"
+          ],
+          "bonus": "Como diferencial, publique o sistema em produção e entregue uma URL pública para acesso."
+        },
+        "callout": {
+          "type": "important",
+          "text": "O uso de IA poderá reduzir a nota. Para evitar o desconto, entregue funcionalidades além do solicitado e publique o sistema em produção."
         }
       }
     },
     {
       "id": 2,
       "type": "assessment",
-      "title": "Regras da Entrega da Atividade",
-      "subtitle": "Critérios objetivos de avaliação e documentação no README",
+      "title": "Entrega e critérios da atividade",
+      "subtitle": "Confira os requisitos antes de enviar seu projeto",
       "content": {
         "assessmentType": "activity",
-        "badge": "Entrega Oficial",
-        "date": "03/10/2026 às 23h59",
+        "badge": "Checklist de Entrega",
+        "date": "05/10/2026 23:59",
         "activityReadme": {
-          "description": "O projeto deve ser documentado no README.md do repositório contendo:",
+          "description": "A atividade será considerada completa quando os requisitos funcionais e a estrutura de entrega forem atendidos.",
           "requirements": [
-            "Descrição do projeto, propósito e funcionalidades implementadas",
-            "Instruções claras de execução local (ex: via Live Server ou navegador)",
-            "Demonstração visual com screenshots ou GIF da aplicação funcionando",
-            "Lista de conceitos de JavaScript e DOM explorados na solução"
+            "Projeto criado por CLI e funcionando corretamente.",
+            "Consulta à API oficial da Câmara dos Deputados.",
+            "Listagem com busca por nome e dados solicitados.",
+            "Navegação para uma página de detalhes do deputado.",
+            "Detalhes contendo dados pessoais e informações do gabinete."
           ]
         },
         "githubSubmission": {
-          "instruction": "Submeta o link do repositório público no GitHub na tarefa correspondente no Google Classroom.",
-          "repositoryPattern": "devweb-todo-[primeironome]-[matricula]"
+          "instruction": "Faça a entrega no GitHub da turma até o prazo definido.",
+          "folderPath": "seuNome/Atividades/sistema_deputados",
+          "documentation": "Inclua o código-fonte, arquivos de configuração e instruções necessárias para executar o projeto.",
+          "requiredScreenshots": [
+            "Listagem com deputados",
+            "Página de detalhes"
+          ],
+          "bonus": "Deploy em produção com URL pública será considerado como diferencial."
         },
         "evaluationCriteria": [
           {
-            "label": "Documentação no README",
-            "weight": "30%",
-            "detail": "Instruções claras, bem formatadas e com screenshots."
+            "label": "Funcionalidade",
+            "weight": "40%",
+            "detail": "Busca, listagem, seleção do deputado e apresentação correta dos dados."
           },
           {
-            "label": "Funcionalidades da Aplicação",
-            "weight": "50%",
-            "detail": "Adicionar, remover, marcar como concluído e salvar no localStorage."
+            "label": "Interface",
+            "weight": "25%",
+            "detail": "Organização visual, componentes, responsividade e experiência de uso."
           },
           {
-            "label": "Qualidade do Código e Git",
-            "weight": "20%",
-            "detail": "Código limpo, indentado e histórico de commits coerente."
-          }
-        ],
-        "callout": {
-          "type": "important",
-          "text": "Repositórios configurados como privados que não puderem ser acessados pelo professor receberão nota zero."
-        }
-      }
-    },
-    {
-      "id": 3,
-      "type": "practice",
-      "title": "Checklist de Preparação da Entrega",
-      "subtitle": "4 passos para garantir nota máxima antes de submeter",
-      "content": {
-        "items": [
-          {
-            "title": "1. Validação Local",
-            "detail": "Abra o Console do navegador (F12) e garanta que não há erros em vermelho.",
-            "icon": "bug_report"
+            "label": "Código",
+            "weight": "25%",
+            "detail": "Aplicação dos conhecimentos trabalhados em aula, organização e legibilidade."
           },
           {
-            "title": "2. Teste do localStorage",
-            "detail": "Recarregue a página (F5) e confirme se os dados inseridos continuam visíveis.",
-            "icon": "storage"
-          },
-          {
-            "title": "3. Revisão do README",
-            "detail": "Confira se todos os links, imagens e instruções de uso abrem corretamente.",
-            "icon": "description"
-          },
-          {
-            "title": "4. Submissão no Prazo",
-            "detail": "Envie o link público do repositório no Classroom antes das 23h59 da data estipulada.",
-            "icon": "send"
+            "label": "Entrega",
+            "weight": "10%",
+            "detail": "Estrutura correta no GitHub, projeto executável e respeito ao prazo."
           }
         ],
         "callout": {
           "type": "tip",
-          "text": "Dica: Peça para um colega clonar seu repositório e tentar rodar seguindo apenas o seu README."
+          "text": "Diferencie seu projeto com funcionalidades extras e deploy público utilizando uma URL acessível."
         }
-      }
-    },
-    {
-      "id": 4,
-      "type": "code",
-      "title": "Estrutura Recomendada de Pastas",
-      "subtitle": "Organização limpa e profissional do repositório",
-      "content": {
-        "language": "text",
-        "code": "devweb-todo-seu-nome/\n├── index.html         # Estrutura semântica da aplicação\n├── css/\n│   └── style.css      # Estilização responsiva e acessível\n├── js/\n│   ├── app.js         # Ponto de entrada e escuta de eventos\n│   └── storage.js     # Módulo auxiliar para o localStorage\n├── assets/            # Imagens e screenshots para o README\n└── README.md          # Documentação completa da atividade",
-        "explanation": "Uma separação clara entre HTML, CSS e JavaScript demonstra maturidade profissional e facilita a avaliação."
       }
     }
   ]

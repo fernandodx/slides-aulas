@@ -21,7 +21,8 @@
             "Consultar deputados por nome utilizando a API pública da Câmara.",
             "Exibir nome, foto, partido e UF em cards de listagem.",
             "Ao selecionar um deputado, apresentar uma página com seus detalhes.",
-            "Na página de detalhes, exibir redes sociais, e-mail e telefone do gabinete."
+            "Na página de detalhes, exibir redes sociais, e-mail e telefone do gabinete.",
+            "Use A API pública para consumo dos dados: https://dadosabertos.camara.leg.br/swagger/api.html"
           ]
         },
         "githubSubmission": {

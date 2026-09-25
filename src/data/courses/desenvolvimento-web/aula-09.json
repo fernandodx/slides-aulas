@@ -1,21 +1,172 @@
-[
-  {
-    "id": 1,
-    "type": "intro",
-    "title": "Diretivas e Comunicação",
-    "subtitle": "Módulo 3 - Introdução ao Vue 3",
-    "content": {
-      "badge": "Aula 09",
-      "description": "Adicione o conteúdo desta aula aqui. (Slide gerado como capa padrão)",
-      "keyPoints": [
-        "Tópico 1",
-        "Tópico 2"
-      ],
-      "image": {
-        "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
-        "alt": "Desenvolvimento Web",
-        "position": "right"
+{
+  "id": 7,
+  "title": "Vue 3: Props e Emit",
+  "subtitle": "Comunicação entre componentes pai e filho",
+  "module": "Vue 3",
+  "tag": "Componentes",
+  "slides": [
+    {
+      "id": 1,
+      "type": "intro",
+      "title": "Como os componentes conversam?",
+      "subtitle": "Props levam dados para baixo; Emit leva eventos para cima",
+      "content": {
+        "badge": "Aula 07 • Vue 3",
+        "description": "Componentes são independentes, mas precisam trocar informações. Nesta aula, vamos entender como o pai envia dados ao filho e como o filho avisa o pai sobre uma ação.",
+        "keyPoints": [
+          "Props: dados do pai para o filho",
+          "Emit: eventos do filho para o pai",
+          "Componentes mais reutilizáveis e organizados",
+          "Fluxo de comunicação previsível"
+        ],
+        "image": {
+          "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+          "alt": "Pessoa desenvolvendo componentes de software em um computador",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": "theory",
+      "title": "Props: dados descem para o filho",
+      "subtitle": "O componente pai fornece valores que o filho utiliza",
+      "content": {
+        "sections": [
+          {
+            "heading": "Quem declara?",
+            "text": "A prop é declarada no componente filho, porque é ele quem informa quais dados externos precisa receber."
+          },
+          {
+            "heading": "Quem fornece?",
+            "text": "O componente pai passa o valor ao chamar o filho. A ligação é feita usando uma propriedade no componente filho."
+          },
+          {
+            "heading": "Fluxo dos dados",
+            "text": "O fluxo recomendado é unidirecional: Pai → Filho. O filho utiliza a prop, mas não deve alterar diretamente seu valor."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Pense em props como parâmetros de uma função: o pai fornece os valores e o filho recebe."
+        },
+        "image": {
+          "url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+          "alt": "Visualização conceitual de dados sendo organizados e transmitidos",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "type": "code",
+      "title": "Criando e passando uma Prop",
+      "subtitle": "Declare no filho e envie o valor a partir do pai",
+      "content": {
+        "language": "javascript",
+        "code": "export default {\n  props: {\n    nome: String\n  }\n}\n\n// Componente pai\n<ComponenteFilho\n  :nome=\"nomeUsuario\"\n/>",
+        "explanation": "A prop nome é declarada no filho. O pai envia o valor de nomeUsuario usando :nome na chamada do componente."
+      }
+    },
+    {
+      "id": 4,
+      "type": "practice",
+      "title": "Imagine um Card de Usuário",
+      "subtitle": "O mesmo componente pode receber dados diferentes",
+      "content": {
+        "items": [
+          {
+            "title": "Pai possui os dados",
+            "detail": "O componente pai mantém informações como nome, cargo ou foto do usuário.",
+            "icon": "storage"
+          },
+          {
+            "title": "Filho recebe via props",
+            "detail": "O Card recebe esses valores e decide apenas como apresentá-los na interface.",
+            "icon": "input"
+          },
+          {
+            "title": "Reutilização",
+            "detail": "O mesmo Card pode ser utilizado várias vezes, recebendo valores diferentes em cada chamada.",
+            "icon": "repeat"
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Se o filho precisa apenas receber uma informação, pense primeiro em uma prop."
+        }
+      }
+    },
+    {
+      "id": 5,
+      "type": "theory",
+      "title": "Emit: quando o filho precisa avisar?",
+      "subtitle": "Use eventos personalizados para comunicar uma ação ao pai",
+      "content": {
+        "sections": [
+          {
+            "heading": "Quando usar?",
+            "text": "Use emit quando uma ação acontece no filho e o componente pai precisa reagir a essa ação."
+          },
+          {
+            "heading": "Qual é o fluxo?",
+            "text": "O filho dispara um evento personalizado. O pai escuta esse evento usando a diretiva @ e executa seu próprio método."
+          },
+          {
+            "heading": "Dados no evento",
+            "text": "O filho também pode enviar informações junto com o evento, permitindo que o pai saiba o que aconteceu."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Props descem dados. Emit sobe eventos. Essa ideia resolve grande parte da comunicação entre pai e filho."
+        },
+        "image": {
+          "url": "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80",
+          "alt": "Equipe colaborando e compartilhando informações",
+          "position": "left"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "type": "code",
+      "title": "Emitindo um evento personalizado",
+      "subtitle": "O filho dispara e o pai captura o evento",
+      "content": {
+        "language": "javascript",
+        "code": "export default {\n  emits: ['evento-clique'],\n  methods: {\n    clicar() {\n      this.$emit(\n        'evento-clique',\n        'Botão pressionado'\n      )\n    }\n  }\n}\n\n<ComponenteFilho\n  @evento-clique=\"lidarComClique\"\n/>",
+        "explanation": "O filho registra o evento em emits e usa $emit para dispará-lo. O pai escuta com @evento-clique e direciona a execução para lidarComClique."
+      }
+    },
+    {
+      "id": 7,
+      "type": "practice",
+      "title": "Props ou Emit? Pense no sentido",
+      "subtitle": "Escolha a ferramenta observando quem inicia a comunicação",
+      "content": {
+        "items": [
+          {
+            "title": "Pai → Filho",
+            "detail": "O pai precisa fornecer um valor para o filho. Use uma prop, como :nome=\"nomeUsuario\".",
+            "icon": "arrow_downward"
+          },
+          {
+            "title": "Filho → Pai",
+            "detail": "O filho precisa informar que algo aconteceu. Use $emit e escute com @nome-do-evento.",
+            "icon": "arrow_upward"
+          },
+          {
+            "title": "Pergunta-chave",
+            "detail": "Antes de escolher, pergunte: estou enviando um dado ou avisando que uma ação aconteceu?",
+            "icon": "help"
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Regra mental: Props transportam dados; Emit comunica acontecimentos."
+        }
       }
     }
-  }
-]
+  ]
+}

@@ -184,10 +184,10 @@
         },
         {
           "id": 9,
-          "title": "Aula 9 — Diretivas e Comunicação",
+          "title": "Aula 9 — Props e Emit",
           "tag": "Prática",
           "duration": "4h",
-          "description": "v-if, v-for, v-model, Props e Emits."
+          "description": "Comunicação entre componentes pai e filho"
         }
       ]
     },

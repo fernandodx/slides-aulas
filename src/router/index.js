@@ -17,6 +17,11 @@ const routes = [
     component: CourseDetailView,
   },
   {
+    path: "/curso/:courseId/seminario/:assessmentId?",
+    name: "seminar-view",
+    component: () => import("@/views/SeminarView.vue"),
+  },
+  {
     path: "/curso/:courseId/aula/:lessonId/slide/:slideIndex?",
     name: "lesson-slide",
     component: LessonSlideView,

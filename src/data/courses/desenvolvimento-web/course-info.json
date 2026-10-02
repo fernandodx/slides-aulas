@@ -17,10 +17,10 @@
         "description": "Construção de uma aplicação utilizando apenas JavaScript puro."
       },
       {
-        "name": "Seminário  - Desenvolvimento Web",
+        "name": "Seminário - Desenvolvimento Web",
         "aula": 11,
         "weight": "40%",
-        "description": "Temas: Angula, React, Padrão REST, Seguraça (Token JWT, OAuth), Evolução das páginas web"
+        "description": "Temas: Padrão REST, Angular, React, Segurança (JWT/OAuth), Evolução da Web, Arquitetura Front-End, Analytics e Testes Automatizados."
       },
       {
         "name": "Entrega Final feita atráves de Pull Request",
@@ -47,13 +47,13 @@
       "id": "avaliacao-02",
       "number": 2,
       "title": "Avaliação 02: Seminário de Tecnologias Web",
-      "subtitle": "Apresentação técnica em equipes com arguição",
+      "subtitle": "Apresentação técnica em equipes com escolha de temas em tempo real",
       "type": "seminar",
       "badge": "Seminário (A1)",
       "weight": "40%",
       "deadline": "Aula 11 • 31/10/2026",
       "duration": "15 min por equipe",
-      "description": "Pesquisa e apresentação sobre frameworks (Angular, React, Vue), padrões REST e segurança web (JWT, OAuth)."
+      "description": "Pesquisa e apresentação prática em equipes: Padrão REST, Angular, React, Segurança (JWT/OAuth), Evolução da Web, Arquitetura Front-End, Analytics e Testes Automatizados."
     },
     {
       "id": "avaliacao-03",

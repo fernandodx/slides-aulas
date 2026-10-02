@@ -35,27 +35,62 @@
       >
         <!-- Definição de Temas -->
         <div v-if="slide.content?.topics?.length" class="assessment-section">
-          <h3 class="section-title">
-            <span class="material-icons-round section-icon">topic</span>
-            Definição de Temas
-          </h3>
+          <div class="section-title-wrap">
+            <h3 class="section-title">
+              <span class="material-icons-round section-icon">topic</span>
+              Definição de Temas
+            </h3>
+            <button
+              type="button"
+              class="open-seminar-btn"
+              @click="goToSeminarView"
+            >
+              <span class="material-icons-round">how_to_reg</span>
+              Painel de Inscrições
+            </button>
+          </div>
           <div class="topics-grid">
             <M3Card
               v-for="(topic, idx) in slide.content.topics"
               :key="idx"
               variant="outlined"
               class="topic-card"
+              :class="{ 'topic-card--claimed': isTopicClaimed(getTopicId(topic, idx)) }"
             >
               <div class="topic-index">{{ String(idx + 1).padStart(2, '0') }}</div>
               <div class="topic-content">
-                <div class="topic-title">
-                  {{ typeof topic === 'string' ? topic : topic.title }}
+                <div class="topic-title-row">
+                  <div class="topic-title">
+                    {{ typeof topic === 'string' ? topic : topic.title }}
+                  </div>
+                  <span
+                    v-if="isTopicClaimed(getTopicId(topic, idx))"
+                    class="slide-claimed-badge"
+                  >
+                    <span class="material-icons-round">lock</span> Escolhido
+                  </span>
+                  <span
+                    v-else
+                    class="slide-available-badge"
+                  >
+                    Disponível
+                  </span>
                 </div>
                 <div
                   v-if="typeof topic === 'object' && topic.description"
                   class="topic-desc"
                 >
                   {{ topic.description }}
+                </div>
+                <!-- Equipe Registrada se já escolhido -->
+                <div
+                  v-if="isTopicClaimed(getTopicId(topic, idx))"
+                  class="slide-claimed-team"
+                >
+                  <span class="material-icons-round team-icon">group</span>
+                  <span class="team-names">
+                    Equipe: {{ getClaimInfo(getTopicId(topic, idx)).students?.join(', ') }}
+                  </span>
                 </div>
               </div>
             </M3Card>
@@ -376,15 +411,67 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { ref, computed, onMounted, onUnmounted } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import M3Chip from "@/components/ui/M3Chip.vue";
 import M3Card from "@/components/ui/M3Card.vue";
+import { seminarService } from "@/services/seminar.service";
+
+const route = useRoute();
+const router = useRouter();
 
 const props = defineProps({
   slide: {
     type: Object,
     required: true,
   },
+});
+
+const courseId = computed(() => route.params.courseId || "desenvolvimento-web");
+const claimedTopicsMap = ref({});
+let unsubscribe = null;
+
+const getTopicId = (topic, idx) => {
+  if (typeof topic === "object" && topic.id) return topic.id;
+  const title = typeof topic === "string" ? topic : topic.title || "";
+  const normalized = title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  return normalized || `topic-${idx}`;
+};
+
+const isTopicClaimed = (topicId) => {
+  const claim = claimedTopicsMap.value[topicId];
+  return Boolean(claim && claim.students && claim.students.length > 0);
+};
+
+const getClaimInfo = (topicId) => {
+  return claimedTopicsMap.value[topicId] || {};
+};
+
+const goToSeminarView = () => {
+  router.push({
+    name: "seminar-view",
+    params: {
+      courseId: courseId.value,
+      assessmentId: "avaliacao-02",
+    },
+  });
+};
+
+onMounted(() => {
+  if (isSeminar.value) {
+    unsubscribe = seminarService.subscribeToSeminar(
+      courseId.value,
+      (map) => {
+        claimedTopicsMap.value = map;
+      }
+    );
+  }
+});
+
+onUnmounted(() => {
+  if (unsubscribe) {
+    unsubscribe();
+  }
 });
 
 const subType = computed(() => {
@@ -546,6 +633,101 @@ const badgeVariant = computed(() => {
   font-size: 22px;
   font-weight: 800;
   color: var(--md-sys-color-secondary);
+}
+
+.section-title-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.open-seminar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  border: none;
+  padding: 6px 14px;
+  border-radius: var(--md-shape-corner-full);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.open-seminar-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.open-seminar-btn .material-icons-round {
+  font-size: 18px;
+}
+
+.topic-card--claimed {
+  background-color: var(--md-sys-color-surface-container-low);
+  border-left-color: #5f6368 !important;
+  opacity: 0.95;
+}
+
+.topic-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.slide-claimed-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #f1f3f4;
+  color: #5f6368;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.slide-claimed-badge .material-icons-round {
+  font-size: 14px;
+}
+
+.slide-available-badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: #e6f4ea;
+  color: #137333;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.slide-claimed-team {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  padding: 4px 8px;
+  background-color: rgba(0, 0, 0, 0.04);
+  border-radius: var(--md-shape-corner-small);
+  font-size: 13px;
+  color: var(--md-sys-color-on-surface);
+}
+
+.team-icon {
+  font-size: 16px;
+  color: var(--md-sys-color-primary);
+}
+
+.team-names {
+  font-weight: 600;
 }
 
 .topic-title {

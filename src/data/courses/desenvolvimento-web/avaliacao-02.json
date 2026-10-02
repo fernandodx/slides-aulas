@@ -1,0 +1,247 @@
+{
+  "id": 11,
+  "title": "Seminário: Tecnologias e Padrões da Web",
+  "subtitle": "Apresentação técnica em equipes, escolha de temas em tempo real",
+  "module": "Desenvolvimento Web",
+  "tag": "Seminário Acadêmico",
+  "assessmentType": "seminar",
+  "settings": {
+    "maxStudentsDefault": 4,
+    "minStudentsDefault": 2,
+    "immutableAfterSubmission": true,
+    "realtimeSync": true
+  },
+  "presentationRules": {
+    "date": "Aula 13 • 16/11/2026",
+    "duration": "15 minutos por equipe",
+    "format": "Apresentação presencial em sala + código-fonte executável e slides no github de pelo menos um membro.",
+    "participation": "Todos os membros cadastrados na equipe devem falar durante a apresentação.",
+    "submissionRule": "O primeiro grupo que cadastrar o tema garante a titularidade. Uma vez gravado, não é permitida alteração."
+  },
+  "topics": [
+    {
+      "id": "rest-apis",
+      "title": "Padrão REST & Boas Práticas na Criação de APIs",
+      "maxStudents": 4,
+      "shortDescription": "Princípios RESTful, verbos HTTP, códigos de status e versionamento de APIs.",
+      "description": "Apresentar a arquitetura REST desenvolvida por Roy Fielding, demonstrando o uso correto dos verbos HTTP (GET, POST, PUT, PATCH, DELETE), idempotência, códigos de status semânticos (2xx, 4xx, 5xx), estruturação de URIs, paginação, filtros e boas práticas de versionamento.",
+      "deliverables": [
+        "Apresentação teórica com os 6 pilares arquiteturais do padrão REST.",
+        "Desenvolvimento de uma API RESTful prática completa com CRUD funcional.",
+        "Coleção de requisições documentada no Postman ou Insomnia demonstrando cenários de sucesso e erro. Uso de Swagger ou Open Api."
+      ],
+      "icon": "api"
+    },
+    {
+      "id": "angular-framework",
+      "title": "Ecossistema Angular: Arquitetura Empresarial & Signals",
+      "maxStudents": 4,
+      "shortDescription": "TypeScript robusto, injeção de dependências, componentização standalone, Signals e RxJS.",
+      "description": "Aprofundar nos fundamentos do framework Angular mantido pelo Google. Explicar como funciona sua arquitetura corporativa fortemente tipada, componentização baseada em standalone components, reatividade com Signals (Angular 16+), injeção de dependência nativa e serviços assíncronos.",
+      "deliverables": [
+        "Apresentação da evolução do Angular e comparação arquitetural com Vue e React.",
+        "Aplicação funcional desenvolvida com a CLI oficial do Angular, componentizada e consumindo API.",
+        "Demonstração prática do uso de Signals para gerenciamento de estado reativo."
+      ],
+      "icon": "layers"
+    },
+    {
+      "id": "react-ecosystem",
+      "title": "Ecossistema React: Virtual DOM, Hooks e Next.js",
+      "maxStudents": 4,
+      "shortDescription": "Paradigma funcional, JSX, ciclo de vida com Hooks modernos, Context API e ecossistema Next.js.",
+      "description": "Examinar a arquitetura da biblioteca React criada pela Meta. Detalhar o funcionamento do Virtual DOM e algoritmo de reconciliação, a transição histórica de classes para Function Components com Hooks (useState, useEffect, useMemo, custom hooks), e a transição para frameworks full-stack modernos como Next.js.",
+      "deliverables": [
+        "Apresentação estruturada do fluxo unidirecional de dados e modelo de renderização do React.",
+        "Aplicação prática funcional com múltiplos componentes, custom hook para requisições e estilização moderna.",
+        "Análise comparativa das vantagens e desvantagens em relação à reatividade do Vue 3."
+      ],
+      "icon": "code"
+    },
+    {
+      "id": "web-security-jwt-oauth",
+      "title": "Segurança Web: Autenticação com Token JWT & OAuth 2.0",
+      "maxStudents": 4,
+      "shortDescription": "Anatomia do JWT, segurança stateless, fluxos OAuth 2.0 / OpenID Connect, HTTPS, CSRF e XSS.",
+      "description": "Investigar os principais riscos e mecanismos de proteção em aplicações web modernas. Explicar a estrutura completa de um JSON Web Token (Header, Payload, Signature), autenticação Bearer token stateless, riscos de armazenamento (LocalStorage vs HttpOnly Cookie), e os fluxos de delegação de acesso via OAuth 2.0.",
+      "deliverables": [
+        "Apresentação teórica detalhada com diagramas do fluxo de login e renovação com Refresh Token.",
+        "Demonstração prática de um fluxo de autenticação com validação de token no front-end e back-end.",
+        "Simulação de prevenção contra ataques comuns de segurança web (Cross-Site Scripting e CSRF)."
+      ],
+      "icon": "security"
+    },
+    {
+      "id": "web-evolution-rendering",
+      "title": "Evolução da Web: De Sites Estáticos a MPA, SPA, SSR e Islands",
+      "maxStudents": 4,
+      "shortDescription": "História da Web, diferenças entre MPA, SPA, Server-Side Rendering (SSR), SSG e Core Web Vitals.",
+      "description": "Traçar a evolução histórica e técnica da engenharia web desde a Web 1.0 estática, passando pela revolução do AJAX e ascensão das SPAs, até os paradigmas modernos de Server-Side Rendering (SSR), Static Site Generation (SSG), Arquitetura de Ilhas (Astro/Nuxt). Analisar o impacto direto no SEO e métricas do Google Core Web Vitals.",
+      "deliverables": [
+        "Linha do tempo explicativa e comparativo de prós e contras de cada modelo arquitetural.",
+        "Demonstração prática comparando o comportamento de carregamento de uma MPA tradicional versus SPA/SSR.",
+        "Auditoria de performance com Google Lighthouse / DevTools avaliando LCP, CLS e INP."
+      ],
+      "icon": "history_edu"
+    },
+    {
+      "id": "arquitetura-frontend",
+      "title": "Arquitetura Front-End: Clean Architecture, BFF & Micro-Frontends",
+      "maxStudents": 4,
+      "shortDescription": "Divisão em camadas, desacoplamento de regras de negócio, padrão BFF e escalabilidade.",
+      "description": "Aprofundar na organização estrutural de aplicações front-end de grande porte. Abordar os princípios da Clean Architecture adaptada ao client-side (divisão de domínio, serviços, adaptadores e UI), desacoplamento de regras de negócio dos componentes de view, o padrão Backend for Frontend (BFF) para orquestração de APIs, gerenciamento de estado global escalável e introdução a arquiteturas de Micro-Frontends (Module Federation).",
+      "deliverables": [
+        "Apresentação teórica com diagramas arquiteturais comparando monólito front-end, Clean Architecture no client e Micro-Frontends.",
+        "Demonstração prática de um projeto estruturado em camadas desacopladas (Domain, UseCases/Services, Repositories e UI Components).",
+        "Prova de conceito de orquestração com padrão BFF ou Module Federation integrando módulos independentes."
+      ],
+      "icon": "architecture"
+    },
+    {
+      "id": "web-analytics",
+      "title": "Web Analytics, Métricas de Usuário & Monitoramento",
+      "maxStudents": 4,
+      "shortDescription": "Google Analytics 4, Tag Manager, funis de conversão, privacidade/LGPD e observabilidade.",
+      "description": "Compreender como aplicações web modernas coletam, processam e transformam o comportamento dos usuários em dados estratégicos de produto e negócio. Explorar a implementação do Google Analytics 4 (GA4), disparo de eventos personalizados com Google Tag Manager (GTM), funis de conversão, métricas de retenção e engajamento, boas práticas de conformidade com a LGPD/GDPR (consent banners e anonimização de dados) e monitoramento de erros em tempo real com ferramentas como Sentry.",
+      "deliverables": [
+        "Apresentação dos conceitos fundamentais de métricas de produto, funis de navegação, eventos semânticos e conformidade com a LGPD.",
+        "Aplicação web funcional integrada com GA4 e Tag Manager disparando eventos customizados (cliques em CTAs, envio de formulários e rotas).",
+        "Painel analítico demonstrando a coleta dos dados em tempo real e integração com ferramenta de monitoramento de erros (ex: Sentry/LogRocket)."
+      ],
+      "icon": "analytics"
+    },
+    {
+      "id": "testes-qualidade-frontend",
+      "title": "Testes Automatizados & Qualidade de Software no Front-End",
+      "maxStudents": 4,
+      "shortDescription": "Pirâmide de testes, testes unitários com Vitest, testes de componentes e testes E2E com Playwright.",
+      "description": "Explorar a garantia de qualidade e confiabilidade em sistemas web modernos por meio de testes automatizados. Compreender a Pirâmide de Testes no Front-End, a diferença entre testes unitários rápidos, testes de integração de componentes (testando comportamento do usuário e acessibilidade) e testes End-to-End (E2E) que simulam o fluxo completo no navegador real. Abordar ferramentas modernas como Vitest, Vue Test Utils / Testing Library, Mock Service Worker (MSW) para simulação de APIs e Playwright/Cypress para automação de cenários críticos.",
+      "deliverables": [
+        "Apresentação da Pirâmide de Testes aplicada ao front-end e boas práticas (evitar testar detalhes de implementação, mocking semântico de APIs).",
+        "Suíte prática de testes unitários e de integração cobrindo componentes, validações de formulário e reatividade de estado com Vitest.",
+        "Teste End-to-End (E2E) funcional executado com Playwright simulando um fluxo completo de ponta a ponta (ex: autenticação, listagem, cadastro e feedback visual)."
+      ],
+      "icon": "fact_check"
+    }
+  ],
+  "evaluationCriteria": [
+    {
+      "label": "Domínio Conceitual e Teórico",
+      "weight": "35%",
+      "detail": "Profundidade técnica, domínio das terminologias, clareza conceitual e capacidade de responder à arguição da banca."
+    },
+    {
+      "label": "Prova de Conceito Prática (PoC)",
+      "weight": "35%",
+      "detail": "Aplicação executável em código funcional demonstrando na prática os princípios do tema sorteado/escolhido."
+    },
+    {
+      "label": "Didática, Slides e Postura",
+      "weight": "20%",
+      "detail": "Qualidade visual dos slides, clareza na comunicação, sintonia do grupo e distribuição equilibrada de fala."
+    },
+    {
+      "label": "Organização",
+      "weight": "10%",
+      "detail": "Entrega prévia dos artefatos no GitHub da disciplina em um dos membros para apresentação no dia."
+    }
+  ],
+  "slides": [
+    {
+      "id": 1,
+      "type": "assessment",
+      "title": "Seminário: Tecnologias Web em Ação",
+      "subtitle": "Diretrizes gerais, dinâmica de escolha de temas e requisitos de entrega",
+      "content": {
+        "assessmentType": "seminar",
+        "badge": "Seminário (A1)",
+        "date": "31/10/2026",
+        "topics": [
+          {
+            "id": "rest-apis",
+            "title": "Padrão REST & Boas Práticas de APIs",
+            "description": "Princípios arquiteturais de Roy Fielding, verbos HTTP semânticos, status codes e prova de conceito."
+          },
+          {
+            "id": "angular-framework",
+            "title": "Ecossistema Angular & Signals",
+            "description": "TypeScript corporativo, Standalone Components, injeção de dependência e reatividade moderna."
+          },
+          {
+            "id": "react-ecosystem",
+            "title": "Ecossistema React: Hooks & Next.js",
+            "description": "Virtual DOM, modelo unidirecional de dados, ecossistema de Hooks e Server Components."
+          },
+          {
+            "id": "web-security-jwt-oauth",
+            "title": "Segurança Web: JWT & OAuth 2.0",
+            "description": "Autenticação stateless, anatomia de tokens, fluxos OAuth 2.0 e boas práticas contra XSS/CSRF."
+          },
+          {
+            "id": "web-evolution-rendering",
+            "title": "Evolução da Web: De MPA a SPA, SSR e Islands",
+            "description": "História da web, modelos de renderização, hidratação parcial, SEO e Core Web Vitals."
+          },
+          {
+            "id": "arquitetura-frontend",
+            "title": "Arquitetura Front-End: Clean Architecture & Micro-Frontends",
+            "description": "Separação de camadas, desacoplamento de lógica de negócio, padrão BFF e escalabilidade."
+          },
+          {
+            "id": "web-analytics",
+            "title": "Web Analytics, Métricas & Observabilidade",
+            "description": "GA4, Google Tag Manager, funis de conversão, privacidade/LGPD e monitoramento de erros."
+          },
+          {
+            "id": "testes-qualidade-frontend",
+            "title": "Testes Automatizados & Qualidade no Front-End",
+            "description": "Pirâmide de testes, testes unitários com Vitest, testes de componentes e automação E2E com Playwright."
+          }
+        ],
+        "deliveryFormat": "Apresentação presencial de 15 minutos por equipe (10 min fala + 5 min banca) + envio do repositório no GitHub até as 23:59h.",
+        "callout": {
+          "type": "important",
+          "text": "O cadastro de temas funciona em tempo real por ordem de chegada. Uma vez gravado o nome dos integrantes no sistema, a escolha torna-se definitiva."
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": "assessment",
+      "title": "Critérios de Avaliação e Pontuação",
+      "subtitle": "O que a banca levará em consideração na nota final",
+      "content": {
+        "assessmentType": "seminar",
+        "badge": "Critérios de Avaliação",
+        "date": "16/11/2026",
+        "evaluationCriteria": [
+          {
+            "label": "Domínio Conceitual e Teórico",
+            "weight": "35%",
+            "detail": "Profundidade dos conceitos e clareza nas respostas durante a arguição da banca."
+          },
+          {
+            "label": "Prova de Conceito Prática (PoC)",
+            "weight": "35%",
+            "detail": "Código real em funcionamento demonstrando o uso prático da tecnologia."
+          },
+          {
+            "label": "Didática, Slides e Postura",
+            "weight": "20%",
+            "detail": "Qualidade dos slides, boa oratória e participação equilibrada de todos os integrantes."
+          },
+          {
+            "label": "rganização",
+            "weight": "10%",
+            "detail": "Código organizado no repositório."
+          }
+        ],
+        "deliveryFormat": "Todos os membros devem apresentar e participar da resposta às perguntas.",
+        "callout": {
+          "type": "tip",
+          "text": "Evite ler slides: demonstre o código em funcionamento na prática e use diagramas claros para apoiar as explicações conceituais. O aprendizado é valioso foque no que entedeu e não no conteúdo todo."
+        }
+      }
+    }
+  ]
+}

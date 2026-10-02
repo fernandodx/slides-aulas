@@ -167,11 +167,19 @@
 
             <div class="assessment-card__action">
               <M3Button
+                v-if="item.type === 'seminar'"
                 variant="filled"
+                icon="how_to_reg"
+                @click="openSeminar(item.id)"
+              >
+                Escolha de Temas (Tempo Real)
+              </M3Button>
+              <M3Button
+                :variant="item.type === 'seminar' ? 'outlined' : 'filled'"
                 icon="slideshow"
                 @click="openLesson(item.id)"
               >
-                Abrir Slides da Avaliação
+                Abrir Slides
               </M3Button>
             </div>
           </M3Card>
@@ -301,6 +309,16 @@ const openLesson = (lessonId) => {
       courseId,
       lessonId,
       slideIndex: 1,
+    },
+  });
+};
+
+const openSeminar = (assessmentId) => {
+  router.push({
+    name: "seminar-view",
+    params: {
+      courseId,
+      assessmentId: assessmentId || "avaliacao-02",
     },
   });
 };
@@ -729,6 +747,8 @@ onMounted(() => {
 .assessment-card__action {
   display: flex;
   justify-content: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
   margin-top: 8px;
 }
 </style>

@@ -1,0 +1,62 @@
+rules_version = '2';
+
+// ===============================================================
+// Assumed Data Model
+// ===============================================================
+//
+// Collection: /seminars/{courseId}/topics/{topicId}
+// Document ID: {topicId} (e.g. 'rest-apis', 'angular-framework')
+// Fields:
+//   - topicId: string (required) - identifier of the topic
+//   - topicTitle: string (required) - display title of the topic
+//   - students: list of strings (required, 1 <= size <= maxStudents) - names of registered students
+//   - maxStudents: int (required, 1 <= maxStudents <= 10) - max allowed students for this topic
+//   - status: string (required, 'claimed') - status of registration
+//   - claimedAt: timestamp (required) - timestamp when registration occurred
+//   - userAgent: string (optional) - browser client identifier
+//
+// Immutability: Once created, documents cannot be updated or deleted by clients.
+//
+// ===============================================================
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions for seminar registration validation
+    function isValidStudentList(students, maxStudents) {
+      return students is list
+        && students.size() >= 1
+        && students.size() <= maxStudents;
+    }
+
+    function isValidSeminarRegistration() {
+      let data = request.resource.data;
+      return data.keys().hasAll(['topicId', 'topicTitle', 'students', 'maxStudents', 'status', 'claimedAt'])
+        && data.topicId is string && data.topicId.size() > 0 && data.topicId.size() <= 100
+        && data.topicTitle is string && data.topicTitle.size() > 0 && data.topicTitle.size() <= 200
+        && data.maxStudents is int && data.maxStudents >= 1 && data.maxStudents <= 10
+        && isValidStudentList(data.students, data.maxStudents)
+        && data.status == 'claimed'
+        && data.claimedAt is timestamp;
+    }
+
+    // Rules for seminars collection
+    match /seminars/{courseId}/topics/{topicId} {
+      // Public read access so students can view available and claimed topics in real-time
+      allow read: if true;
+
+      // Registration is first-come, first-served:
+      // Can only be created if document doesn't already exist (resource == null)
+      allow create: if resource == null && isValidSeminarRegistration();
+
+      // Once claimed, cannot be altered or deleted by clients
+      allow update: if false;
+      allow delete: if false;
+    }
+
+    // Default deny for any other collections
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,70 +1,182 @@
-{
-  "id": 10,
-  "title": "Aula 10 — HTML5 Semântico",
-  "subtitle": "Modelo Web Cliente/Servidor, estrutura do documento HTML5, tags semânticas e acessibilidade.",
-  "module": "Módulo 4 — HTML e CSS",
-  "tag": "Prática",
-  "slides": [
-    {
-      "id": 1,
-      "type": "intro",
-      "title": "A Arquitetura Web: Cliente x Servidor",
-      "subtitle": "Como os navegadores interpretam documentos HTML.",
-      "content": {
-        "badge": "Aula 10",
-        "description": "Quando um usuário digita uma URL, o navegador (Cliente) faz uma requisição HTTP/HTTPS ao servidor web, que responde com código HTML, CSS, JS e assets.",
-        "keyPoints": [
-          "HTML (HyperText Markup Language): A estrutura e significado do conteúdo",
-          "DOM (Document Object Model): A árvore de nós que o navegador renderiza",
-          "Semântica: Usar as tags corretas para o significado correto"
-        ]
-      }
-    },
-    {
-      "id": 2,
-      "type": "theory",
-      "title": "Tags Semânticas vs <div> Genéricas",
-      "subtitle": "Por que estruturar o HTML semânticamente impacta SEO e Acessibilidade.",
-      "content": {
-        "sections": [
-          {
-            "heading": "<header> e <nav>",
-            "text": "Cabeçalho da página/seção e barra de links de navegação principal."
-          },
-          {
-            "heading": "<main>, <article> e <section>",
-            "text": "Conteúdo principal, artigo independente e agrupamentos temáticos de código."
-          },
-          {
-            "heading": "<aside> e <footer>",
-            "text": "Conteúdo lateral complementar e rodapé com direitos autorais e links."
-          }
-        ]
-      }
-    },
-    {
-      "id": 3,
-      "type": "code",
-      "title": "Exemplo de Estrutura HTML5 Semântica",
-      "subtitle": "Código limpo seguindo os padrões W3C.",
-      "content": {
-        "language": "html",
-        "code": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Meu Primeiro Site Semântico</title>\n</head>\n<body>\n  <header>\n    <h1>Desenvolvimento de Interfaces</h1>\n    <nav>\n      <ul>\n        <li><a href=\"#inicio\">Início</a></li>\n        <li><a href=\"#aulas\">Aulas</a></li>\n      </ul>\n    </nav>\n  </header>\n\n  <main>\n    <article>\n      <h2>Aula 10: HTML5 Semântico</h2>\n      <p>Aprendendo a estruturar a web de forma acessível.</p>\n    </article>\n  </main>\n\n  <footer>\n    <p>&copy; 2026 Universidade - Todos os direitos reservados.</p>\n  </footer>\n</body>\n</html>",
-        "explanation": "Note o uso de <header>, <nav>, <main>, <article> e <footer> em vez de apenas <div>."
-      }
-    },
-    {
-      "id": 4,
-      "type": "practice",
-      "title": "Atividade Prática: Estrutura HTML do Projeto",
-      "subtitle": "Criar a página inicial em HTML limpo.",
-      "content": {
-        "items": [
-          { "title": "Passo 1", "detail": "Crie o arquivo index.html na raiz do seu repositório local." },
-          { "title": "Passo 2", "detail": "Adicione as metatags essenciais de charset e viewport para dispositivos móveis." },
-          { "title": "Passo 3", "detail": "Monte a estrutura semântica da sua Landing Page com base no wireframe do Figma." }
-        ]
+[
+  {
+    "id": 1,
+    "type": "intro",
+    "title": "HTML5: A Estrutura da Web Moderna",
+    "subtitle": "História, Fundamentos e Semântica na Construção de Interfaces",
+    "content": {
+      "badge": "Aula 01 • Desenvolvimento Web",
+      "description": "Compreenda a evolução do HTML para o HTML5, o funcionamento estrutural das páginas e o impacto do uso correto da semântica no SEO e na acessibilidade digital.",
+      "keyPoints": [
+        "A evolução e transformação histórica da linguagem",
+        "A anatomia fundamental de um documento: Head vs Body",
+        "HTML Semântico e como os motores de busca leem a web"
+      ],
+      "image": {
+        "url": "https://images.unsplash.com/photo-1627398240309-08b06d919a0a?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Código HTML iluminado na tela de um monitor escuro",
+        "position": "right"
       }
     }
-  ]
-}
+  },
+  {
+    "id": 2,
+    "type": "theory",
+    "title": "A Evolução Histórica: Do HTML ao HTML5",
+    "subtitle": "O que é a linguagem de marcação e como ela se transformou",
+    "content": {
+      "sections": [
+        {
+          "heading": "Linguagem de Marcação",
+          "text": "O HTML (HyperText Markup Language) não é uma linguagem de programação. Ele utiliza 'tags' para descrever e estruturar o conteúdo de uma página, informando ao navegador o que é um título, parágrafo ou imagem."
+        },
+        {
+          "heading": "A Revolução do HTML5",
+          "text": "Lançado como padrão moderno, o HTML5 introduziu suporte nativo a vídeo e áudio (eliminando o Flash), armazenamento local avançado e, acima de tudo, um vocabulário semântico padronizado para estruturação."
+        }
+      ],
+      "callout": {
+        "type": "info",
+        "text": "O HTML5 foi desenvolvido para ser independente de dispositivo, funcionando de forma consistente desde desktops até smartphones."
+      },
+      "image": {
+        "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Programador digitando código estrutural na tela",
+        "position": "right"
+      }
+    }
+  },
+  {
+    "id": 3,
+    "type": "theory",
+    "title": "Anatomia do Documento: Head vs Body",
+    "subtitle": "Entendendo a separação de responsabilidades na estrutura web",
+    "content": {
+      "sections": [
+        {
+          "heading": "A Tag <head> (Os Bastidores)",
+          "text": "Armazena os metadados do documento. É invisível ao usuário final, mas vital para o navegador e motores de busca. Contém o título da aba, links para arquivos CSS e configurações de responsividade."
+        },
+        {
+          "heading": "A Tag <body> (O Palco)",
+          "text": "Engloba absolutamente todo o conteúdo renderizado e visível na tela. É dentro do corpo que inserimos os cabeçalhos, textos, formulários, imagens e estruturamos a interface real que o usuário interage."
+        }
+      ],
+      "callout": {
+        "type": "warning",
+        "text": "Nunca coloque elementos visuais (como um <h1>) dentro do <head>, nem importe metadados estruturais soltos no meio do <body>."
+      }
+    }
+  },
+  {
+    "id": 4,
+    "type": "code",
+    "title": "Boilerplate: O Esqueleto do HTML5",
+    "subtitle": "A estrutura inicial obrigatória para qualquer página web válida",
+    "content": {
+      "language": "html",
+      "code": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Minha Primeira Aula de HTML5</title>\n</head>\n<body>\n  <h1>Bem-vindo ao Mundo do HTML5!</h1>\n  <p>Esta é a estrutura base onde a mágica acontece.</p>\n</body>\n</html>",
+      "explanation": "A tag <!DOCTYPE html> informa ao navegador que usaremos as regras modernas do HTML5, garantindo a renderização correta da página."
+    }
+  },
+  {
+    "id": 5,
+    "type": "theory",
+    "title": "HTML Semântico e o Impacto no SEO",
+    "subtitle": "Como os motores de busca e leitores de tela interpretam o código",
+    "content": {
+      "sections": [
+        {
+          "heading": "Fim do 'Sopão de Divs'",
+          "text": "O HTML semântico utiliza tags que descrevem o significado do seu conteúdo. Substituir <div> genéricas por tags como <nav> ou <article> cria estruturas lógicas, previsíveis e altamente legíveis."
+        },
+        {
+          "heading": "A Visão dos Motores de Busca",
+          "text": "Robôs de busca (como o Googlebot) priorizam sites semânticos. Eles atribuem mais peso a um título em um <h1> autêntico do que a um texto gigante formatado via CSS em uma tag sem significado real."
+        }
+      ],
+      "image": {
+        "url": "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Gráficos de ranqueamento e indexação de dados",
+        "position": "right"
+      }
+    }
+  },
+  {
+    "id": 6,
+    "type": "practice",
+    "title": "Dominando as Principais Tags Semânticas",
+    "subtitle": "As ferramentas fundamentais para segmentar e organizar layouts",
+    "content": {
+      "items": [
+        {
+          "title": "O <header> e <footer>",
+          "detail": "Marcam, respectivamente, o cabeçalho (logo, busca) e o rodapé (direitos, links) de uma página ou de uma seção específica.",
+          "icon": "horizontal_rule"
+        },
+        {
+          "title": "A tag <main>",
+          "detail": "Agrupa o conteúdo central e exclusivo do documento. Deve existir apenas um <main> por página para auxiliar a acessibilidade.",
+          "icon": "web"
+        },
+        {
+          "title": "A tag <article>",
+          "detail": "Define um bloco de conteúdo independente e autossuficiente que faria sentido ser distribuído separadamente (ex: um post de blog).",
+          "icon": "article"
+        },
+        {
+          "title": "A tag <nav>",
+          "detail": "Destinada exclusivamente ao agrupamento de links de navegação primários que guiam o usuário através da aplicação.",
+          "icon": "explore"
+        }
+      ],
+      "callout": {
+        "type": "tip",
+        "text": "Use a tag <section> para dividir capítulos genéricos, mas prefira <article> se o conteúdo tiver total independência."
+      }
+    }
+  },
+  {
+    "id": 7,
+    "type": "code",
+    "title": "Aplicando HTML Semântico na Prática",
+    "subtitle": "Exemplo real de um layout estruturado corretamente",
+    "content": {
+      "language": "html",
+      "code": "<header>\n  <h1>Meu Blog Pessoal</h1>\n  <nav>\n    <a href=\"/\">Início</a> | <a href=\"/sobre\">Sobre</a>\n  </nav>\n</header>\n\n<main>\n  <article>\n    <h2>A Evolução da Web</h2>\n    <p>O conteúdo completo do artigo vai aqui...</p>\n  </article>\n</main>\n\n<footer>\n  <p>&copy; 2026 Todos os Direitos Reservados.</p>\n</footer>",
+      "explanation": "Note como o código é autodescritivo. Qualquer desenvolvedor ou leitor de tela entende exatamente onde fica a navegação e onde está o conteúdo primário."
+    }
+  },
+  {
+    "id": 8,
+    "type": "assessment",
+    "title": "Atividade Prática: Seu Filme Favorito",
+    "subtitle": "Construção de uma página estruturada simples com HTML5",
+    "content": {
+      "assessmentType": "activity",
+      "badge": "Atividade 01",
+      "date": "15/10/2026",
+      "activityReadme": {
+        "description": "Crie uma página web simples dedicada a um filme que você gosta muito, utilizando a estrutura básica e semântica do HTML5.",
+        "requirements": [
+          "Estrutura HTML5 válida (com <!DOCTYPE html>, <head> e <body>)",
+          "Uso adequado de Título principal (filme), subtítulo e parágrafos descritivos",
+          "Inclusão de uma foto/pôster do filme utilizando a tag <img> com o atributo alt preenchido"
+        ]
+      },
+      "githubSubmission": {
+        "instruction": "Faça o push (envio) dos seus arquivos diretamente no repositório da turma no GitHub, respeitando a estrutura de pastas:",
+        "folderPath": "nomeAluno/atividades/html_basico",
+        "documentation": "Arquivo index.html contendo a estrutura da página.",
+        "requiredScreenshots": [
+          "Print da tela mostrando a página aberta e renderizada no seu navegador local"
+        ],
+        "bonus": "Uso correto da tag <main> e <article> para englobar o conteúdo central do filme."
+      },
+      "callout": {
+        "type": "info",
+        "text": "Como ainda não utilizamos CSS, não se preocupe com o design ou alinhamentos. O foco da atividade é puramente na marcação estrutural!"
+      }
+    }
+  }
+]

@@ -12,7 +12,7 @@
     "realtimeSync": true
   },
   "presentationRules": {
-    "date": "Aula 13 • 16/11/2026",
+    "date": "Aula 13 • 16/10/2026",
     "duration": "15 minutos por equipe",
     "format": "Apresentação presencial em sala + código-fonte executável e slides no github de pelo menos um membro.",
     "participation": "Todos os membros cadastrados na equipe devem falar durante a apresentação.",
@@ -213,7 +213,7 @@
       "content": {
         "assessmentType": "seminar",
         "badge": "Critérios de Avaliação",
-        "date": "16/11/2026",
+        "date": "16/10/2026",
         "evaluationCriteria": [
           {
             "label": "Domínio Conceitual e Teórico",

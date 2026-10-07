@@ -39,7 +39,7 @@
       "type": "activity",
       "badge": "Atividade Prática",
       "weight": "10%",
-      "deadline": "Aula 09 • 05/11/2026 23:59h",
+      "deadline": "Aula 09 • 08/10/2026 23:59h",
       "duration": "Entrega via Repositório do Github da disciplina",
       "description": "Construção de uma aplicação utilizando Vue com CLI"
     },
@@ -51,7 +51,7 @@
       "type": "seminar",
       "badge": "Seminário (A1)",
       "weight": "40%",
-      "deadline": "Aula 11 • 31/10/2026",
+      "deadline": "Aula 11 • 16/10/2026",
       "duration": "15 min por equipe",
       "description": "Pesquisa e apresentação prática em equipes: Padrão REST, Angular, React, Segurança (JWT/OAuth), Evolução da Web, Arquitetura Front-End, Analytics e Testes Automatizados."
     },

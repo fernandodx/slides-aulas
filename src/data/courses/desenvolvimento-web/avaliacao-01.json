@@ -13,7 +13,7 @@
       "content": {
         "assessmentType": "activity",
         "badge": "Atividade Prática",
-        "date": "05/10/2026 23:59",
+        "date": "08/10/2026 23:59",
         "activityReadme": {
           "description": "Crie um sistema web de consulta de deputados utilizando os conhecimentos desenvolvidos em sala de aula.",
           "requirements": [
@@ -49,7 +49,7 @@
       "content": {
         "assessmentType": "activity",
         "badge": "Checklist de Entrega",
-        "date": "05/10/2026 23:59",
+        "date": "08/10/2026 23:59",
         "activityReadme": {
           "description": "A atividade será considerada completa quando os requisitos funcionais e a estrutura de entrega forem atendidos.",
           "requirements": [

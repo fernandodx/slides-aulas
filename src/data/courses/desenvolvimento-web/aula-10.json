@@ -359,40 +359,6 @@
   },
   {
     "id": 18,
-    "type": "practice",
-    "title": "Laboratório: integre as duas partes",
-    "subtitle": "Construa uma aplicação navegável com dados simulados",
-    "content": {
-      "items": [
-        {
-          "title": "1. Crie duas páginas",
-          "detail": "Implemente uma página inicial e uma página de produtos, utilizando componentes Vue separados.",
-          "icon": "web"
-        },
-        {
-          "title": "2. Configure as rotas",
-          "detail": "Utilize Vue Router para navegar entre a página inicial e a listagem de produtos.",
-          "icon": "route"
-        },
-        {
-          "title": "3. Disponibilize os dados",
-          "detail": "Crie db.json com pelo menos três produtos e inicie o JSON Server na porta padrão.",
-          "icon": "storage"
-        },
-        {
-          "title": "4. Apresente os resultados",
-          "detail": "Consuma o endpoint /produtos e renderize nome e preço de cada item usando v-for.",
-          "icon": "check_circle"
-        }
-      ],
-      "callout": {
-        "type": "important",
-        "text": "Critério de conclusão: a navegação deve funcionar, a API deve responder e os produtos devem aparecer na interface sem dados fixos no componente."
-      }
-    }
-  },
-  {
-    "id": 19,
     "type": "theory",
     "title": "Recapitulando a arquitetura",
     "subtitle": "Como as peças da aplicação trabalham juntas",

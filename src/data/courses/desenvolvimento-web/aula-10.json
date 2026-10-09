@@ -2,18 +2,422 @@
   {
     "id": 1,
     "type": "intro",
-    "title": "Rotas e DB Simulado",
-    "subtitle": "Módulo 4 - Navegação e Dados",
+    "title": "Rotas no Vue 3 e Backend Simulado",
+    "subtitle": "Construindo aplicações com navegação e dados dinâmicos",
     "content": {
-      "badge": "Aula 10",
-      "description": "Adicione o conteúdo desta aula aqui. (Slide gerado como capa padrão)",
+      "badge": "Desenvolvimento Web • Vue 3",
+      "description": "Vamos evoluir uma aplicação Vue 3 para trabalhar com múltiplas páginas e consumir dados de uma API simulada, utilizando Vue Router e JSON Server.",
       "keyPoints": [
-        "Tópico 1",
-        "Tópico 2"
+        "Navegação entre páginas com Vue Router",
+        "Organização de rotas em uma aplicação Vue",
+        "Simulação de uma API REST com JSON Server",
+        "Consumo de dados a partir de um arquivo JSON"
       ],
       "image": {
-        "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
-        "alt": "Desenvolvimento Web",
+        "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Estação de trabalho com computador utilizado para desenvolvimento de software",
+        "position": "right"
+      }
+    }
+  },
+  {
+    "id": 2,
+    "type": "theory",
+    "title": "Como uma aplicação se comunica?",
+    "subtitle": "Entenda a relação entre interface, API e banco de dados",
+    "content": {
+      "sections": [
+        {
+          "heading": "Frontend",
+          "text": "É a interface com a qual o usuário interage. No Vue 3, os componentes apresentam informações, recebem ações e atualizam a tela."
+        },
+        {
+          "heading": "Backend e API",
+          "text": "O backend processa regras de negócio e disponibiliza dados por meio de uma API. O frontend faz requisições HTTP para consultar ou modificar essas informações."
+        },
+        {
+          "heading": "Banco de dados",
+          "text": "Armazena informações persistentes, como usuários, produtos e pedidos. Em uma arquitetura real, o backend normalmente controla o acesso a esses dados."
+        }
+      ],
+      "callout": {
+        "type": "info",
+        "text": "Pergunta para a turma: como desenvolver e testar o frontend quando o backend ainda não está pronto?"
+      },
+      "image": {
+        "url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Infraestrutura de servidores representando os serviços de backend",
+        "position": "right"
+      }
+    }
+  },
+  {
+    "id": 3,
+    "type": "theory",
+    "title": "Por que simular um backend?",
+    "subtitle": "Desenvolva e teste sem depender de uma API real",
+    "content": {
+      "sections": [
+        {
+          "heading": "Desenvolvimento independente",
+          "text": "A equipe frontend pode implementar listagens, formulários e telas de detalhes enquanto a equipe backend desenvolve a API definitiva."
+        },
+        {
+          "heading": "Dados previsíveis",
+          "text": "Um conjunto de dados controlado facilita reproduzir cenários, testar componentes e verificar como a interface se comporta com diferentes registros."
+        },
+        {
+          "heading": "Integração antecipada",
+          "text": "Uma API simulada permite praticar requisições HTTP e estruturar serviços de acesso a dados antes da integração com o ambiente definitivo."
+        }
+      ],
+      "callout": {
+        "type": "important",
+        "text": "Backend simulado não é backend de produção. Ele ajuda no desenvolvimento, mas não substitui autenticação, regras de negócio e segurança reais."
+      },
+      "image": {
+        "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Código-fonte em um editor de programação durante o desenvolvimento de uma aplicação",
+        "position": "left"
+      }
+    }
+  },
+  {
+    "id": 4,
+    "type": "practice",
+    "title": "Desafio: imagine uma API indisponível",
+    "subtitle": "Como continuar desenvolvendo a interface?",
+    "content": {
+      "items": [
+        {
+          "title": "1. Defina os dados",
+          "detail": "Identifique quais informações a tela precisa, como nome, descrição, preço e identificador de um produto.",
+          "icon": "data_object"
+        },
+        {
+          "title": "2. Crie os registros",
+          "detail": "Organize dados fictícios em um arquivo JSON para representar os recursos disponibilizados pela API.",
+          "icon": "description"
+        },
+        {
+          "title": "3. Disponibilize a API",
+          "detail": "Utilize o JSON Server para expor os registros por um endpoint HTTP e permitir requisições do frontend.",
+          "icon": "cloud"
+        },
+        {
+          "title": "4. Conecte o Vue",
+          "detail": "Consuma o endpoint, apresente os dados em componentes e observe o comportamento da interface.",
+          "icon": "integration_instructions"
+        }
+      ],
+      "callout": {
+        "type": "tip",
+        "text": "Interação em sala: em duplas, escolham um sistema e identifiquem três recursos que poderiam ser disponibilizados por uma API."
+      }
+    }
+  },
+  {
+    "id": 5,
+    "type": "theory",
+    "title": "Por que utilizar rotas no Vue?",
+    "subtitle": "Organize diferentes páginas dentro da mesma aplicação",
+    "content": {
+      "sections": [
+        {
+          "heading": "Navegação organizada",
+          "text": "Rotas associam caminhos, como / e /produtos, a componentes específicos. Cada endereço representa uma tela ou um estado navegável da aplicação."
+        },
+        {
+          "heading": "Experiência do usuário",
+          "text": "O usuário pode navegar por links, utilizar o histórico do navegador e acessar páginas por URLs específicas, sem recarregar toda a aplicação a cada navegação."
+        },
+        {
+          "heading": "Escalabilidade",
+          "text": "O Vue Router permite organizar rotas, parâmetros dinâmicos, rotas aninhadas e verificações de navegação conforme a aplicação cresce."
+        }
+      ],
+      "callout": {
+        "type": "info",
+        "text": "Pense em um catálogo: /produtos lista os registros, enquanto /produtos/10 pode representar os detalhes do produto de identificador 10."
+      },
+      "image": {
+        "url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Painel digital representando diferentes telas e áreas de uma aplicação web",
+        "position": "right"
+      }
+    }
+  },
+  {
+    "id": 6,
+    "type": "image",
+    "title": "Mapa de navegação da aplicação",
+    "subtitle": "Visualize como as URLs se relacionam com os componentes",
+    "content": {
+      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
+      "imageAlt": "Painel de informações digitais representando a organização de diferentes áreas de um sistema",
+      "description": "Imagine uma aplicação Vue com três páginas: Início (/), Produtos (/produtos) e Detalhes (/produtos/10). O Vue Router identifica a URL e apresenta o componente associado à rota correspondente."
+    }
+  },
+  {
+    "id": 7,
+    "type": "theory",
+    "title": "Conhecendo o Vue Router",
+    "subtitle": "A biblioteca oficial de roteamento para aplicações Vue",
+    "content": {
+      "sections": [
+        {
+          "heading": "O que ele resolve?",
+          "text": "O Vue Router conecta URLs a componentes Vue e gerencia a navegação entre páginas sem exigir uma recarga completa a cada mudança de rota."
+        },
+        {
+          "heading": "Como funciona?",
+          "text": "Você define as rotas, associa cada caminho a um componente e utiliza RouterView para indicar onde o componente da rota ativa deve aparecer."
+        },
+        {
+          "heading": "O que vamos construir?",
+          "text": "Uma aplicação com páginas de início e produtos, utilizando links de navegação e uma área de renderização controlada pelo roteador."
+        }
+      ],
+      "callout": {
+        "type": "tip",
+        "text": "O Vue Router cuida da navegação. Ele não cria endpoints de API nem substitui o backend."
+      },
+      "image": {
+        "url": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Pessoa trabalhando em um notebook durante o desenvolvimento de uma aplicação",
+        "position": "right"
+      }
+    }
+  },
+  {
+    "id": 8,
+    "type": "code",
+    "title": "Instalando o Vue Router",
+    "subtitle": "Adicione a dependência ao projeto Vue 3",
+    "content": {
+      "language": "bash",
+      "code": "npm install vue-router",
+      "explanation": "Execute o comando no terminal, dentro da pasta do projeto Vue. A instalação adiciona o Vue Router às dependências do projeto."
+    }
+  },
+  {
+    "id": 9,
+    "type": "code",
+    "title": "Configurando o roteador",
+    "subtitle": "Registre o router antes de montar a aplicação",
+    "content": {
+      "language": "javascript",
+      "code": "import { createApp } from 'vue';\nimport APP from './App.vue';\nimport router from './router';\n\ncreateApp(APP).use(router).mount('#app');",
+      "explanation": "O exemplo registra o Vue Router na aplicação antes de montá-la. O arquivo ./router deve exportar uma instância configurada do roteador. O nome APP representa o componente raiz importado."
+    }
+  },
+  {
+    "id": 10,
+    "type": "code",
+    "title": "Definindo as primeiras rotas",
+    "subtitle": "Associe cada endereço a um componente Vue",
+    "content": {
+      "language": "javascript",
+      "code": "import { createRouter, createWebHistory } from 'vue-router';\nimport Inicio from './views/Inicio.vue';\nimport Produtos from './views/Produtos.vue';\n\nconst routes = [\n  { path: '/', component: Inicio },\n  { path: '/produtos', component: Produtos }\n];\n\nconst router = createRouter({\n  history: createWebHistory(),\n  routes\n});\n\nexport default router;",
+      "explanation": "Crie o arquivo router.js conforme os caminhos do projeto. Cada rota associa um path a um componente. O createWebHistory utiliza URLs amigáveis e requer configuração adequada do servidor para acesso direto às rotas em produção."
+    }
+  },
+  {
+    "id": 11,
+    "type": "code",
+    "title": "Exibindo as páginas e navegando",
+    "subtitle": "RouterLink cria links e RouterView exibe a rota ativa",
+    "content": {
+      "language": "html",
+      "code": "<template>\n  <header>\n    <RouterLink to=\"/\">Início</RouterLink>\n    <RouterLink to=\"/produtos\">Produtos</RouterLink>\n  </header>\n\n  <main>\n    <RouterView />\n  </main>\n</template>",
+      "explanation": "Utilize os componentes RouterLink e RouterView no componente raiz. O RouterLink permite navegar entre os caminhos configurados, enquanto RouterView renderiza o componente correspondente à rota atual."
+    }
+  },
+  {
+    "id": 12,
+    "type": "theory",
+    "title": "O que é o JSON Server?",
+    "subtitle": "Transforme um arquivo JSON em uma API REST simulada",
+    "content": {
+      "sections": [
+        {
+          "heading": "Uma API para desenvolvimento",
+          "text": "O JSON Server disponibiliza recursos definidos em um arquivo JSON por meio de endpoints HTTP, permitindo praticar consultas e operações de uma API REST."
+        },
+        {
+          "heading": "Como os dados são organizados?",
+          "text": "Cada propriedade principal do arquivo JSON pode representar uma coleção. Por exemplo, a propriedade produtos pode ser disponibilizada pelo endpoint /produtos."
+        },
+        {
+          "heading": "O que ele não substitui?",
+          "text": "É uma ferramenta de desenvolvimento e aprendizagem. Não oferece, por si só, toda a lógica de negócio, a segurança ou a infraestrutura de um backend de produção."
+        }
+      ],
+      "callout": {
+        "type": "important",
+        "text": "Nesta aula utilizaremos a versão 0.17.4 para manter o comando de instalação solicitado e o fluxo de execução compatível com essa versão."
+      },
+      "image": {
+        "url": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Representação visual de armazenamento e organização de dados em sistemas computacionais",
+        "position": "left"
+      }
+    }
+  },
+  {
+    "id": 13,
+    "type": "code",
+    "title": "Instalando o JSON Server",
+    "subtitle": "Adicione a versão definida para a atividade",
+    "content": {
+      "language": "bash",
+      "code": "npm install json-server@0.17.4",
+      "explanation": "Execute o comando na pasta do projeto. A versão 0.17.4 é especificada explicitamente para seguir o ambiente desta aula."
+    }
+  },
+  {
+    "id": 14,
+    "type": "code",
+    "title": "Criando o banco de dados JSON",
+    "subtitle": "O arquivo db.json representará os recursos da API",
+    "content": {
+      "language": "json",
+      "code": "{\n  \"produtos\": [\n    {\n      \"id\": 1,\n      \"nome\": \"Teclado\",\n      \"preco\": 120.00\n    },\n    {\n      \"id\": 2,\n      \"nome\": \"Mouse\",\n      \"preco\": 65.00\n    },\n    {\n      \"id\": 3,\n      \"nome\": \"Monitor\",\n      \"preco\": 850.00\n    }\n  ]\n}",
+      "explanation": "Crie um arquivo chamado db.json na raiz do projeto e adicione os dados de exemplo. A propriedade produtos define a coleção que será disponibilizada pela API."
+    }
+  },
+  {
+    "id": 15,
+    "type": "code",
+    "title": "Iniciando o servidor simulado",
+    "subtitle": "Execute o JSON Server e disponibilize os endpoints",
+    "content": {
+      "language": "bash",
+      "code": "json-server --watch db.json",
+      "explanation": "Execute o comando no terminal, no diretório em que o arquivo db.json está localizado. O servidor disponibiliza a API localmente, normalmente na porta 3000. Mantenha o terminal aberto durante os testes."
+    }
+  },
+  {
+    "id": 16,
+    "type": "practice",
+    "title": "Testando o endpoint da API",
+    "subtitle": "Confira os dados diretamente no navegador",
+    "content": {
+      "items": [
+        {
+          "title": "1. Inicie o servidor",
+          "detail": "Execute json-server --watch db.json e confirme que o servidor foi iniciado sem erros.",
+          "icon": "terminal"
+        },
+        {
+          "title": "2. Acesse o endereço",
+          "detail": "Verifique http://localhost:3000/seu-endpoint, substituindo seu-endpoint pelo nome real da coleção.",
+          "icon": "language"
+        },
+        {
+          "title": "3. Consulte os produtos",
+          "detail": "Com o JSON de exemplo desta aula, abra http://localhost:3000/produtos para visualizar os registros.",
+          "icon": "search"
+        },
+        {
+          "title": "4. Analise a resposta",
+          "detail": "Observe os objetos retornados, os identificadores e os tipos dos valores apresentados na resposta JSON.",
+          "icon": "data_object"
+        }
+      ],
+      "links": [
+        {
+          "label": "Documentação do Vue Router",
+          "url": "https://router.vuejs.org/"
+        },
+        {
+          "label": "Documentação do JSON Server",
+          "url": "https://github.com/typicode/json-server"
+        }
+      ],
+      "callout": {
+        "type": "warning",
+        "text": "O endpoint /seu-endpoint é um exemplo de endereço. Para os dados desta aula, utilize /produtos."
+      },
+      "image": {
+        "url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Infraestrutura de servidores representando o serviço local que disponibiliza a API",
+        "position": "right"
+      }
+    }
+  },
+  {
+    "id": 17,
+    "type": "code",
+    "title": "Consumindo a API no Vue 3",
+    "subtitle": "Busque os produtos e apresente os dados na interface",
+    "content": {
+      "language": "html",
+      "code": "<script setup>\nimport { ref, onMounted } from 'vue';\n\nconst produtos = ref([]);\nconst erro = ref('');\n\nonMounted(async () => {\n  try {\n    const resposta = await fetch(\n      'http://localhost:3000/produtos'\n    );\n    if (!resposta.ok) throw new Error('Falha na consulta');\n    produtos.value = await resposta.json();\n  } catch (e) {\n    erro.value = 'Não foi possível carregar os produtos.';\n  }\n});\n</script>\n\n<template>\n  <p v-if=\"erro\">{{ erro }}</p>\n  <ul v-else>\n    <li v-for=\"produto in produtos\" :key=\"produto.id\">\n      {{ produto.nome }} - R$ {{ produto.preco }}\n    </li>\n  </ul>\n</template>",
+      "explanation": "O componente consulta o endpoint quando é montado, converte a resposta em JSON e atualiza a lista reativa. O tratamento de erro permite informar ao usuário quando a consulta falha."
+    }
+  },
+  {
+    "id": 18,
+    "type": "practice",
+    "title": "Laboratório: integre as duas partes",
+    "subtitle": "Construa uma aplicação navegável com dados simulados",
+    "content": {
+      "items": [
+        {
+          "title": "1. Crie duas páginas",
+          "detail": "Implemente uma página inicial e uma página de produtos, utilizando componentes Vue separados.",
+          "icon": "web"
+        },
+        {
+          "title": "2. Configure as rotas",
+          "detail": "Utilize Vue Router para navegar entre a página inicial e a listagem de produtos.",
+          "icon": "route"
+        },
+        {
+          "title": "3. Disponibilize os dados",
+          "detail": "Crie db.json com pelo menos três produtos e inicie o JSON Server na porta padrão.",
+          "icon": "storage"
+        },
+        {
+          "title": "4. Apresente os resultados",
+          "detail": "Consuma o endpoint /produtos e renderize nome e preço de cada item usando v-for.",
+          "icon": "check_circle"
+        }
+      ],
+      "callout": {
+        "type": "important",
+        "text": "Critério de conclusão: a navegação deve funcionar, a API deve responder e os produtos devem aparecer na interface sem dados fixos no componente."
+      }
+    }
+  },
+  {
+    "id": 19,
+    "type": "theory",
+    "title": "Recapitulando a arquitetura",
+    "subtitle": "Como as peças da aplicação trabalham juntas",
+    "content": {
+      "sections": [
+        {
+          "heading": "Vue 3",
+          "text": "Responsável pela interface, pelos componentes e pela apresentação dos dados obtidos por meio das requisições HTTP."
+        },
+        {
+          "heading": "Vue Router",
+          "text": "Responsável por relacionar os caminhos da aplicação aos componentes e organizar a navegação entre páginas."
+        },
+        {
+          "heading": "JSON Server",
+          "text": "Responsável por disponibilizar os dados de db.json por meio de endpoints HTTP, permitindo simular a integração com uma API."
+        }
+      ],
+      "callout": {
+        "type": "tip",
+        "text": "Desafio final: se a coleção mudar de produtos para deputados, quais partes do projeto precisarão ser adaptadas?"
+      },
+      "image": {
+        "url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Componentes eletrônicos em uma placa representando as diferentes partes integradas de um sistema",
         "position": "right"
       }
     }

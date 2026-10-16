@@ -58,14 +58,14 @@
     {
       "id": "avaliacao-03",
       "number": 3,
-      "title": "Avaliação 03: Projeto Final & Deploy",
-      "subtitle": "Submissão via Pull Request com aplicação em produção",
-      "type": "final_project",
-      "badge": "Projeto Final (N2)",
-      "weight": "50%",
-      "deadline": "Aula 18 • 05/12/2026",
-      "duration": "Banca Avaliativa",
-      "description": "Apresentação do projeto completo, componentizado, com Vue 3, consumo de APIs e deploy funcional."
+      "title": "Atividade: Rick and Morty App",
+      "subtitle": "Listagem de personagens com Vue 3 e paginação da API",
+      "type": "activity",
+      "badge": "Atividade Prática",
+      "weight": "10%",
+      "deadline": "Aula 09 • 05/10/2026",
+      "duration": "Entrega via Repositório do Github da disciplina",
+      "description": "Criação de um app Vue 3 via CLI que lista personagens do Rick and Morty com nome, foto, local e status vivo/morto."
     }
   ],
   "tools": [

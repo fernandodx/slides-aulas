@@ -1,0 +1,101 @@
+{
+  "id": 12,
+  "title": "Atividade: Listagem Rick and Morty",
+  "subtitle": "Vue CLI, consumo de API REST e paginação com Vue 3",
+  "module": "Desenvolvimento de Interfaces",
+  "tag": "Atividade Prática",
+  "slides": [
+    {
+      "id": 1,
+      "type": "assessment",
+      "title": "Atividade: Rick and Morty App",
+      "subtitle": "Crie um sistema de listagem com Vue 3 e a API oficial",
+      "content": {
+        "assessmentType": "activity",
+        "badge": "Atividade Prática",
+        "date": "05/10/2026",
+        "activityReadme": {
+          "description": "Desenvolva uma aplicação Vue 3 criada via Vue CLI que consome a API pública do Rick and Morty.",
+          "requirements": [
+            "Criar o projeto utilizando a Vue CLI (vue create).",
+            "Listar os personagens consumindo o endpoint da API Rick and Morty.",
+            "Exibir cada personagem em um card com: nome, foto e local onde vive.",
+            "Incluir um ícone visual indicando se o personagem está vivo ou morto.",
+            "Desafio: implementar a paginação retornada pelo endpoint da API."
+          ]
+        },
+        "githubSubmission": {
+          "instruction": "Envie o projeto no repositório GitHub da turma dentro da pasta indicada.",
+          "folderPath": "seuNome/atividades/rickymorty",
+          "documentation": "Código-fonte completo e executável com os arquivos necessários para rodar o projeto.",
+          "requiredScreenshots": [
+            "Tela de listagem dos personagens com cards",
+            "Destaque do ícone de status (vivo / morto)"
+          ],
+          "bonus": "Implemente a paginação da API e garanta um upgrade de menção na entrega!"
+        },
+        "callout": {
+          "type": "important",
+          "text": "O uso excessivo de IA pode reduzir a nota. Vá além do solicitado: adicione paginação e capricho na UI para se destacar."
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": "assessment",
+      "title": "Critérios e Checklist de Entrega",
+      "subtitle": "Requisitos, pesos e como enviar o projeto no prazo",
+      "content": {
+        "assessmentType": "activity",
+        "badge": "Checklist de Entrega",
+        "date": "05/10/2026",
+        "activityReadme": {
+          "description": "A atividade está completa quando todos os requisitos abaixo forem atendidos e o projeto estiver no GitHub.",
+          "requirements": [
+            "Projeto criado com Vue CLI e funcionando corretamente.",
+            "Cards exibindo nome, foto e localização de cada personagem.",
+            "Ícone visual diferenciando personagens vivos e mortos.",
+            "Integração com o endpoint: rickandmortyapi.com/documentation#rest",
+            "Pasta correta no GitHub: seuNome/atividades/rickymorty"
+          ]
+        },
+        "githubSubmission": {
+          "instruction": "Faça a entrega no GitHub da turma até o prazo definido.",
+          "folderPath": "seuNome/atividades/rickymorty",
+          "documentation": "Inclua o código-fonte e os arquivos necessários para executar o projeto localmente.",
+          "requiredScreenshots": [
+            "Listagem de personagens com cards",
+            "Indicação visual de status vivo/morto"
+          ],
+          "bonus": "Paginação funcional implementada garante destaque na avaliação."
+        },
+        "evaluationCriteria": [
+          {
+            "label": "Funcionalidade",
+            "weight": "40%",
+            "detail": "Cards com nome, foto, local e ícone de status correto a partir da API."
+          },
+          {
+            "label": "Interface",
+            "weight": "25%",
+            "detail": "Organização visual dos cards, responsividade e experiência do usuário."
+          },
+          {
+            "label": "Código",
+            "weight": "25%",
+            "detail": "Aplicação dos conceitos do Vue 3, organização e clareza do código."
+          },
+          {
+            "label": "Entrega",
+            "weight": "10%",
+            "detail": "Estrutura correta no GitHub, projeto executável e respeito ao prazo."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Use o campo 'status' e 'location' da API para o ícone e o local. Documente o README com instruções de execução."
+        }
+      }
+    }
+  ]
+}

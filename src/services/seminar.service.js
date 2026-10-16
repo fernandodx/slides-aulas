@@ -9,6 +9,10 @@ import { getFirestoreDb } from "./firebase.config";
 
 /**
  * Service to manage Seminar topic claims with real-time concurrency control and atomic Firestore transactions.
+ *
+ * Topic lifecycle:
+ *  - "open"   → topic has at least one student but has NOT reached maxStudents yet (more can join)
+ *  - "full"   → topic has reached maxStudents and is locked (no more registrations accepted)
  */
 class SeminarService {
   /**
@@ -77,13 +81,18 @@ class SeminarService {
   }
 
   /**
-   * Atomically claims a topic for a team.
-   * If another user already registered this topic (even a split second earlier),
-   * this transaction fails safely and returns an error explaining the conflict.
+   * Atomically joins a topic for a student.
+   *
+   * Rules:
+   *  - If the topic has no registration yet → create it with status "open" or "full".
+   *  - If the topic is "open" (students < maxStudents) → append new student(s) and upgrade
+   *    status to "full" if the limit is now reached.
+   *  - If the topic is already "full" → reject with TOPIC_FULL.
+   *  - Duplicate names (case-insensitive) are rejected with DUPLICATE_STUDENT.
    *
    * @param {string} courseId - Course identifier
    * @param {object} topic - Topic definition object ({ id, title, maxStudents })
-   * @param {string[]} studentNames - Array of student names
+   * @param {string[]} studentNames - Array of student names to add
    * @returns {Promise<{success: boolean, reason?: string, message?: string, existing?: object}>}
    */
   async claimTopic(courseId, topic, studentNames) {
@@ -117,26 +126,67 @@ class SeminarService {
       const raw = localStorage.getItem(localKey);
       const data = raw ? JSON.parse(raw) : {};
 
-      if (data[topic.id]) {
-        return {
-          success: false,
-          reason: "ALREADY_CLAIMED",
-          message:
-            "Ops! Este tema acabou de ser escolhido por outro grupo antes de você confirmar. Por favor, escolha outro tema disponível.",
-          existing: data[topic.id],
+      const existing = data[topic.id];
+
+      if (existing) {
+        if (existing.status === "full") {
+          return {
+            success: false,
+            reason: "TOPIC_FULL",
+            message: `Este tema já atingiu o limite de ${maxStudents} alunos e não aceita mais inscrições.`,
+            existing,
+          };
+        }
+
+        // Topic is open — check if adding new students would exceed the limit
+        const currentCount = existing.students?.length || 0;
+        const totalAfter = currentCount + cleanedStudents.length;
+
+        if (totalAfter > maxStudents) {
+          const remaining = maxStudents - currentCount;
+          return {
+            success: false,
+            reason: "EXCEEDS_REMAINING",
+            message: `O tema só tem ${remaining} vaga(s) restante(s). Reduza a quantidade de integrantes.`,
+            existing,
+          };
+        }
+
+        // Check for duplicate names (case-insensitive)
+        const existingLower = (existing.students || []).map((s) => s.toLowerCase());
+        const duplicate = cleanedStudents.find((s) =>
+          existingLower.includes(s.toLowerCase())
+        );
+        if (duplicate) {
+          return {
+            success: false,
+            reason: "DUPLICATE_STUDENT",
+            message: `O aluno "${duplicate}" já está registrado neste tema.`,
+            existing,
+          };
+        }
+
+        const updatedStudents = [...existing.students, ...cleanedStudents];
+        data[topic.id] = {
+          ...existing,
+          students: updatedStudents,
+          status: updatedStudents.length >= maxStudents ? "full" : "open",
+          updatedAt: new Date().toISOString(),
+        };
+      } else {
+        // First registration for this topic
+        data[topic.id] = {
+          topicId: topic.id,
+          topicTitle: topic.title,
+          students: cleanedStudents,
+          maxStudents,
+          status: cleanedStudents.length >= maxStudents ? "full" : "open",
+          claimedAt: new Date().toISOString(),
         };
       }
 
-      data[topic.id] = {
-        topicId: topic.id,
-        topicTitle: topic.title,
-        students: cleanedStudents,
-        maxStudents,
-        status: "claimed",
-        claimedAt: new Date().toISOString(),
-      };
       localStorage.setItem(localKey, JSON.stringify(data));
-      window.dispatchEvent(new Event("storage"));
+      window.dispatchEvent(new StorageEvent("storage", { key: localKey }));
       return { success: true };
     }
 
@@ -148,33 +198,88 @@ class SeminarService {
 
         if (topicSnap.exists()) {
           const existingData = topicSnap.data();
-          const err = new Error("TOPIC_ALREADY_CLAIMED");
-          err.code = "ALREADY_CLAIMED";
-          err.existingData = existingData;
-          throw err;
-        }
 
-        transaction.set(topicRef, {
-          topicId: topic.id,
-          topicTitle: topic.title,
-          students: cleanedStudents,
-          maxStudents,
-          status: "claimed",
-          claimedAt: serverTimestamp(),
-          userAgent: typeof navigator !== "undefined" ? navigator.userAgent : "",
-        });
+          if (existingData.status === "full") {
+            const err = new Error("TOPIC_FULL");
+            err.code = "TOPIC_FULL";
+            err.existingData = existingData;
+            throw err;
+          }
+
+          // Topic is open — check capacity
+          const currentCount = existingData.students?.length || 0;
+          const totalAfter = currentCount + cleanedStudents.length;
+
+          if (totalAfter > maxStudents) {
+            const err = new Error("EXCEEDS_REMAINING");
+            err.code = "EXCEEDS_REMAINING";
+            err.remaining = maxStudents - currentCount;
+            err.existingData = existingData;
+            throw err;
+          }
+
+          // Check for duplicate names
+          const existingLower = (existingData.students || []).map((s) =>
+            s.toLowerCase()
+          );
+          const duplicate = cleanedStudents.find((s) =>
+            existingLower.includes(s.toLowerCase())
+          );
+          if (duplicate) {
+            const err = new Error("DUPLICATE_STUDENT");
+            err.code = "DUPLICATE_STUDENT";
+            err.duplicate = duplicate;
+            err.existingData = existingData;
+            throw err;
+          }
+
+          const updatedStudents = [...existingData.students, ...cleanedStudents];
+          transaction.update(topicRef, {
+            students: updatedStudents,
+            status: updatedStudents.length >= maxStudents ? "full" : "open",
+            updatedAt: serverTimestamp(),
+          });
+        } else {
+          // First registration for this topic
+          transaction.set(topicRef, {
+            topicId: topic.id,
+            topicTitle: topic.title,
+            students: cleanedStudents,
+            maxStudents,
+            status: cleanedStudents.length >= maxStudents ? "full" : "open",
+            claimedAt: serverTimestamp(),
+            userAgent: typeof navigator !== "undefined" ? navigator.userAgent : "",
+          });
+        }
       });
 
       return { success: true };
     } catch (err) {
       console.warn("[SeminarService] Claim transaction result:", err);
 
-      if (err.code === "ALREADY_CLAIMED" || err.message === "TOPIC_ALREADY_CLAIMED") {
+      if (err.code === "TOPIC_FULL") {
         return {
           success: false,
-          reason: "ALREADY_CLAIMED",
-          message:
-            "Ops! Este tema acabou de ser registrado por outro grupo enquanto você digitava. Por favor, selecione outro tema disponível.",
+          reason: "TOPIC_FULL",
+          message: `Este tema já atingiu o limite de ${maxStudents} alunos e não aceita mais inscrições.`,
+          existing: err.existingData,
+        };
+      }
+
+      if (err.code === "EXCEEDS_REMAINING") {
+        return {
+          success: false,
+          reason: "EXCEEDS_REMAINING",
+          message: `O tema só tem ${err.remaining} vaga(s) restante(s). Reduza a quantidade de integrantes.`,
+          existing: err.existingData,
+        };
+      }
+
+      if (err.code === "DUPLICATE_STUDENT") {
+        return {
+          success: false,
+          reason: "DUPLICATE_STUDENT",
+          message: `O aluno "${err.duplicate}" já está registrado neste tema.`,
           existing: err.existingData,
         };
       }

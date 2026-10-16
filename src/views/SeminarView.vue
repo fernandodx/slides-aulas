@@ -79,8 +79,8 @@
         <div class="status-summary">
           <span class="material-icons-round summary-icon">pie_chart</span>
           <span class="m3-title-medium summary-text">
-            <strong>{{ claimedCount }}</strong> de <strong>{{ totalTopicsCount }}</strong> temas escolhidos
-            <span class="available-badge">({{ availableCount }} disponíveis)</span>
+            <strong>{{ fullCount }}</strong> de <strong>{{ totalTopicsCount }}</strong> temas completos
+            <span class="available-badge">({{ availableCount }} com vagas)</span>
           </span>
         </div>
 
@@ -97,14 +97,21 @@
             :class="{ active: currentFilter === 'available' }"
             @click="currentFilter = 'available'"
           >
-            Disponíveis ({{ availableCount }})
+            Com Vagas ({{ availableCount }})
           </button>
           <button
             class="filter-btn"
-            :class="{ active: currentFilter === 'claimed' }"
-            @click="currentFilter = 'claimed'"
+            :class="{ active: currentFilter === 'open' }"
+            @click="currentFilter = 'open'"
           >
-            Escolhidos ({{ claimedCount }})
+            Em Aberto ({{ openCount }})
+          </button>
+          <button
+            class="filter-btn"
+            :class="{ active: currentFilter === 'full' }"
+            @click="currentFilter = 'full'"
+          >
+            Completos ({{ fullCount }})
           </button>
         </div>
       </div>
@@ -115,11 +122,12 @@
           <M3Card
             v-for="topic in filteredTopics"
             :key="topic.id"
-            :variant="isTopicClaimed(topic.id) ? 'surface' : 'outlined'"
+            :variant="isTopicFull(topic.id) ? 'surface' : 'outlined'"
             class="topic-card"
             :class="{
-              'topic-card--claimed': isTopicClaimed(topic.id),
-              'topic-card--available': !isTopicClaimed(topic.id),
+              'topic-card--full': isTopicFull(topic.id),
+              'topic-card--open': isTopicOpen(topic.id),
+              'topic-card--available': !isTopicRegistered(topic.id),
             }"
           >
             <!-- Card Header -->
@@ -128,30 +136,36 @@
                 <div class="topic-icon-wrap">
                   <span class="material-icons-round topic-icon">{{ topic.icon || 'topic' }}</span>
                 </div>
-                <div>
-                  <h3 class="m3-title-large topic-title">{{ topic.title }}</h3>
+                <div class="topic-identity__text">
+                  <div class="topic-title-row">
+                    <h3 class="m3-title-large topic-title">{{ topic.title }}</h3>
+                    <!-- Status Badge — compact, inline with title -->
+                    <span
+                      v-if="isTopicFull(topic.id)"
+                      class="status-pill status-pill--full"
+                    >
+                      <span class="material-icons-round" style="font-size:14px">lock</span>
+                      Completo
+                    </span>
+                    <span
+                      v-else-if="isTopicOpen(topic.id)"
+                      class="status-pill status-pill--open"
+                    >
+                      <span class="pulse-dot pulse-dot--open"></span>
+                      Em Aberto
+                    </span>
+                    <span
+                      v-else
+                      class="status-pill status-pill--available"
+                    >
+                      <span class="pulse-dot"></span>
+                      Disponível
+                    </span>
+                  </div>
                   <span class="m3-label-small topic-limit">
-                    Máximo: {{ topic.maxStudents || 4 }} alunos
+                    {{ getTopicSlotsLabel(topic) }}
                   </span>
                 </div>
-              </div>
-
-              <!-- Status Badge -->
-              <div class="topic-status-badge">
-                <span
-                  v-if="isTopicClaimed(topic.id)"
-                  class="status-pill status-pill--claimed"
-                >
-                  <span class="material-icons-round">lock</span>
-                  Tema Escolhido
-                </span>
-                <span
-                  v-else
-                  class="status-pill status-pill--available"
-                >
-                  <span class="pulse-dot"></span>
-                  Disponível
-                </span>
               </div>
             </div>
 
@@ -177,13 +191,15 @@
               </ul>
             </div>
 
-            <!-- Claimed Team Box or Claim Action Button -->
+            <!-- Registered Team Box + Join or Lock -->
             <div class="topic-card__bottom">
-              <!-- If Claimed: Show Students -->
-              <div v-if="isTopicClaimed(topic.id)" class="claimed-box">
+              <!-- If topic has any students: show current team -->
+              <div v-if="isTopicRegistered(topic.id)" class="claimed-box" :class="{ 'claimed-box--open': isTopicOpen(topic.id) }">
                 <div class="claimed-header">
                   <span class="material-icons-round">badge</span>
-                  <span class="m3-label-medium">Equipe Registrada:</span>
+                  <span class="m3-label-medium">
+                    {{ isTopicFull(topic.id) ? 'Equipe Completa:' : 'Inscritos até agora:' }}
+                  </span>
                   <span v-if="getClaimInfo(topic.id).claimedAt" class="claimed-time m3-label-small">
                     {{ formatClaimDate(getClaimInfo(topic.id).claimedAt) }}
                   </span>
@@ -200,13 +216,32 @@
                   </div>
                 </div>
 
-                <div class="locked-note">
-                  <span class="material-icons-round">info</span>
-                  Tema bloqueado. Conforme a regra, o cadastro é definitivo.
-                </div>
+                <!-- Open: invite more + join button -->
+                <template v-if="isTopicOpen(topic.id)">
+                  <div class="open-note">
+                    <span class="material-icons-round">group_add</span>
+                    Ainda há {{ getRemainingSlots(topic) }} vaga{{ getRemainingSlots(topic) !== 1 ? 's' : '' }}. Mais alunos podem entrar neste grupo.
+                  </div>
+                  <M3Button
+                    variant="tonal"
+                    icon="person_add"
+                    full-width
+                    @click="openClaimModal(topic)"
+                  >
+                    Entrar neste Grupo
+                  </M3Button>
+                </template>
+
+                <!-- Full: locked -->
+                <template v-else>
+                  <div class="locked-note">
+                    <span class="material-icons-round">lock</span>
+                    Grupo completo. Não há mais vagas neste tema.
+                  </div>
+                </template>
               </div>
 
-              <!-- If Available: Show Action Button -->
+              <!-- If no one registered yet: primary CTA -->
               <div v-else class="available-action">
                 <M3Button
                   variant="filled"
@@ -248,24 +283,33 @@
     <!-- Registration Modal -->
     <M3Modal
       v-model="showClaimModal"
-      :title="`Inscrição: ${selectedTopic?.title || 'Tema'}`"
+      :title="isTopicOpen(selectedTopic?.id) ? `Entrar no Grupo: ${selectedTopic?.title || 'Tema'}` : `Inscrição: ${selectedTopic?.title || 'Tema'}`"
       :close-on-overlay="!submitting"
     >
       <div v-if="selectedTopic" class="modal-content">
-        <!-- Live Conflict Warning if someone else claims while modal is open -->
+        <!-- Live Conflict: topic became full while modal was open -->
         <div v-if="isConflictDetected" class="conflict-alert">
           <span class="material-icons-round conflict-icon">warning</span>
           <div>
-            <strong>Atenção! Este tema acabou de ser escolhido!</strong>
+            <strong>Atenção! Este tema acabou de ficar completo!</strong>
             <p class="m3-body-small">
-              Outra equipe acabou de confirmar o registro deste tema agora mesmo.
-              Você não poderá submeter este tema. Por favor, feche esta janela e escolha outro tema disponível.
+              O grupo atingiu o limite máximo enquanto você digitava.
+              Feche esta janela e escolha outro tema com vagas disponíveis.
             </p>
           </div>
         </div>
 
+        <!-- Open group context banner -->
+        <div v-if="isTopicOpen(selectedTopic.id) && !isConflictDetected" class="open-group-banner">
+          <span class="material-icons-round">groups</span>
+          <div>
+            <strong>Grupo em aberto</strong> — já há {{ getClaimInfo(selectedTopic.id).students?.length || 0 }} aluno(s) inscrito(s).
+            Restam <strong>{{ getRemainingSlots(selectedTopic) }}</strong> vaga(s).
+          </div>
+        </div>
+
         <p class="m3-body-medium modal-intro">
-          Cadastre os nomes completos dos integrantes da equipe (máximo de {{ selectedTopic.maxStudents || 4 }} alunos).
+          Informe seu(s) nome(s) para entrar neste grupo ({{ getRemainingSlots(selectedTopic) }} vaga{{ getRemainingSlots(selectedTopic) !== 1 ? 's' : '' }} restante{{ getRemainingSlots(selectedTopic) !== 1 ? 's' : '' }}).
           <strong class="warn-text">Aviso: uma vez confirmado, não é possível alterar ou cancelar.</strong>
         </p>
 
@@ -304,7 +348,7 @@
             </div>
           </div>
 
-          <div v-if="memberSlots.length < (selectedTopic.maxStudents || 4)" class="add-slot-row">
+          <div v-if="memberSlots.length < getRemainingSlots(selectedTopic)" class="add-slot-row">
             <button
               type="button"
               class="add-slot-btn"
@@ -312,7 +356,7 @@
               @click="addSlot"
             >
               <span class="material-icons-round">add</span>
-              Adicionar outro integrante ({{ memberSlots.length }} de {{ selectedTopic.maxStudents || 4 }})
+              Adicionar outro integrante ({{ memberSlots.length }} de {{ getRemainingSlots(selectedTopic) }} vaga{{ getRemainingSlots(selectedTopic) !== 1 ? 's' : '' }})
             </button>
           </div>
         </div>
@@ -413,22 +457,56 @@ const submissionError = ref("");
 const registeredSuccessStudents = ref([]);
 
 // Filter State
-const currentFilter = ref("all"); // 'all' | 'available' | 'claimed'
+const currentFilter = ref("all"); // 'all' | 'available' | 'open' | 'full'
 
-// Check if a topic is claimed
-const isTopicClaimed = (topicId) => {
-  const claim = claimedTopicsMap.value[topicId];
-  return Boolean(claim && claim.students && claim.students.length > 0);
-};
-
+// Topic state helpers
 const getClaimInfo = (topicId) => {
   return claimedTopicsMap.value[topicId] || {};
 };
 
-// Check if currently selected topic in modal was claimed by someone else while typing
+/** Has at least one student registered (open OR full) */
+const isTopicRegistered = (topicId) => {
+  const claim = claimedTopicsMap.value[topicId];
+  return Boolean(claim && claim.students && claim.students.length > 0);
+};
+
+/** Registered AND below maxStudents — more students can still join */
+const isTopicOpen = (topicId) => {
+  const claim = claimedTopicsMap.value[topicId];
+  if (!claim || !claim.students?.length) return false;
+  const max = claim.maxStudents || 4;
+  const isBelowMax = claim.students.length < max;
+  // status "open" (new), or legacy "claimed" records that still have capacity
+  return isBelowMax && (claim.status === "open" || claim.status === "claimed");
+};
+
+/** Registered AND at maxStudents — locked (handles legacy "claimed" status too) */
+const isTopicFull = (topicId) => {
+  const claim = claimedTopicsMap.value[topicId];
+  if (!claim || !claim.students?.length) return false;
+  const max = claim.maxStudents || 4;
+  // status "full" (new), OR legacy "claimed" at capacity, OR any record at/above cap
+  return claim.status === "full" || claim.students.length >= max;
+};
+
+const getRemainingSlots = (topic) => {
+  if (!topic) return 0;
+  const max = topic.maxStudents || 4;
+  const current = getClaimInfo(topic.id).students?.length || 0;
+  return Math.max(0, max - current);
+};
+
+const getTopicSlotsLabel = (topic) => {
+  const max = topic.maxStudents || 4;
+  const current = getClaimInfo(topic.id).students?.length || 0;
+  if (current === 0) return `Máximo: ${max} alunos`;
+  return `${current} / ${max} alunos inscritos`;
+};
+
+// Check if currently selected topic in modal became full while typing
 const isConflictDetected = computed(() => {
   if (!selectedTopic.value || !showClaimModal.value) return false;
-  return isTopicClaimed(selectedTopic.value.id);
+  return isTopicFull(selectedTopic.value.id);
 });
 
 // Counts
@@ -436,23 +514,34 @@ const totalTopicsCount = computed(() => {
   return seminarData.value?.topics?.length || 0;
 });
 
-const claimedCount = computed(() => {
+/** Topics that are full (no more slots) */
+const fullCount = computed(() => {
   if (!seminarData.value?.topics) return 0;
-  return seminarData.value.topics.filter((t) => isTopicClaimed(t.id)).length;
+  return seminarData.value.topics.filter((t) => isTopicFull(t.id)).length;
 });
 
+/** Topics that have at least one student but are not yet full */
+const openCount = computed(() => {
+  if (!seminarData.value?.topics) return 0;
+  return seminarData.value.topics.filter((t) => isTopicOpen(t.id)).length;
+});
+
+/** Topics that still have at least one slot (not registered at all, OR open) */
 const availableCount = computed(() => {
-  return Math.max(0, totalTopicsCount.value - claimedCount.value);
+  return Math.max(0, totalTopicsCount.value - fullCount.value);
 });
 
 // Filtered topics
 const filteredTopics = computed(() => {
   const list = seminarData.value?.topics || [];
   if (currentFilter.value === "available") {
-    return list.filter((t) => !isTopicClaimed(t.id));
+    return list.filter((t) => !isTopicFull(t.id));
   }
-  if (currentFilter.value === "claimed") {
-    return list.filter((t) => isTopicClaimed(t.id));
+  if (currentFilter.value === "open") {
+    return list.filter((t) => isTopicOpen(t.id));
+  }
+  if (currentFilter.value === "full") {
+    return list.filter((t) => isTopicFull(t.id));
   }
   return list;
 });
@@ -471,8 +560,8 @@ const openClaimModal = (topic) => {
 };
 
 const addSlot = () => {
-  const max = selectedTopic.value?.maxStudents || 4;
-  if (memberSlots.value.length < max) {
+  const remaining = getRemainingSlots(selectedTopic.value);
+  if (memberSlots.value.length < remaining) {
     memberSlots.value.push("");
   }
 };
@@ -809,15 +898,24 @@ onUnmounted(() => {
   box-shadow: var(--md-elevation-2);
 }
 
-.topic-card--claimed {
+.topic-card--full {
   background-color: var(--md-sys-color-surface-container-low);
   border: 1px solid var(--md-sys-color-outline-variant);
   opacity: 0.95;
 }
 
+.topic-card--open {
+  border: 1px solid #f9ab00;
+  background-color: rgba(249, 171, 0, 0.03);
+}
+
+.topic-card--open:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--md-elevation-2);
+}
+
 .topic-card__header {
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
   gap: 12px;
 }
@@ -826,6 +924,23 @@ onUnmounted(() => {
   display: flex;
   align-items: flex-start;
   gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.topic-identity__text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.topic-title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .topic-icon-wrap {
@@ -891,9 +1006,35 @@ onUnmounted(() => {
   }
 }
 
-.status-pill--claimed {
+.status-pill--full {
   background-color: #f1f3f4;
   color: #5f6368;
+}
+
+.status-pill--open {
+  background-color: #fef7e0;
+  color: #b06000;
+  border: 1px solid #f9ab00;
+}
+
+.pulse-dot--open {
+  background-color: #b06000;
+  animation: pulse-open 1.8s infinite;
+}
+
+@keyframes pulse-open {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(176, 96, 0, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(176, 96, 0, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(176, 96, 0, 0);
+  }
 }
 
 .topic-desc {
@@ -1007,6 +1148,51 @@ onUnmounted(() => {
 
 .locked-note .material-icons-round {
   font-size: 14px;
+}
+
+.open-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 12px;
+  color: #b06000;
+  background-color: #fef7e0;
+  border: 1px solid #f9ab00;
+  border-radius: var(--md-shape-corner-small);
+  padding: 8px 10px;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.open-note .material-icons-round {
+  font-size: 15px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.claimed-box--open {
+  border-color: #f9ab00;
+  background-color: rgba(249, 171, 0, 0.04);
+}
+
+.open-group-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background-color: #fef7e0;
+  border: 1px solid #f9ab00;
+  border-radius: var(--md-shape-corner-medium);
+  padding: 12px 14px;
+  font-size: 13px;
+  color: #7a4500;
+  line-height: 1.5;
+}
+
+.open-group-banner .material-icons-round {
+  font-size: 20px;
+  flex-shrink: 0;
+  color: #b06000;
+  margin-top: 1px;
 }
 
 /* Criteria Section */

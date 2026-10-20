@@ -129,21 +129,29 @@ class SeminarService {
       const existing = data[topic.id];
 
       if (existing) {
-        if (existing.status === "full") {
+        const existingStudents = Array.isArray(existing.students) ? existing.students : [];
+        const existingMax = Number(existing.maxStudents) || maxStudents;
+        const currentCount = existingStudents.length;
+
+        // Treat as full: new "full" status, OR any record at/above capacity (covers legacy "claimed")
+        const isFull =
+          existing.status === "full" ||
+          currentCount >= existingMax;
+
+        if (isFull) {
           return {
             success: false,
             reason: "TOPIC_FULL",
-            message: `Este tema já atingiu o limite de ${maxStudents} alunos e não aceita mais inscrições.`,
+            message: `Este tema já atingiu o limite de ${existingMax} alunos e não aceita mais inscrições.`,
             existing,
           };
         }
 
         // Topic is open — check if adding new students would exceed the limit
-        const currentCount = existing.students?.length || 0;
         const totalAfter = currentCount + cleanedStudents.length;
 
-        if (totalAfter > maxStudents) {
-          const remaining = maxStudents - currentCount;
+        if (totalAfter > existingMax) {
+          const remaining = existingMax - currentCount;
           return {
             success: false,
             reason: "EXCEEDS_REMAINING",
@@ -153,7 +161,7 @@ class SeminarService {
         }
 
         // Check for duplicate names (case-insensitive)
-        const existingLower = (existing.students || []).map((s) => s.toLowerCase());
+        const existingLower = existingStudents.map((s) => s.toLowerCase());
         const duplicate = cleanedStudents.find((s) =>
           existingLower.includes(s.toLowerCase())
         );
@@ -166,11 +174,11 @@ class SeminarService {
           };
         }
 
-        const updatedStudents = [...existing.students, ...cleanedStudents];
+        const updatedStudents = [...existingStudents, ...cleanedStudents];
         data[topic.id] = {
           ...existing,
           students: updatedStudents,
-          status: updatedStudents.length >= maxStudents ? "full" : "open",
+          status: updatedStudents.length >= existingMax ? "full" : "open",
           updatedAt: new Date().toISOString(),
         };
       } else {
@@ -192,51 +200,68 @@ class SeminarService {
 
     const topicRef = doc(db, "seminars", courseId, "topics", topic.id);
 
+    // Sentinel class — detected via instanceof AND a string tag as belt-and-suspenders,
+    // since Firestore may wrap errors in ways that break instanceof across module boundaries.
+    class SeminarAppError extends Error {
+      constructor(reason, message, extra = {}) {
+        super(message);
+        this.name = "SeminarAppError";
+        this.seminarReason = reason;
+        this.seminarExtra = extra;
+      }
+    }
+
     try {
       await runTransaction(db, async (transaction) => {
         const topicSnap = await transaction.get(topicRef);
 
         if (topicSnap.exists()) {
           const existingData = topicSnap.data();
+          const existingStudents = Array.isArray(existingData.students)
+            ? existingData.students
+            : [];
+          const currentCount = existingStudents.length;
+          const existingMax = Number(existingData.maxStudents) || maxStudents;
 
-          if (existingData.status === "full") {
-            const err = new Error("TOPIC_FULL");
-            err.code = "TOPIC_FULL";
-            err.existingData = existingData;
-            throw err;
+          // Full = explicit "full" status OR already at/above capacity (covers legacy "claimed")
+          const isFull =
+            existingData.status === "full" || currentCount >= existingMax;
+
+          if (isFull) {
+            throw new SeminarAppError(
+              "TOPIC_FULL",
+              `Este tema já atingiu o limite de ${existingMax} alunos e não aceita mais inscrições.`,
+              { existing: existingData }
+            );
           }
 
-          // Topic is open — check capacity
-          const currentCount = existingData.students?.length || 0;
+          // Check capacity for the new students
           const totalAfter = currentCount + cleanedStudents.length;
-
-          if (totalAfter > maxStudents) {
-            const err = new Error("EXCEEDS_REMAINING");
-            err.code = "EXCEEDS_REMAINING";
-            err.remaining = maxStudents - currentCount;
-            err.existingData = existingData;
-            throw err;
+          if (totalAfter > existingMax) {
+            throw new SeminarAppError(
+              "EXCEEDS_REMAINING",
+              `O tema só tem ${existingMax - currentCount} vaga(s) restante(s). Reduza a quantidade de integrantes.`,
+              { existing: existingData }
+            );
           }
 
-          // Check for duplicate names
-          const existingLower = (existingData.students || []).map((s) =>
-            s.toLowerCase()
-          );
+          // Check for duplicate names (case-insensitive)
+          const existingLower = existingStudents.map((s) => s.toLowerCase());
           const duplicate = cleanedStudents.find((s) =>
             existingLower.includes(s.toLowerCase())
           );
           if (duplicate) {
-            const err = new Error("DUPLICATE_STUDENT");
-            err.code = "DUPLICATE_STUDENT";
-            err.duplicate = duplicate;
-            err.existingData = existingData;
-            throw err;
+            throw new SeminarAppError(
+              "DUPLICATE_STUDENT",
+              `O aluno "${duplicate}" já está registrado neste tema.`,
+              { existing: existingData }
+            );
           }
 
-          const updatedStudents = [...existingData.students, ...cleanedStudents];
+          const updatedStudents = [...existingStudents, ...cleanedStudents];
           transaction.update(topicRef, {
             students: updatedStudents,
-            status: updatedStudents.length >= maxStudents ? "full" : "open",
+            status: updatedStudents.length >= existingMax ? "full" : "open",
             updatedAt: serverTimestamp(),
           });
         } else {
@@ -255,32 +280,21 @@ class SeminarService {
 
       return { success: true };
     } catch (err) {
-      console.warn("[SeminarService] Claim transaction result:", err);
+      console.warn("[SeminarService] Firestore transaction error:", err);
 
-      if (err.code === "TOPIC_FULL") {
+      // Unwrap: Firestore may wrap our error — check instanceof, name tag, and cause chain
+      const isSeminarError = (e) =>
+        e instanceof SeminarAppError || e?.name === "SeminarAppError";
+      const appErr = isSeminarError(err) ? err
+        : isSeminarError(err?.cause) ? err.cause
+        : null;
+
+      if (appErr) {
         return {
           success: false,
-          reason: "TOPIC_FULL",
-          message: `Este tema já atingiu o limite de ${maxStudents} alunos e não aceita mais inscrições.`,
-          existing: err.existingData,
-        };
-      }
-
-      if (err.code === "EXCEEDS_REMAINING") {
-        return {
-          success: false,
-          reason: "EXCEEDS_REMAINING",
-          message: `O tema só tem ${err.remaining} vaga(s) restante(s). Reduza a quantidade de integrantes.`,
-          existing: err.existingData,
-        };
-      }
-
-      if (err.code === "DUPLICATE_STUDENT") {
-        return {
-          success: false,
-          reason: "DUPLICATE_STUDENT",
-          message: `O aluno "${err.duplicate}" já está registrado neste tema.`,
-          existing: err.existingData,
+          reason: appErr.seminarReason,
+          message: appErr.message,
+          ...appErr.seminarExtra,
         };
       }
 

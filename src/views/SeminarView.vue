@@ -475,17 +475,16 @@ const isTopicOpen = (topicId) => {
   const claim = claimedTopicsMap.value[topicId];
   if (!claim || !claim.students?.length) return false;
   const max = claim.maxStudents || 4;
-  const isBelowMax = claim.students.length < max;
-  // status "open" (new), or legacy "claimed" records that still have capacity
-  return isBelowMax && (claim.status === "open" || claim.status === "claimed");
+  // Open = has students but below capacity (works for both "open" and legacy "claimed")
+  return claim.students.length < max;
 };
 
-/** Registered AND at maxStudents — locked (handles legacy "claimed" status too) */
+/** Registered AND at/above maxStudents — locked */
 const isTopicFull = (topicId) => {
   const claim = claimedTopicsMap.value[topicId];
   if (!claim || !claim.students?.length) return false;
   const max = claim.maxStudents || 4;
-  // status "full" (new), OR legacy "claimed" at capacity, OR any record at/above cap
+  // Full = "full" status (new), OR at/above capacity (covers legacy "claimed")
   return claim.status === "full" || claim.students.length >= max;
 };
 

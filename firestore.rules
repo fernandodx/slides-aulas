@@ -1,60 +1,104 @@
 rules_version = '2';
 
 // ===============================================================
-// Assumed Data Model
+// Data Model
 // ===============================================================
 //
 // Collection: /seminars/{courseId}/topics/{topicId}
 // Document ID: {topicId} (e.g. 'rest-apis', 'angular-framework')
 // Fields:
-//   - topicId: string (required) - identifier of the topic
-//   - topicTitle: string (required) - display title of the topic
-//   - students: list of strings (required, 1 <= size <= maxStudents) - names of registered students
-//   - maxStudents: int (required, 1 <= maxStudents <= 10) - max allowed students for this topic
-//   - status: string (required, 'claimed') - status of registration
-//   - claimedAt: timestamp (required) - timestamp when registration occurred
-//   - userAgent: string (optional) - browser client identifier
+//   - topicId:     string   — identifier of the topic
+//   - topicTitle:  string   — display title of the topic
+//   - students:    list     — names of registered students (1..maxStudents)
+//   - maxStudents: int      — max allowed students for this topic (1..10)
+//   - status:      string   — 'open' | 'full'  (legacy: 'claimed')
+//   - claimedAt:   timestamp — when the first student registered
+//   - updatedAt:   timestamp — when the last student joined (update only)
+//   - userAgent:   string   — browser client identifier (optional)
 //
-// Immutability: Once created, documents cannot be updated or deleted by clients.
+// Lifecycle:
+//   CREATE  — first student(s) register; document does not exist yet.
+//   UPDATE  — additional students join an open group (status was 'open').
+//             Only 'students', 'status', and 'updatedAt' may change.
+//             'claimedAt', 'topicId', 'topicTitle', 'maxStudents' are immutable.
+//   DELETE  — never allowed.
 //
 // ===============================================================
 
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Helper functions for seminar registration validation
+    // ── helpers ──────────────────────────────────────────────────
+
+    function isValidStatus(s) {
+      return s == 'open' || s == 'full' || s == 'claimed';
+    }
+
     function isValidStudentList(students, maxStudents) {
       return students is list
         && students.size() >= 1
         && students.size() <= maxStudents;
     }
 
-    function isValidSeminarRegistration() {
-      let data = request.resource.data;
-      return data.keys().hasAll(['topicId', 'topicTitle', 'students', 'maxStudents', 'status', 'claimedAt'])
-        && data.topicId is string && data.topicId.size() > 0 && data.topicId.size() <= 100
-        && data.topicTitle is string && data.topicTitle.size() > 0 && data.topicTitle.size() <= 200
-        && data.maxStudents is int && data.maxStudents >= 1 && data.maxStudents <= 10
-        && isValidStudentList(data.students, data.maxStudents)
-        && data.status == 'claimed'
-        && data.claimedAt is timestamp;
+    // Validates a brand-new registration document (create).
+    function isValidCreate() {
+      let d = request.resource.data;
+      return d.keys().hasAll(['topicId', 'topicTitle', 'students', 'maxStudents', 'status', 'claimedAt'])
+        && d.topicId    is string    && d.topicId.size()    >  0 && d.topicId.size()    <= 100
+        && d.topicTitle is string    && d.topicTitle.size() >  0 && d.topicTitle.size() <= 200
+        && d.maxStudents is int      && d.maxStudents >= 1       && d.maxStudents <= 10
+        && isValidStudentList(d.students, d.maxStudents)
+        && isValidStatus(d.status)
+        && d.claimedAt is timestamp;
     }
 
-    // Rules for seminars collection
+    // Validates a student-join update.
+    // Only 'students', 'status', and 'updatedAt' may change.
+    // The topic must currently be open (not full).
+    // The new student list must be larger than the existing one (append-only).
+    function isValidJoin() {
+      let before = resource.data;
+      let after  = request.resource.data;
+
+      // Immutable fields must not change
+      let immutableUnchanged =
+        after.topicId    == before.topicId
+        && after.topicTitle == before.topicTitle
+        && after.maxStudents == before.maxStudents
+        && after.claimedAt  == before.claimedAt;
+
+      // Topic must currently be open (below capacity)
+      let wasOpen = before.students.size() < before.maxStudents;
+
+      // Students list must grow (append-only, no removals)
+      let studentsGrew = after.students.size() > before.students.size();
+
+      // New list must still respect the cap
+      let withinCap = isValidStudentList(after.students, before.maxStudents);
+
+      // Status must be valid
+      let statusValid = isValidStatus(after.status);
+
+      return immutableUnchanged && wasOpen && studentsGrew && withinCap && statusValid;
+    }
+
+    // ── seminar topic rules ───────────────────────────────────────
+
     match /seminars/{courseId}/topics/{topicId} {
-      // Public read access so students can view available and claimed topics in real-time
+      // Public read — students see live availability in real-time
       allow read: if true;
 
-      // Registration is first-come, first-served:
-      // Can only be created if document doesn't already exist (resource == null)
-      allow create: if resource == null && isValidSeminarRegistration();
+      // First-come first-served creation
+      allow create: if resource == null && isValidCreate();
 
-      // Once claimed, cannot be altered or deleted by clients
-      allow update: if false;
+      // Additional students may join while the group is open
+      allow update: if resource != null && isValidJoin();
+
+      // Topics are never deleted by clients
       allow delete: if false;
     }
 
-    // Default deny for any other collections
+    // Default deny for everything else
     match /{document=**} {
       allow read, write: if false;
     }

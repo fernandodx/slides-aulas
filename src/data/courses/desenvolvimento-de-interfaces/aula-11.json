@@ -1,65 +1,291 @@
 {
   "id": 11,
-  "title": "Aula 11 — CSS I",
-  "subtitle": "Seletores CSS, efeito de cascata, especificidade de regras e o modelo de caixa (Box Model).",
+  "title": "Aula 11 — CSS Fundamentos",
+  "subtitle": "Sintaxe, seletores, estilização, variáveis e prioridade de regras.",
   "module": "Módulo 4 — HTML e CSS",
   "tag": "Prática",
   "slides": [
     {
       "id": 1,
       "type": "intro",
-      "title": "O que é CSS e como ele funciona?",
-      "subtitle": "Cascading Style Sheets: Estilizando a estrutura HTML.",
+      "title": "CSS — Dando vida ao HTML",
+      "subtitle": "A linguagem que transforma estrutura em experiência visual",
       "content": {
-        "badge": "Aula 11",
-        "description": "CSS é a linguagem usada para descrever a apresentação de um documento escrito em HTML. Ele controla cores, layouts, fontes e adaptações de tela.",
+        "badge": "Aula 11 • Módulo 4",
+        "description": "CSS (Cascading Style Sheets) é a linguagem responsável pela aparência visual das páginas web. Ele separa conteúdo de apresentação, permitindo controlar cores, fontes, tamanhos, espaçamentos e muito mais.",
         "keyPoints": [
-          "Sintaxe: Seletor { propriedade: valor; }",
-          "Cascata: A ordem das regras e a origem dos arquivos alteram a prioridade de renderização",
-          "Manutenibilidade: Manter o CSS organizado usando classes semânticas"
-        ]
+          "Sintaxe: seletor { propriedade: valor; }",
+          "Seletores: como mirar o elemento certo",
+          "Estilização: cores, fontes, tamanhos e alinhamento",
+          "Variáveis CSS e regras de prioridade (cascata)"
+        ],
+        "image": {
+          "url": "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?auto=format&fit=crop&w=1200&q=80",
+          "alt": "Tela com código CSS colorido em editor de código escuro",
+          "position": "right"
+        }
       }
     },
     {
       "id": 2,
       "type": "theory",
-      "title": "O Box Model (Modelo de Caixa)",
-      "subtitle": "O coração do layout no CSS.",
+      "title": "O que é CSS e como ele funciona?",
+      "subtitle": "Cascata, herança e a relação com o HTML",
       "content": {
         "sections": [
           {
-            "heading": "Anatomia do Box Model",
-            "text": "1. Content: Onde o texto ou imagem fica visível\n2. Padding: Espaço interno entre o conteúdo e a borda\n3. Border: A linha de contorno em volta da caixa\n4. Margin: Espaço externo que afasta este elemento dos vizinhos"
+            "heading": "Separação de responsabilidades",
+            "text": "HTML define o conteúdo e a estrutura. CSS define a aparência. Essa separação torna o código mais limpo, fácil de manter e permite que o mesmo HTML seja estilizado de formas completamente diferentes."
           },
           {
-            "heading": "box-sizing: border-box;",
-            "text": "Regra fundamental! Garante que 'width' e 'height' incluam o padding e a border sem inflar a dimensão total do elemento."
+            "heading": "Como o CSS chega ao navegador",
+            "text": "CSS pode ser escrito de três formas: inline (atributo style), interno (tag <style> no <head>) ou externo (arquivo .css linkado). O externo é sempre o mais recomendado pois separa completamente a camada visual."
+          },
+          {
+            "heading": "A Cascata (Cascading)",
+            "text": "Quando mais de uma regra afeta o mesmo elemento, o navegador usa a cascata para decidir qual vence — levando em conta origem, especificidade e ordem de declaração."
           }
-        ]
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Prefira sempre arquivos CSS externos. Evite inline style pois dificulta a manutenção e tem a maior prioridade, sobrescrevendo outras regras."
+        }
       }
     },
     {
       "id": 3,
       "type": "code",
-      "title": "Especificidade e Seletores CSS",
-      "subtitle": "Calculando a prioridade dos seletores.",
+      "title": "Sintaxe do CSS",
+      "subtitle": "A anatomia de uma regra CSS: seletor, propriedade e valor",
       "content": {
         "language": "css",
-        "code": "/* Reset Global e Box Sizing */\n* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\n/* Seletor por Tag (Especificidade: 0,0,1) */\np {\n  color: #333333;\n}\n\n/* Seletor por Classe (Especificidade: 0,1,0) */\n.card-title {\n  color: #6750A4;\n  font-size: 1.25rem;\n}\n\n/* Seletor por ID (Especificidade: 1,0,0) */\n#main-banner {\n  background-color: #F3EDF7;\n  padding: 24px;\n  border-radius: 16px;\n}",
-        "explanation": "Lembre-se: Evite usar IDs para estilização visual. Prefira classes reutilizáveis!"
+        "code": "/* Estrutura básica de uma regra CSS */\nseletor {\n  propriedade: valor;\n  propriedade: valor;\n}\n\n/* Exemplos reais */\nh1 {\n  color: #6750A4;\n  font-size: 2rem;\n}\n\n.card {\n  background-color: #F3EDF7;\n  border-radius: 12px;\n  padding: 16px;\n}\n\n/* Múltiplos seletores na mesma regra */\nh1, h2, h3 {\n  font-family: 'Segoe UI', sans-serif;\n  margin-bottom: 8px;\n}",
+        "explanation": "Cada regra CSS tem três partes: o seletor (quem), a propriedade (o quê) e o valor (como). O ponto e vírgula ao final de cada declaração é obrigatório."
       }
     },
     {
       "id": 4,
+      "type": "theory",
+      "title": "Seletores CSS — Parte 1",
+      "subtitle": "Tag, classe, ID e seletor universal",
+      "content": {
+        "sections": [
+          {
+            "heading": "Seletor de Tag",
+            "text": "Seleciona todos os elementos daquele tipo no documento. Ex: p { } estiliza todos os parágrafos. Útil para resets globais, mas evite para estilos específicos de componentes."
+          },
+          {
+            "heading": "Seletor de Classe (.)",
+            "text": "O mais utilizado no dia a dia. Seleciona elementos pelo atributo class. Ex: .btn-primary { } é reutilizável em vários elementos e é a base dos Design Systems modernos."
+          },
+          {
+            "heading": "Seletor de ID (#)",
+            "text": "Seleciona um único elemento pelo atributo id. Tem alta especificidade — use apenas para âncoras de página ou JavaScript. Evite para estilização visual."
+          }
+        ],
+        "callout": {
+          "type": "info",
+          "text": "Regra de ouro: prefira classes (.nome) para estilização. IDs (#nome) têm peso 100x maior na especificidade e dificultam a reutilização."
+        }
+      }
+    },
+    {
+      "id": 5,
+      "type": "code",
+      "title": "Seletores CSS — Parte 2",
+      "subtitle": "Combinadores, pseudo-classes e seletor universal",
+      "content": {
+        "language": "css",
+        "code": "/* Seletor universal */\n* { box-sizing: border-box; }\n\n/* Descendente: todo <p> dentro de .card */\n.card p { color: #444; }\n\n/* Filho direto: apenas filhos diretos */\n.menu > li { display: flex; }\n\n/* Pseudo-classe: estado do elemento */\na:hover { color: #6750A4; }\nbutton:focus { outline: 2px solid #6750A4; }\ninput:disabled { opacity: 0.5; }\n\n/* Pseudo-elemento: parte do elemento */\np::first-line { font-weight: bold; }\n.card::before {\n  content: '';\n  display: block;\n}",
+        "explanation": "Pseudo-classes (:hover, :focus, :nth-child) reagem a estados. Pseudo-elementos (::before, ::after) inserem conteúdo visual sem HTML extra."
+      }
+    },
+    {
+      "id": 6,
+      "type": "theory",
+      "title": "Cores e Fundos",
+      "subtitle": "As principais formas de aplicar cor no CSS",
+      "content": {
+        "sections": [
+          {
+            "heading": "Formatos de cor",
+            "text": "CSS aceita: nome (red, blue), hexadecimal (#FF5722), RGB (rgb(255, 87, 34)), RGBA com transparência (rgba(255,87,34,0.5)) e HSL (hsl(14, 100%, 57%)). Prefira hex ou variáveis para consistência."
+          },
+          {
+            "heading": "Propriedades de cor",
+            "text": "color define a cor do texto. background-color pinta o fundo do elemento. border-color define a cor da borda. outline-color controla a borda de foco (acessibilidade)."
+          },
+          {
+            "heading": "Opacidade e transparência",
+            "text": "opacity: 0.5 torna o elemento inteiro semitransparente (incluindo filhos). Para transparência apenas no fundo, use rgba() no background-color — assim o texto mantém visibilidade total."
+          }
+        ],
+        "image": {
+          "url": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
+          "alt": "Paleta de cores vibrantes em gradiente",
+          "position": "right"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "type": "code",
+      "title": "Tamanhos e Unidades",
+      "subtitle": "px, rem, em, % e vh/vw — quando usar cada uma",
+      "content": {
+        "language": "css",
+        "code": "/* Pixels: fixo, previsível */\n.icon { width: 24px; height: 24px; }\n\n/* rem: relativo ao root (html)\n   1rem = 16px por padrão — ideal para textos */\nbody  { font-size: 1rem; }   /* 16px */\nh1    { font-size: 2rem; }   /* 32px */\n\n/* em: relativo ao pai — cuidado com cascata */\n.card { padding: 1.5em; }\n\n/* %: relativo ao elemento pai */\n.sidebar { width: 30%; }\n\n/* Viewport: relativo à janela */\n.hero   { height: 100vh; }\n.banner { width: 100vw; }\n\n/* min / max para responsividade */\n.container {\n  width: 100%;\n  max-width: 1200px;\n}",
+        "explanation": "Use rem para fontes e espaçamentos (acessível e escalável), px para bordas e ícones, e % / vw / vh para layouts responsivos."
+      }
+    },
+    {
+      "id": 8,
+      "type": "theory",
+      "title": "Tipografia e Fontes",
+      "subtitle": "Controlando textos com CSS",
+      "content": {
+        "sections": [
+          {
+            "heading": "Família tipográfica",
+            "text": "font-family define a fonte. Sempre declare fontes fallback: font-family: 'Roboto', Arial, sans-serif. Para fontes externas, importe do Google Fonts com @import ou <link> no HTML."
+          },
+          {
+            "heading": "Tamanho e peso",
+            "text": "font-size controla o tamanho (preferir rem). font-weight define o peso: 400 = normal, 700 = bold. line-height define o espaço entre linhas — 1.5 é um bom valor padrão para legibilidade."
+          },
+          {
+            "heading": "Alinhamento e decoração",
+            "text": "text-align: left | center | right | justify alinha o texto. text-decoration: none remove sublinhado de links. text-transform: uppercase | capitalize transforma a capitalização sem alterar o HTML."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Nunca use font-size menor que 14px em textos corridos. Mínimo acessível recomendado pela WCAG é 16px para corpo de texto."
+        }
+      }
+    },
+    {
+      "id": 9,
+      "type": "code",
+      "title": "Alinhamento e Espaçamento",
+      "subtitle": "margin, padding, text-align e as unidades corretas",
+      "content": {
+        "language": "css",
+        "code": "/* Padding: espaço interno (entre conteúdo e borda) */\n.card {\n  padding: 24px;           /* todos os lados */\n  padding: 16px 24px;      /* top/bottom | left/right */\n  padding: 8px 16px 8px 24px; /* top right bottom left */\n}\n\n/* Margin: espaço externo (afasta vizinhos) */\n.section {\n  margin-bottom: 32px;\n}\n\n/* Centralizar bloco com margin auto */\n.container {\n  max-width: 960px;\n  margin: 0 auto;\n}\n\n/* Centralizar texto */\n.hero-title {\n  text-align: center;\n}",
+        "explanation": "Atalho de 4 valores: sentido horário — top, right, bottom, left. 'margin: 0 auto' é o clássico para centralizar elementos de bloco."
+      }
+    },
+    {
+      "id": 10,
+      "type": "theory",
+      "title": "Variáveis CSS (Custom Properties)",
+      "subtitle": "Criando e usando tokens de design nativos no CSS",
+      "content": {
+        "sections": [
+          {
+            "heading": "Declarando variáveis",
+            "text": "Variáveis CSS são declaradas com dois hífens: --nome-da-variavel: valor; O local ideal é o seletor :root — que representa o elemento raiz do documento, tornando a variável global."
+          },
+          {
+            "heading": "Usando variáveis com var()",
+            "text": "Para usar uma variável, chame var(--nome-da-variavel). Você pode passar um valor fallback: var(--cor-primaria, #6750A4) — se a variável não existir, o segundo valor é usado."
+          },
+          {
+            "heading": "Por que usar variáveis?",
+            "text": "Centralizam os valores do Design System (cores, tamanhos, bordas). Ao mudar um token, todos os elementos que o referenciam se atualizam automaticamente — fundamental em projetos escaláveis."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Variáveis CSS são reativas e funcionam com JavaScript: element.style.setProperty('--cor', 'red') altera o valor em tempo real sem recarregar a página."
+        }
+      }
+    },
+    {
+      "id": 11,
+      "type": "code",
+      "title": "Variáveis CSS na Prática",
+      "subtitle": "Criando um mini Design System com custom properties",
+      "content": {
+        "language": "css",
+        "code": "/* 1. Declarar no :root (escopo global) */\n:root {\n  --color-primary:    #6750A4;\n  --color-surface:    #F3EDF7;\n  --color-on-surface: #1C1B1F;\n\n  --font-size-base:   1rem;\n  --font-size-title:  1.5rem;\n\n  --radius-card:      12px;\n  --spacing-md:       16px;\n  --spacing-lg:       24px;\n}\n\n/* 2. Usar com var() */\n.card {\n  background: var(--color-surface);\n  border-radius: var(--radius-card);\n  padding: var(--spacing-lg);\n  color: var(--color-on-surface);\n}\n\n.btn-primary {\n  background: var(--color-primary);\n  font-size: var(--font-size-base);\n}",
+        "explanation": "Nomeie variáveis de forma semântica (--color-primary) e não por valor (--purple). Assim, se mudar a cor primária, o nome continua fazendo sentido."
+      }
+    },
+    {
+      "id": 12,
+      "type": "theory",
+      "title": "Especificidade e Prioridade",
+      "subtitle": "Quem vence quando duas regras conflitam?",
+      "content": {
+        "sections": [
+          {
+            "heading": "A hierarquia de peso",
+            "text": "O CSS usa um sistema de pontos para calcular qual regra vence: Inline style = 1000pts | ID (#) = 100pts | Classe/pseudo-classe = 10pts | Tag/pseudo-elemento = 1pt. Quem tem mais pontos, vence."
+          },
+          {
+            "heading": "A regra !important",
+            "text": "!important força uma regra a ter prioridade máxima, ignorando todo o cálculo de especificidade. Use com extrema parcimônia — geralmente indica que a arquitetura CSS precisa de revisão."
+          },
+          {
+            "heading": "Ordem de declaração (desempate)",
+            "text": "Quando dois seletores têm a mesma especificidade, vence o que aparece por último no arquivo CSS. Por isso a ordem dos seus arquivos importa — reset.css antes de components.css antes de utilities.css."
+          }
+        ],
+        "callout": {
+          "type": "warning",
+          "text": "Evite !important. Se você precisa usá-lo com frequência, é sinal de que a estrutura de classes do seu CSS precisa ser repensada."
+        }
+      }
+    },
+    {
+      "id": 13,
+      "type": "code",
+      "title": "Especificidade na Prática",
+      "subtitle": "Visualizando os pesos dos seletores",
+      "content": {
+        "language": "css",
+        "code": "/* Peso 0,0,1 — tag */\np { color: black; }\n\n/* Peso 0,1,0 — classe */\n.texto { color: blue; }\n\n/* Peso 0,1,1 — classe + tag */\np.texto { color: green; }\n\n/* Peso 1,0,0 — ID */\n#intro { color: red; }\n\n/* Inline (HTML): 1,0,0,0 — vence tudo exceto !important */\n/* <p style=\"color: orange\"> */\n\n/* !important — anula o cálculo */\n.aviso { color: purple !important; }\n\n/* Mesmo elemento com as 4 regras acima:\n   Renderiza: purple (!important)\n   Sem !important: renderizaria red (#intro) */",
+        "explanation": "Calcule sempre da esquerda para direita: (inline, ID, classe, tag). Ex: #nav .link:hover = 0,1,1,1 = 111 pontos."
+      }
+    },
+    {
+      "id": 14,
       "type": "practice",
-      "title": "Atividade Prática: Estilizar os Cards do Projeto",
-      "subtitle": "Aplicar o Box Model e criar o arquivo style.css.",
+      "title": "Recapitulando e praticando",
+      "subtitle": "Coloque em prática os fundamentos da aula",
       "content": {
         "items": [
-          { "title": "Passo 1", "detail": "Crie o arquivo style.css e vincule ao HTML via tag <link rel=\"stylesheet\">." },
-          { "title": "Passo 2", "detail": "Aplique o reset com 'box-sizing: border-box' em todos os elementos." },
-          { "title": "Passo 3", "detail": "Estilize os botões e cards de aula utilizando paddings, margins e border-radius." }
-        ]
+          {
+            "icon": "code",
+            "title": "1. Crie o style.css",
+            "detail": "Crie um arquivo style.css e linke no HTML com <link rel='stylesheet' href='style.css'>. Defina as variáveis no :root."
+          },
+          {
+            "icon": "palette",
+            "title": "2. Aplique cores e fontes",
+            "detail": "Use suas variáveis para colorir títulos, fundo de cards e texto. Importe uma fonte do Google Fonts e aplique no body."
+          },
+          {
+            "icon": "straighten",
+            "title": "3. Ajuste tamanhos",
+            "detail": "Defina font-size em rem nos títulos e parágrafos. Use padding e margin para dar respiro ao layout. Centralize o container com max-width e margin: 0 auto."
+          },
+          {
+            "icon": "fact_check",
+            "title": "4. Teste a especificidade",
+            "detail": "Crie uma regra por tag, uma por classe e uma por ID no mesmo elemento. Observe qual cor vence e por quê. Experimente adicionar e remover !important."
+          }
+        ],
+        "links": [
+          { "label": "MDN — CSS Reference", "url": "https://developer.mozilla.org/pt-BR/docs/Web/CSS/Reference" },
+          { "label": "Specificity Calculator", "url": "https://specificity.keegan.st" },
+          { "label": "Google Fonts", "url": "https://fonts.google.com" }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Use o DevTools do navegador (F12 → Elements → Styles) para inspecionar quais regras CSS estão sendo aplicadas e quais estão sendo sobrescritas."
+        }
       }
     }
   ]

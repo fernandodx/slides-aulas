@@ -1,58 +1,302 @@
 {
   "id": 12,
-  "title": "Aula 12 — CSS II",
-  "subtitle": "Layouts modernos com Flexbox, CSS Grid, unidades relativas e variáveis nativas do CSS.",
+  "title": "Aula 12 — Introdução ao Bootstrap",
+  "subtitle": "Adicionando a biblioteca, ícones e dominando o sistema de grid para alinhar layouts.",
   "module": "Módulo 4 — HTML e CSS",
   "tag": "Prática",
   "slides": [
     {
       "id": 1,
       "type": "intro",
-      "title": "Display Flexbox vs CSS Grid",
-      "subtitle": "Qual sistema de layout escolher para cada situação?",
+      "title": "Bootstrap — O Framework CSS mais popular do mundo",
+      "subtitle": "CSS pronto, responsivo e consistente sem escrever uma linha de CSS do zero",
       "content": {
-        "badge": "Aula 12",
-        "description": "Flexbox foi projetado para layouts unidimensionais (linhas OU colunas). CSS Grid foi projetado para layouts bidimensionais (linhas E colunas simultaneamente).",
+        "badge": "Aula 12 • Módulo 4",
+        "description": "Bootstrap é um framework front-end open source criado pelo Twitter em 2011. Ele fornece componentes visuais prontos (botões, cards, formulários, navbars) e um poderoso sistema de grid para organizar layouts de forma responsiva em qualquer tela.",
         "keyPoints": [
-          "Flexbox: Ideal para navegações, alinhamento de ícones e listas flexíveis",
-          "CSS Grid: Ideal para grids de produtos, galerias e a estrutura geral da página",
-          "Unidades Relativas: Use rem para fontes e % / vh / vw para dimensões de telas"
-        ]
+          "Adicionar Bootstrap via CDN em qualquer projeto HTML",
+          "Carregar Bootstrap Icons para ícones vetoriais",
+          "Entender o sistema de 12 colunas (Grid System)",
+          "Alinhar e posicionar elementos com classes utilitárias"
+        ],
+        "image": {
+          "url": "https://images.unsplash.com/photo-1621839673705-6617adf9e890?auto=format&fit=crop&w=1200&q=80",
+          "alt": "Interface web responsiva em múltiplos dispositivos",
+          "position": "right"
+        }
       }
     },
     {
       "id": 2,
-      "type": "code",
-      "title": "Flexbox em Ação",
-      "subtitle": "Alinhando elementos facilmente no eixo principal e cruzado.",
+      "type": "theory",
+      "title": "Por que usar Bootstrap?",
+      "subtitle": "Velocidade, consistência e responsividade prontos para uso",
       "content": {
-        "language": "css",
-        "code": ".nav-bar {\n  display: flex;\n  justify-content: space-between; /* Eixo Principal (Horizontal) */\n  align-items: center;            /* Eixo Cruzado (Vertical) */\n  gap: 16px;\n  padding: 1rem 2rem;\n}\n\n.card-container {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 24px;\n}",
-        "explanation": "justify-content controla o alinhamento no eixo principal, enquanto align-items controla o eixo cruzado."
+        "sections": [
+          {
+            "heading": "O problema que ele resolve",
+            "text": "Construir um layout responsivo do zero com CSS puro exige domínio de Flexbox, Grid, media queries e muito tempo de testes. O Bootstrap encapsula tudo isso em classes CSS simples que funcionam em qualquer navegador moderno."
+          },
+          {
+            "heading": "O que vem na caixa",
+            "text": "O Bootstrap oferece: sistema de grid de 12 colunas, mais de 30 componentes prontos (navbar, modal, card, accordion, toast), classes utilitárias para margin, padding, cores, display, e suporte nativo a temas claros e escuros."
+          },
+          {
+            "heading": "Quando NÃO usar",
+            "text": "Para projetos com Design System próprio e muito customizado, o Bootstrap pode conflitar com os estilos da empresa. Nesses casos, o CSS puro ou Tailwind CSS pode ser mais adequado. Mas para prototipagem rápida e MVPs, o Bootstrap é imbatível."
+          }
+        ],
+        "callout": {
+          "type": "info",
+          "text": "Bootstrap é usado por mais de 20% de todos os sites da web. Saber utilizá-lo é uma habilidade muito requisitada no mercado de trabalho."
+        }
       }
     },
     {
       "id": 3,
       "type": "code",
-      "title": "CSS Grid & Variáveis Nativas (Custom Properties)",
-      "subtitle": "Construindo layouts responsivos com zero media queries.",
+      "title": "Adicionando Bootstrap via CDN",
+      "subtitle": "Copie e cole no seu HTML — sem instalar nada",
       "content": {
-        "language": "css",
-        "code": "/* Definindo Variáveis no :root */\n:root {\n  --primary-color: #6750A4;\n  --bg-surface: #FEF7FF;\n  --gap-size: 1.5rem;\n}\n\n/* Grid Responsivo Automático */\n.grid-gallery {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));\n  gap: var(--gap-size);\n}\n\n.card {\n  background-color: var(--bg-surface);\n  border: 1px solid var(--primary-color);\n  padding: var(--gap-size);\n}",
-        "explanation": "repeat(auto-fit, minmax(280px, 1fr)) cria colunas responsivas que se ajustam automaticamente sem quebrar o layout!"
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Meu Projeto com Bootstrap</title>\n\n  <!-- 1. Bootstrap CSS — deve vir no <head> -->\n  <link\n    rel=\"stylesheet\"\n    href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\"\n  >\n\n  <!-- 2. Bootstrap Icons CSS — também no <head> -->\n  <link\n    rel=\"stylesheet\"\n    href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css\"\n  >\n</head>\n<body>\n\n  <h1>Olá, Bootstrap!</h1>\n\n  <!-- 3. Bootstrap JS (Bundle com Popper) — antes de </body> -->\n  <script\n    src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js\"\n  ></script>\n</body>\n</html>",
+        "explanation": "Três linhas fazem tudo: o CSS do Bootstrap (estilos), o CSS dos ícones e o JS Bundle (necessário para componentes interativos como modais e dropdowns). O CSS vai no <head>, o JS vai antes de </body>."
       }
     },
     {
       "id": 4,
+      "type": "theory",
+      "title": "Entendendo os três arquivos",
+      "subtitle": "CSS, JS Bundle e Bootstrap Icons — o que cada um faz",
+      "content": {
+        "sections": [
+          {
+            "heading": "bootstrap.min.css",
+            "text": "É o coração do Bootstrap. Contém todas as classes de grid, utilitárias e componentes visuais. Deve ser carregado antes de qualquer CSS próprio para que você possa sobrescrever estilos quando necessário. URL: https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          },
+          {
+            "heading": "bootstrap.bundle.min.js",
+            "text": "JavaScript que dá vida a componentes interativos: modal, dropdown, offcanvas, tooltip, collapse (menu accordion), carousel. O 'bundle' já inclui o Popper.js, então você não precisa carregar nada extra. URL: https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          },
+          {
+            "heading": "bootstrap-icons.min.css",
+            "text": "Biblioteca separada com mais de 2.000 ícones SVG prontos para uso via classes CSS (ex: <i class=\"bi bi-star\"></i>). É independente do Bootstrap — pode ser usada em qualquer projeto. URL: https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Sempre use a versão .min (minificada). Ela é idêntica à versão normal, porém com whitespace e comentários removidos — carrega muito mais rápido no navegador."
+        }
+      }
+    },
+    {
+      "id": 5,
+      "type": "code",
+      "title": "Usando Bootstrap Icons",
+      "subtitle": "Ícones vetoriais com uma única classe CSS",
+      "content": {
+        "language": "html",
+        "code": "<!-- Após carregar o bootstrap-icons.min.css no <head>: -->\n\n<!-- Ícone simples -->\n<i class=\"bi bi-star\"></i>\n\n<!-- Ícone com cor e tamanho via classes do Bootstrap -->\n<i class=\"bi bi-heart-fill text-danger fs-3\"></i>\n\n<!-- Ícone dentro de um botão -->\n<button class=\"btn btn-primary\">\n  <i class=\"bi bi-download me-2\"></i>\n  Baixar arquivo\n</button>\n\n<!-- Ícone com texto ao lado -->\n<p>\n  <i class=\"bi bi-check-circle-fill text-success\"></i>\n  Operação concluída com sucesso\n</p>\n\n<!-- Navegação com ícones -->\n<ul class=\"nav\">\n  <li class=\"nav-item\">\n    <a class=\"nav-link\" href=\"#\">\n      <i class=\"bi bi-house\"></i> Início\n    </a>\n  </li>\n  <li class=\"nav-item\">\n    <a class=\"nav-link\" href=\"#\">\n      <i class=\"bi bi-person\"></i> Perfil\n    </a>\n  </li>\n</ul>",
+        "explanation": "O padrão é sempre duas classes: 'bi' (ativa a fonte de ícones) e 'bi-nome-do-icone' (seleciona o ícone). Combine com classes do Bootstrap como text-danger, fs-3 (font-size) e me-2 (margin-end) para estilizar."
+      }
+    },
+    {
+      "id": 6,
+      "type": "theory",
+      "title": "O Sistema de Grid do Bootstrap",
+      "subtitle": "12 colunas, linhas e breakpoints — a base de todo layout",
+      "content": {
+        "sections": [
+          {
+            "heading": "A lógica das 12 colunas",
+            "text": "O Bootstrap divide cada linha (.row) em 12 colunas invisíveis. Você decide quantas colunas cada elemento ocupa. Um elemento com col-6 ocupa metade da linha (6/12). Com col-4 ocupa um terço (4/12). Com col-12 ocupa a linha toda."
+          },
+          {
+            "heading": "Container → Row → Col",
+            "text": "A hierarquia é sempre a mesma: o .container centraliza e limita a largura do conteúdo; dentro dele vai .row (que cria a linha); dentro da row vão as colunas .col-*. Nunca coloque colunas fora de uma row."
+          },
+          {
+            "heading": "Breakpoints responsivos",
+            "text": "Os prefixos de coluna definem em qual tamanho de tela a regra se aplica: col- (todos), col-sm- (≥576px), col-md- (≥768px), col-lg- (≥992px), col-xl- (≥1200px), col-xxl- (≥1400px). Abaixo do breakpoint, o elemento ocupa a linha toda (col-12 automático)."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Regra de ouro: a soma das colunas em uma row deve ser 12 (ou múltiplo). Ex: 4+4+4=12 (três iguais), 3+9=12 (sidebar+conteúdo), 6+6=12 (dois iguais)."
+        }
+      }
+    },
+    {
+      "id": 7,
+      "type": "code",
+      "title": "Grid Básico — Estrutura de Colunas",
+      "subtitle": "Dividindo a tela em partes iguais e proporcionais",
+      "content": {
+        "language": "html",
+        "code": "<!-- DUAS COLUNAS IGUAIS (6+6) -->\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-6\">Coluna esquerda</div>\n    <div class=\"col-6\">Coluna direita</div>\n  </div>\n</div>\n\n<!-- TRÊS COLUNAS IGUAIS (4+4+4) -->\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-4\">Card 1</div>\n    <div class=\"col-4\">Card 2</div>\n    <div class=\"col-4\">Card 3</div>\n  </div>\n</div>\n\n<!-- SIDEBAR + CONTEÚDO (3+9) -->\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-3\">Sidebar (25%)</div>\n    <div class=\"col-9\">Conteúdo principal (75%)</div>\n  </div>\n</div>\n\n<!-- QUATRO COLUNAS (3+3+3+3) -->\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-3\">Item 1</div>\n    <div class=\"col-3\">Item 2</div>\n    <div class=\"col-3\">Item 3</div>\n    <div class=\"col-3\">Item 4</div>\n  </div>\n</div>",
+        "explanation": "Cada div dentro da .row é uma coluna. A soma deve sempre fechar 12. O Bootstrap trata cada .row como uma linha independente — você pode ter quantas rows quiser em um container."
+      }
+    },
+    {
+      "id": 8,
+      "type": "code",
+      "title": "Grid Responsivo — Comportamento por Breakpoint",
+      "subtitle": "Uma coluna no mobile, múltiplas colunas no desktop",
+      "content": {
+        "language": "html",
+        "code": "<!--\n  RESPONSIVO: \n  - Mobile (< 768px): cada card ocupa a linha toda (col-12 implícito)\n  - Tablet (>= 768px): dois cards por linha (col-md-6)\n  - Desktop (>= 992px): três cards por linha (col-lg-4)\n-->\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-12 col-md-6 col-lg-4\">Card 1</div>\n    <div class=\"col-12 col-md-6 col-lg-4\">Card 2</div>\n    <div class=\"col-12 col-md-6 col-lg-4\">Card 3</div>\n    <div class=\"col-12 col-md-6 col-lg-4\">Card 4</div>\n    <div class=\"col-12 col-md-6 col-lg-4\">Card 5</div>\n    <div class=\"col-12 col-md-6 col-lg-4\">Card 6</div>\n  </div>\n</div>\n\n<!--\n  LAYOUT DE PÁGINA:\n  - Mobile: sidebar abaixo do conteúdo (empilhados)\n  - Desktop: sidebar à esquerda do conteúdo\n-->\n<div class=\"container\">\n  <div class=\"row\">\n    <main class=\"col-12 col-lg-9\">Conteúdo principal</main>\n    <aside class=\"col-12 col-lg-3\">Sidebar</aside>\n  </div>\n</div>",
+        "explanation": "Declare múltiplos prefixos na mesma classe para controlar o comportamento em cada breakpoint. A leitura é: 'no mobile ocupa 12, no md ocupa 6, no lg ocupa 4'. Escreva uma vez, funciona em qualquer tela."
+      }
+    },
+    {
+      "id": 9,
+      "type": "theory",
+      "title": "Alinhamento Vertical e Horizontal no Grid",
+      "subtitle": "Classes align-items, justify-content e self para posicionar colunas",
+      "content": {
+        "sections": [
+          {
+            "heading": "Alinhar colunas verticalmente (align-items na row)",
+            "text": "Aplique na .row: align-items-start (topo), align-items-center (meio), align-items-end (baixo). Controla onde as colunas ficam verticalmente dentro da linha. Útil quando as colunas têm alturas diferentes."
+          },
+          {
+            "heading": "Alinhar colunas horizontalmente (justify-content na row)",
+            "text": "Aplique na .row: justify-content-start (esquerda), justify-content-center (centro), justify-content-end (direita), justify-content-between (distribuído), justify-content-around (espaçado). Funciona quando as colunas não somam 12."
+          },
+          {
+            "heading": "Alinhar uma coluna individualmente (align-self)",
+            "text": "Aplique na coluna (.col): align-self-start, align-self-center, align-self-end. Sobrescreve o align-items da row apenas para aquela coluna específica. Ideal quando você quer misturar alinhamentos numa mesma linha."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Pense assim: align = eixo vertical (cima/baixo), justify = eixo horizontal (esquerda/direita). É o mesmo conceito do Flexbox, pois o Bootstrap usa Flexbox internamente no sistema de grid."
+        }
+      }
+    },
+    {
+      "id": 10,
+      "type": "code",
+      "title": "Alinhamento Vertical e Horizontal",
+      "subtitle": "align-items e justify-content em ação",
+      "content": {
+        "language": "html",
+        "code": "<!-- ROW com altura forçada para demonstrar o alinhamento -->\n\n<!-- ALINHAMENTO VERTICAL: topo, centro, baixo -->\n<div class=\"row align-items-start\" style=\"height: 120px; background: #f8f9fa\">\n  <div class=\"col-4\">Alinhado no topo</div>\n</div>\n\n<div class=\"row align-items-center\" style=\"height: 120px; background: #e9ecef\">\n  <div class=\"col-4\">Centralizado verticalmente</div>\n</div>\n\n<div class=\"row align-items-end\" style=\"height: 120px; background: #f8f9fa\">\n  <div class=\"col-4\">Alinhado embaixo</div>\n</div>\n\n<!-- ALINHAMENTO HORIZONTAL (colunas que não somam 12) -->\n<div class=\"row justify-content-center\">\n  <div class=\"col-4\">Coluna centrada</div>\n</div>\n\n<div class=\"row justify-content-between\">\n  <div class=\"col-4\">Esquerda</div>\n  <div class=\"col-4\">Direita</div>\n</div>\n\n<!-- ALINHAMENTO INDIVIDUAL por coluna -->\n<div class=\"row\" style=\"height: 120px\">\n  <div class=\"col align-self-start\">Topo</div>\n  <div class=\"col align-self-center\">Centro</div>\n  <div class=\"col align-self-end\">Baixo</div>\n</div>",
+        "explanation": "align-items-* controla TODAS as colunas da row de uma vez. align-self-* controla APENAS aquela coluna. justify-content-* controla a distribuição horizontal das colunas na linha."
+      }
+    },
+    {
+      "id": 11,
+      "type": "code",
+      "title": "Centralizar Conteúdo DENTRO de uma Coluna",
+      "subtitle": "Classes de texto, display flex e margin auto",
+      "content": {
+        "language": "html",
+        "code": "<!-- CENTRALIZAR TEXTO dentro da coluna -->\n<div class=\"row\">\n  <div class=\"col-6 text-center\">\n    <h2>Título centralizado</h2>\n    <p>Parágrafo também centralizado</p>\n  </div>\n</div>\n\n<!-- CENTRALIZAR CONTEÚDO com Flexbox utilitário -->\n<div class=\"row\">\n  <div class=\"col-6 d-flex flex-column align-items-center justify-content-center\">\n    <img src=\"foto.jpg\" alt=\"Avatar\" class=\"rounded-circle mb-2\">\n    <h5>Nome do usuário</h5>\n    <p class=\"text-muted\">Descrição</p>\n  </div>\n</div>\n\n<!-- CENTRALIZAR UM ÚNICO BLOCO na página -->\n<div class=\"row justify-content-center\">\n  <div class=\"col-12 col-md-6 col-lg-4\">\n    <!-- Formulário de login centralizado na página -->\n    <div class=\"card p-4\">\n      <h4 class=\"text-center mb-3\">Login</h4>\n      <input class=\"form-control mb-2\" placeholder=\"E-mail\">\n      <input class=\"form-control mb-3\" type=\"password\" placeholder=\"Senha\">\n      <button class=\"btn btn-primary w-100\">Entrar</button>\n    </div>\n  </div>\n</div>",
+        "explanation": "text-center centraliza texto. d-flex + align-items-center + justify-content-center centraliza qualquer conteúdo como se fosse um flex container. justify-content-center na row centraliza a própria coluna na tela."
+      }
+    },
+    {
+      "id": 12,
+      "type": "theory",
+      "title": "Classes Utilitárias de Espaçamento",
+      "subtitle": "margin e padding com a notação m-*, p-* do Bootstrap",
+      "content": {
+        "sections": [
+          {
+            "heading": "A notação de espaçamento",
+            "text": "Bootstrap usa a notação {propriedade}{lado}-{tamanho}. Propriedade: m (margin) ou p (padding). Lado: t (top), b (bottom), s (start/left), e (end/right), x (horizontal), y (vertical) ou nada (todos os lados). Tamanho: 0 a 5 (0=zero, 1=0.25rem, 2=0.5rem, 3=1rem, 4=1.5rem, 5=3rem) ou auto."
+          },
+          {
+            "heading": "Exemplos práticos",
+            "text": "mt-3 = margin-top: 1rem | mb-4 = margin-bottom: 1.5rem | px-3 = padding left e right de 1rem | py-5 = padding top e bottom de 3rem | ms-auto = margin-start automático (empurra para a direita) | mx-auto = centralizar bloco horizontalmente."
+          },
+          {
+            "heading": "Responsividade no espaçamento",
+            "text": "Você pode adicionar o breakpoint: mt-0 mt-md-4 significa sem margin-top no mobile, e margin-top de 1.5rem a partir do tablet. Isso é útil para dar mais respiro em telas maiores sem prejudicar o mobile."
+          }
+        ],
+        "callout": {
+          "type": "info",
+          "text": "ms-auto é um truque clássico: coloque em um item de navbar para empurrá-lo para o lado direito. Funciona porque a margin-start automática consome todo o espaço disponível."
+        }
+      }
+    },
+    {
+      "id": 13,
+      "type": "code",
+      "title": "Layout Completo — Página Real com Bootstrap",
+      "subtitle": "Header, conteúdo em cards e footer usando o grid",
+      "content": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Dashboard</title>\n  <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\">\n  <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css\">\n</head>\n<body class=\"bg-light\">\n\n  <!-- NAVBAR -->\n  <nav class=\"navbar navbar-dark bg-dark px-4\">\n    <span class=\"navbar-brand\">\n      <i class=\"bi bi-grid-3x3-gap me-2\"></i>Dashboard\n    </span>\n    <span class=\"text-white ms-auto\">\n      <i class=\"bi bi-person-circle me-1\"></i>Usuário\n    </span>\n  </nav>\n\n  <!-- CONTEÚDO PRINCIPAL -->\n  <div class=\"container my-4\">\n\n    <!-- TÍTULO DA SEÇÃO -->\n    <div class=\"row mb-4\">\n      <div class=\"col\">\n        <h2>Resumo do mês</h2>\n        <p class=\"text-muted\">Dados atualizados em tempo real</p>\n      </div>\n    </div>\n\n    <!-- CARDS DE MÉTRICAS: 4 colunas desktop, 2 tablet, 1 mobile -->\n    <div class=\"row g-3 mb-4\">\n      <div class=\"col-12 col-sm-6 col-xl-3\">\n        <div class=\"card text-center p-3\">\n          <i class=\"bi bi-people fs-2 text-primary mb-2\"></i>\n          <h5>1.240</h5>\n          <small class=\"text-muted\">Usuários</small>\n        </div>\n      </div>\n      <div class=\"col-12 col-sm-6 col-xl-3\">\n        <div class=\"card text-center p-3\">\n          <i class=\"bi bi-cart-check fs-2 text-success mb-2\"></i>\n          <h5>348</h5>\n          <small class=\"text-muted\">Pedidos</small>\n        </div>\n      </div>\n      <div class=\"col-12 col-sm-6 col-xl-3\">\n        <div class=\"card text-center p-3\">\n          <i class=\"bi bi-currency-dollar fs-2 text-warning mb-2\"></i>\n          <h5>R$ 42.800</h5>\n          <small class=\"text-muted\">Receita</small>\n        </div>\n      </div>\n      <div class=\"col-12 col-sm-6 col-xl-3\">\n        <div class=\"card text-center p-3\">\n          <i class=\"bi bi-star fs-2 text-danger mb-2\"></i>\n          <h5>4.8</h5>\n          <small class=\"text-muted\">Avaliação</small>\n        </div>\n      </div>\n    </div>\n\n    <!-- LAYOUT DE DUAS COLUNAS: conteúdo + sidebar -->\n    <div class=\"row g-3\">\n      <div class=\"col-12 col-lg-8\">\n        <div class=\"card p-4\">\n          <h5>Últimas transações</h5>\n          <p class=\"text-muted\">Conteúdo principal aqui...</p>\n        </div>\n      </div>\n      <div class=\"col-12 col-lg-4\">\n        <div class=\"card p-4\">\n          <h5>Atividade recente</h5>\n          <p class=\"text-muted\">Sidebar aqui...</p>\n        </div>\n      </div>\n    </div>\n\n  </div>\n\n  <!-- FOOTER -->\n  <footer class=\"bg-dark text-white text-center py-3 mt-4\">\n    <small>&copy; 2025 Dashboard App</small>\n  </footer>\n\n  <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js\"></script>\n</body>\n</html>",
+        "explanation": "Este é um layout real de dashboard. Observe: g-3 na row adiciona gap entre as colunas. col-12 col-sm-6 col-xl-3 cria 1 coluna no mobile, 2 no tablet e 4 no desktop. ms-auto na navbar empurra o usuário para a direita."
+      }
+    },
+    {
+      "id": 14,
+      "type": "theory",
+      "title": "Referências e Documentação",
+      "subtitle": "Os links essenciais para dominar o Bootstrap",
+      "content": {
+        "sections": [
+          {
+            "heading": "Documentação Oficial",
+            "text": "A documentação do Bootstrap em https://getbootstrap.com/docs/5.3 é completa e tem exemplos interativos para cada componente. Use o menu lateral para navegar entre Grid, Utilities, Components e Forms."
+          },
+          {
+            "heading": "Bootstrap Icons",
+            "text": "O catálogo completo com os mais de 2.000 ícones pesquisáveis está em https://icons.getbootstrap.com. Clique no ícone para copiar o HTML pronto. Você também pode filtrar por categoria."
+          },
+          {
+            "heading": "CDN jsDelivr",
+            "text": "Para verificar versões atualizadas ou copiar URLs dos arquivos, acesse https://www.jsdelivr.com/package/npm/bootstrap e https://www.jsdelivr.com/package/npm/bootstrap-icons. Sempre cheque a versão mais recente antes de iniciar um projeto."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Use CTRL+F na documentação do Bootstrap para encontrar rapidamente qualquer classe. Ex: busque 'gap' para encontrar todas as classes de gap disponíveis no grid."
+        }
+      }
+    },
+    {
+      "id": 15,
       "type": "practice",
-      "title": "Atividade Prática: Construção Completa do Layout",
-      "subtitle": "Transformar o HTML da Aula 10 em um site moderno e responsivo.",
+      "title": "Exercícios Práticos",
+      "subtitle": "Aplique o Bootstrap no seu projeto HTML",
       "content": {
         "items": [
-          { "title": "Passo 1", "detail": "Configure as variáveis de cor e espaçamento no :root do seu arquivo CSS." },
-          { "title": "Passo 2", "detail": "Utilize Flexbox no cabeçalho (<header>) para alinhar a logo e o menu." },
-          { "title": "Passo 3", "detail": "Crie um CSS Grid responsivo na área principal (<main>) para exibir os cards das aulas." }
-        ]
+          {
+            "icon": "link",
+            "title": "1. Adicione o Bootstrap ao seu HTML",
+            "detail": "Crie um arquivo index.html do zero e adicione os três links de CDN: bootstrap.min.css, bootstrap-icons.min.css e bootstrap.bundle.min.js. Confirme que está funcionando ao colocar um <button class=\"btn btn-primary\">Teste</button>."
+          },
+          {
+            "icon": "grid_view",
+            "title": "2. Monte um grid de 3 cards",
+            "detail": "Crie uma row com três colunas col-12 col-md-4. Dentro de cada coluna, coloque um card com ícone (bi-*), título e texto. Redimensione o navegador para ver o comportamento responsivo."
+          },
+          {
+            "icon": "vertical_align_center",
+            "title": "3. Centralize um formulário de login",
+            "detail": "Use row justify-content-center e col-12 col-md-6 col-lg-4 para criar um formulário de login centralizado na página. Adicione um input de email, um de senha e um botão btn-primary w-100."
+          },
+          {
+            "icon": "view_sidebar",
+            "title": "4. Crie um layout com sidebar",
+            "detail": "Monte uma row com col-12 col-lg-3 (sidebar) e col-12 col-lg-9 (conteúdo). No mobile eles devem empilhar, no desktop ficam lado a lado. Use align-items-start na row para alinhamento no topo."
+          }
+        ],
+        "links": [
+          { "label": "Bootstrap 5.3 — Documentação Oficial", "url": "https://getbootstrap.com/docs/5.3" },
+          { "label": "Bootstrap Icons — Catálogo Completo", "url": "https://icons.getbootstrap.com" },
+          { "label": "Bootstrap — CDN via jsDelivr", "url": "https://www.jsdelivr.com/package/npm/bootstrap" },
+          { "label": "Bootstrap Icons — CDN via jsDelivr", "url": "https://www.jsdelivr.com/package/npm/bootstrap-icons" }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Nas próximas aulas vamos aprofundar os componentes do Bootstrap (navbar, modal, forms). Por agora, o objetivo é dominar o grid e o alinhamento — a base de qualquer layout."
+        }
       }
     }
   ]

@@ -2,12 +2,12 @@
   <div class="seminar-view">
     <M3Navbar />
 
-    <div v-if="loading" class="loading-state">
+    <div v-if="loading || !snapshotLoaded" class="loading-state">
       <div class="spinner"></div>
       <p class="m3-body-large">Carregando temas do seminário em tempo real...</p>
     </div>
 
-    <div v-else-if="seminarData" class="seminar-container">
+    <div v-else-if="seminarData && snapshotLoaded" class="seminar-container">
       <!-- Breadcrumb Navigation -->
       <nav class="breadcrumb">
         <router-link :to="`/curso/${courseId}`" class="breadcrumb-link m3-label-large">
@@ -442,6 +442,7 @@ const courseId = route.params.courseId || "desenvolvimento-web";
 const assessmentId = route.params.assessmentId || "avaliacao-02";
 
 const loading = ref(true);
+const snapshotLoaded = ref(false);
 const course = ref(null);
 const seminarData = ref(null);
 const claimedTopicsMap = ref({});
@@ -597,6 +598,10 @@ const submitClaim = async () => {
       registeredSuccessStudents.value = validStudents;
       showClaimModal.value = false;
       showSuccessModal.value = true;
+    } else if (result.reason === "TOPIC_FULL") {
+      // Topic became full (race condition or stale UI) — close modal, the
+      // real-time snapshot will update the card to show "Completo" instantly.
+      showClaimModal.value = false;
     } else {
       submissionError.value = result.message || "Erro ao registrar o tema.";
     }
@@ -659,9 +664,12 @@ onMounted(async () => {
     courseId,
     (updatedClaimMap) => {
       claimedTopicsMap.value = updatedClaimMap;
+      snapshotLoaded.value = true;
     },
     (err) => {
       console.warn("[SeminarView] Subscription warning:", err);
+      // Even on error, unblock the UI so the page doesn't stay stuck
+      snapshotLoaded.value = true;
     }
   );
 });

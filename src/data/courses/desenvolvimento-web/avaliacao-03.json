@@ -13,7 +13,7 @@
       "content": {
         "assessmentType": "activity",
         "badge": "Atividade Prática",
-        "date": "05/10/2026",
+        "date": "29/10/2026",
         "activityReadme": {
           "description": "Desenvolva uma aplicação Vue 3 criada via Vue CLI que consome a API pública do Rick and Morty.",
           "requirements": [
@@ -48,7 +48,7 @@
       "content": {
         "assessmentType": "activity",
         "badge": "Checklist de Entrega",
-        "date": "05/10/2026",
+        "date": "29/10/2026",
         "activityReadme": {
           "description": "A atividade está completa quando todos os requisitos abaixo forem atendidos e o projeto estiver no GitHub.",
           "requirements": [

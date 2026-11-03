@@ -41,13 +41,19 @@ class SeminarService {
 
       onUpdate(loadLocal());
 
+      // "storage" events only fire in OTHER tabs/windows, not the originating one.
+      // We use a custom "seminar-local-update" event for same-tab reactivity and
+      // keep the native "storage" listener for cross-tab sync.
+      const handleUpdate = () => onUpdate(loadLocal());
       const handleStorage = (event) => {
-        if (event.key === localKey) {
-          onUpdate(loadLocal());
-        }
+        if (event.key === localKey) onUpdate(loadLocal());
       };
+      window.addEventListener("seminar-local-update", handleUpdate);
       window.addEventListener("storage", handleStorage);
-      return () => window.removeEventListener("storage", handleStorage);
+      return () => {
+        window.removeEventListener("seminar-local-update", handleUpdate);
+        window.removeEventListener("storage", handleStorage);
+      };
     }
 
     try {
@@ -194,6 +200,9 @@ class SeminarService {
       }
 
       localStorage.setItem(localKey, JSON.stringify(data));
+      // Notify same-tab subscriber (native "storage" event doesn't fire in the originating tab)
+      window.dispatchEvent(new CustomEvent("seminar-local-update"));
+      // Also dispatch a StorageEvent so other tabs/windows pick up the change
       window.dispatchEvent(new StorageEvent("storage", { key: localKey }));
       return { success: true };
     }

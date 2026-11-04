@@ -267,7 +267,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from "vue";
+import { onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import M3Navbar from "@/components/layout/M3Navbar.vue";
 import M3Card from "@/components/ui/M3Card.vue";
@@ -283,20 +283,11 @@ const {
   course,
   loading,
   isCourseUnlocked,
+  courseAssessments,
   loadCourse,
   isLessonUnlocked,
   isAssessmentUnlocked,
 } = useCourseViewModel(courseId);
-
-const courseAssessments = computed(() => {
-  if (!course.value) return [];
-  if (Array.isArray(course.value.assessments)) {
-    return course.value.assessments.filter((item) =>
-      isAssessmentUnlocked(item.id)
-    );
-  }
-  return [];
-});
 
 const startFirstLesson = () => {
   openLesson(1);

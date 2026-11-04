@@ -12,14 +12,12 @@ class RemoteConfigService {
         disabledLessons: [],
       }),
     };
-    this.initPromise = null;
+    this.initialized = false;
   }
 
   async ensureInitialized() {
-    if (!this.initPromise) {
-      this.initPromise = this.refresh();
-    }
-    return this.initPromise;
+    // Always re-fetch; the SDK throttles via minimumFetchIntervalMillis
+    return this.refresh();
   }
 
   async refresh() {

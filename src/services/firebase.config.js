@@ -71,7 +71,8 @@ export function initFirebase() {
 
     // Initialize Remote Config
     remoteConfigInstance = getRemoteConfig(firebaseApp);
-    remoteConfigInstance.settings.minimumFetchIntervalMillis = 60000;
+    remoteConfigInstance.settings.minimumFetchIntervalMillis =
+      process.env.NODE_ENV === "development" ? 0 : 30000;
     remoteConfigInstance.defaultConfig = {
       course_desenvolvimento_de_interfaces_enabled: true,
       course_desenvolvimento_de_interfaces_config: JSON.stringify({

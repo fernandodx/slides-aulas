@@ -8,6 +8,7 @@ export function useCourseViewModel(courseId = "desenvolvimento-de-interfaces") {
   const loading = ref(true);
   const error = ref(null);
   const isCourseUnlocked = ref(true);
+  const assessments = ref([]);
 
   const loadCourse = async () => {
     loading.value = true;
@@ -16,6 +17,8 @@ export function useCourseViewModel(courseId = "desenvolvimento-de-interfaces") {
       isCourseUnlocked.value = remoteConfigService.isCourseEnabled(courseId);
       const data = courseRepository.getCourseById(courseId);
       course.value = data;
+      const all = await courseRepository.getAssessments(courseId);
+      assessments.value = all;
     } catch (e) {
       error.value = "Erro ao carregar dados do curso.";
     } finally {
@@ -40,6 +43,10 @@ export function useCourseViewModel(courseId = "desenvolvimento-de-interfaces") {
     return null;
   };
 
+  const courseAssessments = computed(() =>
+    assessments.value.filter((a) => isAssessmentUnlocked(a.id))
+  );
+
   const totalLessons = computed(() =>
     course.value ? course.value.totalLessons : 0
   );
@@ -50,6 +57,7 @@ export function useCourseViewModel(courseId = "desenvolvimento-de-interfaces") {
     error,
     isCourseUnlocked,
     totalLessons,
+    courseAssessments,
     loadCourse,
     isLessonUnlocked,
     isAssessmentUnlocked,

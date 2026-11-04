@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio — Seu Nome</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <!-- Nosso CSS customizado (sempre DEPOIS do Bootstrap) -->
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+
+
+  <!-- ══════════════════════════════════════════════════════
+       NAVBAR
+       Classes Bootstrap: navbar-expand-lg, fixed-top, collapse
+  ══════════════════════════════════════════════════════ -->
+  <nav class="navbar navbar-expand-lg navbar-portfolio fixed-top">
+    <div class="container">
+
+      <a class="navbar-brand fw-bold fs-5 text-primary" href="#inicio">
+        &lt;SeuNome /&gt;
+      </a>
+
+      <!-- Botão hamburguer — aparece só no mobile -->
+      <button class="navbar-toggler border-0" type="button"
+        data-bs-toggle="collapse" data-bs-target="#menu"
+        aria-controls="menu" aria-expanded="false" aria-label="Menu">
+        <i class="bi bi-list text-white fs-4"></i>
+      </button>
+
+      <!-- Links — colapsam no mobile -->
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto gap-1">
+          <li class="nav-item"><a class="nav-link active text-primary" href="#inicio">Início</a></li>
+          <li class="nav-item"><a class="nav-link text-secondary" href="#sobre">Sobre</a></li>
+          <li class="nav-item"><a class="nav-link text-secondary" href="#projetos">Projetos</a></li>
+          <li class="nav-item"><a class="nav-link text-secondary" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link text-secondary" href="#contato">Contato</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <!-- ══════════════════════════════════════════════════════
+       HERO — APRESENTAÇÃO
+       Desktop: texto (col-lg-7) + foto (col-lg-5)
+       Mobile:  foto em cima, texto embaixo (order-*)
+  ══════════════════════════════════════════════════════ -->
+  <section class="hero" id="inicio">
+    <div class="container">
+      <div class="row align-items-center g-5">
+
+        <!-- Coluna de texto -->
+        <div class="col-12 col-lg-7 order-2 order-lg-1">
+
+          <!-- Badge de saudação (componente Badge do Bootstrap) -->
+          <span class="badge rounded-pill text-bg-primary mb-3 fs-6 fw-normal px-3 py-2">
+            👋 Olá, mundo!
+          </span>
+
+          <h1 class="hero-nome text-white mt-2">
+            Eu sou<br>
+            <span class="text-primary">Seu Nome</span>
+          </h1>
+
+          <p class="lead text-secondary mt-3">
+            Desenvolvedor Front-End apaixonado por criar interfaces bonitas,
+            funcionais e acessíveis. Transformo ideias em experiências digitais.
+          </p>
+
+          <!-- Redes sociais — botões circulares do Bootstrap -->
+          <div class="d-flex gap-3 mt-4">
+            <a href="https://github.com/seunome" target="_blank"
+               class="btn btn-outline-secondary rounded-circle p-2 lh-1" title="GitHub">
+              <i class="bi bi-github fs-5"></i>
+            </a>
+            <a href="https://linkedin.com/in/seunome" target="_blank"
+               class="btn btn-outline-secondary rounded-circle p-2 lh-1" title="LinkedIn">
+              <i class="bi bi-linkedin fs-5"></i>
+            </a>
+            <a href="https://instagram.com/seunome" target="_blank"
+               class="btn btn-outline-secondary rounded-circle p-2 lh-1" title="Instagram">
+              <i class="bi bi-instagram fs-5"></i>
+            </a>
+            <a href="mailto:seuemail@email.com"
+               class="btn btn-outline-secondary rounded-circle p-2 lh-1" title="E-mail">
+              <i class="bi bi-envelope-fill fs-5"></i>
+            </a>
+          </div>
+
+          <!-- Botões de ação — btn-primary e btn-outline-primary do Bootstrap -->
+          <div class="d-flex flex-wrap gap-3 mt-4">
+            <a href="#projetos" class="btn btn-primary rounded-pill px-4 py-2 fw-bold">
+              <i class="bi bi-grid-1x2-fill me-2"></i>Ver Projetos
+            </a>
+            <a href="#contato" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-bold">
+              <i class="bi bi-chat-dots-fill me-2"></i>Falar Comigo
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Coluna da foto -->
+        <div class="col-12 col-lg-5 order-1 order-lg-2 text-center">
+          <!--
+            Troque o src pela URL da sua foto (ex: src="foto.jpg")
+            Use uma imagem quadrada para ficar redonda corretamente
+          -->
+          <img
+            src="https://placehold.co/400x400/6c63ff/ffffff?text=Foto"
+            alt="Foto de perfil"
+            class="foto-perfil mx-auto"
+          />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════
+       SOBRE MIM
+       bg-dark + card Bootstrap + badges para as stats
+  ══════════════════════════════════════════════════════ -->
+  <section class="py-5" style="background-color: var(--superficie);" id="sobre">
+    <div class="container py-4">
+
+      <h2 class="titulo-secao fw-bold text-white fs-3">Sobre Mim</h2>
+
+      <div class="row g-4 align-items-start">
+
+        <!-- Foto -->
+        <div class="col-12 col-md-5">
+          <img
+            src="https://placehold.co/500x380/22223a/6c63ff?text=Sobre+Mim"
+            alt="Sobre mim"
+            class="img-fluid rounded-4 w-100"
+          />
+        </div>
+
+        <!-- Card de texto + stats -->
+        <div class="col-12 col-md-7">
+          <div class="card border-0 rounded-4 p-4" style="background-color: var(--superficie-alta);">
+            <h3 class="fw-bold text-white mb-3">Desenvolvedor & Estudante</h3>
+
+            <p class="text-secondary lh-lg">
+              Olá! Sou estudante de Desenvolvimento de Interfaces e apaixonado por tecnologia.
+              Tenho experiência criando páginas web responsivas e experiências digitais que
+              combinam estética com funcionalidade.
+            </p>
+            <p class="text-secondary lh-lg mt-2">
+              Atualmente focado em HTML, CSS, Bootstrap e JavaScript —
+              construindo projetos reais para consolidar cada conceito aprendido em sala.
+            </p>
+
+            <!-- Stats: 3 cards lado a lado (col-4 cada) -->
+            <div class="row g-3 mt-2">
+              <div class="col-4">
+                <div class="card text-center border rounded-3 p-3"
+                     style="background-color: var(--fundo); border-color: var(--borda) !important;">
+                  <div class="fs-2 fw-bold text-primary">5+</div>
+                  <small class="text-secondary">Projetos</small>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="card text-center border rounded-3 p-3"
+                     style="background-color: var(--fundo); border-color: var(--borda) !important;">
+                  <div class="fs-2 fw-bold text-primary">3</div>
+                  <small class="text-secondary">Tecnologias</small>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="card text-center border rounded-3 p-3"
+                     style="background-color: var(--fundo); border-color: var(--borda) !important;">
+                  <div class="fs-2 fw-bold text-primary">1</div>
+                  <small class="text-secondary">Ano Dev</small>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════
+       PROJETOS
+       Grid responsivo: 1 col mobile → 2 tablet → 3 desktop
+       Usa card nativo do Bootstrap com card-body e card-footer
+  ══════════════════════════════════════════════════════ -->
+  <section class="py-5" style="background-color: var(--fundo);" id="projetos">
+    <div class="container py-4">
+
+      <h2 class="titulo-secao fw-bold text-white fs-3">Projetos</h2>
+
+      <div class="row g-4">
+
+        <!-- ── Projeto 1 ── -->
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card h-100 border-0 rounded-4 overflow-hidden"
+               style="background-color: var(--superficie-alta);">
+            <!-- Área colorida no topo (nossa classe, pois gradient não existe no Bootstrap) -->
+            <div class="card-topo">
+              <i class="bi bi-film"></i>
+            </div>
+            <div class="card-body d-flex flex-column gap-2">
+              <small class="text-primary fw-bold text-uppercase">2026</small>
+              <h5 class="card-title text-white mb-0">Página do Meu Filme</h5>
+              <p class="card-text text-secondary small flex-grow-1">
+                Página sobre um filme favorito construída com HTML semântico e CSS puro,
+                usando variáveis CSS para cores e tipografia consistentes.
+              </p>
+              <!-- Badges do Bootstrap para as tags de tecnologia -->
+              <div class="d-flex flex-wrap gap-1">
+                <span class="badge text-bg-primary">HTML5</span>
+                <span class="badge text-bg-primary">CSS3</span>
+                <span class="badge text-bg-primary">Variáveis CSS</span>
+              </div>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center"
+                 style="background-color: transparent; border-color: var(--borda);">
+              <a href="#" target="_blank" class="btn btn-primary btn-sm rounded-pill px-3">
+                <i class="bi bi-box-arrow-up-right me-1"></i>Ver Projeto
+              </a>
+              <a href="https://github.com/seunome" target="_blank" class="text-secondary fs-5">
+                <i class="bi bi-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Projeto 2 ── -->
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card h-100 border-0 rounded-4 overflow-hidden"
+               style="background-color: var(--superficie-alta);">
+            <div class="card-topo" style="background: linear-gradient(135deg, #ff6584, #6c63ff);">
+              <i class="bi bi-tv-fill"></i>
+            </div>
+            <div class="card-body d-flex flex-column gap-2">
+              <small class="text-primary fw-bold text-uppercase">2026</small>
+              <h5 class="card-title text-white mb-0">Página da Minha Série</h5>
+              <p class="card-text text-secondary small flex-grow-1">
+                Página sobre uma série favorita com Bootstrap 5, incluindo
+                Card, Breadcrumb e Carousel para apresentar personagens e temporadas.
+              </p>
+              <div class="d-flex flex-wrap gap-1">
+                <span class="badge text-bg-primary">Bootstrap 5</span>
+                <span class="badge text-bg-primary">HTML5</span>
+                <span class="badge text-bg-primary">Carousel</span>
+              </div>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center"
+                 style="background-color: transparent; border-color: var(--borda);">
+              <a href="#" target="_blank" class="btn btn-primary btn-sm rounded-pill px-3">
+                <i class="bi bi-box-arrow-up-right me-1"></i>Ver Projeto
+              </a>
+              <a href="https://github.com/seunome" target="_blank" class="text-secondary fs-5">
+                <i class="bi bi-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Projeto 3 ── -->
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card h-100 border-0 rounded-4 overflow-hidden"
+               style="background-color: var(--superficie-alta);">
+            <div class="card-topo" style="background: linear-gradient(135deg, #20c997, #6c63ff);">
+              <i class="bi bi-check2-square"></i>
+            </div>
+            <div class="card-body d-flex flex-column gap-2">
+              <small class="text-primary fw-bold text-uppercase">2026</small>
+              <h5 class="card-title text-white mb-0">To Do App</h5>
+              <p class="card-text text-secondary small flex-grow-1">
+                Aplicação de lista de tarefas com JavaScript puro,
+                manipulação do DOM, eventos e armazenamento local (localStorage).
+              </p>
+              <div class="d-flex flex-wrap gap-1">
+                <span class="badge text-bg-primary">JavaScript</span>
+                <span class="badge text-bg-primary">DOM</span>
+                <span class="badge text-bg-primary">localStorage</span>
+              </div>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center"
+                 style="background-color: transparent; border-color: var(--borda);">
+              <a href="#" target="_blank" class="btn btn-primary btn-sm rounded-pill px-3">
+                <i class="bi bi-box-arrow-up-right me-1"></i>Ver Projeto
+              </a>
+              <a href="https://github.com/seunome" target="_blank" class="text-secondary fs-5">
+                <i class="bi bi-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Projeto 4 ── -->
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card h-100 border-0 rounded-4 overflow-hidden"
+               style="background-color: var(--superficie-alta);">
+            <div class="card-topo" style="background: linear-gradient(135deg, #ffc107, #ff6584);">
+              <i class="bi bi-palette-fill"></i>
+            </div>
+            <div class="card-body d-flex flex-column gap-2">
+              <small class="text-primary fw-bold text-uppercase">2026</small>
+              <h5 class="card-title text-white mb-0">Design System — Figma</h5>
+              <p class="card-text text-secondary small flex-grow-1">
+                Design System completo no Figma com paleta de cores, tipografia,
+                componentes reutilizáveis e protótipo navegável de alta fidelidade.
+              </p>
+              <div class="d-flex flex-wrap gap-1">
+                <span class="badge text-bg-primary">Figma</span>
+                <span class="badge text-bg-primary">Design System</span>
+                <span class="badge text-bg-primary">Protótipo</span>
+              </div>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center"
+                 style="background-color: transparent; border-color: var(--borda);">
+              <a href="#" target="_blank" class="btn btn-primary btn-sm rounded-pill px-3">
+                <i class="bi bi-box-arrow-up-right me-1"></i>Ver Projeto
+              </a>
+              <a href="https://github.com/seunome" target="_blank" class="text-secondary fs-5">
+                <i class="bi bi-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════
+       SKILLS
+       List Group + Progress Bar nativos do Bootstrap
+       2 colunas no mobile → 3 no tablet → 6 no desktop
+  ══════════════════════════════════════════════════════ -->
+  <section class="py-5" style="background-color: var(--superficie);" id="skills">
+    <div class="container py-4">
+
+      <h2 class="titulo-secao fw-bold text-white fs-3">Tecnologias & Skills</h2>
+
+      <div class="row g-3">
+
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="card text-center border-0 rounded-3 p-3"
+               style="background-color: var(--superficie-alta);">
+            <div class="fs-2 mb-2">🌐</div>
+            <div class="fw-semibold text-white small">HTML5</div>
+            <div class="text-secondary" style="font-size: 0.75rem;">Semântico</div>
+            <!-- Progress Bar nativo do Bootstrap -->
+            <div class="progress mt-2" style="height: 5px; background-color: var(--borda);">
+              <div class="progress-bar bg-primary" style="width: 85%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="card text-center border-0 rounded-3 p-3"
+               style="background-color: var(--superficie-alta);">
+            <div class="fs-2 mb-2">🎨</div>
+            <div class="fw-semibold text-white small">CSS3</div>
+            <div class="text-secondary" style="font-size: 0.75rem;">Flexbox & Grid</div>
+            <div class="progress mt-2" style="height: 5px; background-color: var(--borda);">
+              <div class="progress-bar bg-primary" style="width: 80%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="card text-center border-0 rounded-3 p-3"
+               style="background-color: var(--superficie-alta);">
+            <div class="fs-2 mb-2">📐</div>
+            <div class="fw-semibold text-white small">Bootstrap</div>
+            <div class="text-secondary" style="font-size: 0.75rem;">Grid & Componentes</div>
+            <div class="progress mt-2" style="height: 5px; background-color: var(--borda);">
+              <div class="progress-bar bg-primary" style="width: 75%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="card text-center border-0 rounded-3 p-3"
+               style="background-color: var(--superficie-alta);">
+            <div class="fs-2 mb-2">⚡</div>
+            <div class="fw-semibold text-white small">JavaScript</div>
+            <div class="text-secondary" style="font-size: 0.75rem;">DOM & Eventos</div>
+            <div class="progress mt-2" style="height: 5px; background-color: var(--borda);">
+              <div class="progress-bar bg-primary" style="width: 65%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="card text-center border-0 rounded-3 p-3"
+               style="background-color: var(--superficie-alta);">
+            <div class="fs-2 mb-2">🔷</div>
+            <div class="fw-semibold text-white small">Figma</div>
+            <div class="text-secondary" style="font-size: 0.75rem;">Prototipagem</div>
+            <div class="progress mt-2" style="height: 5px; background-color: var(--borda);">
+              <div class="progress-bar bg-primary" style="width: 70%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="card text-center border-0 rounded-3 p-3"
+               style="background-color: var(--superficie-alta);">
+            <div class="fs-2 mb-2">🐙</div>
+            <div class="fw-semibold text-white small">Git & GitHub</div>
+            <div class="text-secondary" style="font-size: 0.75rem;">Controle de Versão</div>
+            <div class="progress mt-2" style="height: 5px; background-color: var(--borda);">
+              <div class="progress-bar bg-primary" style="width: 72%"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════
+       FORMULÁRIO DE CONTATO
+       Usa alert, form-control e btn nativos do Bootstrap
+       Validação via JS + envio pelo WhatsApp ou e-mail
+  ══════════════════════════════════════════════════════ -->
+  <section class="py-5" style="background-color: var(--fundo);" id="contato">
+    <div class="container py-4">
+
+      <h2 class="titulo-secao fw-bold text-white fs-3">Vamos Conversar?</h2>
+
+      <!-- Alert Bootstrap — aparece via JS quando há erros -->
+      <div id="alerta-erro" class="alert alert-danger d-flex align-items-center gap-2 d-none" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <span>Revise os campos destacados antes de enviar.</span>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+          <form id="form-contato" novalidate>
+            <div class="row g-3">
+
+              <div class="col-12 col-md-6">
+                <label for="campo-nome" class="form-label text-secondary fw-semibold">Nome *</label>
+                <input type="text" class="form-control" id="campo-nome" placeholder="Seu nome" />
+                <div class="text-danger small d-none mt-1" id="erro-nome">
+                  <i class="bi bi-x-circle"></i> Informe seu nome.
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label for="campo-email" class="form-label text-secondary fw-semibold">E-mail *</label>
+                <input type="email" class="form-control" id="campo-email" placeholder="seuemail@exemplo.com" />
+                <div class="text-danger small d-none mt-1" id="erro-email">
+                  <i class="bi bi-x-circle"></i> Informe um e-mail válido.
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="campo-assunto" class="form-label text-secondary fw-semibold">Assunto *</label>
+                <input type="text" class="form-control" id="campo-assunto" placeholder="Do que se trata?" />
+                <div class="text-danger small d-none mt-1" id="erro-assunto">
+                  <i class="bi bi-x-circle"></i> Informe o assunto.
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="campo-mensagem" class="form-label text-secondary fw-semibold">Mensagem *</label>
+                <textarea class="form-control" id="campo-mensagem" rows="5" placeholder="Escreva sua mensagem..."></textarea>
+                <div class="text-danger small d-none mt-1" id="erro-mensagem">
+                  <i class="bi bi-x-circle"></i> Escreva sua mensagem (mínimo 10 caracteres).
+                </div>
+              </div>
+
+              <div class="col-12 text-center">
+                <button type="button" id="btn-whatsapp"
+                        class="btn btn-primary rounded-pill px-4 py-2 fw-bold me-2 mb-2">
+                  <i class="bi bi-whatsapp me-2"></i>Enviar pelo WhatsApp
+                </button>
+                <button type="button" id="btn-email"
+                        class="btn btn-outline-primary rounded-pill px-4 py-2 fw-bold mb-2">
+                  <i class="bi bi-envelope-fill me-2"></i>Enviar por E-mail
+                </button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════
+       FOOTER — utilitários Bootstrap + border-top
+  ══════════════════════════════════════════════════════ -->
+  <footer class="py-5 border-top" style="background-color: var(--superficie); border-color: var(--borda) !important;">
+    <div class="container">
+      <div class="row align-items-center justify-content-between g-4 text-center text-md-start">
+
+        <div class="col-12 col-md-auto">
+          <span class="fs-5 fw-bold text-primary">&lt;SeuNome /&gt;</span>
+          <p class="text-secondary small mt-1 mb-0">Desenvolvedor Front-End</p>
+        </div>
+
+        <div class="col-12 col-md-auto">
+          <ul class="list-unstyled d-flex flex-wrap justify-content-center gap-4 mb-0">
+            <li><a href="#inicio" class="text-secondary small">Início</a></li>
+            <li><a href="#sobre" class="text-secondary small">Sobre</a></li>
+            <li><a href="#projetos" class="text-secondary small">Projetos</a></li>
+            <li><a href="#skills" class="text-secondary small">Skills</a></li>
+            <li><a href="#contato" class="text-secondary small">Contato</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-md-auto">
+          <div class="d-flex justify-content-center gap-3">
+            <a href="https://github.com/seunome" target="_blank"
+               class="btn btn-outline-secondary rounded-circle p-2 lh-1">
+              <i class="bi bi-github fs-5"></i>
+            </a>
+            <a href="https://linkedin.com/in/seunome" target="_blank"
+               class="btn btn-outline-secondary rounded-circle p-2 lh-1">
+              <i class="bi bi-linkedin fs-5"></i>
+            </a>
+            <a href="https://instagram.com/seunome" target="_blank"
+               class="btn btn-outline-secondary rounded-circle p-2 lh-1">
+              <i class="bi bi-instagram fs-5"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <hr style="border-color: var(--borda);">
+      <p class="text-center text-secondary small mb-0">
+        © 2026 Seu Nome. Feito com <i class="bi bi-heart-fill text-danger mx-1"></i> usando HTML, CSS & Bootstrap.
+      </p>
+    </div>
+  </footer>
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    /* ══════════════════════════════════════════════════════
+       CONFIGURAÇÃO — edite apenas estas duas linhas
+    ══════════════════════════════════════════════════════ */
+    const WHATSAPP = "5511999999999";
+    const EMAIL    = "seuemail@email.com";
+
+
+    /* ══════════════════════════════════════════════════════
+       VALIDAÇÃO DO FORMULÁRIO
+    ══════════════════════════════════════════════════════ */
+    function validar() {
+      // Limpa erros anteriores
+      document.querySelectorAll('.campo-invalido').forEach(el => el.classList.remove('campo-invalido'));
+      document.querySelectorAll('[id^="erro-"]').forEach(el => el.classList.add('d-none'));
+      document.getElementById('alerta-erro').classList.add('d-none');
+
+      const nome     = document.getElementById('campo-nome').value.trim();
+      const email    = document.getElementById('campo-email').value.trim();
+      const assunto  = document.getElementById('campo-assunto').value.trim();
+      const mensagem = document.getElementById('campo-mensagem').value.trim();
+      const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      let ok = true;
+
+      if (!nome)                        { marcarErro('campo-nome',     'erro-nome');     ok = false; }
+      if (!email || !emailValido.test(email)) { marcarErro('campo-email', 'erro-email'); ok = false; }
+      if (!assunto)                     { marcarErro('campo-assunto',  'erro-assunto');  ok = false; }
+      if (mensagem.length < 10)         { marcarErro('campo-mensagem', 'erro-mensagem'); ok = false; }
+
+      if (!ok) document.getElementById('alerta-erro').classList.remove('d-none');
+
+      return ok;
+    }
+
+    function marcarErro(campoId, erroId) {
+      document.getElementById(campoId).classList.add('campo-invalido');
+      document.getElementById(erroId).classList.remove('d-none');
+    }
+
+
+    /* ══════════════════════════════════════════════════════
+       ENVIO PELO WHATSAPP
+    ══════════════════════════════════════════════════════ */
+    document.getElementById('btn-whatsapp').addEventListener('click', () => {
+      if (!validar()) return;
+
+      const nome     = document.getElementById('campo-nome').value.trim();
+      const email    = document.getElementById('campo-email').value.trim();
+      const assunto  = document.getElementById('campo-assunto').value.trim();
+      const mensagem = document.getElementById('campo-mensagem').value.trim();
+
+      const texto = `Olá! Meu nome é *${nome}*.\n\n*Assunto:* ${assunto}\n\n${mensagem}\n\n_Retorno: ${email}_`;
+      window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`, '_blank');
+      document.getElementById('form-contato').reset();
+    });
+
+
+    /* ══════════════════════════════════════════════════════
+       ENVIO POR E-MAIL
+    ══════════════════════════════════════════════════════ */
+    document.getElementById('btn-email').addEventListener('click', () => {
+      if (!validar()) return;
+
+      const nome     = document.getElementById('campo-nome').value.trim();
+      const email    = document.getElementById('campo-email').value.trim();
+      const assunto  = document.getElementById('campo-assunto').value.trim();
+      const mensagem = document.getElementById('campo-mensagem').value.trim();
+
+      const corpo = `Olá!\n\nMeu nome é ${nome} (${email}).\n\n${mensagem}`;
+      window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
+    });
+
+
+    /* ══════════════════════════════════════════════════════
+       FECHAR MENU MOBILE AO CLICAR EM UM LINK
+    ══════════════════════════════════════════════════════ */
+    document.querySelectorAll('#menu .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const instancia = bootstrap.Collapse.getInstance(document.getElementById('menu'));
+        if (instancia) instancia.hide();
+      });
+    });
+
+
+    /* ══════════════════════════════════════════════════════
+       AULA 2 — Animações ao rolar a página
+       ══════════════════════════════════════════════════════
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visivel');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.animacao-entrada').forEach(el => observer.observe(el));
+
+    // Para usar: adicione class="animacao-entrada" nos elementos do HTML
+    // e descomente o bloco .animacao-entrada no estilo.css
+
+    */
+
+  </script>
+
+</body>
+</html>

@@ -331,6 +331,30 @@
               </ul>
             </div>
 
+            <!-- Guias de Auxílio -->
+            <div
+              v-if="slide.content?.githubSubmission?.guides?.length"
+              class="submission-guides"
+            >
+              <div class="guides-title">
+                <span class="material-icons-round meta-icon">menu_book</span>
+                <span>Guias de Auxílio:</span>
+              </div>
+              <div class="guides-list">
+                <a
+                  v-for="(guide, gIdx) in slide.content.githubSubmission.guides"
+                  :key="gIdx"
+                  :href="guide.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="guide-link"
+                >
+                  <span class="material-icons-round guide-icon">open_in_new</span>
+                  {{ guide.label }}
+                </a>
+              </div>
+            </div>
+
             <!-- Bônus / Upgrade de Menção -->
             <div
               v-if="slide.content?.githubSubmission?.bonus"
@@ -1113,6 +1137,58 @@ const badgeVariant = computed(() => {
   color: var(--md-sys-color-on-surface);
   margin: 0;
   line-height: 1.35;
+}
+
+.submission-guides {
+  margin-top: 10px;
+  background: var(--md-sys-color-surface-container-low);
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.guides-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+  margin-bottom: 8px;
+}
+
+.guides-title .meta-icon {
+  font-size: 18px;
+  color: var(--md-sys-color-primary);
+}
+
+.guides-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.guide-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--md-sys-color-primary);
+  background-color: var(--md-sys-color-primary-container);
+  padding: 4px 10px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.guide-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.guide-icon {
+  font-size: 14px;
 }
 
 /* Callout */

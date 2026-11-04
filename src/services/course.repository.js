@@ -21,6 +21,23 @@ class CourseRepository {
     return this.coursesMap[courseId] || null;
   }
 
+  async getAssessments(courseId) {
+    const assessmentFiles = [];
+    const MAX_ASSESSMENTS = 20;
+    for (let num = 1; num <= MAX_ASSESSMENTS; num++) {
+      const fileName = `avaliacao-${String(num).padStart(2, "0")}`;
+      try {
+        const data = await import(
+          `@/data/courses/${courseId}/${fileName}.json`
+        );
+        assessmentFiles.push(data.default || data);
+      } catch {
+        break;
+      }
+    }
+    return assessmentFiles;
+  }
+
   async getLesson(courseId, lessonId) {
     const cacheKey = `${courseId}_${lessonId}`;
     if (this.lessonCache[cacheKey]) {

@@ -1,0 +1,142 @@
+/* ══════════════════════════════════════════════════════════════════
+   PORTFÓLIO PESSOAL — estilo.css
+   Só o que o Bootstrap não consegue fazer sozinho.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ─── VARIÁVEIS DE COR (tema dark customizado) ──────────────────── */
+:root {
+  --cor-primaria:  #6c63ff;
+  --cor-secundaria: #ff6584;
+
+  --fundo:           #0f0f1a;
+  --superficie:      #1a1a2e;
+  --superficie-alta: #22223a;
+  --borda:           #2e2e4e;
+
+  --texto:       #e8e8f0;
+  --texto-suave: #9090b8;
+  --texto-fraco: #5e5e88;
+}
+
+/* ─── BASE ──────────────────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--fundo);
+  color: var(--texto);
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ─── NAVBAR ────────────────────────────────────────────────────── */
+/* O Bootstrap cuida do layout — só aplicamos o fundo dark */
+.navbar-portfolio {
+  background-color: rgba(15, 15, 26, 0.95) !important;
+  border-bottom: 1px solid var(--borda);
+}
+
+/* ─── HERO ──────────────────────────────────────────────────────── */
+/* O Bootstrap não tem uma seção full-screen com navbar fixa */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+}
+
+.foto-perfil {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--cor-primaria);
+}
+
+.hero-nome {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+@media (min-width: 992px) {
+  .foto-perfil  { width: 340px; height: 340px; }
+  .hero         { padding-top: 88px; }
+}
+
+@media (max-width: 575px) {
+  .hero-nome { font-size: 2.5rem; }
+}
+
+/* ─── TÍTULO DE SEÇÃO (linha colorida embaixo) ──────────────────── */
+/* Pseudo-elemento não existe em utilitário Bootstrap */
+.titulo-secao {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 12px;
+  margin-bottom: 2rem;
+}
+
+.titulo-secao::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 48px;
+  height: 4px;
+  background-color: var(--cor-primaria);
+  border-radius: 99px;
+}
+
+/* ─── TOPO DO CARD DE PROJETO (área colorida com ícone) ─────────── */
+.card-topo {
+  height: 160px;
+  background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: rgba(255,255,255,0.65);
+}
+
+/* ─── CAMPO INVÁLIDO (override da borda Bootstrap) ──────────────── */
+.campo-invalido { border-color: var(--cor-secundaria) !important; }
+
+
+/* ════════════════════════════════════════════════════════════════
+   AULA 2 — anel giratório na foto do hero
+   ════════════════════════════════════════════════════════════════
+
+   1. No index.html, troque:
+        <img class="foto-perfil mx-auto" ...>
+      por:
+        <div class="foto-container">
+          <div class="foto-anel"></div>
+          <img class="foto-perfil" ...>
+        </div>
+
+   2. Descomente o CSS abaixo:
+
+.foto-container {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  margin: 0 auto;
+}
+
+.foto-anel {
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  border: 2px dashed rgba(108, 99, 255, 0.5);
+  animation: girar 12s linear infinite;
+}
+
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+
+@media (min-width: 992px) {
+  .foto-container { width: 340px; height: 340px; }
+}
+
+*/

@@ -1,0 +1,118 @@
+{
+  "id": "avaliacao-03",
+  "title": "2ª Atividade: Desenvolvimento de Interfaces",
+  "subtitle": "Página de Série com HTML & Bootstrap",
+  "module": "Desenvolvimento de Interfaces",
+  "tag": "1ª Avaliação",
+  "type": "activity",
+  "badge": "HTML & Bootstrap",
+  "weight": "20%",
+  "deadline": "Aula 17 • 16/11/2026",
+  "duration": "Entrega via GitHub da Turma",
+  "description": "Crie uma página web sobre uma série favorita utilizando HTML semântico e Bootstrap, incluindo componentes novos não vistos em sala como Card, Breadcrumb e Carousel.",
+  "slides": [
+    {
+      "id": 1,
+      "type": "assessment",
+      "title": "3ª Avaliação: Página de Série",
+      "subtitle": "Escolha uma série favorita e construa uma página com HTML & Bootstrap",
+      "content": {
+        "assessmentType": "activity",
+        "badge": "3ª Avaliação Oficial",
+        "date": "16/11/26 às 23:59h",
+        "activityReadme": {
+          "description": "Escolha uma série favorita e crie uma página web sobre ela usando HTML semântico e Bootstrap. Inclua elementos novos estudados de forma autônoma:",
+          "requirements": [
+            "Estrutura com HTML semântico: tags como <header>, <main>, <section>, <footer>",
+            "Bootstrap via CDN: estilize e organize o layout usando classes do Bootstrap",
+            "Card: exiba personagens, episódios ou temporadas em cards do Bootstrap",
+            "Breadcrumb: adicione navegação de contexto no topo da página",
+            "Carousel: crie um carrossel com imagens ou destaques da série",
+            "Conteúdo: título da série, sinopse, elenco principal e pelo menos uma imagem"
+          ]
+        },
+        "evaluationCriteria": [
+          {
+            "label": "HTML Semântico",
+            "weight": "20%",
+            "detail": "Uso correto de tags semânticas: header, main, section, footer, article, nav."
+          },
+          {
+            "label": "Bootstrap Aplicado",
+            "weight": "25%",
+            "detail": "Grid responsivo e classes utilitárias do Bootstrap para layout e espaçamentos."
+          },
+          {
+            "label": "Card",
+            "weight": "20%",
+            "detail": "Componente Card do Bootstrap implementado e estilizado com conteúdo real da série."
+          },
+          {
+            "label": "Breadcrumb",
+            "weight": "15%",
+            "detail": "Componente Breadcrumb do Bootstrap presente na página."
+          },
+          {
+            "label": "Carousel",
+            "weight": "20%",
+            "detail": "Componente Carousel do Bootstrap funcionando com ao menos 2 imagens ou slides."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Os três componentes novos são obrigatórios: Card, Breadcrumb e Carousel. A ausência de qualquer um deles reduz a nota."
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": "assessment",
+      "title": "Entrega no GitHub & Checklist",
+      "subtitle": "Instruções de envio e checklist antes de fazer o Pull Request",
+      "content": {
+        "assessmentType": "activity",
+        "badge": "Entrega • GitHub",
+        "date": "16/11/26 às 23:59h",
+        "activityReadme": {
+          "description": "Antes de enviar, confira se sua pasta contém todos os itens obrigatórios:",
+          "requirements": [
+            "index.html com Bootstrap via CDN e os três componentes: Card, Breadcrumb e Carousel",
+            "Conteúdo real sobre a série: título, sinopse, elenco e imagens",
+            "Nenhum arquivo desnecessário (sem node_modules, .DS_Store, etc.)",
+            "Página abre corretamente no navegador com o Bootstrap funcionando"
+          ]
+        },
+        "githubSubmission": {
+          "instruction": "Envie o projeto na pasta correta do repositório da turma e abra um Pull Request:",
+          "folderPath": "seuNome/Atividades/atividade-serie",
+          "documentation": "Pasta deve conter o arquivo index.html obrigatoriamente",
+          "guides": [
+            { "label": "Guia GitHub",     "url": "https://fernandodx.github.io/help-github/guia_github.html" },
+            { "label": "Guia HTML",       "url": "https://fernandodx.github.io/help-github/guia_html.html" },
+            { "label": "Guia CSS",        "url": "https://fernandodx.github.io/help-github/guia_css.html" },
+            { "label": "Bootstrap Cards", "url": "https://getbootstrap.com/docs/4.1/components/card/" },
+            { "label": "Bootstrap Breadcrumb", "url": "https://getbootstrap.com/docs/4.1/components/breadcrumb/" },
+            { "label": "Bootstrap Carousel",   "url": "https://getbootstrap.com/docs/4.1/components/carousel/" }
+          ],
+          "bonus": "Obs: caso já tenha feito o Pull Request anteriormente, não é necessário abrir um novo — basta adicionar os arquivos na mesma branch."
+        },
+        "evaluationCriteria": [
+          {
+            "label": "Estrutura de Pasta",
+            "weight": "Obrigatório",
+            "detail": "Pasta seuNome/Atividades/atividade-serie com index.html."
+          },
+          {
+            "label": "Pull Request",
+            "weight": "Obrigatório",
+            "detail": "Abrir um PR no repositório da turma (ou usar o PR já existente)."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Dica: Abra o index.html no navegador com internet ativa para garantir que o Bootstrap via CDN está carregando corretamente."
+        }
+      }
+    }
+  ]
+}

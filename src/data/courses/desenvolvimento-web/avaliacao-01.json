@@ -1,9 +1,15 @@
 {
-  "id": 9,
+  "id": "avaliacao-01",
   "title": "Atividade: Sistema de Consulta de Deputados",
   "subtitle": "Integração com API pública, componentes, eventos e navegação",
   "module": "Desenvolvimento de Interfaces",
   "tag": "Atividade Prática",
+  "type": "activity",
+  "badge": "Atividade Prática",
+  "weight": "10%",
+  "deadline": "Aula 09 • 08/10/2026 23:59h",
+  "duration": "Entrega via Repositório do Github da disciplina",
+  "description": "Construção de uma aplicação utilizando Vue com CLI",
   "slides": [
     {
       "id": 1,

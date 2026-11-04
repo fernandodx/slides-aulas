@@ -4,6 +4,12 @@
   "subtitle": "Design System e Protótipo Navegável no Figma",
   "module": "Desenvolvimento de Interfaces",
   "tag": "1ª Avaliação",
+  "type": "activity",
+  "badge": "Protótipo & UI",
+  "weight": "30%",
+  "deadline": "Aula 9 • 22/09/2026",
+  "duration": "Entrega de Link do Figma",
+  "description": "Criação do Design System com tipografia, cores semânticas, componentes e protótipo navegável de alta fidelidade no Figma.",
   "slides": [
     {
       "id": 1,

@@ -1,0 +1,109 @@
+{
+  "id": "avaliacao-02",
+  "title": "1ª Atividade: Desenvolvimento de Interfaces",
+  "subtitle": "Página de Filme com HTML & CSS",
+  "module": "Desenvolvimento de Interfaces",
+  "tag": "2ª Avaliação",
+  "type": "activity",
+  "badge": "HTML & CSS",
+  "weight": "5%",
+  "deadline": "Aula 13 • 16/11/2026",
+  "duration": "Entrega via GitHub da Turma",
+  "description": "Crie uma página web sobre um filme favorito utilizando HTML semântico e CSS com variáveis, estruturando e estilizando do zero.",
+  "slides": [
+    {
+      "id": 1,
+      "type": "assessment",
+      "title": "2ª Avaliação: Página de Filme",
+      "subtitle": "Escolha um filme favorito e construa uma página com HTML & CSS",
+      "content": {
+        "assessmentType": "activity",
+        "badge": "2ª Avaliação Oficial",
+        "date": "16/11/26 às 23:59h",
+        "activityReadme": {
+          "description": "Escolha um filme favorito e crie uma página web sobre ele aplicando os conceitos aprendidos em sala:",
+          "requirements": [
+            "Estrutura com HTML semântico: use tags como <header>, <main>, <section>, <footer>, <article>",
+            "Estilização com CSS: crie um arquivo estilo.css separado do index.html",
+            "Variáveis CSS: defina cores, fontes e espaçamentos como variáveis no :root",
+            "Layout: use Flexbox ou Grid para organizar os elementos da página",
+            "Conteúdo: inclua título do filme, sinopse, elenco, diretor e imagem de capa"
+          ]
+        },
+        "evaluationCriteria": [
+          {
+            "label": "HTML Semântico",
+            "weight": "30%",
+            "detail": "Uso correto de tags semânticas: header, main, section, footer, article, nav."
+          },
+          {
+            "label": "Arquivo CSS Separado",
+            "weight": "20%",
+            "detail": "Presença obrigatória de estilo.css vinculado ao index.html via <link>."
+          },
+          {
+            "label": "Variáveis CSS",
+            "weight": "25%",
+            "detail": "Cores, fontes e/ou espaçamentos definidos como variáveis no :root e aplicados."
+          },
+          {
+            "label": "Layout e Responsividade",
+            "weight": "25%",
+            "detail": "Uso de Flexbox ou Grid para organização visual; página legível em tela padrão."
+          }
+        ],
+        "callout": {
+          "type": "important",
+          "text": "Obrigatório: dois arquivos na entrega — index.html e estilo.css. Não use Bootstrap nesta atividade."
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": "assessment",
+      "title": "Entrega no GitHub & Checklist",
+      "subtitle": "Instruções de envio e checklist antes de fazer o Pull Request",
+      "content": {
+        "assessmentType": "activity",
+        "badge": "Entrega • GitHub",
+        "date": "16/11/26 às 23:59h",
+        "activityReadme": {
+          "description": "Antes de enviar, confira se sua pasta contém todos os itens obrigatórios:",
+          "requirements": [
+            "index.html com estrutura HTML semântica completa",
+            "estilo.css com variáveis CSS definidas no :root",
+            "Imagem de capa do filme dentro da pasta (ou referenciada por URL)",
+            "Nenhum arquivo desnecessário (sem node_modules, .DS_Store, etc.)"
+          ]
+        },
+        "githubSubmission": {
+          "instruction": "Envie o projeto na pasta correta do repositório da turma e abra um Pull Request:",
+          "folderPath": "seuNome/Atividades/atividade-filme",
+          "documentation": "Pasta deve conter index.html e estilo.css obrigatoriamente",
+          "guides": [
+            { "label": "Guia GitHub", "url": "https://fernandodx.github.io/help-github/guia_github.html" },
+            { "label": "Guia HTML",   "url": "https://fernandodx.github.io/help-github/guia_html.html" },
+            { "label": "Guia CSS",    "url": "https://fernandodx.github.io/help-github/guia_css.html" }
+          ],
+          "bonus": "Obs: caso já tenha feito o Pull Request anteriormente, não é necessário abrir um novo — basta adicionar os arquivos na mesma branch."
+        },
+        "evaluationCriteria": [
+          {
+            "label": "Estrutura de Pasta",
+            "weight": "Obrigatório",
+            "detail": "Pasta seuNome/Atividades/atividade-filme com index.html e estilo.css."
+          },
+          {
+            "label": "Pull Request",
+            "weight": "Obrigatório",
+            "detail": "Abrir um PR no repositório da turma (ou usar o PR já existente)."
+          }
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Dica: Abra o index.html no navegador antes de enviar para conferir se a página está carregando corretamente."
+        }
+      }
+    }
+  ]
+}
